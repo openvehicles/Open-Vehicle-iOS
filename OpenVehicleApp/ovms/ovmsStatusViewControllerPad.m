@@ -317,15 +317,15 @@
   NSString* c_unknown;
   if ([ovmsAppDelegate myRef].car_paranoid)
     {
-    c_good = [[NSString alloc] initWithString:@"connection_good_paranoid.png"];
-    c_bad = [[NSString alloc] initWithString:@"connection_bad_paranoid.png"];
-    c_unknown = [[NSString alloc] initWithString:@"connection_unknown_paranoid.png"];
+    c_good = @"connection_good_paranoid.png";
+    c_bad = @"connection_bad_paranoid.png";
+    c_unknown = @"connection_unknown_paranoid.png";
     }
   else
     {
-    c_good = [[NSString alloc] initWithString:@"connection_good.png"];
-    c_bad = [[NSString alloc] initWithString:@"connection_bad.png"];
-    c_unknown = [[NSString alloc] initWithString:@"connection_unknown.png"];
+    c_good = @"connection_good.png";
+    c_bad = @"connection_bad.png";
+    c_unknown = @"connection_unknown.png";
     }
   
   NSString* imagewanted;

@@ -11,6 +11,7 @@
 #import "JHNotificationManager.h"
 #import "Reachability.h"
 #import "Cars.h"
+#import "TestFlight.h"
 
 @implementation ovmsAppDelegate
 
@@ -942,7 +943,7 @@
       NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
       [defaults setObject:sel_car forKey:@"cacheWeatherCar"];
       [defaults setObject:[rt objectAtIndex:2] forKey:@"cacheWeatherTemp"];
-      [defaults setObject:[NSString stringWithFormat:@"%d",time(0)+(15*60)] forKey:@"cacheWeatherTimeout"];
+      [defaults setObject:[NSString stringWithFormat:@"%ld",time(0)+(15*60)] forKey:@"cacheWeatherTimeout"];
       [defaults synchronize];
       }
     }
