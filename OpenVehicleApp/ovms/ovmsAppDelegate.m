@@ -485,7 +485,7 @@
   car_stale_gps = -1;
   
   car_soc = 0;
-  car_units = @"-";
+  car_units = @"";
   car_linevoltage = 0;
   car_chargecurrent = 0;
   car_chargestate = @"";
@@ -804,7 +804,7 @@
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSString *defaultsD = [defaults stringForKey:@"ovmsDistances"];
 
-  if ([self.car_units isEqualToString:@"-"]) return @"";
+  if ([self.car_units length] == 0) return @"";
 
   if (([defaultsD isEqualToString:@"-"])||([defaultsD isEqualToString:self.car_units]))
     {
@@ -833,7 +833,7 @@
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSString *defaultsD = [defaults stringForKey:@"ovmsDistances"];
   
-  if ([self.car_units isEqualToString:@"-"]) return @"";
+  if ([self.car_units length] == 0) return @"";
 
   if (([defaultsD isEqualToString:@"-"])||([defaultsD isEqualToString:self.car_units]))
     {
@@ -862,7 +862,7 @@
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSString *defaultsT = [defaults stringForKey:@"ovmsTemperatures"];
   
-  if ([self.car_units isEqualToString:@"-"]) return @"";
+  if ([self.car_units length] == 0) return @"";
   
   if (([defaultsT isEqualToString:@"-"])||([defaultsT isEqualToString:self.car_units]))
     {
