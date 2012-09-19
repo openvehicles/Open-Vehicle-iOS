@@ -158,8 +158,9 @@
   self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
   
   CGRect bvframe = m_car_temp_pem_l.frame;
-  
-  UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+
+  // This seems to pickup the orientation correctly, even if we haven't turned on notifications for it
+  UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
   
   if (orientation == UIInterfaceOrientationLandscapeLeft ||
       orientation == UIInterfaceOrientationLandscapeRight)
