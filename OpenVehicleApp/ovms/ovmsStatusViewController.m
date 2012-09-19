@@ -188,7 +188,7 @@
     m_car_connection_state.textColor = [UIColor redColor];
     imagewanted = c_bad;
     }
-  else if (minutes >= 20)
+  else if (minutes > 60)
     {
     m_car_connection_state.text = [NSString stringWithFormat:@"%d mins",minutes];
     m_car_connection_state.textColor = [UIColor redColor];
