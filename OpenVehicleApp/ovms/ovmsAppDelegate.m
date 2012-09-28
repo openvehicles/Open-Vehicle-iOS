@@ -939,12 +939,15 @@
       {
       // We can assume this is the first line of the good response
       NSArray *rt = [wl componentsSeparatedByString:@","];
-      car_ambient_weather = [[rt objectAtIndex:2] intValue];
-      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-      [defaults setObject:sel_car forKey:@"cacheWeatherCar"];
-      [defaults setObject:[rt objectAtIndex:2] forKey:@"cacheWeatherTemp"];
-      [defaults setObject:[NSString stringWithFormat:@"%ld",time(0)+(15*60)] forKey:@"cacheWeatherTimeout"];
-      [defaults synchronize];
+      if ([rt count]>2)
+        {
+        car_ambient_weather = [[rt objectAtIndex:2] intValue];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:sel_car forKey:@"cacheWeatherCar"];
+        [defaults setObject:[rt objectAtIndex:2] forKey:@"cacheWeatherTemp"];
+        [defaults setObject:[NSString stringWithFormat:@"%ld",time(0)+(15*60)] forKey:@"cacheWeatherTimeout"];
+        [defaults synchronize];
+        }
       }
     }
   [self notifyUpdates];
