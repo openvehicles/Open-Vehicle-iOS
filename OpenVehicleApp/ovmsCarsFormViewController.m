@@ -59,8 +59,7 @@
   NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleRoot error:nil];
   for (NSString *tString in dirContents)
     {
-    if (([tString hasPrefix:@"car_roadster"] || [tString hasPrefix:@"car_default"])
-        && [tString hasSuffix:@".png"])
+    if ([tString hasPrefix:@"car_"] && [tString hasSuffix:@".png"])
       {
       [self.carImages addObject: tString];
       }
