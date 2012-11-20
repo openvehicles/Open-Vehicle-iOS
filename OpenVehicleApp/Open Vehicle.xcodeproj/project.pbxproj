@@ -127,6 +127,33 @@
 		4D91CF691473FE0900CBA435 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D91CF681473FE0900CBA435 /* MapKit.framework */; };
 		4D939B76152A8B9B00F662B2 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D939B74152A8B9B00F662B2 /* README.txt */; };
 		4D939B77152A8B9B00F662B2 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D939B75152A8B9B00F662B2 /* release_notes.txt */; };
+		4D9697CA165BAFD700DF0364 /* car_holdenvolt_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697C1165BAFD700DF0364 /* car_holdenvolt_black.png */; };
+		4D9697CB165BAFD700DF0364 /* car_holdenvolt_crystalclaret.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697C2165BAFD700DF0364 /* car_holdenvolt_crystalclaret.png */; };
+		4D9697CC165BAFD700DF0364 /* car_holdenvolt_silvernitrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697C3165BAFD700DF0364 /* car_holdenvolt_silvernitrate.png */; };
+		4D9697CD165BAFD700DF0364 /* car_holdenvolt_urbanfresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697C4165BAFD700DF0364 /* car_holdenvolt_urbanfresh.png */; };
+		4D9697CE165BAFD700DF0364 /* car_holdenvolt_whitediamond.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697C5165BAFD700DF0364 /* car_holdenvolt_whitediamond.png */; };
+		4D9697CF165BAFD700DF0364 /* car_twizy_diamondblackwithivygreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697C6165BAFD700DF0364 /* car_twizy_diamondblackwithivygreen.png */; };
+		4D9697D0165BAFD700DF0364 /* car_twizy_snowwhiteandflameorange.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697C7165BAFD700DF0364 /* car_twizy_snowwhiteandflameorange.png */; };
+		4D9697D1165BAFD700DF0364 /* car_twizy_snowwhiteandurbanblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697C8165BAFD700DF0364 /* car_twizy_snowwhiteandurbanblue.png */; };
+		4D9697D2165BAFD700DF0364 /* car_twizy_snowwhitewithblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697C9165BAFD700DF0364 /* car_twizy_snowwhitewithblack.png */; };
+		4D9697DD165BAFED00DF0364 /* ol_car_holdenvolt_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697D4165BAFED00DF0364 /* ol_car_holdenvolt_black.png */; };
+		4D9697DE165BAFED00DF0364 /* ol_car_holdenvolt_crystalclaret.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697D5165BAFED00DF0364 /* ol_car_holdenvolt_crystalclaret.png */; };
+		4D9697DF165BAFED00DF0364 /* ol_car_holdenvolt_silvernitrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697D6165BAFED00DF0364 /* ol_car_holdenvolt_silvernitrate.png */; };
+		4D9697E0165BAFED00DF0364 /* ol_car_holdenvolt_urbanfresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697D7165BAFED00DF0364 /* ol_car_holdenvolt_urbanfresh.png */; };
+		4D9697E1165BAFED00DF0364 /* ol_car_holdenvolt_whitediamond.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697D8165BAFED00DF0364 /* ol_car_holdenvolt_whitediamond.png */; };
+		4D9697E2165BAFED00DF0364 /* ol_car_twizy_diamondblackwithivygreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697D9165BAFED00DF0364 /* ol_car_twizy_diamondblackwithivygreen.png */; };
+		4D9697E3165BAFED00DF0364 /* ol_car_twizy_snowwhiteandflameorange.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697DA165BAFED00DF0364 /* ol_car_twizy_snowwhiteandflameorange.png */; };
+		4D9697E4165BAFED00DF0364 /* ol_car_twizy_snowwhiteandurbanblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697DB165BAFED00DF0364 /* ol_car_twizy_snowwhiteandurbanblue.png */; };
+		4D9697E5165BAFED00DF0364 /* ol_car_twizy_snowwhitewithblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697DC165BAFED00DF0364 /* ol_car_twizy_snowwhitewithblack.png */; };
+		4D9697EF165BB00300DF0364 /* map_car_holdenvolt_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697E6165BB00300DF0364 /* map_car_holdenvolt_black.png */; };
+		4D9697F0165BB00300DF0364 /* map_car_holdenvolt_crystalclaret.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697E7165BB00300DF0364 /* map_car_holdenvolt_crystalclaret.png */; };
+		4D9697F1165BB00300DF0364 /* map_car_holdenvolt_silvernitrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697E8165BB00300DF0364 /* map_car_holdenvolt_silvernitrate.png */; };
+		4D9697F2165BB00300DF0364 /* map_car_holdenvolt_urbanfresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697E9165BB00300DF0364 /* map_car_holdenvolt_urbanfresh.png */; };
+		4D9697F3165BB00300DF0364 /* map_car_holdenvolt_whitediamond.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697EA165BB00300DF0364 /* map_car_holdenvolt_whitediamond.png */; };
+		4D9697F4165BB00300DF0364 /* map_car_twizy_diamondblackwithivygreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697EB165BB00300DF0364 /* map_car_twizy_diamondblackwithivygreen.png */; };
+		4D9697F5165BB00300DF0364 /* map_car_twizy_snowwhiteandflameorange.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697EC165BB00300DF0364 /* map_car_twizy_snowwhiteandflameorange.png */; };
+		4D9697F6165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697ED165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png */; };
+		4D9697F7165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697EE165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png */; };
 		4D99986D154C0CCA00214F2A /* 193-location-arrow-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D99986C154C0CCA00214F2A /* 193-location-arrow-white.png */; };
 		4DA3E52F16019C14009E1245 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3E52E16019C14009E1245 /* Default-568h@2x.png */; };
 		4DA49200151083A7004D26E0 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA491FC151083A7004D26E0 /* libTestFlight.a */; };
@@ -394,6 +421,33 @@
 		4D91CF681473FE0900CBA435 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4D939B74152A8B9B00F662B2 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		4D939B75152A8B9B00F662B2 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
+		4D9697C1165BAFD700DF0364 /* car_holdenvolt_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_holdenvolt_black.png; sourceTree = "<group>"; };
+		4D9697C2165BAFD700DF0364 /* car_holdenvolt_crystalclaret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_holdenvolt_crystalclaret.png; sourceTree = "<group>"; };
+		4D9697C3165BAFD700DF0364 /* car_holdenvolt_silvernitrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_holdenvolt_silvernitrate.png; sourceTree = "<group>"; };
+		4D9697C4165BAFD700DF0364 /* car_holdenvolt_urbanfresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_holdenvolt_urbanfresh.png; sourceTree = "<group>"; };
+		4D9697C5165BAFD700DF0364 /* car_holdenvolt_whitediamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_holdenvolt_whitediamond.png; sourceTree = "<group>"; };
+		4D9697C6165BAFD700DF0364 /* car_twizy_diamondblackwithivygreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_twizy_diamondblackwithivygreen.png; sourceTree = "<group>"; };
+		4D9697C7165BAFD700DF0364 /* car_twizy_snowwhiteandflameorange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_twizy_snowwhiteandflameorange.png; sourceTree = "<group>"; };
+		4D9697C8165BAFD700DF0364 /* car_twizy_snowwhiteandurbanblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_twizy_snowwhiteandurbanblue.png; sourceTree = "<group>"; };
+		4D9697C9165BAFD700DF0364 /* car_twizy_snowwhitewithblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_twizy_snowwhitewithblack.png; sourceTree = "<group>"; };
+		4D9697D4165BAFED00DF0364 /* ol_car_holdenvolt_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_holdenvolt_black.png; sourceTree = "<group>"; };
+		4D9697D5165BAFED00DF0364 /* ol_car_holdenvolt_crystalclaret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_holdenvolt_crystalclaret.png; sourceTree = "<group>"; };
+		4D9697D6165BAFED00DF0364 /* ol_car_holdenvolt_silvernitrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_holdenvolt_silvernitrate.png; sourceTree = "<group>"; };
+		4D9697D7165BAFED00DF0364 /* ol_car_holdenvolt_urbanfresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_holdenvolt_urbanfresh.png; sourceTree = "<group>"; };
+		4D9697D8165BAFED00DF0364 /* ol_car_holdenvolt_whitediamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_holdenvolt_whitediamond.png; sourceTree = "<group>"; };
+		4D9697D9165BAFED00DF0364 /* ol_car_twizy_diamondblackwithivygreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_twizy_diamondblackwithivygreen.png; sourceTree = "<group>"; };
+		4D9697DA165BAFED00DF0364 /* ol_car_twizy_snowwhiteandflameorange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_twizy_snowwhiteandflameorange.png; sourceTree = "<group>"; };
+		4D9697DB165BAFED00DF0364 /* ol_car_twizy_snowwhiteandurbanblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_twizy_snowwhiteandurbanblue.png; sourceTree = "<group>"; };
+		4D9697DC165BAFED00DF0364 /* ol_car_twizy_snowwhitewithblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_twizy_snowwhitewithblack.png; sourceTree = "<group>"; };
+		4D9697E6165BB00300DF0364 /* map_car_holdenvolt_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_holdenvolt_black.png; sourceTree = "<group>"; };
+		4D9697E7165BB00300DF0364 /* map_car_holdenvolt_crystalclaret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_holdenvolt_crystalclaret.png; sourceTree = "<group>"; };
+		4D9697E8165BB00300DF0364 /* map_car_holdenvolt_silvernitrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_holdenvolt_silvernitrate.png; sourceTree = "<group>"; };
+		4D9697E9165BB00300DF0364 /* map_car_holdenvolt_urbanfresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_holdenvolt_urbanfresh.png; sourceTree = "<group>"; };
+		4D9697EA165BB00300DF0364 /* map_car_holdenvolt_whitediamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_holdenvolt_whitediamond.png; sourceTree = "<group>"; };
+		4D9697EB165BB00300DF0364 /* map_car_twizy_diamondblackwithivygreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_twizy_diamondblackwithivygreen.png; sourceTree = "<group>"; };
+		4D9697EC165BB00300DF0364 /* map_car_twizy_snowwhiteandflameorange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_twizy_snowwhiteandflameorange.png; sourceTree = "<group>"; };
+		4D9697ED165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_twizy_snowwhiteandurbanblue.png; sourceTree = "<group>"; };
+		4D9697EE165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_twizy_snowwhitewithblack.png; sourceTree = "<group>"; };
 		4D99986C154C0CCA00214F2A /* 193-location-arrow-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "193-location-arrow-white.png"; sourceTree = "<group>"; };
 		4DA3E52E16019C14009E1245 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4DA491FC151083A7004D26E0 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
@@ -657,6 +711,15 @@
 		4D82FA70154829A9009D73E8 /* Car Map Images */ = {
 			isa = PBXGroup;
 			children = (
+				4D9697E6165BB00300DF0364 /* map_car_holdenvolt_black.png */,
+				4D9697E7165BB00300DF0364 /* map_car_holdenvolt_crystalclaret.png */,
+				4D9697E8165BB00300DF0364 /* map_car_holdenvolt_silvernitrate.png */,
+				4D9697E9165BB00300DF0364 /* map_car_holdenvolt_urbanfresh.png */,
+				4D9697EA165BB00300DF0364 /* map_car_holdenvolt_whitediamond.png */,
+				4D9697EB165BB00300DF0364 /* map_car_twizy_diamondblackwithivygreen.png */,
+				4D9697EC165BB00300DF0364 /* map_car_twizy_snowwhiteandflameorange.png */,
+				4D9697ED165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png */,
+				4D9697EE165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png */,
 				4D8C3DE51641814D00BA254C /* map_car_ampera_black.png */,
 				4D8C3DE61641814D00BA254C /* map_car_ampera_crystalred.png */,
 				4D8C3DE71641814D00BA254C /* map_car_ampera_cybergray.png */,
@@ -831,6 +894,15 @@
 		4DF2FF1114981FB900E488F2 /* Car Outlines */ = {
 			isa = PBXGroup;
 			children = (
+				4D9697D4165BAFED00DF0364 /* ol_car_holdenvolt_black.png */,
+				4D9697D5165BAFED00DF0364 /* ol_car_holdenvolt_crystalclaret.png */,
+				4D9697D6165BAFED00DF0364 /* ol_car_holdenvolt_silvernitrate.png */,
+				4D9697D7165BAFED00DF0364 /* ol_car_holdenvolt_urbanfresh.png */,
+				4D9697D8165BAFED00DF0364 /* ol_car_holdenvolt_whitediamond.png */,
+				4D9697D9165BAFED00DF0364 /* ol_car_twizy_diamondblackwithivygreen.png */,
+				4D9697DA165BAFED00DF0364 /* ol_car_twizy_snowwhiteandflameorange.png */,
+				4D9697DB165BAFED00DF0364 /* ol_car_twizy_snowwhiteandurbanblue.png */,
+				4D9697DC165BAFED00DF0364 /* ol_car_twizy_snowwhitewithblack.png */,
 				4D8C3DD51641813F00BA254C /* ol_car_ampera_black.png */,
 				4D8C3DD61641813F00BA254C /* ol_car_ampera_crystalred.png */,
 				4D8C3DD71641813F00BA254C /* ol_car_ampera_cybergray.png */,
@@ -862,6 +934,15 @@
 		4DF754CA147F1D5B00C33AA4 /* Car Images */ = {
 			isa = PBXGroup;
 			children = (
+				4D9697C1165BAFD700DF0364 /* car_holdenvolt_black.png */,
+				4D9697C2165BAFD700DF0364 /* car_holdenvolt_crystalclaret.png */,
+				4D9697C3165BAFD700DF0364 /* car_holdenvolt_silvernitrate.png */,
+				4D9697C4165BAFD700DF0364 /* car_holdenvolt_urbanfresh.png */,
+				4D9697C5165BAFD700DF0364 /* car_holdenvolt_whitediamond.png */,
+				4D9697C6165BAFD700DF0364 /* car_twizy_diamondblackwithivygreen.png */,
+				4D9697C7165BAFD700DF0364 /* car_twizy_snowwhiteandflameorange.png */,
+				4D9697C8165BAFD700DF0364 /* car_twizy_snowwhiteandurbanblue.png */,
+				4D9697C9165BAFD700DF0364 /* car_twizy_snowwhitewithblack.png */,
 				4D8C3DC41641812F00BA254C /* car_ampera_black.png */,
 				4D8C3DC51641812F00BA254C /* car_ampera_crystalred.png */,
 				4D8C3DC61641812F00BA254C /* car_ampera_cybergray.png */,
@@ -1223,6 +1304,33 @@
 				4D8C3DF21641814D00BA254C /* map_car_ampera_silvertopas.png in Resources */,
 				4D8C3DF31641814D00BA254C /* map_car_ampera_sovereignsilver.png in Resources */,
 				4D8C3DF41641814D00BA254C /* map_car_ampera_summitwhite.png in Resources */,
+				4D9697CA165BAFD700DF0364 /* car_holdenvolt_black.png in Resources */,
+				4D9697CB165BAFD700DF0364 /* car_holdenvolt_crystalclaret.png in Resources */,
+				4D9697CC165BAFD700DF0364 /* car_holdenvolt_silvernitrate.png in Resources */,
+				4D9697CD165BAFD700DF0364 /* car_holdenvolt_urbanfresh.png in Resources */,
+				4D9697CE165BAFD700DF0364 /* car_holdenvolt_whitediamond.png in Resources */,
+				4D9697CF165BAFD700DF0364 /* car_twizy_diamondblackwithivygreen.png in Resources */,
+				4D9697D0165BAFD700DF0364 /* car_twizy_snowwhiteandflameorange.png in Resources */,
+				4D9697D1165BAFD700DF0364 /* car_twizy_snowwhiteandurbanblue.png in Resources */,
+				4D9697D2165BAFD700DF0364 /* car_twizy_snowwhitewithblack.png in Resources */,
+				4D9697DD165BAFED00DF0364 /* ol_car_holdenvolt_black.png in Resources */,
+				4D9697DE165BAFED00DF0364 /* ol_car_holdenvolt_crystalclaret.png in Resources */,
+				4D9697DF165BAFED00DF0364 /* ol_car_holdenvolt_silvernitrate.png in Resources */,
+				4D9697E0165BAFED00DF0364 /* ol_car_holdenvolt_urbanfresh.png in Resources */,
+				4D9697E1165BAFED00DF0364 /* ol_car_holdenvolt_whitediamond.png in Resources */,
+				4D9697E2165BAFED00DF0364 /* ol_car_twizy_diamondblackwithivygreen.png in Resources */,
+				4D9697E3165BAFED00DF0364 /* ol_car_twizy_snowwhiteandflameorange.png in Resources */,
+				4D9697E4165BAFED00DF0364 /* ol_car_twizy_snowwhiteandurbanblue.png in Resources */,
+				4D9697E5165BAFED00DF0364 /* ol_car_twizy_snowwhitewithblack.png in Resources */,
+				4D9697EF165BB00300DF0364 /* map_car_holdenvolt_black.png in Resources */,
+				4D9697F0165BB00300DF0364 /* map_car_holdenvolt_crystalclaret.png in Resources */,
+				4D9697F1165BB00300DF0364 /* map_car_holdenvolt_silvernitrate.png in Resources */,
+				4D9697F2165BB00300DF0364 /* map_car_holdenvolt_urbanfresh.png in Resources */,
+				4D9697F3165BB00300DF0364 /* map_car_holdenvolt_whitediamond.png in Resources */,
+				4D9697F4165BB00300DF0364 /* map_car_twizy_diamondblackwithivygreen.png in Resources */,
+				4D9697F5165BB00300DF0364 /* map_car_twizy_snowwhiteandflameorange.png in Resources */,
+				4D9697F6165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png in Resources */,
+				4D9697F7165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
