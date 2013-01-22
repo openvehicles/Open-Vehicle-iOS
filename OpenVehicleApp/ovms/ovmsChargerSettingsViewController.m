@@ -44,6 +44,7 @@
 {
   [super viewDidLoad];
   int cl_row = [ovmsAppDelegate myRef].car_chargelimit-10;
+  if (cl_row<0) cl_row = 0;
   [m_charger_current selectRow:cl_row inComponent:0 animated:NO];
   
   int cm_row = [ovmsAppDelegate myRef].car_chargemodeN;
