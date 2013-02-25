@@ -269,6 +269,33 @@
 		4DFAD8071475448000416D38 /* crypto_rc4.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD8061475448000416D38 /* crypto_rc4.c */; };
 		4DFAD8091475448A00416D38 /* crypto_hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD8081475448A00416D38 /* crypto_hmac.c */; };
 		4DFAD80B1475449600416D38 /* crypto_base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD80A1475449600416D38 /* crypto_base64.c */; };
+		6358BC4F16DB9A34008310DA /* OperatorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC4E16DB9A34008310DA /* OperatorInfo.m */; };
+		6358BC5216DB9A34008310DA /* ChargingLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC5116DB9A34008310DA /* ChargingLocation.m */; };
+		6358BC5516DB9A34008310DA /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC5416DB9A34008310DA /* Connection.m */; };
+		6358BC5816DB9A34008310DA /* AddressInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC5716DB9A34008310DA /* AddressInfo.m */; };
+		6358BC6716DB9BB2008310DA /* REVAnnotationsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC5B16DB9BB2008310DA /* REVAnnotationsCollection.m */; };
+		6358BC6816DB9BB2008310DA /* REVClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC5D16DB9BB2008310DA /* REVClusterAnnotationView.m */; };
+		6358BC6916DB9BB2008310DA /* REVClusterBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC5F16DB9BB2008310DA /* REVClusterBlock.m */; };
+		6358BC6A16DB9BB2008310DA /* REVClusterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC6116DB9BB2008310DA /* REVClusterManager.m */; };
+		6358BC6B16DB9BB2008310DA /* REVClusterMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC6416DB9BB2008310DA /* REVClusterMapView.m */; };
+		6358BC6C16DB9BB2008310DA /* REVClusterPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC6616DB9BB2008310DA /* REVClusterPin.m */; };
+		6358BC7416DB9C19008310DA /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC6F16DB9C19008310DA /* MapController.m */; };
+		6358BC7516DB9C19008310DA /* NSObject+CDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC7116DB9C19008310DA /* NSObject+CDHelper.m */; };
+		6358BC7616DB9C19008310DA /* OCMSyncHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC7316DB9C19008310DA /* OCMSyncHelper.m */; };
+		6358BC8416DB9C45008310DA /* cluster0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7816DB9C45008310DA /* cluster0.png */; };
+		6358BC8516DB9C45008310DA /* cluster0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7916DB9C45008310DA /* cluster0@2x.png */; };
+		6358BC8616DB9C45008310DA /* cluster1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7A16DB9C45008310DA /* cluster1.png */; };
+		6358BC8716DB9C45008310DA /* cluster1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7B16DB9C45008310DA /* cluster1@2x.png */; };
+		6358BC8816DB9C45008310DA /* cluster2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7C16DB9C45008310DA /* cluster2.png */; };
+		6358BC8916DB9C45008310DA /* cluster2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7D16DB9C45008310DA /* cluster2@2x.png */; };
+		6358BC8A16DB9C45008310DA /* level0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7E16DB9C45008310DA /* level0.png */; };
+		6358BC8B16DB9C45008310DA /* level0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7F16DB9C45008310DA /* level0@2x.png */; };
+		6358BC8C16DB9C45008310DA /* level2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC8016DB9C45008310DA /* level2.png */; };
+		6358BC8D16DB9C45008310DA /* level2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC8116DB9C45008310DA /* level2@2x.png */; };
+		6358BC8E16DB9C45008310DA /* level3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC8216DB9C45008310DA /* level3.png */; };
+		6358BC8F16DB9C45008310DA /* level3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC8316DB9C45008310DA /* level3@2x.png */; };
+		6358BC9216DB9C77008310DA /* EntityName.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC9116DB9C77008310DA /* EntityName.m */; };
+		6358BC9516DB9D26008310DA /* ChargingAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC9416DB9D25008310DA /* ChargingAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -576,6 +603,50 @@
 		4DFAD8081475448A00416D38 /* crypto_hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypto_hmac.c; sourceTree = "<group>"; };
 		4DFAD80A1475449600416D38 /* crypto_base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypto_base64.c; sourceTree = "<group>"; };
 		4DFAD80C1475455C00416D38 /* crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto.h; sourceTree = "<group>"; };
+		6358BC4C16DB99CC008310DA /* Model2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = Model2.xcdatamodel; sourceTree = "<group>"; };
+		6358BC4D16DB9A34008310DA /* OperatorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperatorInfo.h; sourceTree = SOURCE_ROOT; };
+		6358BC4E16DB9A34008310DA /* OperatorInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperatorInfo.m; sourceTree = SOURCE_ROOT; };
+		6358BC5016DB9A34008310DA /* ChargingLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargingLocation.h; sourceTree = SOURCE_ROOT; };
+		6358BC5116DB9A34008310DA /* ChargingLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargingLocation.m; sourceTree = SOURCE_ROOT; };
+		6358BC5316DB9A34008310DA /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = SOURCE_ROOT; };
+		6358BC5416DB9A34008310DA /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = SOURCE_ROOT; };
+		6358BC5616DB9A34008310DA /* AddressInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressInfo.h; sourceTree = SOURCE_ROOT; };
+		6358BC5716DB9A34008310DA /* AddressInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressInfo.m; sourceTree = SOURCE_ROOT; };
+		6358BC5A16DB9BB2008310DA /* REVAnnotationsCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REVAnnotationsCollection.h; sourceTree = "<group>"; };
+		6358BC5B16DB9BB2008310DA /* REVAnnotationsCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REVAnnotationsCollection.m; sourceTree = "<group>"; };
+		6358BC5C16DB9BB2008310DA /* REVClusterAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REVClusterAnnotationView.h; sourceTree = "<group>"; };
+		6358BC5D16DB9BB2008310DA /* REVClusterAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REVClusterAnnotationView.m; sourceTree = "<group>"; };
+		6358BC5E16DB9BB2008310DA /* REVClusterBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REVClusterBlock.h; sourceTree = "<group>"; };
+		6358BC5F16DB9BB2008310DA /* REVClusterBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REVClusterBlock.m; sourceTree = "<group>"; };
+		6358BC6016DB9BB2008310DA /* REVClusterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REVClusterManager.h; sourceTree = "<group>"; };
+		6358BC6116DB9BB2008310DA /* REVClusterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REVClusterManager.m; sourceTree = "<group>"; };
+		6358BC6216DB9BB2008310DA /* REVClusterMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REVClusterMap.h; sourceTree = "<group>"; };
+		6358BC6316DB9BB2008310DA /* REVClusterMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REVClusterMapView.h; sourceTree = "<group>"; };
+		6358BC6416DB9BB2008310DA /* REVClusterMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REVClusterMapView.m; sourceTree = "<group>"; };
+		6358BC6516DB9BB2008310DA /* REVClusterPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REVClusterPin.h; sourceTree = "<group>"; };
+		6358BC6616DB9BB2008310DA /* REVClusterPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REVClusterPin.m; sourceTree = "<group>"; };
+		6358BC6E16DB9C19008310DA /* MapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
+		6358BC6F16DB9C19008310DA /* MapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
+		6358BC7016DB9C19008310DA /* NSObject+CDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CDHelper.h"; sourceTree = "<group>"; };
+		6358BC7116DB9C19008310DA /* NSObject+CDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CDHelper.m"; sourceTree = "<group>"; };
+		6358BC7216DB9C19008310DA /* OCMSyncHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMSyncHelper.h; sourceTree = "<group>"; };
+		6358BC7316DB9C19008310DA /* OCMSyncHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMSyncHelper.m; sourceTree = "<group>"; };
+		6358BC7816DB9C45008310DA /* cluster0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cluster0.png; sourceTree = "<group>"; };
+		6358BC7916DB9C45008310DA /* cluster0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cluster0@2x.png"; sourceTree = "<group>"; };
+		6358BC7A16DB9C45008310DA /* cluster1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cluster1.png; sourceTree = "<group>"; };
+		6358BC7B16DB9C45008310DA /* cluster1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cluster1@2x.png"; sourceTree = "<group>"; };
+		6358BC7C16DB9C45008310DA /* cluster2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cluster2.png; sourceTree = "<group>"; };
+		6358BC7D16DB9C45008310DA /* cluster2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cluster2@2x.png"; sourceTree = "<group>"; };
+		6358BC7E16DB9C45008310DA /* level0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level0.png; sourceTree = "<group>"; };
+		6358BC7F16DB9C45008310DA /* level0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level0@2x.png"; sourceTree = "<group>"; };
+		6358BC8016DB9C45008310DA /* level2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level2.png; sourceTree = "<group>"; };
+		6358BC8116DB9C45008310DA /* level2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level2@2x.png"; sourceTree = "<group>"; };
+		6358BC8216DB9C45008310DA /* level3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level3.png; sourceTree = "<group>"; };
+		6358BC8316DB9C45008310DA /* level3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level3@2x.png"; sourceTree = "<group>"; };
+		6358BC9016DB9C77008310DA /* EntityName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityName.h; sourceTree = "<group>"; };
+		6358BC9116DB9C77008310DA /* EntityName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityName.m; sourceTree = "<group>"; };
+		6358BC9316DB9D25008310DA /* ChargingAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargingAnnotation.h; sourceTree = "<group>"; };
+		6358BC9416DB9D25008310DA /* ChargingAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargingAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -662,6 +733,8 @@
 				4D04C86814F28EF4002D6B69 /* MBProgressHUD.m */,
 				4D5AE37A14733758002F5F52 /* MainStoryboard_iPhone.storyboard */,
 				4D5AE37D14733758002F5F52 /* MainStoryboard_iPad.storyboard */,
+				6358BC6D16DB9BF0008310DA /* OCM */,
+				6358BC5916DB9BB2008310DA /* REVClusterMap */,
 				4DFAD7FF1475435300416D38 /* Tabs */,
 				4DFAD7FE1475434500416D38 /* Crypto */,
 				4DE26E64147E83B800E3161D /* Data Model */,
@@ -884,7 +957,17 @@
 		4DE26E64147E83B800E3161D /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				6358BC9016DB9C77008310DA /* EntityName.h */,
+				6358BC9116DB9C77008310DA /* EntityName.m */,
 				4DC8B38A147E7BF2007FDFB2 /* Model.xcdatamodeld */,
+				6358BC5616DB9A34008310DA /* AddressInfo.h */,
+				6358BC5716DB9A34008310DA /* AddressInfo.m */,
+				6358BC5316DB9A34008310DA /* Connection.h */,
+				6358BC5416DB9A34008310DA /* Connection.m */,
+				6358BC5016DB9A34008310DA /* ChargingLocation.h */,
+				6358BC5116DB9A34008310DA /* ChargingLocation.m */,
+				6358BC4D16DB9A34008310DA /* OperatorInfo.h */,
+				6358BC4E16DB9A34008310DA /* OperatorInfo.m */,
 				4DE26E61147E83AE00E3161D /* Cars.h */,
 				4DE26E62147E83AE00E3161D /* Cars.m */,
 			);
@@ -1041,6 +1124,61 @@
 				4DA91F6F14EE896000106AD4 /* ovmsChargerSettingsViewController.m */,
 			);
 			name = Tabs;
+			sourceTree = "<group>";
+		};
+		6358BC5916DB9BB2008310DA /* REVClusterMap */ = {
+			isa = PBXGroup;
+			children = (
+				6358BC5A16DB9BB2008310DA /* REVAnnotationsCollection.h */,
+				6358BC5B16DB9BB2008310DA /* REVAnnotationsCollection.m */,
+				6358BC5C16DB9BB2008310DA /* REVClusterAnnotationView.h */,
+				6358BC5D16DB9BB2008310DA /* REVClusterAnnotationView.m */,
+				6358BC5E16DB9BB2008310DA /* REVClusterBlock.h */,
+				6358BC5F16DB9BB2008310DA /* REVClusterBlock.m */,
+				6358BC6016DB9BB2008310DA /* REVClusterManager.h */,
+				6358BC6116DB9BB2008310DA /* REVClusterManager.m */,
+				6358BC6216DB9BB2008310DA /* REVClusterMap.h */,
+				6358BC6316DB9BB2008310DA /* REVClusterMapView.h */,
+				6358BC6416DB9BB2008310DA /* REVClusterMapView.m */,
+				6358BC6516DB9BB2008310DA /* REVClusterPin.h */,
+				6358BC6616DB9BB2008310DA /* REVClusterPin.m */,
+			);
+			path = REVClusterMap;
+			sourceTree = "<group>";
+		};
+		6358BC6D16DB9BF0008310DA /* OCM */ = {
+			isa = PBXGroup;
+			children = (
+				6358BC7716DB9C2F008310DA /* res */,
+				6358BC9316DB9D25008310DA /* ChargingAnnotation.h */,
+				6358BC9416DB9D25008310DA /* ChargingAnnotation.m */,
+				6358BC6E16DB9C19008310DA /* MapController.h */,
+				6358BC6F16DB9C19008310DA /* MapController.m */,
+				6358BC7016DB9C19008310DA /* NSObject+CDHelper.h */,
+				6358BC7116DB9C19008310DA /* NSObject+CDHelper.m */,
+				6358BC7216DB9C19008310DA /* OCMSyncHelper.h */,
+				6358BC7316DB9C19008310DA /* OCMSyncHelper.m */,
+			);
+			name = OCM;
+			sourceTree = "<group>";
+		};
+		6358BC7716DB9C2F008310DA /* res */ = {
+			isa = PBXGroup;
+			children = (
+				6358BC7816DB9C45008310DA /* cluster0.png */,
+				6358BC7916DB9C45008310DA /* cluster0@2x.png */,
+				6358BC7A16DB9C45008310DA /* cluster1.png */,
+				6358BC7B16DB9C45008310DA /* cluster1@2x.png */,
+				6358BC7C16DB9C45008310DA /* cluster2.png */,
+				6358BC7D16DB9C45008310DA /* cluster2@2x.png */,
+				6358BC7E16DB9C45008310DA /* level0.png */,
+				6358BC7F16DB9C45008310DA /* level0@2x.png */,
+				6358BC8016DB9C45008310DA /* level2.png */,
+				6358BC8116DB9C45008310DA /* level2@2x.png */,
+				6358BC8216DB9C45008310DA /* level3.png */,
+				6358BC8316DB9C45008310DA /* level3@2x.png */,
+			);
+			name = res;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1331,6 +1469,18 @@
 				4D9697F5165BB00300DF0364 /* map_car_twizy_snowwhiteandflameorange.png in Resources */,
 				4D9697F6165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png in Resources */,
 				4D9697F7165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png in Resources */,
+				6358BC8416DB9C45008310DA /* cluster0.png in Resources */,
+				6358BC8516DB9C45008310DA /* cluster0@2x.png in Resources */,
+				6358BC8616DB9C45008310DA /* cluster1.png in Resources */,
+				6358BC8716DB9C45008310DA /* cluster1@2x.png in Resources */,
+				6358BC8816DB9C45008310DA /* cluster2.png in Resources */,
+				6358BC8916DB9C45008310DA /* cluster2@2x.png in Resources */,
+				6358BC8A16DB9C45008310DA /* level0.png in Resources */,
+				6358BC8B16DB9C45008310DA /* level0@2x.png in Resources */,
+				6358BC8C16DB9C45008310DA /* level2.png in Resources */,
+				6358BC8D16DB9C45008310DA /* level2@2x.png in Resources */,
+				6358BC8E16DB9C45008310DA /* level3.png in Resources */,
+				6358BC8F16DB9C45008310DA /* level3@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1393,6 +1543,21 @@
 				4D731E57153C3F0C0010921B /* ovmsGroupsTableViewController.m in Sources */,
 				4D5849DD15417E5D000AA256 /* ovmsVehicleAnnotation.m in Sources */,
 				4DEF9F80155FE20E00623906 /* ovmsControlUSSDEntry.m in Sources */,
+				6358BC4F16DB9A34008310DA /* OperatorInfo.m in Sources */,
+				6358BC5216DB9A34008310DA /* ChargingLocation.m in Sources */,
+				6358BC5516DB9A34008310DA /* Connection.m in Sources */,
+				6358BC5816DB9A34008310DA /* AddressInfo.m in Sources */,
+				6358BC6716DB9BB2008310DA /* REVAnnotationsCollection.m in Sources */,
+				6358BC6816DB9BB2008310DA /* REVClusterAnnotationView.m in Sources */,
+				6358BC6916DB9BB2008310DA /* REVClusterBlock.m in Sources */,
+				6358BC6A16DB9BB2008310DA /* REVClusterManager.m in Sources */,
+				6358BC6B16DB9BB2008310DA /* REVClusterMapView.m in Sources */,
+				6358BC6C16DB9BB2008310DA /* REVClusterPin.m in Sources */,
+				6358BC7416DB9C19008310DA /* MapController.m in Sources */,
+				6358BC7516DB9C19008310DA /* NSObject+CDHelper.m in Sources */,
+				6358BC7616DB9C19008310DA /* OCMSyncHelper.m in Sources */,
+				6358BC9216DB9C77008310DA /* EntityName.m in Sources */,
+				6358BC9516DB9D26008310DA /* ChargingAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1465,6 +1630,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
+				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "9685968A-A4AB-446A-8BA9-45A3125EC35B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F13B40C2-4A56-4E73-A8AF-B61F8BBBBCCE";
@@ -1488,6 +1655,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ovms/TestFlightSDK0\"",
 				);
+				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
 				PROVISIONING_PROFILE = "F5051144-4026-478C-97D3-513CF8188A9B";
@@ -1529,6 +1697,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
+				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "39FD1127-57A0-470C-89B7-30714C143F54";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "39FD1127-57A0-470C-89B7-30714C143F54";
@@ -1552,6 +1722,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ovms/TestFlightSDK0\"",
 				);
+				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
 				PROVISIONING_PROFILE = "F5051144-4026-478C-97D3-513CF8188A9B";
@@ -1600,6 +1771,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
+				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -1619,6 +1792,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ovms/TestFlightSDK0\"",
 				);
+				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
 				PROVISIONING_PROFILE = "";
@@ -1683,6 +1857,7 @@
 		4DC8B38A147E7BF2007FDFB2 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				6358BC4C16DB99CC008310DA /* Model2.xcdatamodel */,
 				4DC8B38B147E7BF2007FDFB2 /* Model.xcdatamodel */,
 			);
 			currentVersion = 4DC8B38B147E7BF2007FDFB2 /* Model.xcdatamodel */;
