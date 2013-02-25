@@ -97,6 +97,7 @@ double distanceIdeal, distanceEstimated;
 
 - (void)didFinishSync {
     NSLog(@"didFinishSync");
+    [self initOverlays];
     [self initAnnotations];
 }
 
