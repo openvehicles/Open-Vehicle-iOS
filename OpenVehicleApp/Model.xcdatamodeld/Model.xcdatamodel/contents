@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AddressInfo" representedClassName="AddressInfo" syncable="YES">
+        <attribute name="access_comments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address_line1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contact_telephone1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country_iso_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" indexed="YES" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="postcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="related_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state_or_province" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="town" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Cars" syncable="YES">
         <attribute name="imagepath" attributeType="String" syncable="YES"/>
         <attribute name="label" attributeType="String" syncable="YES"/>
@@ -7,7 +22,55 @@
         <attribute name="userpass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vehicleid" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
     </entity>
+    <entity name="ChargingLocation" representedClassName="ChargingLocation" syncable="YES">
+        <attribute name="data_providers_reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="data_quality_level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="general_comments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="number_of_points" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="status_is_operational" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="status_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="usage_cost" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="addres_info" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AddressInfo" syncable="YES"/>
+        <relationship name="conections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Connection" syncable="YES"/>
+        <relationship name="operator_info" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="OperatorInfo" syncable="YES"/>
+    </entity>
+    <entity name="Connection" representedClassName="Connection" syncable="YES">
+        <attribute name="amps" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" indexed="YES" syncable="YES"/>
+        <attribute name="level_comments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level_is_fast_charge" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="level_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="power_kw" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status_is_operational" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="status_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type_formal_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type_is_discontinued" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="type_is_obsolete" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="type_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="voltage" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="OperatorInfo" representedClassName="OperatorInfo" syncable="YES">
+        <attribute name="address_info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="booking_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contact_email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fault_report_email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" indexed="YES" syncable="YES"/>
+        <attribute name="is_private_individual" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="phone_primary_contact" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone_secondary_contact" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website_url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Cars" positionX="160" positionY="192" width="128" height="149"/>
+        <element name="AddressInfo" positionX="160" positionY="192" width="128" height="240"/>
+        <element name="ChargingLocation" positionX="160" positionY="192" width="128" height="210"/>
+        <element name="Connection" positionX="160" positionY="192" width="128" height="285"/>
+        <element name="OperatorInfo" positionX="160" positionY="192" width="128" height="210"/>
     </elements>
 </model>
