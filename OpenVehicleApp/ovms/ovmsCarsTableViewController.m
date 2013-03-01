@@ -10,6 +10,8 @@
 #import "ovmsCarsFormViewController.h"
 #import "Cars.h"
 
+#import "OCMSyncHelper.h"
+
 @implementation ovmsCarsTableViewController
 
 @synthesize cars = _cars;
@@ -56,6 +58,10 @@
 - (void)viewWillAppear:(BOOL)animated
   {
     [super viewWillAppear:animated];
+      
+  OCMSyncHelper *loader = [[OCMSyncHelper alloc] initWithDelegate:self];
+  [loader startSyncAction];
+      
 
   int originalcount = [_cars count];
   

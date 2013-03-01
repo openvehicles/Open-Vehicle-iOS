@@ -13,3 +13,5 @@ NSString *const ENChargingLocation  = @"ChargingLocation";
 NSString *const ENConnection        = @"Connection";
 NSString *const ENOperatorInfo      = @"OperatorInfo";
 NSString *const ENCars              = @"Cars";
+NSString *const ENConnectionTypes   = @"ConnectionTypes";
+NSString *const ENChargerTypes      = @"ChargerTypes";

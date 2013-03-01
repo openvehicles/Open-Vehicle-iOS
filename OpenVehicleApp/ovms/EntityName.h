@@ -13,10 +13,14 @@
 #import "Connection.h"
 #import "OperatorInfo.h"
 #import "Cars.h"
+#import "ConnectionTypes.h"
+#import "ChargerTypes.h"
 
 FOUNDATION_EXPORT NSString *const ENAddressInfo;
 FOUNDATION_EXPORT NSString *const ENChargingLocation;
 FOUNDATION_EXPORT NSString *const ENConnection;
 FOUNDATION_EXPORT NSString *const ENOperatorInfo;
 FOUNDATION_EXPORT NSString *const ENCars;
+FOUNDATION_EXPORT NSString *const ENConnectionTypes;
+FOUNDATION_EXPORT NSString *const ENChargerTypes;
 

@@ -17,9 +17,6 @@
 #import "NSObject+CDHelper.h"
 #import "REVClusterAnnotationView.h"
 
-#define IDENTIFIER_CLUSTER @"cluster"
-#define IDENTIFIER_PIN @"pin"
-
 @interface ovmsLocationViewController : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, OCMSyncDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *myMapView;

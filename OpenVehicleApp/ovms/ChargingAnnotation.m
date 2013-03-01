@@ -26,7 +26,7 @@
         NSInteger level = 0;
         self.level = 0;
         for (Connection *cn in location.conections) {
-            level = [cn.level_is_fast_charge boolValue] ? 3 : 2;
+            level = [cn.level.is_fast_charge_capable boolValue] ? 3 : 2;
             if (level > self.level) self.level = level;
         }
     }

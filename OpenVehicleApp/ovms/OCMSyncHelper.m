@@ -19,6 +19,8 @@
 @interface OCMSyncHelper()
 @property (nonatomic, strong) id<OCMSyncDelegate> delegate;
 @property (nonatomic, assign) BOOL isProcess;
+@property (nonatomic, assign) BOOL isSyncAction;
+
 @end
 
 @implementation OCMSyncHelper
@@ -27,6 +29,7 @@
     if ([super init]) {
         self.delegate = delegate;
         self.isProcess = NO;
+        self.isSyncAction = NO;
     }
     return self;
 }
@@ -39,13 +42,23 @@
     
     NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM", BASE_URL,
                          coordinate.latitude, coordinate.longitude, distance);
-    
     NSLog(@"start sync: %@", surl);
     
     [self performSelectorInBackground:@selector(start:) withObject:[NSURL URLWithString:surl]];
 }
 
+- (void)startSyncAction {
+    if (self.isProcess) return;
+    
+    self.isProcess = YES;
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [self performSelectorInBackground:@selector(startAction:) withObject:[NSNumber numberWithBool:YES]];
+}
+
+
 - (void)start:(NSURL *)url {
+    if (!self.isSyncAction) [self startAction:[NSNumber numberWithBool:NO]];
+    
     NSError* error = nil;
     NSData *receivedData = [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:&error];
     
@@ -63,10 +76,35 @@
     }
     
     if (json.count) {
-//        [self parseData:json];
         [self performSelectorOnMainThread:@selector(parseAndStop:) withObject:json waitUntilDone:NO];
     } else {
         NSLog(@"Response empty data");
+        [self performSelectorOnMainThread:@selector(stop:) withObject:nil waitUntilDone:NO];
+    }
+}
+
+- (void)startAction:(NSNumber *)single {
+    NSError* error = nil;
+    NSString *surl = SWF(@"%@&action=getcorereferencedata", BASE_URL);
+    NSLog(@"SyncAction: %@", surl);
+    NSData *receivedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:surl] options:NSDataReadingUncached error:&error];
+    if (error) {
+        [self performSelectorOnMainThread:@selector(stop:) withObject:error waitUntilDone:NO];
+        return;
+    }
+    
+    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:receivedData
+                                                         options:kNilOptions
+                                                           error:&error];
+    if (error) {
+        [self performSelectorOnMainThread:@selector(stop:) withObject:error waitUntilDone:NO];
+        return;
+    }
+    
+    [self syncAction:data];
+    self.isSyncAction = YES;
+    
+    if ([single boolValue]) {
         [self performSelectorOnMainThread:@selector(stop:) withObject:nil waitUntilDone:NO];
     }
 }
@@ -206,24 +244,63 @@
         co.power_kw = NULL_TO_NIL(row[@"PowerKW"]) ;
         co.quantity = NULL_TO_NIL(row[@"Quantity"]);
         co.reference = NULL_TO_NIL(row[@"Reference"]);
-        if (NULL_TO_NIL(row[@"Level"])) {
-            co.level_comments = NULL_TO_NIL(row[@"Level"][@"Comments"]);
-            co.level_is_fast_charge = NULL_TO_NIL(row[@"Level"][@"IsFastChargeCapable"]);
-            co.level_title = NULL_TO_NIL(row[@"Level"][@"Title"]);
-        }
+
         if (NULL_TO_NIL(row[@"StatusType"])) {
             co.status_is_operational = NULL_TO_NIL(row[@"StatusType"][@"IsOperational"]);
             co.status_title = NULL_TO_NIL(row[@"StatusType"][@"Title"]);
         }
+        
         if (NULL_TO_NIL(row[@"ConnectionType"])) {
-            co.type_formal_name = NULL_TO_NIL(row[@"ConnectionType"][@"FormalName"]);
-            co.type_is_discontinued = NULL_TO_NIL(row[@"ConnectionType"][@"IsDiscontinued"]);
-            co.type_is_obsolete = NULL_TO_NIL(row[@"ConnectionType"][@"IsObsolete"]);
-            co.type_title = NULL_TO_NIL(row[@"ConnectionType"][@"Title"]);
+            co.connection_type = [self entityWithName:ENConnectionTypes asWhere:@"id" inValue:row[@"ConnectionType"][@"ID"]];
+        }
+        if (NULL_TO_NIL(row[@"Level"])) {
+            co.level = [self entityWithName:ENChargerTypes asWhere:@"id" inValue:row[@"Level"][@"ID"]];
         }
         
         [cl addConectionsObject:co];
     }
 }
+
+- (void)syncAction:(NSDictionary *)data {
+    [self parseConnectionTypes:NULL_TO_NIL(data[@"ConnectionTypes"])];
+    [self parseChargerTypes:NULL_TO_NIL(data[@"ChargerTypes"])];
+}
+
+
+- (void)parseConnectionTypes:(NSArray *)items {
+    if (!items) return;
+    
+    for (NSDictionary *row in items) {
+        ConnectionTypes *entity = [self entityWithName:ENConnectionTypes asWhere:@"id" inValue:row[@"ID"]];
+        if (!entity) {
+            entity = [NSEntityDescription insertNewObjectForEntityForName:ENConnectionTypes
+                                               inManagedObjectContext:self.managedObjectContext];
+        }
+        
+        entity.id = row[@"ID"];
+        entity.title = NULL_TO_NIL(row[@"Title"]);
+        entity.formal_name = NULL_TO_NIL(row[@"FormalName"]);
+        entity.is_discontinued = NULL_TO_NIL(row[@"IsDiscontinued"]);
+        entity.is_obsolete = NULL_TO_NIL(row[@"IsObsolete"]);
+    }
+}
+
+- (void)parseChargerTypes:(NSArray *)items {
+    if (!items) return;
+    
+    for (NSDictionary *row in items) {
+        ChargerTypes *entity = [self entityWithName:ENChargerTypes asWhere:@"id" inValue:row[@"ID"]];
+        if (!entity) {
+            entity = [NSEntityDescription insertNewObjectForEntityForName:ENChargerTypes
+                                                   inManagedObjectContext:self.managedObjectContext];
+        }
+        
+        entity.id = row[@"ID"];
+        entity.title = NULL_TO_NIL(row[@"Title"]);
+        entity.comments = NULL_TO_NIL(row[@"Comments"]);
+        entity.is_fast_charge_capable = NULL_TO_NIL(row[@"IsFastChargeCapable"]);
+    }
+}
+
 
 @end

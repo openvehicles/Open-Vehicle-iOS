@@ -16,8 +16,10 @@
 @end
 
 @interface OCMSyncHelper : NSObject
+
 - (id)initWithDelegate:(id)delegate;
 - (void)startSyncWhithCoordinate:(CLLocationCoordinate2D)coordinate toDistance:(double)distance;
+- (void)startSyncAction;
 @end
 
 

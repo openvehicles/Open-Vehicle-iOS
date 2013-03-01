@@ -8,6 +8,10 @@
 
 #import "ovmsLocationViewController.h"
 
+#define IDENTIFIER_CLUSTER @"cluster"
+#define IDENTIFIER_PIN @"pin"
+#define IDENTIFIER_OVMS @"OVMS"
+
 @implementation ovmsLocationViewController
 
 @synthesize myMapView;
@@ -94,29 +98,11 @@
 }
 
 - (void)didFinishSync {
-    NSLog(@"didFinishSync");
-    [self initOverlays];
     [self initAnnotations];
 }
 
 - (void)didFailWithError:(NSError *)error {
-    NSLog(@"didFinishSync NSError");
-    [self initOverlays];
     [self initAnnotations];
-}
-
-- (void)initOverlays {
-    if (myMapView.overlays && myMapView.overlays.count) {
-        [myMapView removeOverlays:myMapView.overlays];
-    }
-    
-    double idealrange = [ovmsAppDelegate myRef].car_idealrange * 1000.0;
-    double estimatedrange = [ovmsAppDelegate myRef].car_estimatedrange * 1000.0;
-    
-    if ((idealrange + estimatedrange) > 0) {
-        [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:myMapView.region.center radius:idealrange]];
-        [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:myMapView.region.center radius:estimatedrange]];
-    }
 }
 
 - (void)initAnnotations {
@@ -133,6 +119,18 @@
         [m_car_location redrawView];
     }
     
+    [self initOverlays];
+}
+
+- (void)initOverlays {
+    double idealrange = [ovmsAppDelegate myRef].car_idealrange * 1000.0;
+    double estimatedrange = [ovmsAppDelegate myRef].car_estimatedrange * 1000.0;
+    
+    [myMapView removeOverlays:myMapView.overlays];
+    if ((idealrange + estimatedrange) > 0 && self.m_car_location) {
+        [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:[ovmsAppDelegate myRef].car_location radius:idealrange]];
+        [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:[ovmsAppDelegate myRef].car_location radius:estimatedrange]];
+    }
 }
 
 
@@ -179,18 +177,17 @@
                 [myMapView setRegion:region animated:NO];
             }
             
-//            [UIView setAnimationDelegate:self];
-//            [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
             [UIView commitAnimations];
         } else {
             NSLog(@"ovmsVehicleAnnotation");
 
             // Remove all existing annotations
-            for (int k=0; k < [myMapView.annotations count]; k++) {
-                if ([[myMapView.annotations objectAtIndex:k] isKindOfClass:[ovmsVehicleAnnotation class]]) {
-                    [myMapView removeAnnotation:[myMapView.annotations objectAtIndex:k]];
-                }
+            NSMutableArray *annotations = [NSMutableArray array];
+            for (id annotation in myMapView.annotations) {
+                if (![annotation isKindOfClass:[ovmsVehicleAnnotation class]]) continue;
+                [annotations addObject:annotation];
             }
+            [myMapView removeAnnotations:annotations];
           
             // Create the vehicle annotation
             ovmsVehicleAnnotation *pa = [[ovmsVehicleAnnotation alloc] initWithCoordinate:location];
@@ -209,8 +206,6 @@
             region.span = span;
             region.center = location;
             
-//            region = MKCoordinateRegionMakeWithDistance(location, distanceEstimated, distanceEstimated);
-            
             [myMapView setRegion:region animated:YES];
             [myMapView regionThatFits:region]; 
         }
@@ -220,7 +215,7 @@
 -(void)groupUpdate:(NSArray*)result {
     if (m_groupcar_locations == nil) return;
 
-    if ([result count]>=10) {
+    if ([result count] >= 10) {
         NSString *vehicleid = [result objectAtIndex:0];
         //NSString *groupid = [result objectAtIndex:1];
         //int soc = [[result objectAtIndex:2] intValue];
@@ -233,7 +228,7 @@
                                         [[result objectAtIndex:8] doubleValue], 
                                         [[result objectAtIndex:9] doubleValue]);
 
-        if ((gpslock < 1)||(stalegps<1)) return; // No GPS lock or data
+        if ( (gpslock < 1) || (stalegps<1) ) return; // No GPS lock or data
         if ([vehicleid isEqualToString:[ovmsAppDelegate myRef].sel_car]) return; // Not the selected car 
 
         NSLog(@"groupUpdate for %@", vehicleid);
@@ -268,17 +263,14 @@
         return nil;
     }
 
-    static NSString *ovmsAnnotationIdentifier=@"OVMSAnnotationIdentifier";
     if([annotation isKindOfClass:[ovmsVehicleAnnotation class]]) {
-        MKAnnotationView *annotationView=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ovmsAnnotationIdentifier];
+        MKAnnotationView *annotationView=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:IDENTIFIER_OVMS];
 
         //Here's where the magic happens
         ovmsVehicleAnnotation *pa = (ovmsVehicleAnnotation*)annotation;
-        NSLog(@"setupView for %@", pa.title);
         [pa setupView:annotationView mapView:myMapView];
         return annotationView;
     }
-    
     
     ChargingAnnotation *pin = (ChargingAnnotation *)annotation;
     MKAnnotationView *annView;
@@ -310,7 +302,7 @@
         
         annView.image = [UIImage imageNamed:[NSString stringWithFormat:@"level%d.png", pin.level]];
         annView.canShowCallout = YES;
-        annView.centerOffset = CGPointMake(0.0, -15.0);
+        annView.centerOffset = CGPointMake(0.0, -25.0);
     }
     return annView;
 }
@@ -327,7 +319,6 @@
 
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
-    NSLog(@"regionWillChangeAnimated");
     m_lastregion = mapView.region;
 }
 
@@ -336,8 +327,6 @@
 
     if (((m_lastregion.span.latitudeDelta / newRegion.span.latitudeDelta) > 1.5)||
         ((m_lastregion.span.latitudeDelta / newRegion.span.latitudeDelta) < 0.75)) {
-        NSLog(@"regionDidChangeAnimated");
-        
         
         // Kludgy redraw of all annotations, by removing then replacing the annotations...
         for (int k=0; k < [myMapView.annotations count]; k++) {

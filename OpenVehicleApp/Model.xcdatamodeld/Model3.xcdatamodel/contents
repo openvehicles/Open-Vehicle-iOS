@@ -15,19 +15,12 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="town" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Cars" representedClassName="Cars" syncable="YES">
-        <attribute name="connection_type_ids" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Cars" syncable="YES">
         <attribute name="imagepath" attributeType="String" syncable="YES"/>
         <attribute name="label" attributeType="String" syncable="YES"/>
         <attribute name="netpass" attributeType="String" syncable="YES"/>
         <attribute name="userpass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vehicleid" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
-    </entity>
-    <entity name="ChargerTypes" representedClassName="ChargerTypes" syncable="YES">
-        <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" attributeType="Integer 64" indexed="YES" syncable="YES"/>
-        <attribute name="is_fast_charge_capable" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ChargingLocation" representedClassName="ChargingLocation" syncable="YES">
         <attribute name="data_providers_reference" optional="YES" attributeType="String" syncable="YES"/>
@@ -46,21 +39,19 @@
         <attribute name="amps" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" indexed="YES" syncable="YES"/>
+        <attribute name="level_comments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level_is_fast_charge" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="level_title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="power_kw" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status_is_operational" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="status_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type_formal_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type_is_discontinued" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="type_is_obsolete" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="type_title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="voltage" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="connection_type" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ConnectionTypes" syncable="YES"/>
-        <relationship name="level" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ChargerTypes" syncable="YES"/>
-    </entity>
-    <entity name="ConnectionTypes" representedClassName="ConnectionTypes" syncable="YES">
-        <attribute name="formal_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" attributeType="Integer 64" indexed="YES" syncable="YES"/>
-        <attribute name="is_discontinued" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="is_obsolete" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="OperatorInfo" representedClassName="OperatorInfo" syncable="YES">
         <attribute name="address_info" optional="YES" attributeType="String" syncable="YES"/>
@@ -76,12 +67,10 @@
         <attribute name="website_url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Cars" positionX="160" positionY="192" width="128" height="149"/>
         <element name="AddressInfo" positionX="160" positionY="192" width="128" height="240"/>
-        <element name="Cars" positionX="160" positionY="192" width="128" height="135"/>
         <element name="ChargingLocation" positionX="160" positionY="192" width="128" height="210"/>
-        <element name="Connection" positionX="160" positionY="192" width="128" height="210"/>
+        <element name="Connection" positionX="160" positionY="192" width="128" height="285"/>
         <element name="OperatorInfo" positionX="160" positionY="192" width="128" height="210"/>
-        <element name="ConnectionTypes" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="ChargerTypes" positionX="160" positionY="192" width="128" height="105"/>
     </elements>
 </model>

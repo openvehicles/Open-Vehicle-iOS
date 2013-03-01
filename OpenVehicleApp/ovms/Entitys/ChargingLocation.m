@@ -2,7 +2,7 @@
 //  ChargingLocation.m
 //  Open Vehicle
 //
-//  Created by JLab13 on 2/25/13.
+//  Created by JLab13 on 3/1/13.
 //  Copyright (c) 2013 Open Vehicle Systems. All rights reserved.
 //
 

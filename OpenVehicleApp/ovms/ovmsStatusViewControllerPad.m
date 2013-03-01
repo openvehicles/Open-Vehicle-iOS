@@ -820,28 +820,21 @@
 }
 
 - (void)didFinishSync {
-    NSLog(@"didFinishSync");
-    [self initOverlays];
     [self initAnnotations];
 }
 
 - (void)didFailWithError:(NSError *)error {
-    NSLog(@"didFinishSync NSError");
-    [self initOverlays];
     [self initAnnotations];
 }
 
 - (void)initOverlays {
-    if (myMapView.overlays && myMapView.overlays.count) {
-        [myMapView removeOverlays:myMapView.overlays];
-    }
-
     double idealrange = [ovmsAppDelegate myRef].car_idealrange * 1000.0;
     double estimatedrange = [ovmsAppDelegate myRef].car_estimatedrange * 1000.0;
     
-    if ((idealrange + estimatedrange) > 0) {
-        [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:myMapView.region.center radius:idealrange]];
-        [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:myMapView.region.center radius:estimatedrange]];
+    [myMapView removeOverlays:myMapView.overlays];
+    if ((idealrange + estimatedrange) > 0 && self.m_car_location) {
+        [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:[ovmsAppDelegate myRef].car_location radius:idealrange]];
+        [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:[ovmsAppDelegate myRef].car_location radius:estimatedrange]];
     }
 }
 
@@ -858,7 +851,8 @@
         [myMapView addAnnotation:m_car_location];
         [m_car_location redrawView];
     }
-    
+
+    [self initOverlays];
 }
 
 - (NSArray *)locations {
@@ -904,19 +898,18 @@
                 region.center = location;
                 [myMapView setRegion:region animated:NO];
             }
-            
-            //            [UIView setAnimationDelegate:self];
-            //            [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+
             [UIView commitAnimations];
         } else {
             NSLog(@"ovmsVehicleAnnotation");
             
             // Remove all existing annotations
-            for (int k=0; k < [myMapView.annotations count]; k++) {
-                if ([[myMapView.annotations objectAtIndex:k] isKindOfClass:[ovmsVehicleAnnotation class]]) {
-                    [myMapView removeAnnotation:[myMapView.annotations objectAtIndex:k]];
-                }
+            NSMutableArray *annotations = [NSMutableArray array];
+            for (id annotation in myMapView.annotations) {
+                if (![annotation isKindOfClass:[ovmsVehicleAnnotation class]]) continue;
+                [annotations addObject:annotation];
             }
+            [myMapView removeAnnotations:annotations];
             
             // Create the vehicle annotation
             ovmsVehicleAnnotation *pa = [[ovmsVehicleAnnotation alloc] initWithCoordinate:location];
@@ -1208,7 +1201,7 @@
         
         annView.image = [UIImage imageNamed:[NSString stringWithFormat:@"level%d.png", pin.level]];
         annView.canShowCallout = YES;
-        annView.centerOffset = CGPointMake(0.0, -15.0);
+        annView.centerOffset = CGPointMake(0.0, -25.0);
     }
     return annView;
 }

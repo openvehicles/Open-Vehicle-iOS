@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ovmsAppDelegate.h"
 
-@interface ovmsCarsTableViewController : UITableViewController <ovmsUpdateDelegate>
-{
+@interface ovmsCarsTableViewController : UITableViewController <ovmsUpdateDelegate> {
   NSArray *_cars;
   NSManagedObjectContext *_context;
 }

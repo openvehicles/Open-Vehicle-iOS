@@ -7,6 +7,7 @@
 //
 
 #import "ovmsCarsFormViewController.h"
+#import "ConnectionTypesController.h"
 #import "Cars.h"
 
 @implementation ovmsCarsFormViewController
@@ -51,21 +52,18 @@
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-  self.carImages = [[NSMutableArray alloc] initWithCapacity:100];
-  NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
-  NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleRoot error:nil];
-  for (NSString *tString in dirContents)
-    {
-    if ([tString hasPrefix:@"car_"] && [tString hasSuffix:@".png"])
-      {
-      [self.carImages addObject: tString];
-      }
-    }
-  _context = [ovmsAppDelegate myRef].managedObjectContext;
-}
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//    self.carImages = [[NSMutableArray alloc] initWithCapacity:100];
+//    NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
+//    NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleRoot error:nil];
+//    for (NSString *tString in dirContents) {
+//        if ([tString hasPrefix:@"car_"] && [tString hasSuffix:@".png"]) {
+//            [self.carImages addObject: tString];
+//        }
+//    }
+//    _context = [ovmsAppDelegate myRef].managedObjectContext;
+//}
 
 - (void)viewDidUnload
 {
@@ -90,9 +88,71 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
   }
 
--(void) viewWillAppear:(BOOL)animated
-{
-  // only enable the vehicleid field if this is a NEW car
+//-(void) viewWillAppear:(BOOL)animated
+//{
+//  // only enable the vehicleid field if this is a NEW car
+//  if (self.carEditing==nil)
+//    {
+//    self.vehicleid.enabled = YES;
+//    self.title = @"New Car";
+//    }
+//  else
+//    {
+//    self.title = self.carEditing;
+//    self.vehicleid.text = self.carEditing;
+//    self.vehicleid.enabled = NO;
+//
+//    NSManagedObjectContext *context = [ovmsAppDelegate myRef].managedObjectContext;
+//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+//    [request setEntity: [NSEntityDescription entityForName:@"Cars" inManagedObjectContext: context]];
+//    NSPredicate *predicate =
+//    [NSPredicate predicateWithFormat:@"vehicleid == %@", self.carEditing];
+//    [request setPredicate:predicate];
+//    NSError *error = nil;
+//    NSArray *array = [context executeFetchRequest:request error:&error];
+//    if (array != nil)
+//      {
+//      if ([array count]>0)
+//        {
+//        Cars* car = [array objectAtIndex:0];
+//        if (! [[ovmsAppDelegate myRef].sel_car isEqualToString:car.vehicleid])
+//          {
+//          // Switch the car
+//          [[ovmsAppDelegate myRef] switchCar:car.vehicleid];
+//          }
+//        self.vehiclelabel.text = car.label;
+//        self.vehicleNetPass.text = car.netpass;
+//        self.vehicleUserPass.text = car.userpass;
+//        NSString *imagepath = car.imagepath;
+//        self.connectionTypeIds = car.connection_type_ids;
+//        for (int k=0;k<[carImages count];k++)
+//          {
+//          if ([[carImages objectAtIndex:k] isEqualToString:imagepath])
+//            {
+//            [vehicleImage selectRow:k inComponent:0 animated:NO];
+//            }
+//          }
+//        }
+//      }
+//    }
+//  [[ovmsAppDelegate myRef] registerForUpdate:self];
+//  [self update];
+//}
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.carImages = [[NSMutableArray alloc] initWithCapacity:100];
+    NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
+    NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleRoot error:nil];
+    for (NSString *tString in dirContents) {
+        if ([tString hasPrefix:@"car_"] && [tString hasSuffix:@".png"]) {
+            [self.carImages addObject: tString];
+        }
+    }
+    _context = [ovmsAppDelegate myRef].managedObjectContext;
+    
+    // only enable the vehicleid field if this is a NEW car
   if (self.carEditing==nil)
     {
     self.vehicleid.enabled = YES;
@@ -126,6 +186,7 @@
         self.vehicleNetPass.text = car.netpass;
         self.vehicleUserPass.text = car.userpass;
         NSString *imagepath = car.imagepath;
+        self.connectionTypeIds = car.connection_type_ids;
         for (int k=0;k<[carImages count];k++)
           {
           if ([[carImages objectAtIndex:k] isEqualToString:imagepath])
@@ -140,11 +201,12 @@
   [self update];
 }
 
+
 -(void) viewWillDisappear:(BOOL)animated {
-  if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+  if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
     // back button was pressed.  We know this is true because self is no longer
     // in the navigation stack.  
-    if (self.carEditing==nil)
+    if (self.carEditing == nil)
       {
       // We need to create a new car record
       if (([vehicleid.text length]==0)||
@@ -163,6 +225,7 @@
       car.netpass = vehicleNetPass.text;
       car.userpass = vehicleUserPass.text;
       car.imagepath = [carImages objectAtIndex:[vehicleImage selectedRowInComponent:0]];
+      car.connection_type_ids = self.connectionTypeIds;
       if (![_context save:&error])
         {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -174,8 +237,7 @@
       NSManagedObjectContext *context = [ovmsAppDelegate myRef].managedObjectContext;
       NSFetchRequest *request = [[NSFetchRequest alloc] init];
       [request setEntity: [NSEntityDescription entityForName:@"Cars" inManagedObjectContext: context]];
-      NSPredicate *predicate =
-      [NSPredicate predicateWithFormat:@"vehicleid == %@", vehicleid.text];
+      NSPredicate *predicate = [NSPredicate predicateWithFormat:@"vehicleid == %@", vehicleid.text];
       [request setPredicate:predicate];
       NSError *error = nil;
       NSArray *array = [context executeFetchRequest:request error:&error];
@@ -190,6 +252,7 @@
           car.netpass = vehicleNetPass.text;
           car.userpass = vehicleUserPass.text;
           car.imagepath = [carImages objectAtIndex:[vehicleImage selectedRowInComponent:0]];
+          car.connection_type_ids = self.connectionTypeIds;
           if (![_context save:&error])
             {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -200,7 +263,9 @@
     // Switch the car
     [[ovmsAppDelegate myRef] switchCar:vehicleid.text];
   }
+    
   [[ovmsAppDelegate myRef] deregisterFromUpdate:self];
+
   [super viewWillDisappear:animated];
 }
 
@@ -266,5 +331,26 @@
   [textField resignFirstResponder]; 
   return YES;
 }
+
+#pragma mark - Setup connections
+- (IBAction)handleConnections:(id)sender {
+    NSLog(@"handleConnections: %@", self.connectionTypeIds);
+    
+    ConnectionTypesController *cnt = [[ConnectionTypesController alloc] initWithStyle:UITableViewStylePlain];
+    cnt.connectionTypeIds = self.connectionTypeIds;
+    cnt.target = self;
+    cnt.action = @selector(handleDoneConnections:);
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cnt];
+    [self presentModalViewController:navController animated:YES];
+}
+
+- (void)handleDoneConnections:(NSString *)connectionTypeIds{
+    self.connectionTypeIds = connectionTypeIds;
+    
+    NSLog(@"setConnections: %@", self.connectionTypeIds);
+    
+}
+
 
 @end
