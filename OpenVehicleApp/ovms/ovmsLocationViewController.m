@@ -9,7 +9,6 @@
 #import "ovmsLocationViewController.h"
 
 @implementation ovmsLocationViewController
-double distanceIdeal, distanceEstimated;
 
 @synthesize myMapView;
 @synthesize m_car_location;
@@ -36,10 +35,6 @@ double distanceIdeal, distanceEstimated;
     m_locationsnap.style = UIBarButtonItemStyleDone;
 
     [[ovmsAppDelegate myRef] registerForUpdate:self];
-    
-    //TODO: DEBUG
-    distanceIdeal = 5000;
-    distanceEstimated = 5500;
     
     [self update];
 }
@@ -92,7 +87,10 @@ double distanceIdeal, distanceEstimated;
     if (!self.loader) {
         self.loader = [[OCMSyncHelper alloc] initWithDelegate:self];
     }
-    [self.loader startSyncWhithCoordinate:location toDistance:distanceEstimated / 1000];
+    double estimatedrange = (double)[ovmsAppDelegate myRef].car_estimatedrange;
+    if (estimatedrange > 0.1) {
+        [self.loader startSyncWhithCoordinate:location toDistance:estimatedrange];
+    }
 }
 
 - (void)didFinishSync {
@@ -101,43 +99,47 @@ double distanceIdeal, distanceEstimated;
     [self initAnnotations];
 }
 
+- (void)didFailWithError:(NSError *)error {
+    NSLog(@"didFinishSync NSError");
+    [self initOverlays];
+    [self initAnnotations];
+}
 
 - (void)initOverlays {
-    if (myMapView.overlays.count) {
+    if (myMapView.overlays && myMapView.overlays.count) {
         [myMapView removeOverlays:myMapView.overlays];
     }
     
-    MKCircle *circle = [MKCircle circleWithCenterCoordinate:myMapView.region.center radius:distanceIdeal];
-    circle.title = @"ideal";
-    [myMapView addOverlay:circle];
-    [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:myMapView.region.center radius:distanceEstimated]];
+    double idealrange = [ovmsAppDelegate myRef].car_idealrange * 1000.0;
+    double estimatedrange = [ovmsAppDelegate myRef].car_estimatedrange * 1000.0;
+    
+    if ((idealrange + estimatedrange) > 0) {
+        [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:myMapView.region.center radius:idealrange]];
+        [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:myMapView.region.center radius:estimatedrange]];
+    }
 }
 
 - (void)initAnnotations {
-    NSMutableArray *annotations = [NSMutableArray array];
-    for (int k=0; k < [myMapView.annotations count]; k++) {
-        id item = [myMapView.annotations objectAtIndex:k];
-        if ([item isKindOfClass:[ChargingAnnotation class]]) {
-            [annotations addObject:item];
-        }
-    }
-    [myMapView removeAnnotations:annotations];
+    [myMapView removeAnnotations:myMapView.annotations];
     
-    annotations = annotations = [NSMutableArray array];
+    NSMutableArray *annotations = [NSMutableArray array];
     for (ChargingLocation *loc in self.locations) {
         [annotations addObject:[ChargingAnnotation pinWithChargingLocation:loc]];
     }
     [myMapView addAnnotations:annotations];
+    
+    if (m_car_location != nil) {
+        [myMapView addAnnotation:m_car_location];
+        [m_car_location redrawView];
+    }
+    
 }
 
 
 - (NSArray *)locations {
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(myMapView.centerCoordinate, distanceEstimated, distanceEstimated);
+    double estimatedrange = (double)[ovmsAppDelegate myRef].car_estimatedrange * 1000;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(myMapView.centerCoordinate, estimatedrange, estimatedrange);
     
-    //    double minLat = region.center.latitude - (region.span.latitudeDelta / 2.0);
-    //    double maxLat = region.center.latitude + (region.span.latitudeDelta / 2.0);
-    //    double minLong = region.center.longitude - (region.span.longitudeDelta / 2.0);
-    //    double maxLong = region.center.longitude + (region.span.longitudeDelta / 2.0);
     double minLat = region.center.latitude - (region.span.latitudeDelta);
     double maxLat = region.center.latitude + (region.span.latitudeDelta);
     double minLong = region.center.longitude - (region.span.longitudeDelta);
@@ -151,43 +153,38 @@ double distanceIdeal, distanceEstimated;
     return [self executeFetchRequest:fr];
 }
 
-
 -(void)update {
     // The car has reported updated information, and we may need to reflect that
-
-//    CLLocationCoordinate2D location = [ovmsAppDelegate myRef].car_location;
-//    NSLog(@"LocationViewController update: %0.6f,%0.6f", location.latitude, location.longitude);
-    
-    //TODO: DEBUG
-    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(51.419122,-0.080681);
-    myMapView.region = MKCoordinateRegionMakeWithDistance(location, distanceEstimated, distanceEstimated);
-    
-    [self initAnnotations];
-    [self loadData:location];
-//    [self initOverlays];
-    
-    return;
+    CLLocationCoordinate2D location = [ovmsAppDelegate myRef].car_location;
 
     MKCoordinateRegion region = myMapView.region;
     if ( (region.center.latitude != location.latitude)&&
       (region.center.longitude != location.longitude) ) {
+        
+        [self loadData:location];
+        
         if (self.m_car_location) {
+            NSLog(@"beginAnimations");
+            
             [UIView beginAnimations:@"ovmsVehicleAnnotationAnimation" context:nil];
             [UIView setAnimationBeginsFromCurrentState:YES];
-            [UIView setAnimationDuration:5.0];
+            [UIView setAnimationDuration:2.0];
             [UIView setAnimationCurve:UIViewAnimationCurveLinear];
-            [self.m_car_location setDirection:[ovmsAppDelegate myRef].car_direction%360];
+            [self.m_car_location setDirection:[ovmsAppDelegate myRef].car_direction % 360];
             [self.m_car_location setSpeed:[ovmsAppDelegate myRef].car_speed_s];
             [self.m_car_location setCoordinate: location];
             
             if (self.m_autotrack) {
-                region.center=location;
+                region.center = location;
                 [myMapView setRegion:region animated:NO];
             }
             
+//            [UIView setAnimationDelegate:self];
+//            [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
             [UIView commitAnimations];
-            //      [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
         } else {
+            NSLog(@"ovmsVehicleAnnotation");
+
             // Remove all existing annotations
             for (int k=0; k < [myMapView.annotations count]; k++) {
                 if ([[myMapView.annotations objectAtIndex:k] isKindOfClass:[ovmsVehicleAnnotation class]]) {
@@ -200,17 +197,20 @@ double distanceIdeal, distanceEstimated;
             [pa setTitle:[ovmsAppDelegate myRef].sel_car];
             [pa setSubtitle:[ovmsAppDelegate myRef].car_speed_s];
             [pa setImagefile:[ovmsAppDelegate myRef].sel_imagepath];
-            [pa setDirection:([ovmsAppDelegate myRef].car_direction)%360];
+            [pa setDirection:([ovmsAppDelegate myRef].car_direction) % 360];
             [pa setSpeed:[ovmsAppDelegate myRef].car_speed_s];
             [myMapView addAnnotation:pa];
             self.m_car_location = pa;
 
             // Setup the map to surround the vehicle
-            MKCoordinateSpan span; 
-            span.latitudeDelta=0.01; 
-            span.longitudeDelta=0.01; 
-            region.span=span; 
-            region.center=location;
+            MKCoordinateSpan span;
+            span.latitudeDelta = 0.01;
+            span.longitudeDelta = 0.01;
+            region.span = span;
+            region.center = location;
+            
+//            region = MKCoordinateRegionMakeWithDistance(location, distanceEstimated, distanceEstimated);
+            
             [myMapView setRegion:region animated:YES];
             [myMapView regionThatFits:region]; 
         }
@@ -218,8 +218,6 @@ double distanceIdeal, distanceEstimated;
 }
 
 -(void)groupUpdate:(NSArray*)result {
-    return;
-    
     if (m_groupcar_locations == nil) return;
 
     if ([result count]>=10) {
@@ -318,88 +316,66 @@ double distanceIdeal, distanceEstimated;
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    if (![view isKindOfClass:[REVClusterAnnotationView class]]) {
-        NSFetchRequest *fr = [self fetchRequestWithEntityName:ENChargingLocation];
-        ChargingAnnotation *an = view.annotation;
-        [fr setPredicate:[NSPredicate predicateWithFormat:@"uuid = %@", an.location_uuid]];
-        
-        ChargingLocation *cloc = [self executeFetchRequest:fr][0];
-        for (Connection *cn in cloc.conections) {
-            NSLog(@"%@: %@", cn.level_title, cn);
-        }
+    if ([view isKindOfClass:[REVClusterAnnotationView class]]) {
+        CLLocationCoordinate2D centerCoordinate = [(REVClusterPin *)view.annotation coordinate];
+        MKCoordinateSpan newSpan = MKCoordinateSpanMake(mapView.region.span.latitudeDelta / 2.0, mapView.region.span.longitudeDelta / 2.0);
+        [mapView setRegion:MKCoordinateRegionMake(centerCoordinate, newSpan) animated:YES];
         
         return;
     }
-    
-    CLLocationCoordinate2D centerCoordinate = [(REVClusterPin *)view.annotation coordinate];
-    MKCoordinateSpan newSpan = MKCoordinateSpanMake(mapView.region.span.latitudeDelta/2.0, mapView.region.span.longitudeDelta/2.0);
-    [mapView setRegion:MKCoordinateRegionMake(centerCoordinate, newSpan) animated:YES];
 }
 
 
-//- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
-//    m_lastregion = mapView.region;
-//}
-//
-//- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-//    MKCoordinateRegion newRegion = mapView.region;
-//    if (((m_lastregion.span.latitudeDelta/newRegion.span.latitudeDelta) > 1.5)||
-//        ((m_lastregion.span.latitudeDelta/newRegion.span.latitudeDelta) < 0.75)) {
-//        // Kludgy redraw of all annotations, by removing then replacing the annotations...
-//        for (int k=0; k < [myMapView.annotations count]; k++) {
-//            ovmsVehicleAnnotation *pa = [myMapView.annotations objectAtIndex:k];
-//            if ([pa isKindOfClass:[ovmsVehicleAnnotation class]]) {
-//                [myMapView removeAnnotation:[myMapView.annotations objectAtIndex:k]];
-//            }
-//        }
-//
-//        if (m_car_location != nil) {
-//            [myMapView addAnnotation:m_car_location];
-//            [m_car_location redrawView];
-//        }
-//        NSEnumerator *enumerator = [m_groupcar_locations objectEnumerator];
-//        ovmsVehicleAnnotation *pa;
-//        while ((pa = [enumerator nextObject])) {
-//            [myMapView addAnnotation:pa];
-//            [pa redrawView];
-//        }
-//    }
-//}
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
+    NSLog(@"regionWillChangeAnimated");
+    m_lastregion = mapView.region;
+}
 
--(void)zoomToFitMapAnnotations:(MKMapView*)mapView {
-    if([mapView.annotations count] == 0) return;
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    MKCoordinateRegion newRegion = mapView.region;
 
-    CLLocationCoordinate2D topLeftCoord;
-    topLeftCoord.latitude = -90;
-    topLeftCoord.longitude = 180;
+    if (((m_lastregion.span.latitudeDelta / newRegion.span.latitudeDelta) > 1.5)||
+        ((m_lastregion.span.latitudeDelta / newRegion.span.latitudeDelta) < 0.75)) {
+        NSLog(@"regionDidChangeAnimated");
+        
+        
+        // Kludgy redraw of all annotations, by removing then replacing the annotations...
+        for (int k=0; k < [myMapView.annotations count]; k++) {
+            ovmsVehicleAnnotation *pa = [myMapView.annotations objectAtIndex:k];
+            if ([pa isKindOfClass:[ovmsVehicleAnnotation class]]) {
+                [myMapView removeAnnotation:[myMapView.annotations objectAtIndex:k]];
+            }
+        }
 
-    CLLocationCoordinate2D bottomRightCoord;
-    bottomRightCoord.latitude = 90;
-    bottomRightCoord.longitude = -180;
-
-    for (ovmsVehicleAnnotation* annotation in mapView.annotations) {
-        topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude);
-        topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude);
-
-        bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude);
-        bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude);
+        if (m_car_location != nil) {
+            [myMapView addAnnotation:m_car_location];
+            [m_car_location redrawView];
+        }
+        
+        NSEnumerator *enumerator = [m_groupcar_locations objectEnumerator];
+        ovmsVehicleAnnotation *pa;
+        while ((pa = [enumerator nextObject])) {
+            [myMapView addAnnotation:pa];
+            [pa redrawView];
+        }
     }
+}
 
-    MKCoordinateRegion region;
-    region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5;
-    region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5;
-    region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.1; // Add a little extra space on the sides
-    region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.1; // Add a little extra space on the sides
-
-    region = [mapView regionThatFits:region];
-    [mapView setRegion:region animated:YES];
+- (void) mapView:(MKMapView *)aMapView didAddAnnotationViews:(NSArray *)views {
+    for (MKAnnotationView *view in views) {
+        if ([[view annotation] isKindOfClass:[ovmsVehicleAnnotation class]]) {
+            [[view superview] bringSubviewToFront:view];
+        } else {
+            [[view superview] sendSubviewToBack:view];
+        }
+    }
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay {
     MKCircleView *circleView = [[MKCircleView alloc] initWithOverlay:overlay];
     circleView.lineWidth = 3;
-    
-    if ([overlay title]) {
+
+    if ([mapView.overlays indexOfObject:overlay]) {
         circleView.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
     } else {
         circleView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];

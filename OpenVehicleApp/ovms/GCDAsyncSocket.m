@@ -5365,7 +5365,7 @@ static OSStatus SSLWriteFunction(SSLConnectionRef connection, const void *data, 
 	{
 		LogVerbose(@"Starting TLS...");
 		
-		OSStatus status;
+		OSStatus status = 0;
 		
 		GCDAsyncSpecialPacket *tlsPacket = (GCDAsyncSpecialPacket *)currentRead;
 		NSDictionary *tlsSettings = tlsPacket->tlsSettings;

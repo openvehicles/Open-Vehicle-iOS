@@ -11,11 +11,20 @@
 #import "ovmsAppDelegate.h"
 #import "ovmsControlPINEntry.h"
 
+#import "OCMSyncHelper.h"
+#import "EntityName.h"
+#import "ChargingAnnotation.h"
+#import "NSObject+CDHelper.h"
+#import "REVClusterAnnotationView.h"
+
+#define IDENTIFIER_CLUSTER @"cluster"
+#define IDENTIFIER_PIN @"pin"
+
 #import <math.h>
 
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
-@interface ovmsStatusViewControllerPad : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, ovmsControlPINEntryDelegate, UIActionSheetDelegate>
+@interface ovmsStatusViewControllerPad : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, ovmsControlPINEntryDelegate, UIActionSheetDelegate, OCMSyncDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_connection_image;
 @property (strong, nonatomic) IBOutlet UILabel *m_car_connection_state;
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_image;
@@ -75,6 +84,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *m_valet_button;
 @property (strong, nonatomic) IBOutlet UIButton *m_homelink_button;
 
+@property (strong, nonatomic) OCMSyncHelper *loader;
+@property (nonatomic, strong, readonly) NSArray *locations;
+
 - (IBAction)ChargeSliderTouch:(id)sender;
 - (IBAction)ChargeSliderValue:(id)sender;
 - (IBAction)WakeupButton:(id)sender;
@@ -83,7 +95,5 @@
 
 -(void) update;
 -(void) groupUpdate:(NSArray*)result;
-
--(void)zoomToFitMapAnnotations:(MKMapView*)mapView;
 
 @end

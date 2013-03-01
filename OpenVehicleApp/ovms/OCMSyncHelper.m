@@ -21,7 +21,6 @@
 @property (nonatomic, assign) BOOL isProcess;
 @end
 
-
 @implementation OCMSyncHelper
 
 - (id)initWithDelegate:(id)delegate {
@@ -64,13 +63,17 @@
     }
     
     if (json.count) {
-        [self parseData:json];
+//        [self parseData:json];
+        [self performSelectorOnMainThread:@selector(parseAndStop:) withObject:json waitUntilDone:NO];
     } else {
         NSLog(@"Response empty data");
+        [self performSelectorOnMainThread:@selector(stop:) withObject:nil waitUntilDone:NO];
     }
-    
-    
-    [self performSelectorOnMainThread:@selector(stop:) withObject:nil waitUntilDone:NO];
+}
+
+- (void)parseAndStop:(NSArray *)items {
+    [self parseData:items];
+    [self stop:nil];
 }
 
 - (void)stop:(NSError *)error {
@@ -176,34 +179,6 @@
     oi.title = NULL_TO_NIL(row[@"Title"]);
     oi.website_url = NULL_TO_NIL(row[@"WebsiteURL"]);
 }
-
-//- (void)parseChargerToChargingLocations:(ChargingLocation *)cl asArray:(NSArray *)items {
-//    if (!items) {
-//        cl.chargers = nil;
-//        return;
-//    }
-//    
-//    NSMutableSet *chargers = [NSMutableSet set];
-//    
-//    for (NSDictionary *row in items) {
-//        Charger *ca = [self entityWithName:ENCharger asWhere:@"id" inValue:row[@"ID"]];
-//        if (!ca) {
-//            ca = [NSEntityDescription insertNewObjectForEntityForName:ENCharger
-//                                                   inManagedObjectContext:self.managedObjectContext];
-//        }
-//        
-//        ca.id = row[@"ChargerType"][@"ID"];
-//        ca.comments = NULL_TO_NIL(row[@"ChargerType"][@"Comments"]);
-//        ca.is_fast_charge_capable = NULL_TO_NIL(row[@"ChargerType"][@"IsFastChargeCapable"]);
-//        ca.title = NULL_TO_NIL(row[@"ChargerType"][@"Title"]);
-//        
-//        NSLog(@"IsFastChargeCapable: %@", row[@"ChargerType"][@"IsFastChargeCapable"]);
-//        
-//        [chargers addObject:ca];
-//    }
-//    cl.chargers = [NSSet setWithSet:chargers];
-//}
-
 
 - (void)parseConnectionToChargingLocations:(ChargingLocation *)cl asArray:(NSArray *)items {
     if (!items) {

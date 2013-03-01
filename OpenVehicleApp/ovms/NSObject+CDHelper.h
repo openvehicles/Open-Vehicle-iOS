@@ -10,7 +10,7 @@
 
 @interface NSObject (CDHelper)
 
-@property (strong, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 
 - (NSArray *)executeFetchRequest: (NSFetchRequest *)request;
 - (NSFetchRequest *)fetchRequestWithEntityName: (NSString *)entityName;

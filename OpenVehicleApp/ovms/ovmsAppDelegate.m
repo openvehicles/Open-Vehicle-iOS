@@ -108,10 +108,10 @@
   return (ovmsAppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Initialise TestFlight
-  [TestFlight takeOff:@"5a4beeb296dd93d1971d64a94e74d9b6_NDM1MDAyMDExLTExLTI2IDAzOjQ0OjQxLjU1NjcxNQ"];
+//  [TestFlight takeOff:@"5a4beeb296dd93d1971d64a94e74d9b6_NDM1MDAyMDExLTExLTI2IDAzOjQ0OjQxLjU1NjcxNQ"];
+    [TestFlight takeOff:@"7e5194564905861e39191059a40412f7_MTkzMTMyMjAxMy0wMi0yOCAwOTozNzo1Mi45MTY2OTE"];
 #ifdef DEBUG
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
   [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];

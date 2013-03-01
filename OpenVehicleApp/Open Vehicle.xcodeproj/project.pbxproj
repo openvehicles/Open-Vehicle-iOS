@@ -39,11 +39,6 @@
 		4D5AE38614733758002F5F52 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5AE38514733758002F5F52 /* first@2x.png */; };
 		4D5AE38B14733758002F5F52 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5AE38A14733758002F5F52 /* second.png */; };
 		4D5AE38D14733758002F5F52 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5AE38C14733758002F5F52 /* second@2x.png */; };
-		4D5AE39514733758002F5F52 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5AE39414733758002F5F52 /* SenTestingKit.framework */; };
-		4D5AE39614733758002F5F52 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5AE36814733757002F5F52 /* UIKit.framework */; };
-		4D5AE39714733758002F5F52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5AE36A14733757002F5F52 /* Foundation.framework */; };
-		4D5AE39F14733758002F5F52 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D5AE39D14733758002F5F52 /* InfoPlist.strings */; };
-		4D5AE3A214733758002F5F52 /* ovmsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5AE3A114733758002F5F52 /* ovmsTests.m */; };
 		4D6557AA1516183B00369AAC /* ovmsVehicleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6557A91516183B00369AAC /* ovmsVehicleInfo.m */; };
 		4D6734B21497891E00F7919F /* roadster_outline_tr.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6734B11497891E00F7919F /* roadster_outline_tr.png */; };
 		4D6734B41497893F00F7919F /* roadster_outline_rd.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6734B31497893F00F7919F /* roadster_outline_rd.png */; };
@@ -279,7 +274,6 @@
 		6358BC6A16DB9BB2008310DA /* REVClusterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC6116DB9BB2008310DA /* REVClusterManager.m */; };
 		6358BC6B16DB9BB2008310DA /* REVClusterMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC6416DB9BB2008310DA /* REVClusterMapView.m */; };
 		6358BC6C16DB9BB2008310DA /* REVClusterPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC6616DB9BB2008310DA /* REVClusterPin.m */; };
-		6358BC7416DB9C19008310DA /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC6F16DB9C19008310DA /* MapController.m */; };
 		6358BC7516DB9C19008310DA /* NSObject+CDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC7116DB9C19008310DA /* NSObject+CDHelper.m */; };
 		6358BC7616DB9C19008310DA /* OCMSyncHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC7316DB9C19008310DA /* OCMSyncHelper.m */; };
 		6358BC8416DB9C45008310DA /* cluster0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7816DB9C45008310DA /* cluster0.png */; };
@@ -297,16 +291,6 @@
 		6358BC9216DB9C77008310DA /* EntityName.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC9116DB9C77008310DA /* EntityName.m */; };
 		6358BC9516DB9D26008310DA /* ChargingAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC9416DB9D25008310DA /* ChargingAnnotation.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4D5AE39814733758002F5F52 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4D5AE35B14733757002F5F52 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4D5AE36314733757002F5F52;
-			remoteInfo = ovms;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4D04C86714F28EF4002D6B69 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -350,12 +334,7 @@
 		4D5AE38514733758002F5F52 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		4D5AE38A14733758002F5F52 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		4D5AE38C14733758002F5F52 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		4D5AE39314733758002F5F52 /* Open VehicleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Open VehicleTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5AE39414733758002F5F52 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		4D5AE39C14733758002F5F52 /* Open VehicleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Open VehicleTests-Info.plist"; sourceTree = "<group>"; };
-		4D5AE39E14733758002F5F52 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4D5AE3A014733758002F5F52 /* ovmsTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ovmsTests.h; sourceTree = "<group>"; };
-		4D5AE3A114733758002F5F52 /* ovmsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ovmsTests.m; sourceTree = "<group>"; };
 		4D6557A81516183B00369AAC /* ovmsVehicleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ovmsVehicleInfo.h; sourceTree = "<group>"; };
 		4D6557A91516183B00369AAC /* ovmsVehicleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ovmsVehicleInfo.m; sourceTree = "<group>"; };
 		4D6734B11497891E00F7919F /* roadster_outline_tr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadster_outline_tr.png; sourceTree = "<group>"; };
@@ -603,7 +582,7 @@
 		4DFAD8081475448A00416D38 /* crypto_hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypto_hmac.c; sourceTree = "<group>"; };
 		4DFAD80A1475449600416D38 /* crypto_base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypto_base64.c; sourceTree = "<group>"; };
 		4DFAD80C1475455C00416D38 /* crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto.h; sourceTree = "<group>"; };
-		6358BC4C16DB99CC008310DA /* Model2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = Model2.xcdatamodel; sourceTree = "<group>"; };
+		6358BC4C16DB99CC008310DA /* Model2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model2.xcdatamodel; sourceTree = "<group>"; };
 		6358BC4D16DB9A34008310DA /* OperatorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperatorInfo.h; sourceTree = SOURCE_ROOT; };
 		6358BC4E16DB9A34008310DA /* OperatorInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperatorInfo.m; sourceTree = SOURCE_ROOT; };
 		6358BC5016DB9A34008310DA /* ChargingLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargingLocation.h; sourceTree = SOURCE_ROOT; };
@@ -625,8 +604,6 @@
 		6358BC6416DB9BB2008310DA /* REVClusterMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REVClusterMapView.m; sourceTree = "<group>"; };
 		6358BC6516DB9BB2008310DA /* REVClusterPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REVClusterPin.h; sourceTree = "<group>"; };
 		6358BC6616DB9BB2008310DA /* REVClusterPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REVClusterPin.m; sourceTree = "<group>"; };
-		6358BC6E16DB9C19008310DA /* MapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
-		6358BC6F16DB9C19008310DA /* MapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
 		6358BC7016DB9C19008310DA /* NSObject+CDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CDHelper.h"; sourceTree = "<group>"; };
 		6358BC7116DB9C19008310DA /* NSObject+CDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CDHelper.m"; sourceTree = "<group>"; };
 		6358BC7216DB9C19008310DA /* OCMSyncHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMSyncHelper.h; sourceTree = "<group>"; };
@@ -669,16 +646,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4D5AE38F14733758002F5F52 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4D5AE39514733758002F5F52 /* SenTestingKit.framework in Frameworks */,
-				4D5AE39614733758002F5F52 /* UIKit.framework in Frameworks */,
-				4D5AE39714733758002F5F52 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -686,7 +653,6 @@
 			isa = PBXGroup;
 			children = (
 				4D5AE36E14733757002F5F52 /* ovms */,
-				4D5AE39A14733758002F5F52 /* ovmsTests */,
 				4D5AE36714733757002F5F52 /* Frameworks */,
 				4D5AE36514733757002F5F52 /* Products */,
 			);
@@ -696,7 +662,6 @@
 			isa = PBXGroup;
 			children = (
 				4D5AE36414733757002F5F52 /* Open Vehicle.app */,
-				4D5AE39314733758002F5F52 /* Open VehicleTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -758,25 +723,6 @@
 				4D5AE37114733757002F5F52 /* InfoPlist.strings */,
 				4D5AE37414733757002F5F52 /* main.m */,
 				4D5AE37614733758002F5F52 /* Open Vehicle-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4D5AE39A14733758002F5F52 /* ovmsTests */ = {
-			isa = PBXGroup;
-			children = (
-				4D5AE3A014733758002F5F52 /* ovmsTests.h */,
-				4D5AE3A114733758002F5F52 /* ovmsTests.m */,
-				4D5AE39B14733758002F5F52 /* Supporting Files */,
-			);
-			path = ovmsTests;
-			sourceTree = "<group>";
-		};
-		4D5AE39B14733758002F5F52 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4D5AE39C14733758002F5F52 /* Open VehicleTests-Info.plist */,
-				4D5AE39D14733758002F5F52 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -957,9 +903,9 @@
 		4DE26E64147E83B800E3161D /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				4DC8B38A147E7BF2007FDFB2 /* Model.xcdatamodeld */,
 				6358BC9016DB9C77008310DA /* EntityName.h */,
 				6358BC9116DB9C77008310DA /* EntityName.m */,
-				4DC8B38A147E7BF2007FDFB2 /* Model.xcdatamodeld */,
 				6358BC5616DB9A34008310DA /* AddressInfo.h */,
 				6358BC5716DB9A34008310DA /* AddressInfo.m */,
 				6358BC5316DB9A34008310DA /* Connection.h */,
@@ -1152,8 +1098,6 @@
 				6358BC7716DB9C2F008310DA /* res */,
 				6358BC9316DB9D25008310DA /* ChargingAnnotation.h */,
 				6358BC9416DB9D25008310DA /* ChargingAnnotation.m */,
-				6358BC6E16DB9C19008310DA /* MapController.h */,
-				6358BC6F16DB9C19008310DA /* MapController.m */,
 				6358BC7016DB9C19008310DA /* NSObject+CDHelper.h */,
 				6358BC7116DB9C19008310DA /* NSObject+CDHelper.m */,
 				6358BC7216DB9C19008310DA /* OCMSyncHelper.h */,
@@ -1201,32 +1145,13 @@
 			productReference = 4D5AE36414733757002F5F52 /* Open Vehicle.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4D5AE39214733758002F5F52 /* Open VehicleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4D5AE3A814733758002F5F52 /* Build configuration list for PBXNativeTarget "Open VehicleTests" */;
-			buildPhases = (
-				4D5AE38E14733758002F5F52 /* Sources */,
-				4D5AE38F14733758002F5F52 /* Frameworks */,
-				4D5AE39014733758002F5F52 /* Resources */,
-				4D5AE39114733758002F5F52 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4D5AE39914733758002F5F52 /* PBXTargetDependency */,
-			);
-			name = "Open VehicleTests";
-			productName = ovmsTests;
-			productReference = 4D5AE39314733758002F5F52 /* Open VehicleTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		4D5AE35B14733757002F5F52 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Open Vehicle Systems";
 			};
 			buildConfigurationList = 4D5AE35E14733757002F5F52 /* Build configuration list for PBXProject "Open Vehicle" */;
@@ -1242,7 +1167,6 @@
 			projectRoot = "";
 			targets = (
 				4D5AE36314733757002F5F52 /* Open Vehicle */,
-				4D5AE39214733758002F5F52 /* Open VehicleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1484,31 +1408,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4D5AE39014733758002F5F52 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4D5AE39F14733758002F5F52 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		4D5AE39114733758002F5F52 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4D5AE36014733757002F5F52 /* Sources */ = {
@@ -1553,7 +1453,6 @@
 				6358BC6A16DB9BB2008310DA /* REVClusterManager.m in Sources */,
 				6358BC6B16DB9BB2008310DA /* REVClusterMapView.m in Sources */,
 				6358BC6C16DB9BB2008310DA /* REVClusterPin.m in Sources */,
-				6358BC7416DB9C19008310DA /* MapController.m in Sources */,
 				6358BC7516DB9C19008310DA /* NSObject+CDHelper.m in Sources */,
 				6358BC7616DB9C19008310DA /* OCMSyncHelper.m in Sources */,
 				6358BC9216DB9C77008310DA /* EntityName.m in Sources */,
@@ -1561,23 +1460,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4D5AE38E14733758002F5F52 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4D5AE3A214733758002F5F52 /* ovmsTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4D5AE39914733758002F5F52 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4D5AE36314733757002F5F52 /* Open Vehicle */;
-			targetProxy = 4D5AE39814733758002F5F52 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4D5AE37114733757002F5F52 /* InfoPlist.strings */ = {
@@ -1604,14 +1487,6 @@
 			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
-		4D5AE39D14733758002F5F52 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D5AE39E14733758002F5F52 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1621,20 +1496,25 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mark Webb-Johnson";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ALEKSEJ KARAJKOZA";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "9685968A-A4AB-446A-8BA9-45A3125EC35B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F13B40C2-4A56-4E73-A8AF-B61F8BBBBCCE";
+				PROVISIONING_PROFILE = "8027D8C5-FAB3-4EE2-A6BB-409AD8B76BF2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8027D8C5-FAB3-4EE2-A6BB-409AD8B76BF2";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1644,13 +1524,14 @@
 		4D29A7F11485EFE60088122F /* Adhoc Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mark Webb-Johnson";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ALEKSEJ KARAJKOZA";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
 				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ovms/Open Vehicle-Prefix.pch";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ovms/TestFlightSDK0\"",
@@ -1658,27 +1539,10 @@
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "F5051144-4026-478C-97D3-513CF8188A9B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F5051144-4026-478C-97D3-513CF8188A9B";
+				PROVISIONING_PROFILE = "8027D8C5-FAB3-4EE2-A6BB-409AD8B76BF2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8027D8C5-FAB3-4EE2-A6BB-409AD8B76BF2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
-			};
-			name = "Adhoc Release";
-		};
-		4D29A7F21485EFE60088122F /* Adhoc Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ovms.app/ovms";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ovms/ovms-Prefix.pch";
-				INFOPLIST_FILE = "ovmsTests/Open VehicleTests-Info.plist";
-				PRODUCT_NAME = "Open VehicleTests";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = "Adhoc Release";
 		};
@@ -1688,20 +1552,23 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mark Webb-Johnson";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "39FD1127-57A0-470C-89B7-30714C143F54";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "39FD1127-57A0-470C-89B7-30714C143F54";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1711,13 +1578,14 @@
 		4D29A7F41485EFEE0088122F /* AppStore Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mark Webb-Johnson";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ovms/Open Vehicle-Prefix.pch";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ovms/TestFlightSDK0\"",
@@ -1725,27 +1593,8 @@
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "F5051144-4026-478C-97D3-513CF8188A9B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F5051144-4026-478C-97D3-513CF8188A9B";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
-			};
-			name = "AppStore Release";
-		};
-		4D29A7F51485EFEE0088122F /* AppStore Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ovms.app/ovms";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ovms/ovms-Prefix.pch";
-				INFOPLIST_FILE = "ovmsTests/Open VehicleTests-Info.plist";
-				PRODUCT_NAME = "Open VehicleTests";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = "AppStore Release";
 		};
@@ -1755,8 +1604,12 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Oleksiy Karaykoza (LGRWRWU55R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Oleksiy Karaykoza (LGRWRWU55R)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1769,12 +1622,13 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "54804695-3E55-413B-BE8C-94845A1FD09B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54804695-3E55-413B-BE8C-94845A1FD09B";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1783,11 +1637,13 @@
 		4D5AE3A614733758002F5F52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Oleksiy Karaykoza (LGRWRWU55R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Oleksiy Karaykoza (LGRWRWU55R)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ovms/Open Vehicle-Prefix.pch";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ovms/TestFlightSDK0\"",
@@ -1795,26 +1651,10 @@
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "54804695-3E55-413B-BE8C-94845A1FD09B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54804695-3E55-413B-BE8C-94845A1FD09B";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		4D5AE3A914733758002F5F52 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ovms.app/ovms";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ovms/ovms-Prefix.pch";
-				INFOPLIST_FILE = "ovmsTests/Open VehicleTests-Info.plist";
-				PRODUCT_NAME = "Open VehicleTests";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1837,16 +1677,6 @@
 				4D5AE3A614733758002F5F52 /* Debug */,
 				4D29A7F41485EFEE0088122F /* AppStore Release */,
 				4D29A7F11485EFE60088122F /* Adhoc Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		4D5AE3A814733758002F5F52 /* Build configuration list for PBXNativeTarget "Open VehicleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4D5AE3A914733758002F5F52 /* Debug */,
-				4D29A7F51485EFEE0088122F /* AppStore Release */,
-				4D29A7F21485EFE60088122F /* Adhoc Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
