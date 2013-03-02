@@ -279,6 +279,13 @@
 		6358BC8916DB9C45008310DA /* cluster2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7D16DB9C45008310DA /* cluster2@2x.png */; };
 		6358BC9216DB9C77008310DA /* EntityName.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC9116DB9C77008310DA /* EntityName.m */; };
 		6358BC9516DB9D26008310DA /* ChargingAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC9416DB9D25008310DA /* ChargingAnnotation.m */; };
+		63A04D2616E25E6E00471816 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A04D2416E25E6E00471816 /* PopoverView.m */; };
+		63A04D2816E2781600471816 /* ic_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D2716E2781600471816 /* ic_pin.png */; };
+		63A04D2A16E2782E00471816 /* ic_pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D2916E2782E00471816 /* ic_pin@2x.png */; };
+		63A04D2D16E27D7B00471816 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D2B16E27D7B00471816 /* success.png */; };
+		63A04D2E16E27D7B00471816 /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D2C16E27D7B00471816 /* success@2x.png */; };
+		63A04D3116E27D8C00471816 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D2F16E27D8C00471816 /* error.png */; };
+		63A04D3216E27D8C00471816 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D3016E27D8C00471816 /* error@2x.png */; };
 		63D6B77916E0BC10006D6688 /* level0.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D6B77316E0BC10006D6688 /* level0.png */; };
 		63D6B77A16E0BC10006D6688 /* level0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D6B77416E0BC10006D6688 /* level0@2x.png */; };
 		63D6B77B16E0BC10006D6688 /* level2.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D6B77516E0BC10006D6688 /* level2.png */; };
@@ -612,13 +619,22 @@
 		6358BC9116DB9C77008310DA /* EntityName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityName.m; sourceTree = "<group>"; };
 		6358BC9316DB9D25008310DA /* ChargingAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargingAnnotation.h; sourceTree = "<group>"; };
 		6358BC9416DB9D25008310DA /* ChargingAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargingAnnotation.m; sourceTree = "<group>"; };
+		63A04D2316E25E6E00471816 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
+		63A04D2416E25E6E00471816 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
+		63A04D2516E25E6E00471816 /* PopoverView_Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView_Configuration.h; sourceTree = "<group>"; };
+		63A04D2716E2781600471816 /* ic_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_pin.png; sourceTree = "<group>"; };
+		63A04D2916E2782E00471816 /* ic_pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_pin@2x.png"; sourceTree = "<group>"; };
+		63A04D2B16E27D7B00471816 /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
+		63A04D2C16E27D7B00471816 /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@2x.png"; sourceTree = "<group>"; };
+		63A04D2F16E27D8C00471816 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
+		63A04D3016E27D8C00471816 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
 		63D6B77316E0BC10006D6688 /* level0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level0.png; sourceTree = "<group>"; };
 		63D6B77416E0BC10006D6688 /* level0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level0@2x.png"; sourceTree = "<group>"; };
 		63D6B77516E0BC10006D6688 /* level2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level2.png; sourceTree = "<group>"; };
 		63D6B77616E0BC10006D6688 /* level2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level2@2x.png"; sourceTree = "<group>"; };
 		63D6B77716E0BC10006D6688 /* level3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level3.png; sourceTree = "<group>"; };
 		63D6B77816E0BC10006D6688 /* level3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level3@2x.png"; sourceTree = "<group>"; };
-		63F9E35516E0DEFA00E3B313 /* Model3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = Model3.xcdatamodel; sourceTree = "<group>"; };
+		63F9E35516E0DEFA00E3B313 /* Model3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model3.xcdatamodel; sourceTree = "<group>"; };
 		63F9E35916E0E58500E3B313 /* Cars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cars.h; path = Entitys/Cars.h; sourceTree = "<group>"; };
 		63F9E35A16E0E58500E3B313 /* Cars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cars.m; path = Entitys/Cars.m; sourceTree = "<group>"; };
 		63F9E35C16E0E58500E3B313 /* ChargingLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChargingLocation.h; path = Entitys/ChargingLocation.h; sourceTree = "<group>"; };
@@ -712,6 +728,7 @@
 				4D5AE37A14733758002F5F52 /* MainStoryboard_iPhone.storyboard */,
 				4D5AE37D14733758002F5F52 /* MainStoryboard_iPad.storyboard */,
 				6358BC6D16DB9BF0008310DA /* OCM */,
+				63A04D2216E25E6E00471816 /* PopoverView */,
 				6358BC5916DB9BB2008310DA /* REVClusterMap */,
 				4DFAD7FF1475435300416D38 /* Tabs */,
 				4DFAD7FE1475434500416D38 /* Crypto */,
@@ -1130,6 +1147,8 @@
 		6358BC7716DB9C2F008310DA /* res */ = {
 			isa = PBXGroup;
 			children = (
+				63A04D2716E2781600471816 /* ic_pin.png */,
+				63A04D2916E2782E00471816 /* ic_pin@2x.png */,
 				63D6B77316E0BC10006D6688 /* level0.png */,
 				63D6B77416E0BC10006D6688 /* level0@2x.png */,
 				63D6B77516E0BC10006D6688 /* level2.png */,
@@ -1144,6 +1163,20 @@
 				6358BC7D16DB9C45008310DA /* cluster2@2x.png */,
 			);
 			name = res;
+			sourceTree = "<group>";
+		};
+		63A04D2216E25E6E00471816 /* PopoverView */ = {
+			isa = PBXGroup;
+			children = (
+				63A04D2F16E27D8C00471816 /* error.png */,
+				63A04D3016E27D8C00471816 /* error@2x.png */,
+				63A04D2B16E27D7B00471816 /* success.png */,
+				63A04D2C16E27D7B00471816 /* success@2x.png */,
+				63A04D2316E25E6E00471816 /* PopoverView.h */,
+				63A04D2416E25E6E00471816 /* PopoverView.m */,
+				63A04D2516E25E6E00471816 /* PopoverView_Configuration.h */,
+			);
+			path = PopoverView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1426,6 +1459,12 @@
 				63D6B77C16E0BC10006D6688 /* level2@2x.png in Resources */,
 				63D6B77D16E0BC10006D6688 /* level3.png in Resources */,
 				63D6B77E16E0BC10006D6688 /* level3@2x.png in Resources */,
+				63A04D2816E2781600471816 /* ic_pin.png in Resources */,
+				63A04D2A16E2782E00471816 /* ic_pin@2x.png in Resources */,
+				63A04D2D16E27D7B00471816 /* success.png in Resources */,
+				63A04D2E16E27D7B00471816 /* success@2x.png in Resources */,
+				63A04D3116E27D8C00471816 /* error.png in Resources */,
+				63A04D3216E27D8C00471816 /* error@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1482,6 +1521,7 @@
 				63F9E37616E0EA9D00E3B313 /* ConnectionTypes.m in Sources */,
 				63F9E37B16E105F200E3B313 /* CRTableViewCell.m in Sources */,
 				63F9E37C16E105F200E3B313 /* ConnectionTypesController.m in Sources */,
+				63A04D2616E25E6E00471816 /* PopoverView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1538,8 +1578,8 @@
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
+				PROVISIONING_PROFILE = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1564,8 +1604,8 @@
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
+				PROVISIONING_PROFILE = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1594,8 +1634,8 @@
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
+				PROVISIONING_PROFILE = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1620,8 +1660,8 @@
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
+				PROVISIONING_PROFILE = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1656,8 +1696,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
-				PROVISIONING_PROFILE = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
+				PROVISIONING_PROFILE = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1680,8 +1720,8 @@
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F5DCC531-8E05-4203-AE9D-02B4F379E89A";
+				PROVISIONING_PROFILE = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F1BB2EDA-182E-4023-A976-F46C855BC40D";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

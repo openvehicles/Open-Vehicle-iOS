@@ -34,7 +34,7 @@
 #define kBlueColor                  0x236ed8
 #define kGreenColor                 0x179714
 #define kRedColor                   0xa4091c
-#define kMarkColor                  kBlueColor
+#define kMarkColor                  kGreenColor
 
 /* Colums and cell constants */
 #define kColumnPosition             50.0
@@ -67,14 +67,17 @@
     {
         CGContextAddPath(ctx, unselectedCircle.CGPath);
         CGContextSetLineWidth(ctx, kStrokeWidth);
-        CGContextSetRGBFillColor(ctx, 1.0, 1.0, 1.0, 1.0);
-        CGContextSetRGBStrokeColor(ctx, 229/255.0, 229/255.0, 229/255.0, 1.0);
+//        CGContextSetRGBFillColor(ctx, 1.0, 1.0, 1.0, 1.0);
+//        CGContextSetRGBStrokeColor(ctx, 229/255.0, 229/255.0, 229/255.0, 1.0);
+        CGContextSetRGBFillColor(ctx, 50/255.0, 50/255.0, 50/255.0, 1.0);
+        CGContextSetRGBStrokeColor(ctx, 100/255.0, 100/255.0, 100/255.0, 1.0);
         CGContextDrawPath(ctx, kCGPathFillStroke);
     }
     CGContextRestoreGState(ctx);
     
     /* Column separator */
-    CGContextSetRGBStrokeColor(ctx, 224/255.0, 224/255.0, 224/255.0, 1.0);
+//    CGContextSetRGBStrokeColor(ctx, 224/255.0, 224/255.0, 224/255.0, 1.0);
+    CGContextSetRGBStrokeColor(ctx, 50/255.0, 50/255.0, 50/255.0, 1.0);
     CGContextSetLineWidth(ctx, 1.0);
     CGContextMoveToPoint(ctx, kColumnPosition, .0);
     CGContextAddLineToPoint(ctx, kColumnPosition, self.bounds.size.height);
@@ -89,7 +92,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         label = [[UILabel alloc] initWithFrame:CGRectMake(kMarkCell, .0, self.frame.size.width - kMarkCell, self.frame.size.height)];
-        label.textColor = [UIColor blackColor];
+//        label.textColor = [UIColor blackColor];
+        label.textColor = [UIColor lightGrayColor];
+
         label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
         label.textAlignment = UITextAlignmentLeft;
         label.backgroundColor = [UIColor clearColor];

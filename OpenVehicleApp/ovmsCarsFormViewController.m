@@ -342,6 +342,8 @@
     cnt.action = @selector(handleDoneConnections:);
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cnt];
+    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    
     [self presentModalViewController:navController animated:YES];
 }
 

@@ -214,7 +214,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Location" image="74-location.png" id="6"/>
                     <navigationItem key="navigationItem" id="OPu-VM-BCk">
-                        <barButtonItem key="leftBarButtonItem" image="193-location-arrow-white.png" id="Erp-lF-L2G">
+                        <barButtonItem key="leftBarButtonItem" image="ic_pin.png" id="Erp-lF-L2G">
                             <connections>
                                 <action selector="locationSnapped:" destination="3" id="G0K-LL-UK8"/>
                             </connections>
@@ -226,7 +226,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="m_locationsnap" destination="Erp-lF-L2G" id="gel-ty-uug"/>
                         <outlet property="myMapView" destination="17" id="D7r-5K-gLy"/>
                     </connections>
                 </viewController>
@@ -1462,7 +1461,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="193-location-arrow-white.png" width="20" height="20"/>
         <image name="20-gear2.png" width="26" height="28"/>
         <image name="49-battery.png" width="26" height="14"/>
         <image name="54-lock.png" width="20" height="24"/>
@@ -1478,6 +1476,7 @@
         <image name="charger_plug.png" width="268" height="70"/>
         <image name="connection_good.png" width="64" height="64"/>
         <image name="homelink-logo.png" width="128" height="128"/>
+        <image name="ic_pin.png" width="32" height="32"/>
         <image name="motortemp_letterbox.png" width="534" height="610"/>
         <image name="ol_car_roadster_thundergray.png" width="304" height="606"/>
         <image name="parking.png" width="300" height="300"/>

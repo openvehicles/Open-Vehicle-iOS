@@ -12,6 +12,9 @@
 #import "NSObject+CDHelper.h"
 #import "EntityName.h"
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
 @interface ConnectionTypesController()
 
 @property (nonatomic, strong) NSMutableArray *selectedMarks;
@@ -24,10 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Connections", nil);
+    self.view.backgroundColor = UIColorFromRGB(0x121b2f);
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                 target:self
-                                                                                 action:@selector(done:)];
+//    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+//                                                                                 target:self
+//                                                                                 action:@selector(done:)];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                        style:UIBarButtonItemStyleBordered
+                                                                   target:self
+                                                                   action:@selector(done:)];
     self.navigationItem.rightBarButtonItem = rightButton;
     
     NSFetchRequest *fr =[self fetchRequestWithEntityName:ENConnectionTypes];

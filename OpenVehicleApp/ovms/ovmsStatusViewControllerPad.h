@@ -17,6 +17,8 @@
 #import "NSObject+CDHelper.h"
 #import "REVClusterAnnotationView.h"
 
+#import "PopoverView.h"
+
 #define IDENTIFIER_CLUSTER @"cluster"
 #define IDENTIFIER_PIN @"pin"
 
@@ -24,7 +26,7 @@
 
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
-@interface ovmsStatusViewControllerPad : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, ovmsControlPINEntryDelegate, UIActionSheetDelegate, OCMSyncDelegate>
+@interface ovmsStatusViewControllerPad : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, ovmsControlPINEntryDelegate, UIActionSheetDelegate, OCMSyncDelegate, PopoverViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_connection_image;
 @property (strong, nonatomic) IBOutlet UILabel *m_car_connection_state;
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_image;
@@ -72,9 +74,10 @@
 @property (strong, nonatomic) IBOutlet MKMapView *myMapView;
 @property (nonatomic, retain) ovmsVehicleAnnotation *m_car_location;
 @property (strong, nonatomic) NSMutableDictionary* m_groupcar_locations;
-@property (assign) BOOL m_autotrack;
+@property (assign) BOOL isAutotrack;
+@property (assign) BOOL isFiltredChargingStation;
+@property (assign) BOOL isUseRange;
 @property (assign) MKCoordinateRegion m_lastregion;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *m_locationsnap;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *m_control_button;
 @property (strong, nonatomic) IBOutlet UISlider *m_charger_slider;

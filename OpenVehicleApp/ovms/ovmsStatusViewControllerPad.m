@@ -59,9 +59,7 @@
 @synthesize myMapView;
 @synthesize m_car_location;
 @synthesize m_groupcar_locations;
-@synthesize m_locationsnap;
 @synthesize m_lastregion;
-@synthesize m_autotrack;
 @synthesize m_control_button;
 @synthesize m_charger_slider;
 @synthesize m_battery_button;
@@ -176,10 +174,8 @@
   [self animateLayer];
 
   self.m_car_location = nil;
-  if (m_groupcar_locations == nil)
-    m_groupcar_locations = [[NSMutableDictionary alloc] init];
-  self.m_autotrack = YES;
-  m_locationsnap.style = UIBarButtonItemStyleDone;
+  if (m_groupcar_locations == nil) m_groupcar_locations = [[NSMutableDictionary alloc] init];
+  self.isAutotrack = YES;
 
   [[ovmsAppDelegate myRef] registerForUpdate:self];
     
@@ -248,10 +244,10 @@
     [self setM_car_ambient_temp:nil];
     [self setM_car_charge_mode:nil];
     [self setM_battery_charging:nil];
-  [self setM_charger_plug:nil];
-  [self setM_charger_button:nil];
-  [self setM_car_range_estimated:nil];
-  [self setM_car_range_ideal:nil];
+    [self setM_charger_plug:nil];
+    [self setM_charger_button:nil];
+    [self setM_car_range_estimated:nil];
+    [self setM_car_range_ideal:nil];
   [self setM_car_valetonoff:nil];
     [self setM_car_lights:nil];
     [self setM_car_charge_message:nil];
@@ -263,7 +259,6 @@
     [self setM_valet_button:nil];
     [self setM_car_weather:nil];
     [self setM_car_tpmsboxes:nil];
-  [self setM_locationsnap:nil];
     [self setM_homelink_button:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -894,7 +889,7 @@
             [self.m_car_location setSpeed:[ovmsAppDelegate myRef].car_speed_s];
             [self.m_car_location setCoordinate: location];
             
-            if (self.m_autotrack) {
+            if (self.isAutotrack) {
                 region.center = location;
                 [myMapView setRegion:region animated:NO];
             }
@@ -1118,21 +1113,56 @@
   [actionSheet showInView:[self.view window]];
 }
 
-- (IBAction)locationSnapped:(id)sender
-  {
-  if (self.m_autotrack)
-    {
-    // Turn off autotrack
-    self.m_autotrack = NO;
-    m_locationsnap.style = UIBarButtonItemStyleBordered;
+- (IBAction)locationSnapped:(id)sender {
+    NSArray *options = @[
+                         self.isAutotrack ? NSLocalizedString(@"Turn OFF autotrack", nil) : NSLocalizedString(@"Turn ON autotrack", nil),
+                         self.isFiltredChargingStation ? NSLocalizedString(@"All charging stations", nil) : NSLocalizedString(@"Filtered charging stations", nil),
+                         self.isUseRange ? NSLocalizedString(@"Ignore range", nil) : NSLocalizedString(@"Use range", nil)
+                         ];
+    
+    [PopoverView showPopoverAtPoint:CGPointMake(10, 0)
+                             inView:self.view
+                          withTitle:NSLocalizedString(@"Options", nil)
+                    withStringArray:options
+                           delegate:self];
+}
+
+#pragma mark - PopoverViewDelegate Methods
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
+    NSLog(@"%s item:%d", __PRETTY_FUNCTION__, index);
+    switch (index) {
+        case 0: {
+            self.isAutotrack = !self.isAutotrack;
+            if (self.isAutotrack && m_car_location) {
+                [myMapView setCenterCoordinate:m_car_location.coordinate animated:YES];
+            }
+            break;
+        }
+        case 1: {
+            self.isFiltredChargingStation = !self.isFiltredChargingStation;
+            [self performSelector:@selector(isUnderConstruction) withObject:nil afterDelay:0.7f];
+            
+            break;
+        }
+        case 2: {
+            self.isUseRange = !self.isUseRange;
+            [self performSelector:@selector(isUnderConstruction) withObject:nil afterDelay:0.7f];
+            break;
+        }
     }
-  else
-    {
-    // Turn on autotrack
-    self.m_autotrack = YES;
-    m_locationsnap.style = UIBarButtonItemStyleDone;
-    }
-  }
+    
+    [popoverView showSuccess];
+    [popoverView performSelector:@selector(dismiss) withObject:nil afterDelay:0.5f];
+}
+
+- (void)isUnderConstruction {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning"
+                                                    message:@"Is under construction"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Ok"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
 
 - (void)actionSheet:(UIActionSheet *)sender clickedButtonAtIndex:(int)index
   {

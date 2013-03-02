@@ -17,13 +17,17 @@
 #import "NSObject+CDHelper.h"
 #import "REVClusterAnnotationView.h"
 
-@interface ovmsLocationViewController : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, OCMSyncDelegate>
+#import "PopoverView.h"
+
+@interface ovmsLocationViewController : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, OCMSyncDelegate, PopoverViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *myMapView;
 @property (strong, nonatomic) NSMutableDictionary* m_groupcar_locations;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *m_locationsnap;
 @property (strong, nonatomic) ovmsVehicleAnnotation *m_car_location;
-@property (assign) BOOL m_autotrack;
+@property (assign) BOOL isAutotrack;
+@property (assign) BOOL isFiltredChargingStation;
+@property (assign) BOOL isUseRange;
+
 @property (assign) MKCoordinateRegion m_lastregion;
 
 @property (strong, nonatomic) OCMSyncHelper *loader;
