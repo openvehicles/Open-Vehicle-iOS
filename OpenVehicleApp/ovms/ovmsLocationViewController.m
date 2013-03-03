@@ -20,6 +20,11 @@
 @synthesize m_lastregion;
 
 #pragma mark - View lifecycle
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    self.isUseRange = YES;
+}
+
 - (void)viewDidUnload {
     [self setMyMapView:nil];
     [super viewDidUnload];
@@ -27,6 +32,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    NSLog(@"sel_connection_type_ids: %@", [ovmsAppDelegate myRef].sel_connection_type_ids);
+    
     self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
 
     self.m_car_location = nil;
@@ -73,24 +80,32 @@
 
 #pragma mark - PopoverViewDelegate Methods
 - (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
-    NSLog(@"%s item:%d", __PRETTY_FUNCTION__, index);
     switch (index) {
         case 0: {
             self.isAutotrack = !self.isAutotrack;
             if (self.isAutotrack && m_car_location) {
                 [myMapView setCenterCoordinate:m_car_location.coordinate animated:YES];
+                if (self.m_car_location) [self loadData:[ovmsAppDelegate myRef].car_location];
             }
             break;
         }
         case 1: {
-            self.isFiltredChargingStation = !self.isFiltredChargingStation;
-            [self performSelector:@selector(isUnderConstruction) withObject:nil afterDelay:0.7f];
-            
+            if (![ovmsAppDelegate myRef].sel_connection_type_ids.length) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                                                                message:NSLocalizedString(@"The selected car has no setup of charger type. Please go to settings car and setup the charger types.", nil)
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            } else {
+                self.isFiltredChargingStation = !self.isFiltredChargingStation;
+                if (self.m_car_location) [self loadData:[ovmsAppDelegate myRef].car_location];
+            }
             break;
         }
         case 2: {
             self.isUseRange = !self.isUseRange;
-            [self performSelector:@selector(isUnderConstruction) withObject:nil afterDelay:0.7f];
+            if (self.m_car_location) [self loadData:[ovmsAppDelegate myRef].car_location];
             break;
         }
     }
@@ -99,23 +114,18 @@
     [popoverView performSelector:@selector(dismiss) withObject:nil afterDelay:0.5f];
 }
 
-- (void)isUnderConstruction {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning"
-                                                    message:@"Is under construction"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"Ok"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
-
 
 #pragma mark - Load Open Charge Map Data
 - (void)loadData:(CLLocationCoordinate2D)location {
     if (!self.loader) {
         self.loader = [[OCMSyncHelper alloc] initWithDelegate:self];
     }
-    double estimatedrange = (double)[ovmsAppDelegate myRef].car_estimatedrange;
-    if (estimatedrange > 0.1) {
+    double estimatedrange = self.isUseRange ? (double)[ovmsAppDelegate myRef].car_estimatedrange : 1000;
+    
+    NSString *connection_type_ids = [ovmsAppDelegate myRef].sel_connection_type_ids;
+    if (self.isFiltredChargingStation && connection_type_ids.length) {
+        [self.loader startSyncWhithCoordinate:location toDistance:estimatedrange connectiontypeid:connection_type_ids];
+    } else {
         [self.loader startSyncWhithCoordinate:location toDistance:estimatedrange];
     }
 }
@@ -150,7 +160,8 @@
     double estimatedrange = [ovmsAppDelegate myRef].car_estimatedrange * 1000.0;
     
     [myMapView removeOverlays:myMapView.overlays];
-    if ((idealrange + estimatedrange) > 0 && self.m_car_location) {
+    
+    if ((idealrange + estimatedrange) > 0 && self.m_car_location && self.isUseRange) {
         [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:[ovmsAppDelegate myRef].car_location radius:idealrange]];
         [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:[ovmsAppDelegate myRef].car_location radius:estimatedrange]];
     }
@@ -158,19 +169,39 @@
 
 
 - (NSArray *)locations {
-    double estimatedrange = (double)[ovmsAppDelegate myRef].car_estimatedrange * 1000;
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(myMapView.centerCoordinate, estimatedrange, estimatedrange);
-    
-    double minLat = region.center.latitude - (region.span.latitudeDelta);
-    double maxLat = region.center.latitude + (region.span.latitudeDelta);
-    double minLong = region.center.longitude - (region.span.longitudeDelta);
-    double maxLong = region.center.longitude + (region.span.longitudeDelta);
-    
     NSFetchRequest *fr = [self fetchRequestWithEntityName:ENChargingLocation];
-    NSPredicate *pr = [NSPredicate predicateWithFormat:@"addres_info.latitude > %f AND addres_info.latitude < %f AND addres_info.longitude > %f AND addres_info.longitude < %f",
-                       minLat, maxLat, minLong, maxLong];
-    [fr setPredicate:pr];
+
+    if (self.isUseRange) {
+        double estimatedrange = (double)[ovmsAppDelegate myRef].car_estimatedrange * 1000;
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(myMapView.centerCoordinate, estimatedrange, estimatedrange);
+        
+        double minLat = region.center.latitude - (region.span.latitudeDelta);
+        double maxLat = region.center.latitude + (region.span.latitudeDelta);
+        double minLong = region.center.longitude - (region.span.longitudeDelta);
+        double maxLong = region.center.longitude + (region.span.longitudeDelta);
+        
+        NSPredicate *pr = [NSPredicate predicateWithFormat:@"addres_info.latitude > %f AND addres_info.latitude < %f AND addres_info.longitude > %f AND addres_info.longitude < %f",
+                           minLat, maxLat, minLong, maxLong];
+        fr.predicate = pr;
+    }
     
+    if (self.isFiltredChargingStation) {
+        NSString *connection_type_ids = [ovmsAppDelegate myRef].sel_connection_type_ids;
+        if (connection_type_ids.length) {
+            NSMutableArray *ids = [NSMutableArray array];
+            for (NSString *sid in [connection_type_ids componentsSeparatedByString:@","]) {
+                [ids addObject:[NSNumber numberWithInt:[sid intValue]]];
+            }
+            
+            NSPredicate *pr = [NSPredicate predicateWithFormat:@"ANY conections.connection_type.id IN %@", ids];
+            
+            if (fr.predicate) {
+                fr.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[fr.predicate, pr]];
+            } else {
+                fr.predicate = pr;
+            }
+        }
+    }
     return [self executeFetchRequest:fr];
 }
 

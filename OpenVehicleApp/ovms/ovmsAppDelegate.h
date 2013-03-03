@@ -136,6 +136,7 @@
 
 @property (strong, nonatomic) NSString* sel_car;
 @property (strong, nonatomic) NSString* sel_label;
+@property (strong, nonatomic) NSString* sel_connection_type_ids;
 @property (strong, nonatomic) NSString* sel_netpass;
 @property (strong, nonatomic) NSString* sel_userpass;
 @property (strong, nonatomic) NSString* sel_imagepath;

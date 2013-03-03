@@ -34,13 +34,27 @@
     return self;
 }
 
+- (void)startSyncWhithCoordinate:(CLLocationCoordinate2D)coordinate toDistance:(double)distance connectiontypeid:(NSString *)connectiontypeid {
+    if (self.isProcess) return;
+    
+    self.isProcess = YES;
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500&connectiontypeid=%@", BASE_URL,
+                         coordinate.latitude, coordinate.longitude, distance, connectiontypeid);
+    NSLog(@"start sync: %@", surl);
+    
+    [self performSelectorInBackground:@selector(start:) withObject:[NSURL URLWithString:surl]];
+}
+
+
 - (void)startSyncWhithCoordinate:(CLLocationCoordinate2D)coordinate toDistance:(double)distance {
     if (self.isProcess) return;
     
     self.isProcess = YES;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM", BASE_URL,
+    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500", BASE_URL,
                          coordinate.latitude, coordinate.longitude, distance);
     NSLog(@"start sync: %@", surl);
     

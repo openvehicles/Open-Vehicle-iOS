@@ -161,6 +161,7 @@
 
   sel_car = [defaults stringForKey:@"selCar"];
   sel_label = [defaults stringForKey:@"selLabel"];
+  self.sel_connection_type_ids = [defaults stringForKey:@"selConnectionTypeIds"];
   sel_netpass = [defaults stringForKey:@"selNetPass"];
   sel_userpass = [defaults stringForKey:@"selUserPass"];
   sel_imagepath = [defaults stringForKey:@"selImagePath"];
@@ -239,6 +240,7 @@
   [defaults setObject:apns_deviceid forKey:@"apnsDeviceid"];
   [defaults setObject:sel_car forKey:@"selCar"];
   [defaults setObject:sel_label forKey:@"selLabel"];
+  [defaults setObject:self.sel_connection_type_ids forKey:@"selConnectionTypeIds"];
   [defaults setObject:sel_netpass forKey:@"selNetPass"];
   [defaults setObject:sel_userpass forKey:@"selUserPass"];
   [defaults setObject:sel_imagepath forKey:@"selImagePath"];
@@ -281,6 +283,7 @@
   [defaults setObject:apns_deviceid forKey:@"apnsDeviceid"];
   [defaults setObject:sel_car forKey:@"selCar"];
   [defaults setObject:sel_label forKey:@"selLabel"];
+  [defaults setObject:self.sel_connection_type_ids forKey:@"selConnectionTypeIds"];
   [defaults setObject:sel_netpass forKey:@"selNetPass"];
   [defaults setObject:sel_userpass forKey:@"selUserPass"];
   [defaults setObject:sel_imagepath forKey:@"selImagePath"];
@@ -326,8 +329,7 @@
   NSManagedObjectContext *context = [self managedObjectContext];
   NSFetchRequest *request = [[NSFetchRequest alloc] init];
   [request setEntity: [NSEntityDescription entityForName:@"Cars" inManagedObjectContext: context]];
-  NSPredicate *predicate =
-  [NSPredicate predicateWithFormat:@"vehicleid == %@", car];
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"vehicleid == %@", car];
   [request setPredicate:predicate];
   NSError *error = nil;
   NSArray *array = [context executeFetchRequest:request error:&error];
@@ -338,6 +340,7 @@
       Cars* car = [array objectAtIndex:0];
       sel_car = car.vehicleid;
       sel_label = car.label;
+      self.sel_connection_type_ids = car.connection_type_ids;
       sel_userpass = car.userpass;
       sel_netpass = car.netpass;
       sel_imagepath = car.imagepath;
