@@ -1109,6 +1109,7 @@
 		6358BC5916DB9BB2008310DA /* REVClusterMap */ = {
 			isa = PBXGroup;
 			children = (
+				6358BC6216DB9BB2008310DA /* REVClusterMap.h */,
 				6358BC5A16DB9BB2008310DA /* REVAnnotationsCollection.h */,
 				6358BC5B16DB9BB2008310DA /* REVAnnotationsCollection.m */,
 				6358BC5C16DB9BB2008310DA /* REVClusterAnnotationView.h */,
@@ -1117,7 +1118,6 @@
 				6358BC5F16DB9BB2008310DA /* REVClusterBlock.m */,
 				6358BC6016DB9BB2008310DA /* REVClusterManager.h */,
 				6358BC6116DB9BB2008310DA /* REVClusterManager.m */,
-				6358BC6216DB9BB2008310DA /* REVClusterMap.h */,
 				6358BC6316DB9BB2008310DA /* REVClusterMapView.h */,
 				6358BC6416DB9BB2008310DA /* REVClusterMapView.m */,
 				6358BC6516DB9BB2008310DA /* REVClusterPin.h */,

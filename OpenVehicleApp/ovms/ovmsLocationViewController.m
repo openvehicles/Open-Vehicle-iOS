@@ -205,6 +205,15 @@
     return [self executeFetchRequest:fr];
 }
 
+- (void)animationFinished:(NSString *)animationID finished:(BOOL)finished context:(void *)context {
+    if (![animationID isEqualToString:@"ovmsVehicleAnnotationAnimation"]) return;
+    self.isProcessAnimations = NO;
+    
+    CLLocationCoordinate2D location = [ovmsAppDelegate myRef].car_location;
+    [self loadData:location];
+    NSLog(@"animationFinished");
+}
+
 -(void)update {
     // The car has reported updated information, and we may need to reflect that
     CLLocationCoordinate2D location = [ovmsAppDelegate myRef].car_location;
@@ -212,16 +221,18 @@
     MKCoordinateRegion region = myMapView.region;
     if ( (region.center.latitude != location.latitude)&&
       (region.center.longitude != location.longitude) ) {
-        
-        [self loadData:location];
-        
+
         if (self.m_car_location) {
+            if (self.isProcessAnimations) return;
+            
+            self.isProcessAnimations = YES;
             NSLog(@"beginAnimations");
             
             [UIView beginAnimations:@"ovmsVehicleAnnotationAnimation" context:nil];
             [UIView setAnimationBeginsFromCurrentState:YES];
             [UIView setAnimationDuration:2.0];
             [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+            
             [self.m_car_location setDirection:[ovmsAppDelegate myRef].car_direction % 360];
             [self.m_car_location setSpeed:[ovmsAppDelegate myRef].car_speed_s];
             [self.m_car_location setCoordinate: location];
@@ -230,11 +241,10 @@
                 region.center = location;
                 [myMapView setRegion:region animated:NO];
             }
-            
+            [UIView setAnimationDelegate:self];
+            [UIView setAnimationDidStopSelector:@selector(animationFinished:finished:context:)];
             [UIView commitAnimations];
         } else {
-            NSLog(@"ovmsVehicleAnnotation");
-
             // Remove all existing annotations
             NSMutableArray *annotations = [NSMutableArray array];
             for (id annotation in myMapView.annotations) {
@@ -250,18 +260,20 @@
             [pa setImagefile:[ovmsAppDelegate myRef].sel_imagepath];
             [pa setDirection:([ovmsAppDelegate myRef].car_direction) % 360];
             [pa setSpeed:[ovmsAppDelegate myRef].car_speed_s];
-            [myMapView addAnnotation:pa];
+//            [myMapView addAnnotation:pa];
             self.m_car_location = pa;
 
             // Setup the map to surround the vehicle
             MKCoordinateSpan span;
-            span.latitudeDelta = 0.01;
-            span.longitudeDelta = 0.01;
+            span.latitudeDelta = 0.02;
+            span.longitudeDelta = 0.02;
             region.span = span;
             region.center = location;
             
             [myMapView setRegion:region animated:YES];
-            [myMapView regionThatFits:region]; 
+            [myMapView regionThatFits:region];
+            
+            [self loadData:location];
         }
     }
 }
@@ -352,8 +364,8 @@
         annView = [mapView dequeueReusableAnnotationViewWithIdentifier:IDENTIFIER_PIN];
         if (!annView) {
             annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:IDENTIFIER_PIN];
+            annView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         }
-        
         annView.image = [UIImage imageNamed:[NSString stringWithFormat:@"level%d.png", pin.level]];
         annView.canShowCallout = YES;
         annView.centerOffset = CGPointMake(0.0, -25.0);
@@ -366,11 +378,9 @@
         CLLocationCoordinate2D centerCoordinate = [(REVClusterPin *)view.annotation coordinate];
         MKCoordinateSpan newSpan = MKCoordinateSpanMake(mapView.region.span.latitudeDelta / 2.0, mapView.region.span.longitudeDelta / 2.0);
         [mapView setRegion:MKCoordinateRegionMake(centerCoordinate, newSpan) animated:YES];
-        
         return;
     }
 }
-
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
     m_lastregion = mapView.region;
@@ -381,15 +391,16 @@
 
     if (((m_lastregion.span.latitudeDelta / newRegion.span.latitudeDelta) > 1.5)||
         ((m_lastregion.span.latitudeDelta / newRegion.span.latitudeDelta) < 0.75)) {
+        NSLog(@"regionDidChangeAnimated");
         
         // Kludgy redraw of all annotations, by removing then replacing the annotations...
-        for (int k=0; k < [myMapView.annotations count]; k++) {
-            ovmsVehicleAnnotation *pa = [myMapView.annotations objectAtIndex:k];
-            if ([pa isKindOfClass:[ovmsVehicleAnnotation class]]) {
-                [myMapView removeAnnotation:[myMapView.annotations objectAtIndex:k]];
-            }
+        NSMutableArray *rmAnnotations = [NSMutableArray array];
+        for (id annotation in myMapView.annotations) {
+            if (![annotation isKindOfClass:[ovmsVehicleAnnotation class]]) continue;
+            [rmAnnotations addObject:annotation];
         }
-
+        [myMapView removeAnnotations:rmAnnotations];
+        
         if (m_car_location != nil) {
             [myMapView addAnnotation:m_car_location];
             [m_car_location redrawView];
@@ -404,12 +415,12 @@
     }
 }
 
-- (void) mapView:(MKMapView *)aMapView didAddAnnotationViews:(NSArray *)views {
+- (void)mapView:(MKMapView *)aMapView didAddAnnotationViews:(NSArray *)views {
     for (MKAnnotationView *view in views) {
-        if ([[view annotation] isKindOfClass:[ovmsVehicleAnnotation class]]) {
-            [[view superview] bringSubviewToFront:view];
+        if ([view.annotation isKindOfClass:[ovmsVehicleAnnotation class]]) {
+            [view.superview bringSubviewToFront:view];
         } else {
-            [[view superview] sendSubviewToBack:view];
+            [view.superview sendSubviewToBack:view];
         }
     }
 }
@@ -425,6 +436,13 @@
     }
     
     return circleView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    CLLocationCoordinate2D from = [ovmsAppDelegate myRef].car_location;
+    CLLocationCoordinate2D to = view.annotation.coordinate;
+    
+    [ovmsAppDelegate routeFrom:from To:to];
 }
 
 @end

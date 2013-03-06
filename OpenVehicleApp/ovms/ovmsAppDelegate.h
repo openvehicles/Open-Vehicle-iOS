@@ -223,6 +223,9 @@
 @property (strong, nonatomic) NSString* car_tpms_rl_temp_s;
 
 + (ovmsAppDelegate *) myRef;
++ (BOOL)doesSystemVersionMeetRequirement:(NSString *)minRequirement;
++ (void)routeFrom:(CLLocationCoordinate2D)from To:(CLLocationCoordinate2D)to;
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 - (void)didStartNetworking;

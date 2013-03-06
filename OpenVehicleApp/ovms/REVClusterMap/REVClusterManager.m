@@ -10,11 +10,9 @@
 
 #import "REVClusterManager.h"
 
-
-#define BASE_RADIUS .5 // = 1 mile
-#define MINIMUM_LATITUDE_DELTA 0.20
+//#define BASE_RADIUS .5 // = 1 mile
+//#define MINIMUM_LATITUDE_DELTA 0.20
 #define BLOCKS 4
-
 #define MINIMUM_CLUSTER_LEVEL 100000
 
 @implementation REVClusterManager
@@ -26,18 +24,18 @@
     
     double tileX = mapView.visibleMapRect.origin.x;
     double tileY = mapView.visibleMapRect.origin.y;
-    float tileWidth = mapView.visibleMapRect.size.width/BLOCKS;
-    float tileHeight = mapView.visibleMapRect.size.height/BLOCKS;
+    float tileWidth = mapView.visibleMapRect.size.width/blocks;
+    float tileHeight = mapView.visibleMapRect.size.height/blocks;
     
     MKMapRect mapRect = MKMapRectWorld;
     NSUInteger maxWidthBlocks = round(mapRect.size.width / tileWidth);
     
-    float zoomLevel = maxWidthBlocks / BLOCKS;
+    float zoomLevel = maxWidthBlocks / blocks;
     
     float tileStartX = floorf(tileX/tileWidth)*tileWidth;
     float tileStartY = floorf(tileY/tileHeight)*tileHeight;
 
-    MKMapRect visibleMapRect = MKMapRectMake(tileStartX, tileStartY, tileWidth*(BLOCKS+1), tileHeight*(BLOCKS+1));
+    MKMapRect visibleMapRect = MKMapRectMake(tileStartX, tileStartY, tileWidth*(blocks+1), tileHeight*(blocks+1));
     
     for (id<MKAnnotation> point in pins)
     {
@@ -58,14 +56,14 @@
     
     NSMutableArray *clusteredBlocks = [NSMutableArray array];
     int i = 0;
-    int length = (BLOCKS+1)*(BLOCKS+1);
+    int length = (blocks+1)*(blocks+1);
     for ( ; i < length ; i ++ )
     {
         REVClusterBlock *block = [[REVClusterBlock alloc] init];
         [clusteredBlocks addObject:block];
         #if !__has_feature(objc_arc)
         [block release];  
-#endif
+        #endif
     }
     
     for (REVClusterPin *pin in visibleAnnotations)
@@ -77,7 +75,7 @@
         
         int localTileNumberX = floor( localPointX / tileWidth );
         int localTileNumberY = floor( localPointY / tileHeight );
-        int localTileNumber = localTileNumberX + (localTileNumberY * (BLOCKS+1));
+        int localTileNumber = localTileNumberX + (localTileNumberY * (blocks+1));
         
         [(REVClusterBlock *)[clusteredBlocks objectAtIndex:localTileNumber] addAnnotation:pin];
     }

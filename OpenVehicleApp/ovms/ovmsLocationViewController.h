@@ -15,8 +15,9 @@
 #import "EntityName.h"
 #import "ChargingAnnotation.h"
 #import "NSObject+CDHelper.h"
-#import "REVClusterAnnotationView.h"
 
+#import "REVClusterMap.h"
+#import "REVClusterAnnotationView.h"
 #import "PopoverView.h"
 
 @interface ovmsLocationViewController : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, OCMSyncDelegate, PopoverViewDelegate>
@@ -27,6 +28,7 @@
 @property (assign) BOOL isAutotrack;
 @property (assign) BOOL isFiltredChargingStation;
 @property (assign) BOOL isUseRange;
+@property (assign) BOOL isProcessAnimations;
 
 @property (assign) MKCoordinateRegion m_lastregion;
 

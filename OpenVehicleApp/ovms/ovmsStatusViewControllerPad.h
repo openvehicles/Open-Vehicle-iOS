@@ -77,6 +77,7 @@
 @property (assign) BOOL isAutotrack;
 @property (assign) BOOL isFiltredChargingStation;
 @property (assign) BOOL isUseRange;
+@property (assign) BOOL isProcessAnimations;
 @property (assign) MKCoordinateRegion m_lastregion;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *m_control_button;

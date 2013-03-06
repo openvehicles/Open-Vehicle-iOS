@@ -16,17 +16,23 @@
 #define BASE_URL @"http://www.openchargemap.org/api/?output=json"
 #define SWF(format, args...) [NSString stringWithFormat:format, args]
 
+//#define UPDATE_SEC 120.0
+#define UPDATE_METER 1000.0
+
 @interface OCMSyncHelper()
+
 @property (nonatomic, strong) id<OCMSyncDelegate> delegate;
 @property (nonatomic, assign) BOOL isProcess;
 @property (nonatomic, assign) BOOL isSyncAction;
+@property (nonatomic, assign) CLLocationCoordinate2D lastCoordinate;
+//@property (nonatomic, strong) NSDate *lastTime;
 
 @end
 
 @implementation OCMSyncHelper
 
 - (id)initWithDelegate:(id)delegate {
-    if ([super init]) {
+    if ([self init]) {
         self.delegate = delegate;
         self.isProcess = NO;
         self.isSyncAction = NO;
@@ -35,7 +41,7 @@
 }
 
 - (void)startSyncWhithCoordinate:(CLLocationCoordinate2D)coordinate toDistance:(double)distance connectiontypeid:(NSString *)connectiontypeid {
-    if (self.isProcess) return;
+    if (self.isProcess || ![self allowNextUpdate:coordinate]) return;
     
     self.isProcess = YES;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -49,7 +55,7 @@
 
 
 - (void)startSyncWhithCoordinate:(CLLocationCoordinate2D)coordinate toDistance:(double)distance {
-    if (self.isProcess) return;
+    if (self.isProcess || ![self allowNextUpdate:coordinate]) return;
     
     self.isProcess = YES;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -59,6 +65,26 @@
     NSLog(@"start sync: %@", surl);
     
     [self performSelectorInBackground:@selector(start:) withObject:[NSURL URLWithString:surl]];
+}
+
+- (BOOL)allowNextUpdate:(CLLocationCoordinate2D)coordinate {
+//    NSDate *now = [NSDate date];
+//    NSTimeInterval interval = [now timeIntervalSinceDate:self.lastTime];
+//    NSLog(@"timeIntervalSinceNow: %f", interval);
+    
+    CLLocation *from = [[CLLocation alloc] initWithLatitude:self.lastCoordinate.longitude longitude:self.lastCoordinate.longitude];
+    CLLocation *to = [[CLLocation alloc] initWithLatitude:coordinate.longitude longitude:coordinate.longitude];
+    CLLocationDistance distance = [from distanceFromLocation:to];
+    NSLog(@"distanceFromLocation: %f", distance);
+    
+//    if ((interval < UPDATE_SEC) && (distance < UPDATE_METER)) {
+//        return NO;
+//    }
+    if (distance < UPDATE_METER) return NO;
+    
+    self.lastCoordinate = coordinate;
+//    self.lastTime = now;
+    return YES;
 }
 
 - (void)startSyncAction {

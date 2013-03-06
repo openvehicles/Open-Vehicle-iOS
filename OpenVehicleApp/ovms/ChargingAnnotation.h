@@ -12,7 +12,7 @@
 @interface ChargingAnnotation : REVClusterPin
 
 @property (nonatomic, assign) NSInteger level;
-@property (nonatomic, copy) NSString *location_uuid;
+@property (nonatomic, copy) NSString *uuid;
 
 + (id)pinWithChargingLocation:(ChargingLocation*)location;
 - (id)initWithChargingLocation:(ChargingLocation*)location;

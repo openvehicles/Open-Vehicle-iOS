@@ -1467,4 +1467,31 @@
   return __persistentStoreCoordinator;
 }
 
++ (BOOL)doesSystemVersionMeetRequirement:(NSString *)minRequirement {
+    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+    
+    if ([currSysVer compare:minRequirement options:NSNumericSearch] != NSOrderedAscending) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
++ (void)routeFrom:(CLLocationCoordinate2D)from To:(CLLocationCoordinate2D)to {
+    NSMutableString *mapURL;
+    if ([ovmsAppDelegate doesSystemVersionMeetRequirement:@"6.0"]) {
+        mapURL = [NSMutableString stringWithString:@"http://maps.apple.com/"];
+    } else {
+        mapURL = [NSMutableString stringWithString:@"http://maps.google.com/maps"];
+    }
+    
+    [mapURL appendFormat:@"?saddr=%1.6f,%1.6f", from.latitude, from.longitude];
+    [mapURL appendFormat:@"&daddr=%1.6f,%1.6f", to.latitude, to.longitude];
+    
+    NSLog(@"route: %@", mapURL);
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[mapURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+}
+
+
 @end
