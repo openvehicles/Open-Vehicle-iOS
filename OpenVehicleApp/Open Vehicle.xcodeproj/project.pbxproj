@@ -26,7 +26,7 @@
 		4D5480511555781A00DE575A /* car_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5480501555781A00DE575A /* car_default.png */; };
 		4D5480531555783A00DE575A /* ol_car_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5480521555783A00DE575A /* ol_car_default.png */; };
 		4D5480551555785A00DE575A /* map_car_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5480541555785A00DE575A /* map_car_default.png */; };
-		4D5849DD15417E5D000AA256 /* ovmsVehicleAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5849DC15417E5D000AA256 /* ovmsVehicleAnnotation.m */; };
+		4D5849DD15417E5D000AA256 /* VehicleAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5849DC15417E5D000AA256 /* VehicleAnnotation.m */; };
 		4D5AE36914733757002F5F52 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5AE36814733757002F5F52 /* UIKit.framework */; };
 		4D5AE36B14733757002F5F52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5AE36A14733757002F5F52 /* Foundation.framework */; };
 		4D5AE36D14733757002F5F52 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5AE36C14733757002F5F52 /* CoreGraphics.framework */; };
@@ -263,6 +263,14 @@
 		4DFAD8071475448000416D38 /* crypto_rc4.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD8061475448000416D38 /* crypto_rc4.c */; };
 		4DFAD8091475448A00416D38 /* crypto_hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD8081475448A00416D38 /* crypto_hmac.c */; };
 		4DFAD80B1475449600416D38 /* crypto_base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD80A1475449600416D38 /* crypto_base64.c */; };
+		6347B4BB16E8C44500140ABA /* level0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4B516E8C44400140ABA /* level0.png */; };
+		6347B4BC16E8C44500140ABA /* level0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4B616E8C44400140ABA /* level0@2x.png */; };
+		6347B4BD16E8C44500140ABA /* level1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4B716E8C44500140ABA /* level1.png */; };
+		6347B4BE16E8C44500140ABA /* level1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4B816E8C44500140ABA /* level1@2x.png */; };
+		6347B4BF16E8C44500140ABA /* level3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4B916E8C44500140ABA /* level3.png */; };
+		6347B4C016E8C44500140ABA /* level3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4BA16E8C44500140ABA /* level3@2x.png */; };
+		6347B4C316E8C96200140ABA /* OCMInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6347B4C216E8C96200140ABA /* OCMInformationController.m */; };
+		6347B4C616E8D2A500140ABA /* ChargingLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6347B4C516E8D2A500140ABA /* ChargingLocation.m */; };
 		6358BC6716DB9BB2008310DA /* REVAnnotationsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC5B16DB9BB2008310DA /* REVAnnotationsCollection.m */; };
 		6358BC6816DB9BB2008310DA /* REVClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC5D16DB9BB2008310DA /* REVClusterAnnotationView.m */; };
 		6358BC6916DB9BB2008310DA /* REVClusterBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC5F16DB9BB2008310DA /* REVClusterBlock.m */; };
@@ -271,12 +279,8 @@
 		6358BC6C16DB9BB2008310DA /* REVClusterPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC6616DB9BB2008310DA /* REVClusterPin.m */; };
 		6358BC7516DB9C19008310DA /* NSObject+CDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC7116DB9C19008310DA /* NSObject+CDHelper.m */; };
 		6358BC7616DB9C19008310DA /* OCMSyncHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC7316DB9C19008310DA /* OCMSyncHelper.m */; };
-		6358BC8416DB9C45008310DA /* cluster0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7816DB9C45008310DA /* cluster0.png */; };
-		6358BC8516DB9C45008310DA /* cluster0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7916DB9C45008310DA /* cluster0@2x.png */; };
-		6358BC8616DB9C45008310DA /* cluster1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7A16DB9C45008310DA /* cluster1.png */; };
-		6358BC8716DB9C45008310DA /* cluster1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7B16DB9C45008310DA /* cluster1@2x.png */; };
-		6358BC8816DB9C45008310DA /* cluster2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7C16DB9C45008310DA /* cluster2.png */; };
-		6358BC8916DB9C45008310DA /* cluster2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7D16DB9C45008310DA /* cluster2@2x.png */; };
+		6358BC8416DB9C45008310DA /* cluster.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7816DB9C45008310DA /* cluster.png */; };
+		6358BC8516DB9C45008310DA /* cluster@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358BC7916DB9C45008310DA /* cluster@2x.png */; };
 		6358BC9216DB9C77008310DA /* EntityName.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC9116DB9C77008310DA /* EntityName.m */; };
 		6358BC9516DB9D26008310DA /* ChargingAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC9416DB9D25008310DA /* ChargingAnnotation.m */; };
 		63A04D2616E25E6E00471816 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A04D2416E25E6E00471816 /* PopoverView.m */; };
@@ -286,14 +290,7 @@
 		63A04D2E16E27D7B00471816 /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D2C16E27D7B00471816 /* success@2x.png */; };
 		63A04D3116E27D8C00471816 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D2F16E27D8C00471816 /* error.png */; };
 		63A04D3216E27D8C00471816 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D3016E27D8C00471816 /* error@2x.png */; };
-		63D6B77916E0BC10006D6688 /* level0.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D6B77316E0BC10006D6688 /* level0.png */; };
-		63D6B77A16E0BC10006D6688 /* level0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D6B77416E0BC10006D6688 /* level0@2x.png */; };
-		63D6B77B16E0BC10006D6688 /* level2.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D6B77516E0BC10006D6688 /* level2.png */; };
-		63D6B77C16E0BC10006D6688 /* level2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D6B77616E0BC10006D6688 /* level2@2x.png */; };
-		63D6B77D16E0BC10006D6688 /* level3.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D6B77716E0BC10006D6688 /* level3.png */; };
-		63D6B77E16E0BC10006D6688 /* level3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D6B77816E0BC10006D6688 /* level3@2x.png */; };
 		63F9E35B16E0E58500E3B313 /* Cars.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F9E35A16E0E58500E3B313 /* Cars.m */; };
-		63F9E35E16E0E58500E3B313 /* ChargingLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F9E35D16E0E58500E3B313 /* ChargingLocation.m */; };
 		63F9E36116E0E58500E3B313 /* OperatorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F9E36016E0E58500E3B313 /* OperatorInfo.m */; };
 		63F9E36416E0E58500E3B313 /* AddressInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F9E36316E0E58500E3B313 /* AddressInfo.m */; };
 		63F9E36A16E0E58500E3B313 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F9E36916E0E58500E3B313 /* Connection.m */; };
@@ -327,8 +324,8 @@
 		4D5480501555781A00DE575A /* car_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_default.png; sourceTree = "<group>"; };
 		4D5480521555783A00DE575A /* ol_car_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_default.png; sourceTree = "<group>"; };
 		4D5480541555785A00DE575A /* map_car_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_default.png; sourceTree = "<group>"; };
-		4D5849DB15417E5D000AA256 /* ovmsVehicleAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ovmsVehicleAnnotation.h; sourceTree = "<group>"; };
-		4D5849DC15417E5D000AA256 /* ovmsVehicleAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ovmsVehicleAnnotation.m; sourceTree = "<group>"; };
+		4D5849DB15417E5D000AA256 /* VehicleAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleAnnotation.h; sourceTree = "<group>"; };
+		4D5849DC15417E5D000AA256 /* VehicleAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleAnnotation.m; sourceTree = "<group>"; };
 		4D5AE36414733757002F5F52 /* Open Vehicle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Vehicle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5AE36814733757002F5F52 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4D5AE36A14733757002F5F52 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -591,6 +588,17 @@
 		4DFAD8081475448A00416D38 /* crypto_hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypto_hmac.c; sourceTree = "<group>"; };
 		4DFAD80A1475449600416D38 /* crypto_base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypto_base64.c; sourceTree = "<group>"; };
 		4DFAD80C1475455C00416D38 /* crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto.h; sourceTree = "<group>"; };
+		6347B4B116E8C0F900140ABA /* Model4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model4.xcdatamodel; sourceTree = "<group>"; };
+		6347B4B516E8C44400140ABA /* level0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level0.png; sourceTree = "<group>"; };
+		6347B4B616E8C44400140ABA /* level0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level0@2x.png"; sourceTree = "<group>"; };
+		6347B4B716E8C44500140ABA /* level1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level1.png; sourceTree = "<group>"; };
+		6347B4B816E8C44500140ABA /* level1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level1@2x.png"; sourceTree = "<group>"; };
+		6347B4B916E8C44500140ABA /* level3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level3.png; sourceTree = "<group>"; };
+		6347B4BA16E8C44500140ABA /* level3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level3@2x.png"; sourceTree = "<group>"; };
+		6347B4C116E8C96100140ABA /* OCMInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMInformationController.h; sourceTree = "<group>"; };
+		6347B4C216E8C96200140ABA /* OCMInformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMInformationController.m; sourceTree = "<group>"; };
+		6347B4C416E8D2A500140ABA /* ChargingLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChargingLocation.h; path = Entitys/ChargingLocation.h; sourceTree = "<group>"; };
+		6347B4C516E8D2A500140ABA /* ChargingLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChargingLocation.m; path = Entitys/ChargingLocation.m; sourceTree = "<group>"; };
 		6358BC4C16DB99CC008310DA /* Model2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model2.xcdatamodel; sourceTree = "<group>"; };
 		6358BC5A16DB9BB2008310DA /* REVAnnotationsCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REVAnnotationsCollection.h; sourceTree = "<group>"; };
 		6358BC5B16DB9BB2008310DA /* REVAnnotationsCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REVAnnotationsCollection.m; sourceTree = "<group>"; };
@@ -609,12 +617,8 @@
 		6358BC7116DB9C19008310DA /* NSObject+CDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CDHelper.m"; sourceTree = "<group>"; };
 		6358BC7216DB9C19008310DA /* OCMSyncHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMSyncHelper.h; sourceTree = "<group>"; };
 		6358BC7316DB9C19008310DA /* OCMSyncHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMSyncHelper.m; sourceTree = "<group>"; };
-		6358BC7816DB9C45008310DA /* cluster0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cluster0.png; sourceTree = "<group>"; };
-		6358BC7916DB9C45008310DA /* cluster0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cluster0@2x.png"; sourceTree = "<group>"; };
-		6358BC7A16DB9C45008310DA /* cluster1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cluster1.png; sourceTree = "<group>"; };
-		6358BC7B16DB9C45008310DA /* cluster1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cluster1@2x.png"; sourceTree = "<group>"; };
-		6358BC7C16DB9C45008310DA /* cluster2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cluster2.png; sourceTree = "<group>"; };
-		6358BC7D16DB9C45008310DA /* cluster2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cluster2@2x.png"; sourceTree = "<group>"; };
+		6358BC7816DB9C45008310DA /* cluster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cluster.png; sourceTree = "<group>"; };
+		6358BC7916DB9C45008310DA /* cluster@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cluster@2x.png"; sourceTree = "<group>"; };
 		6358BC9016DB9C77008310DA /* EntityName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityName.h; sourceTree = "<group>"; };
 		6358BC9116DB9C77008310DA /* EntityName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityName.m; sourceTree = "<group>"; };
 		6358BC9316DB9D25008310DA /* ChargingAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargingAnnotation.h; sourceTree = "<group>"; };
@@ -628,17 +632,9 @@
 		63A04D2C16E27D7B00471816 /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@2x.png"; sourceTree = "<group>"; };
 		63A04D2F16E27D8C00471816 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		63A04D3016E27D8C00471816 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
-		63D6B77316E0BC10006D6688 /* level0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level0.png; sourceTree = "<group>"; };
-		63D6B77416E0BC10006D6688 /* level0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level0@2x.png"; sourceTree = "<group>"; };
-		63D6B77516E0BC10006D6688 /* level2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level2.png; sourceTree = "<group>"; };
-		63D6B77616E0BC10006D6688 /* level2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level2@2x.png"; sourceTree = "<group>"; };
-		63D6B77716E0BC10006D6688 /* level3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level3.png; sourceTree = "<group>"; };
-		63D6B77816E0BC10006D6688 /* level3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level3@2x.png"; sourceTree = "<group>"; };
 		63F9E35516E0DEFA00E3B313 /* Model3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model3.xcdatamodel; sourceTree = "<group>"; };
 		63F9E35916E0E58500E3B313 /* Cars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cars.h; path = Entitys/Cars.h; sourceTree = "<group>"; };
 		63F9E35A16E0E58500E3B313 /* Cars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cars.m; path = Entitys/Cars.m; sourceTree = "<group>"; };
-		63F9E35C16E0E58500E3B313 /* ChargingLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChargingLocation.h; path = Entitys/ChargingLocation.h; sourceTree = "<group>"; };
-		63F9E35D16E0E58500E3B313 /* ChargingLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChargingLocation.m; path = Entitys/ChargingLocation.m; sourceTree = "<group>"; };
 		63F9E35F16E0E58500E3B313 /* OperatorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OperatorInfo.h; path = Entitys/OperatorInfo.h; sourceTree = "<group>"; };
 		63F9E36016E0E58500E3B313 /* OperatorInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OperatorInfo.m; path = Entitys/OperatorInfo.m; sourceTree = "<group>"; };
 		63F9E36216E0E58500E3B313 /* AddressInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressInfo.h; path = Entitys/AddressInfo.h; sourceTree = "<group>"; };
@@ -934,6 +930,8 @@
 			isa = PBXGroup;
 			children = (
 				4DC8B38A147E7BF2007FDFB2 /* Model.xcdatamodeld */,
+				6347B4C416E8D2A500140ABA /* ChargingLocation.h */,
+				6347B4C516E8D2A500140ABA /* ChargingLocation.m */,
 				63F9E37416E0EA9D00E3B313 /* ConnectionTypes.h */,
 				63F9E37516E0EA9D00E3B313 /* ConnectionTypes.m */,
 				63F9E37116E0EA9D00E3B313 /* ChargerTypes.h */,
@@ -944,8 +942,6 @@
 				63F9E36316E0E58500E3B313 /* AddressInfo.m */,
 				63F9E35F16E0E58500E3B313 /* OperatorInfo.h */,
 				63F9E36016E0E58500E3B313 /* OperatorInfo.m */,
-				63F9E35C16E0E58500E3B313 /* ChargingLocation.h */,
-				63F9E35D16E0E58500E3B313 /* ChargingLocation.m */,
 				63F9E35916E0E58500E3B313 /* Cars.h */,
 				63F9E35A16E0E58500E3B313 /* Cars.m */,
 				6358BC9016DB9C77008310DA /* EntityName.h */,
@@ -1069,14 +1065,14 @@
 		4DFAD7FF1475435300416D38 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				4D5849DB15417E5D000AA256 /* VehicleAnnotation.h */,
+				4D5849DC15417E5D000AA256 /* VehicleAnnotation.m */,
 				4D78722F1516136900BB7CA2 /* ovmsStatusViewController.h */,
 				4D7872301516136900BB7CA2 /* ovmsStatusViewController.m */,
 				4DAB2C7014920DB600E1098C /* ovmsBodyViewController.h */,
 				4DAB2C731492109C00E1098C /* ovmsBodyViewController.m */,
 				4D91CEF51473EBFA00CBA435 /* ovmsLocationViewController.h */,
 				4D91CEF61473EBFA00CBA435 /* ovmsLocationViewController.m */,
-				4D5849DB15417E5D000AA256 /* ovmsVehicleAnnotation.h */,
-				4D5849DC15417E5D000AA256 /* ovmsVehicleAnnotation.m */,
 				4D0A96AD14939616000B74FC /* ovmsStatusViewControllerPad.h */,
 				4D0A96AE14939616000B74FC /* ovmsStatusViewControllerPad.m */,
 				4D731E55153C3F0C0010921B /* ovmsGroupsTableViewController.h */,
@@ -1140,6 +1136,8 @@
 				6358BC7116DB9C19008310DA /* NSObject+CDHelper.m */,
 				6358BC7216DB9C19008310DA /* OCMSyncHelper.h */,
 				6358BC7316DB9C19008310DA /* OCMSyncHelper.m */,
+				6347B4C116E8C96100140ABA /* OCMInformationController.h */,
+				6347B4C216E8C96200140ABA /* OCMInformationController.m */,
 			);
 			name = OCM;
 			sourceTree = "<group>";
@@ -1149,18 +1147,14 @@
 			children = (
 				63A04D2716E2781600471816 /* ic_pin.png */,
 				63A04D2916E2782E00471816 /* ic_pin@2x.png */,
-				63D6B77316E0BC10006D6688 /* level0.png */,
-				63D6B77416E0BC10006D6688 /* level0@2x.png */,
-				63D6B77516E0BC10006D6688 /* level2.png */,
-				63D6B77616E0BC10006D6688 /* level2@2x.png */,
-				63D6B77716E0BC10006D6688 /* level3.png */,
-				63D6B77816E0BC10006D6688 /* level3@2x.png */,
-				6358BC7816DB9C45008310DA /* cluster0.png */,
-				6358BC7916DB9C45008310DA /* cluster0@2x.png */,
-				6358BC7A16DB9C45008310DA /* cluster1.png */,
-				6358BC7B16DB9C45008310DA /* cluster1@2x.png */,
-				6358BC7C16DB9C45008310DA /* cluster2.png */,
-				6358BC7D16DB9C45008310DA /* cluster2@2x.png */,
+				6347B4B516E8C44400140ABA /* level0.png */,
+				6347B4B616E8C44400140ABA /* level0@2x.png */,
+				6347B4B716E8C44500140ABA /* level1.png */,
+				6347B4B816E8C44500140ABA /* level1@2x.png */,
+				6347B4B916E8C44500140ABA /* level3.png */,
+				6347B4BA16E8C44500140ABA /* level3@2x.png */,
+				6358BC7816DB9C45008310DA /* cluster.png */,
+				6358BC7916DB9C45008310DA /* cluster@2x.png */,
 			);
 			name = res;
 			sourceTree = "<group>";
@@ -1447,24 +1441,20 @@
 				4D9697F5165BB00300DF0364 /* map_car_twizy_snowwhiteandflameorange.png in Resources */,
 				4D9697F6165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png in Resources */,
 				4D9697F7165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png in Resources */,
-				6358BC8416DB9C45008310DA /* cluster0.png in Resources */,
-				6358BC8516DB9C45008310DA /* cluster0@2x.png in Resources */,
-				6358BC8616DB9C45008310DA /* cluster1.png in Resources */,
-				6358BC8716DB9C45008310DA /* cluster1@2x.png in Resources */,
-				6358BC8816DB9C45008310DA /* cluster2.png in Resources */,
-				6358BC8916DB9C45008310DA /* cluster2@2x.png in Resources */,
-				63D6B77916E0BC10006D6688 /* level0.png in Resources */,
-				63D6B77A16E0BC10006D6688 /* level0@2x.png in Resources */,
-				63D6B77B16E0BC10006D6688 /* level2.png in Resources */,
-				63D6B77C16E0BC10006D6688 /* level2@2x.png in Resources */,
-				63D6B77D16E0BC10006D6688 /* level3.png in Resources */,
-				63D6B77E16E0BC10006D6688 /* level3@2x.png in Resources */,
+				6358BC8416DB9C45008310DA /* cluster.png in Resources */,
+				6358BC8516DB9C45008310DA /* cluster@2x.png in Resources */,
 				63A04D2816E2781600471816 /* ic_pin.png in Resources */,
 				63A04D2A16E2782E00471816 /* ic_pin@2x.png in Resources */,
 				63A04D2D16E27D7B00471816 /* success.png in Resources */,
 				63A04D2E16E27D7B00471816 /* success@2x.png in Resources */,
 				63A04D3116E27D8C00471816 /* error.png in Resources */,
 				63A04D3216E27D8C00471816 /* error@2x.png in Resources */,
+				6347B4BB16E8C44500140ABA /* level0.png in Resources */,
+				6347B4BC16E8C44500140ABA /* level0@2x.png in Resources */,
+				6347B4BD16E8C44500140ABA /* level1.png in Resources */,
+				6347B4BE16E8C44500140ABA /* level1@2x.png in Resources */,
+				6347B4BF16E8C44500140ABA /* level3.png in Resources */,
+				6347B4C016E8C44500140ABA /* level3@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1500,7 +1490,7 @@
 				4D7872311516136900BB7CA2 /* ovmsStatusViewController.m in Sources */,
 				4D6557AA1516183B00369AAC /* ovmsVehicleInfo.m in Sources */,
 				4D731E57153C3F0C0010921B /* ovmsGroupsTableViewController.m in Sources */,
-				4D5849DD15417E5D000AA256 /* ovmsVehicleAnnotation.m in Sources */,
+				4D5849DD15417E5D000AA256 /* VehicleAnnotation.m in Sources */,
 				4DEF9F80155FE20E00623906 /* ovmsControlUSSDEntry.m in Sources */,
 				6358BC6716DB9BB2008310DA /* REVAnnotationsCollection.m in Sources */,
 				6358BC6816DB9BB2008310DA /* REVClusterAnnotationView.m in Sources */,
@@ -1513,7 +1503,6 @@
 				6358BC9216DB9C77008310DA /* EntityName.m in Sources */,
 				6358BC9516DB9D26008310DA /* ChargingAnnotation.m in Sources */,
 				63F9E35B16E0E58500E3B313 /* Cars.m in Sources */,
-				63F9E35E16E0E58500E3B313 /* ChargingLocation.m in Sources */,
 				63F9E36116E0E58500E3B313 /* OperatorInfo.m in Sources */,
 				63F9E36416E0E58500E3B313 /* AddressInfo.m in Sources */,
 				63F9E36A16E0E58500E3B313 /* Connection.m in Sources */,
@@ -1522,6 +1511,8 @@
 				63F9E37B16E105F200E3B313 /* CRTableViewCell.m in Sources */,
 				63F9E37C16E105F200E3B313 /* ConnectionTypesController.m in Sources */,
 				63A04D2616E25E6E00471816 /* PopoverView.m in Sources */,
+				6347B4C316E8C96200140ABA /* OCMInformationController.m in Sources */,
+				6347B4C616E8D2A500140ABA /* ChargingLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1592,6 +1583,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ALEKSEJ KARAJKOZA";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ovms/Open Vehicle-Prefix.pch";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
@@ -1648,6 +1643,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ALEKSEJ KARAJKOZA";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ovms/Open Vehicle-Prefix.pch";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
@@ -1708,6 +1707,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ALEKSEJ KARAJKOZA";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ovms/Open Vehicle-Prefix.pch";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
@@ -1756,6 +1759,7 @@
 		4DC8B38A147E7BF2007FDFB2 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				6347B4B116E8C0F900140ABA /* Model4.xcdatamodel */,
 				63F9E35516E0DEFA00E3B313 /* Model3.xcdatamodel */,
 				6358BC4C16DB99CC008310DA /* Model2.xcdatamodel */,
 				4DC8B38B147E7BF2007FDFB2 /* Model.xcdatamodel */,

@@ -2,7 +2,7 @@
 //  ChargingLocation.h
 //  Open Vehicle
 //
-//  Created by JLab13 on 3/1/13.
+//  Created by JLab13 on 3/7/13.
 //  Copyright (c) 2013 Open Vehicle Systems. All rights reserved.
 //
 
@@ -19,8 +19,9 @@
 @property (nonatomic, retain) NSNumber * number_of_points;
 @property (nonatomic, retain) NSNumber * status_is_operational;
 @property (nonatomic, retain) NSString * status_title;
-@property (nonatomic, retain) NSString * usage_cost;
+@property (nonatomic, retain) NSString * usage;
 @property (nonatomic, retain) NSString * uuid;
+@property (nonatomic, retain) NSNumber * status_id;
 @property (nonatomic, retain) AddressInfo *addres_info;
 @property (nonatomic, retain) NSSet *conections;
 @property (nonatomic, retain) OperatorInfo *operator_info;

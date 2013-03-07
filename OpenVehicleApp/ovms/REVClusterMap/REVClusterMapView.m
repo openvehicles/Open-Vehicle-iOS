@@ -11,6 +11,7 @@
 
 #import "REVClusterMapView.h"
 #import "REVClusterManager.h"
+#import "VehicleAnnotation.h"
 
 @interface REVClusterMapView (Private)
 - (void) setup;
@@ -49,7 +50,7 @@
     annotationsCopy = nil;
     
     self.minimumClusterLevel = 100000;
-    self.blocks = 6;
+    self.blocks = 5;
     
     super.delegate = self;
     
@@ -190,21 +191,24 @@
     }
 }
 
-- (void) mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
-{
-    
-    if( [self mapViewDidZoom] )
-    {
-        [super removeAnnotations:self.annotations];
+- (void) mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    if ([self mapViewDidZoom]) {
+        NSMutableArray *rmAnnotations = [NSMutableArray array];
+        
+        for (id annotation in self.annotations) {
+            if ([annotation isKindOfClass:[VehicleAnnotation class]]) continue;
+            [rmAnnotations addObject:annotation];
+        }
+        
+        [super removeAnnotations:rmAnnotations];
         self.showsUserLocation = self.showsUserLocation;
     }
     
     NSArray *add = [REVClusterManager clusterAnnotationsForMapView:self forAnnotations:annotationsCopy blocks:self.blocks minClusterLevel:self.minimumClusterLevel];
-    //NSLog(@"count:: %i",[add count]);
+//    NSLog(@"count:: %i",[add count]);
     [super addAnnotations:add];
     
-    if( [delegate respondsToSelector:@selector(mapView:regionDidChangeAnimated:)] )
-    {
+    if ([delegate respondsToSelector:@selector(mapView:regionDidChangeAnimated:)]) {
         [delegate mapView:mapView regionDidChangeAnimated:animated];
     }
 }
@@ -223,12 +227,12 @@
 
 - (void) addAnnotations:(NSArray *)annotations
 {
-    #if !__has_feature(objc_arc)
+#if !__has_feature(objc_arc)
     [annotationsCopy release];
 #endif
     annotationsCopy = [annotations copy];
     
-    NSArray *add = [REVClusterManager clusterAnnotationsForMapView:self forAnnotations:annotations blocks:self.blocks minClusterLevel:self.minimumClusterLevel];
+    NSArray *add = [REVClusterManager clusterAnnotationsForMapView:self forAnnotations:annotationsCopy blocks:self.blocks minClusterLevel:self.minimumClusterLevel];
     
     [super addAnnotations:add];
 }

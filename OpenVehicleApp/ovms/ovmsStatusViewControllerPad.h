@@ -72,7 +72,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_tpmsboxes;
 
 @property (strong, nonatomic) IBOutlet MKMapView *myMapView;
-@property (nonatomic, retain) ovmsVehicleAnnotation *m_car_location;
+@property (nonatomic, retain) VehicleAnnotation *m_car_location;
 @property (strong, nonatomic) NSMutableDictionary* m_groupcar_locations;
 @property (assign) BOOL isAutotrack;
 @property (assign) BOOL isFiltredChargingStation;
@@ -89,7 +89,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *m_homelink_button;
 
 @property (strong, nonatomic) OCMSyncHelper *loader;
-@property (nonatomic, strong, readonly) NSArray *locations;
+@property (strong, nonatomic, readonly) NSArray *locations;
+@property (strong, nonatomic) UIPopoverController *popover;
 
 - (IBAction)ChargeSliderTouch:(id)sender;
 - (IBAction)ChargeSliderValue:(id)sender;

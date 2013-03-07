@@ -25,7 +25,6 @@
 @property (nonatomic, assign) BOOL isProcess;
 @property (nonatomic, assign) BOOL isSyncAction;
 @property (nonatomic, assign) CLLocationCoordinate2D lastCoordinate;
-//@property (nonatomic, strong) NSDate *lastTime;
 
 @end
 
@@ -68,22 +67,13 @@
 }
 
 - (BOOL)allowNextUpdate:(CLLocationCoordinate2D)coordinate {
-//    NSDate *now = [NSDate date];
-//    NSTimeInterval interval = [now timeIntervalSinceDate:self.lastTime];
-//    NSLog(@"timeIntervalSinceNow: %f", interval);
-    
     CLLocation *from = [[CLLocation alloc] initWithLatitude:self.lastCoordinate.longitude longitude:self.lastCoordinate.longitude];
     CLLocation *to = [[CLLocation alloc] initWithLatitude:coordinate.longitude longitude:coordinate.longitude];
     CLLocationDistance distance = [from distanceFromLocation:to];
-    NSLog(@"distanceFromLocation: %f", distance);
     
-//    if ((interval < UPDATE_SEC) && (distance < UPDATE_METER)) {
-//        return NO;
-//    }
     if (distance < UPDATE_METER) return NO;
     
     self.lastCoordinate = coordinate;
-//    self.lastTime = now;
     return YES;
 }
 
@@ -190,19 +180,23 @@
     }
     
     cl.uuid = NULL_TO_NIL(row[@"UUID"]);
-    cl.usage_cost = NULL_TO_NIL(row[@"UsageCost"]);
     cl.data_providers_reference = NULL_TO_NIL(row[@"DataProvidersReference"]);
     cl.data_quality_level = NULL_TO_NIL(row[@"DataQualityLevel"]);
     cl.general_comments = NULL_TO_NIL(row[@"GeneralComments"]);
     cl.number_of_points = NULL_TO_NIL(row[@"NumberOfPoints"]);
+    
+    if (NULL_TO_NIL(row[@"UsageType"])) {
+        cl.usage = NULL_TO_NIL(row[@"UsageType"][@"Title"]);
+    }
+    
     if (NULL_TO_NIL(row[@"StatusType"])) {
+        cl.status_id = NULL_TO_NIL(row[@"StatusType"][@"ID"]);
         cl.status_is_operational = NULL_TO_NIL(row[@"StatusType"][@"IsOperational"]);
         cl.status_title = NULL_TO_NIL(row[@"StatusType"][@"Title"]);
     }
     
     [self parseAddressInfoToChargingLocations:cl asObject:NULL_TO_NIL(row[@"AddressInfo"])];
     [self parseOperatorInfoToChargingLocations:cl asObject:NULL_TO_NIL(row[@"OperatorInfo"])];
-//    [self parseChargerToChargingLocations:cl asArray:NULL_TO_NIL(row[@"Chargers"])];
     [self parseConnectionToChargingLocations:cl asArray:NULL_TO_NIL(row[@"Connections"])];
 }
 
@@ -260,14 +254,15 @@
 
 - (void)parseConnectionToChargingLocations:(ChargingLocation *)cl asArray:(NSArray *)items {
     if (!items) {
-        [cl setValue:nil forKey:@"conections"];
         cl.conections = nil;
         return;
     }
     
-    NSSet *conections = [NSSet setWithSet:cl.conections];
-    for (Connection *co in conections) {
-        [cl removeConectionsObject:co];
+    if (cl.conections) {
+        NSSet *conections = [NSSet setWithSet:cl.conections];
+        for (Connection *co in conections) {
+            [cl removeConectionsObject:co];
+        }
     }
     
     for (NSDictionary *row in items) {

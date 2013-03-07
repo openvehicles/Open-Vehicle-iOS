@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "ovmsAppDelegate.h"
-#import "ovmsVehicleAnnotation.h"
+#import "VehicleAnnotation.h"
 
 #import "OCMSyncHelper.h"
 #import "EntityName.h"
@@ -24,11 +24,10 @@
 
 @property (strong, nonatomic) IBOutlet MKMapView *myMapView;
 @property (strong, nonatomic) NSMutableDictionary* m_groupcar_locations;
-@property (strong, nonatomic) ovmsVehicleAnnotation *m_car_location;
+@property (strong, nonatomic) VehicleAnnotation *m_car_location;
 @property (assign) BOOL isAutotrack;
 @property (assign) BOOL isFiltredChargingStation;
 @property (assign) BOOL isUseRange;
-@property (assign) BOOL isProcessAnimations;
 
 @property (assign) MKCoordinateRegion m_lastregion;
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Open Vehicle Systems. All rights reserved.
 //
 
-#import "ovmsVehicleAnnotation.h"
+#import "VehicleAnnotation.h"
 
-@implementation ovmsVehicleAnnotation
+@implementation VehicleAnnotation
 
 @synthesize myMapView;
 @synthesize imageset;

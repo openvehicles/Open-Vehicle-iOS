@@ -204,16 +204,16 @@
         <scene sceneID="13">
             <objects>
                 <viewController title="Location" id="3" customClass="ovmsLocationViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="17" customClass="REVClusterMapView">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="JvO-lL-aI7" customClass="REVClusterMapView">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                         <connections>
-                            <outlet property="delegate" destination="3" id="pPQ-Qg-zcl"/>
+                            <outlet property="delegate" destination="3" id="UDT-J4-WSS"/>
                         </connections>
-                    </view>
+                    </mapView>
                     <tabBarItem key="tabBarItem" title="Location" image="74-location.png" id="6"/>
                     <navigationItem key="navigationItem" id="OPu-VM-BCk">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="hWo-bV-ufs"/>
                         <barButtonItem key="leftBarButtonItem" image="ic_pin.png" id="Erp-lF-L2G">
                             <connections>
                                 <action selector="locationSnapped:" destination="3" id="G0K-LL-UK8"/>
@@ -226,7 +226,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="myMapView" destination="17" id="D7r-5K-gLy"/>
+                        <outlet property="myMapView" destination="JvO-lL-aI7" id="NtR-cR-BDm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>

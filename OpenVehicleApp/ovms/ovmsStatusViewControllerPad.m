@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIKit/UIDevice.h"
 #import "ovmsStatusViewControllerPad.h"
+#import "OCMInformationController.h"
 
 @implementation ovmsStatusViewControllerPad
 
@@ -192,7 +193,7 @@
   // Remove all existing annotations
   for (int k=0; k < [myMapView.annotations count]; k++)
     { 
-      if ([[myMapView.annotations objectAtIndex:k] isKindOfClass:[ovmsVehicleAnnotation class]])
+      if ([[myMapView.annotations objectAtIndex:k] isKindOfClass:[VehicleAnnotation class]])
         {
         [myMapView removeAnnotation:[myMapView.annotations objectAtIndex:k]];
         }
@@ -839,19 +840,19 @@
 }
 
 - (void)initAnnotations {
-    [myMapView removeAnnotations:myMapView.annotations];
+    NSMutableArray *rmAnnotations = [NSMutableArray array];
+    
+    for (id annotation in myMapView.annotations) {
+        if ([annotation isKindOfClass:[VehicleAnnotation class]]) continue;
+        [rmAnnotations addObject:annotation];
+    }
+    [myMapView removeAnnotations:rmAnnotations];
     
     NSMutableArray *annotations = [NSMutableArray array];
     for (ChargingLocation *loc in self.locations) {
         [annotations addObject:[ChargingAnnotation pinWithChargingLocation:loc]];
     }
     [myMapView addAnnotations:annotations];
-    
-    if (m_car_location != nil) {
-        [myMapView addAnnotation:m_car_location];
-        [m_car_location redrawView];
-    }
-
     [self initOverlays];
 }
 
@@ -892,15 +893,6 @@
     return [self executeFetchRequest:fr];
 }
 
-- (void)animationFinished:(NSString *)animationID finished:(BOOL)finished context:(void *)context {
-    if (![animationID isEqualToString:@"ovmsVehicleAnnotationAnimation"]) return;
-    self.isProcessAnimations = NO;
-    
-    CLLocationCoordinate2D location = [ovmsAppDelegate myRef].car_location;
-    [self loadData:location];
-    NSLog(@"animationFinished");
-}
-
 -(void)updateLocation {
     // The car has reported updated information, and we may need to reflect that
     CLLocationCoordinate2D location = [ovmsAppDelegate myRef].car_location;
@@ -910,44 +902,47 @@
         (region.center.longitude != location.longitude) ) {
         
         if (self.m_car_location) {
-            if (self.isProcessAnimations) return;
-            
-            self.isProcessAnimations = YES;
-            NSLog(@"beginAnimations");
-            
             [UIView beginAnimations:@"ovmsVehicleAnnotationAnimation" context:nil];
             [UIView setAnimationBeginsFromCurrentState:YES];
-            [UIView setAnimationDuration:2.0];
+            [UIView setAnimationDuration:3.0];
             [UIView setAnimationCurve:UIViewAnimationCurveLinear];
-            
             [self.m_car_location setDirection:[ovmsAppDelegate myRef].car_direction % 360];
             [self.m_car_location setSpeed:[ovmsAppDelegate myRef].car_speed_s];
             [self.m_car_location setCoordinate: location];
-            
-            if (self.isAutotrack) {
-                region.center = location;
-                [myMapView setRegion:region animated:NO];
-            }
-            [UIView setAnimationDelegate:self];
-            [UIView setAnimationDidStopSelector:@selector(animationFinished:finished:context:)];
             [UIView commitAnimations];
+            
+            
+            MKMapPoint mapPoint = MKMapPointForCoordinate(location);
+            MKMapRect mapRect = myMapView.visibleMapRect;
+            CGFloat zoomFactor = mapRect.size.width / myMapView.bounds.size.width;
+            
+            mapRect.origin.x += 40 * zoomFactor;
+            mapRect.origin.y += 40 * zoomFactor;
+            mapRect.size.width -= 80 * zoomFactor;
+            mapRect.size.height -= 80 * zoomFactor;
+            
+            if (!MKMapRectContainsPoint(mapRect, mapPoint) && self.isAutotrack) {
+                region.center = location;
+                [myMapView setRegion:region animated:YES];
+            }
+            
         } else {
             // Remove all existing annotations
             NSMutableArray *annotations = [NSMutableArray array];
             for (id annotation in myMapView.annotations) {
-                if (![annotation isKindOfClass:[ovmsVehicleAnnotation class]]) continue;
+                if (![annotation isKindOfClass:[VehicleAnnotation class]]) continue;
                 [annotations addObject:annotation];
             }
             [myMapView removeAnnotations:annotations];
             
             // Create the vehicle annotation
-            ovmsVehicleAnnotation *pa = [[ovmsVehicleAnnotation alloc] initWithCoordinate:location];
+            VehicleAnnotation *pa = [[VehicleAnnotation alloc] initWithCoordinate:location];
             [pa setTitle:[ovmsAppDelegate myRef].sel_car];
             [pa setSubtitle:[ovmsAppDelegate myRef].car_speed_s];
             [pa setImagefile:[ovmsAppDelegate myRef].sel_imagepath];
             [pa setDirection:([ovmsAppDelegate myRef].car_direction) % 360];
             [pa setSpeed:[ovmsAppDelegate myRef].car_speed_s];
-            //            [myMapView addAnnotation:pa];
+            [myMapView addAnnotation:pa];
             self.m_car_location = pa;
             
             // Setup the map to surround the vehicle
@@ -959,9 +954,9 @@
             
             [myMapView setRegion:region animated:YES];
             [myMapView regionThatFits:region];
-            
-            [self loadData:location];
         }
+        
+        [self loadData:location];
     }
 }
 
@@ -987,7 +982,7 @@
     if ([vehicleid isEqualToString:[ovmsAppDelegate myRef].sel_car]) return; // Not the selected car 
     
     NSLog(@"groupUpdate for %@", vehicleid);
-    ovmsVehicleAnnotation *pa = [m_groupcar_locations objectForKey:vehicleid];
+    VehicleAnnotation *pa = [m_groupcar_locations objectForKey:vehicleid];
     if (pa != nil)
       {
       // Update an existing car
@@ -1001,7 +996,7 @@
     else
       {
       // Create a new car
-      pa = [[ovmsVehicleAnnotation alloc] initWithCoordinate:location];
+      pa = [[VehicleAnnotation alloc] initWithCoordinate:location];
       [pa setGroupCar:YES];
       [pa setTitle:vehicleid];
       [pa setSubtitle:[ovmsAppDelegate myRef].car_speed_s];
@@ -1222,11 +1217,11 @@
     }
     
     static NSString *ovmsAnnotationIdentifier=@"OVMSAnnotationIdentifier";
-    if([annotation isKindOfClass:[ovmsVehicleAnnotation class]]) {
+    if([annotation isKindOfClass:[VehicleAnnotation class]]) {
         MKAnnotationView *annotationView=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ovmsAnnotationIdentifier];
         
         //Here's where the magic happens
-        ovmsVehicleAnnotation *pa = (ovmsVehicleAnnotation*)annotation;
+        VehicleAnnotation *pa = (VehicleAnnotation*)annotation;
         NSLog(@"setupView for %@", pa.title);
         [pa setupView:annotationView mapView:myMapView];
         return annotationView;
@@ -1280,7 +1275,6 @@
 }
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
-    NSLog(@"regionWillChangeAnimated");
     m_lastregion = mapView.region;
 }
 
@@ -1289,13 +1283,12 @@
     
     if (((m_lastregion.span.latitudeDelta / newRegion.span.latitudeDelta) > 1.5)||
         ((m_lastregion.span.latitudeDelta / newRegion.span.latitudeDelta) < 0.75)) {
-        NSLog(@"regionDidChangeAnimated");
         
         
         // Kludgy redraw of all annotations, by removing then replacing the annotations...
         NSMutableArray *rmAnnotations = [NSMutableArray array];
         for (id annotation in myMapView.annotations) {
-            if (![annotation isKindOfClass:[ovmsVehicleAnnotation class]]) continue;
+            if (![annotation isKindOfClass:[VehicleAnnotation class]]) continue;
             [rmAnnotations addObject:annotation];
         }
         [myMapView removeAnnotations:rmAnnotations];
@@ -1306,7 +1299,7 @@
         }
         
         NSEnumerator *enumerator = [m_groupcar_locations objectEnumerator];
-        ovmsVehicleAnnotation *pa;
+        VehicleAnnotation *pa;
         while ((pa = [enumerator nextObject])) {
             [myMapView addAnnotation:pa];
             [pa redrawView];
@@ -1316,7 +1309,7 @@
 
 - (void) mapView:(MKMapView *)aMapView didAddAnnotationViews:(NSArray *)views {
     for (MKAnnotationView *view in views) {
-        if ([view.annotation isKindOfClass:[ovmsVehicleAnnotation class]]) {
+        if ([view.annotation isKindOfClass:[VehicleAnnotation class]]) {
             [view.superview bringSubviewToFront:view];
         } else {
             [view.superview sendSubviewToBack:view];
@@ -1338,10 +1331,21 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    CLLocationCoordinate2D from = [ovmsAppDelegate myRef].car_location;
-    CLLocationCoordinate2D to = view.annotation.coordinate;
+    if (![view.annotation isKindOfClass:[ChargingAnnotation class]]) return;
     
-    [ovmsAppDelegate routeFrom:from To:to];
+    [mapView deselectAnnotation:[view annotation] animated:NO];    
+    
+    OCMInformationController *crl = [[OCMInformationController alloc] initWithStyle:UITableViewStyleGrouped];
+    ChargingAnnotation *annotation = view.annotation;
+    crl.locationUUID = annotation.uuid;
+    crl.from = [ovmsAppDelegate myRef].car_location;
+    crl.to = view.annotation.coordinate;
+    
+    self.popover = [[UIPopoverController alloc] initWithContentViewController:crl];
+    [self.popover presentPopoverFromRect:CGRectMake(230, 430, 320, 0)
+                             inView:self.view
+           permittedArrowDirections:UIPopoverArrowDirectionDown
+                           animated:YES];
 }
 
 

@@ -11,7 +11,7 @@
 
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
-@interface ovmsVehicleAnnotation : NSObject <MKAnnotation>
+@interface VehicleAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, readonly, retain) MKMapView* myMapView;
 @property (nonatomic, readonly) BOOL imageset;

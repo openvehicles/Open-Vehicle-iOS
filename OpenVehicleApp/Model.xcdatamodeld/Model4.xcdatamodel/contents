@@ -34,10 +34,9 @@
         <attribute name="data_quality_level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="general_comments" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="number_of_points" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="status_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="status_is_operational" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="status_title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="usage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="usage_cost" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="addres_info" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AddressInfo" syncable="YES"/>
         <relationship name="conections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Connection" syncable="YES"/>
@@ -79,10 +78,10 @@
     <elements>
         <element name="AddressInfo" positionX="160" positionY="192" width="128" height="240"/>
         <element name="Cars" positionX="160" positionY="192" width="128" height="135"/>
-        <element name="ChargerTypes" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="ChargingLocation" positionX="160" positionY="192" width="128" height="225"/>
+        <element name="ChargingLocation" positionX="160" positionY="192" width="128" height="210"/>
         <element name="Connection" positionX="160" positionY="192" width="128" height="210"/>
-        <element name="ConnectionTypes" positionX="160" positionY="192" width="128" height="120"/>
         <element name="OperatorInfo" positionX="160" positionY="192" width="128" height="210"/>
+        <element name="ConnectionTypes" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="ChargerTypes" positionX="160" positionY="192" width="128" height="105"/>
     </elements>
 </model>

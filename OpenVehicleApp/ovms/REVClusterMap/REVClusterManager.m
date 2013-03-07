@@ -18,8 +18,7 @@
 @implementation REVClusterManager
 
 
-+ (NSArray *) clusterAnnotationsForMapView:(MKMapView *)mapView forAnnotations:(NSArray *)pins blocks:(NSUInteger)blocks minClusterLevel:(NSUInteger)minClusterLevel
-{
++ (NSArray *)clusterAnnotationsForMapView:(MKMapView *)mapView forAnnotations:(NSArray *)pins blocks:(NSUInteger)blocks minClusterLevel:(NSUInteger)minClusterLevel {
     NSMutableArray *visibleAnnotations = [NSMutableArray array];
     
     double tileX = mapView.visibleMapRect.origin.x;
@@ -37,20 +36,17 @@
 
     MKMapRect visibleMapRect = MKMapRectMake(tileStartX, tileStartY, tileWidth*(blocks+1), tileHeight*(blocks+1));
     
-    for (id<MKAnnotation> point in pins)
-    {
+    for (id<MKAnnotation> point in pins) {
         MKMapPoint mapPoint = MKMapPointForCoordinate(point.coordinate);
-        if( MKMapRectContainsPoint(visibleMapRect,mapPoint) )
-        {
-            if( ![mapView.annotations containsObject:point] )
-            {
+        
+        if (MKMapRectContainsPoint(visibleMapRect, mapPoint)) {
+            if (![mapView.annotations containsObject:point]) {
                 [visibleAnnotations addObject:point];
             }   
         }
     }
     
-    if( zoomLevel > minClusterLevel )
-    {
+    if( zoomLevel > minClusterLevel ){
         return visibleAnnotations;
     }
     
