@@ -70,7 +70,7 @@
     NSArray *options = @[
         self.isAutotrack ? NSLocalizedString(@"Turn OFF autotrack", nil) : NSLocalizedString(@"Turn ON autotrack", nil),
         self.isFiltredChargingStation ? NSLocalizedString(@"Filtered Charging Stations OFF", nil) : NSLocalizedString(@"Filtered Charging Stations ON", nil),
-        self.isUseRange ? NSLocalizedString(@"Only show Charging Stations in range OFF", nil) : NSLocalizedString(@"Only show Charging Stations in range ON", nil)
+        self.isUseRange ? NSLocalizedString(@"Only show ChargingStations in range OFF", nil) : NSLocalizedString(@"Only show Charging Stations in range ON", nil)
     ];
     
     [PopoverView showPopoverAtPoint:CGPointMake(10, 0)
