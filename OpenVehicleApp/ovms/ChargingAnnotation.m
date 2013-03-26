@@ -25,29 +25,6 @@
         
         self.coordinate = CLLocationCoordinate2DMake([location.addres_info.latitude doubleValue],
                                                      [location.addres_info.longitude doubleValue]);
-//        NSInteger level = 0;
-//        self.level = 0;
-//        BOOL isFirst = YES;
-//        for (Connection *cn in location.conections) {
-//            level = [cn.level.is_fast_charge_capable boolValue] ? 3 : 2;
-//            if (level > self.level) self.level = level;
-//            
-//            if (!isFirst) continue;
-//            isFirst = NO;
-//            
-//            self.title = cn.connection_type.title;
-//            if (cn.level) {
-//                self.subtitle = [NSString stringWithFormat:@"Status: %@, Points: %@, Voltage: %@",
-//                                 location.status_title,
-//                                 location.number_of_points,
-//                                 cn.level.comments];
-//            } else {
-//                self.subtitle = [NSString stringWithFormat:@"Status: %@, Points: %@",
-//                                 location.status_title,
-//                                 location.number_of_points];
-//            }
-//            
-//        }
         if (location.conections.count) {
             Connection *cn = location.conections.allObjects[0];
             self.title = cn.connection_type.title;

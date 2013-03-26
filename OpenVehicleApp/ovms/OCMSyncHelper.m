@@ -45,7 +45,7 @@
     self.isProcess = YES;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500&connectiontypeid=%@", BASE_URL,
+    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=1000&connectiontypeid=%@", BASE_URL,
                          coordinate.latitude, coordinate.longitude, distance, connectiontypeid);
     NSLog(@"start sync: %@", surl);
     
@@ -59,8 +59,35 @@
     self.isProcess = YES;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500", BASE_URL,
+    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=1000", BASE_URL,
                          coordinate.latitude, coordinate.longitude, distance);
+    NSLog(@"start sync: %@", surl);
+    
+    [self performSelectorInBackground:@selector(start:) withObject:[NSURL URLWithString:surl]];
+}
+
+- (void)startSyncAll:(CLLocationCoordinate2D)coordinate {
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:location
+                   completionHandler:^(NSArray *placemarks, NSError *error) {
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                           if (!placemarks.count) return;
+                           
+                           CLPlacemark *place = placemarks[0];
+                           [self startSyncWhithCountry:place.ISOcountryCode];
+                       });
+                   }];
+}
+
+- (void)startSyncWhithCountry:(NSString *)countrycode {
+    if (self.isProcess) return;
+    
+    self.isProcess = YES;
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    NSString *surl = SWF(@"%@&countrycode=%@&maxresults=5000", BASE_URL, countrycode);
     NSLog(@"start sync: %@", surl);
     
     [self performSelectorInBackground:@selector(start:) withObject:[NSURL URLWithString:surl]];

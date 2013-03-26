@@ -18,24 +18,18 @@
 
 @property (nonatomic, strong) NSMutableArray *selectedMarks;
 @property (nonatomic, strong) NSArray *dataSource;
+@property (readonly, nonatomic) Cars *carEditing;
 
 @end
 
 @implementation ConnectionTypesController
 
+@synthesize carEditing = _carEditing;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Connections", nil);
     self.view.backgroundColor = UIColorFromRGB(0x121b2f);
-    
-//    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-//                                                                                 target:self
-//                                                                                 action:@selector(done:)];
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                        style:UIBarButtonItemStyleBordered
-                                                                   target:self
-                                                                   action:@selector(done:)];
-    self.navigationItem.rightBarButtonItem = rightButton;
     
     NSFetchRequest *fr =[self fetchRequestWithEntityName:ENConnectionTypes];
     NSSortDescriptor *sd = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
@@ -44,8 +38,10 @@
     self.dataSource = [self executeFetchRequest:fr];
     self.selectedMarks = [NSMutableArray new];
     
-    if (self.connectionTypeIds.length) {
-        NSArray *ids = [self.connectionTypeIds componentsSeparatedByString:@","];
+    NSString *connectionTypeIds = self.carEditing.connection_type_ids;
+    
+    if (connectionTypeIds.length) {
+        NSArray *ids = [connectionTypeIds componentsSeparatedByString:@","];
         for (NSString *itemId in ids) {
             for (ConnectionTypes *ct in self.dataSource) {
                 if ([ct.id intValue] != [itemId intValue]) continue;
@@ -55,20 +51,16 @@
     }
 }
 
-#pragma mark - Methods
-- (void)done:(id)sender {
-    NSMutableString *result = [NSMutableString string];
-    for (ConnectionTypes *ct in self.selectedMarks) {
-        [result appendFormat:@"%@,", ct.id];
-    }
-    if (result.length) [result deleteCharactersInRange:NSMakeRange(result.length-1, 1)];
+- (Cars*)carEditing {
+    if (_carEditing) return _carEditing;
+ 
+    NSFetchRequest *fr =[self fetchRequestWithEntityName:ENCars];
+    [fr setPredicate:[NSPredicate predicateWithFormat:@"vehicleid = %@", self.carEditingId]];
+    NSArray *result = [self executeFetchRequest:fr];
     
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    [self.target performSelector:self.action withObject:result.length ? result : nil];
-    #pragma clang diagnostic pop
+    if (result.count) _carEditing = result[0];
     
-    [self.parentViewController dismissModalViewControllerAnimated:YES];
+    return _carEditing;
 }
 
 #pragma mark - UITableView Data Source
@@ -104,6 +96,16 @@
         [self.selectedMarks addObject:item];
     
     [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    
+    NSMutableString *result = [NSMutableString string];
+    for (ConnectionTypes *ct in self.selectedMarks) {
+        [result appendFormat:@"%@,", ct.id];
+    }
+    if (result.length) [result deleteCharactersInRange:NSMakeRange(result.length-1, 1)];
+    
+    self.carEditing.connection_type_ids = result;
+    [[ovmsAppDelegate myRef] saveContext];
 }
 
 @end

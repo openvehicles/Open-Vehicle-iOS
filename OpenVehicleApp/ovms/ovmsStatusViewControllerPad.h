@@ -78,6 +78,8 @@
 @property (assign) BOOL isFiltredChargingStation;
 @property (assign) BOOL isUseRange;
 @property (assign) BOOL isProcessAnimations;
+@property (assign) BOOL isLoadAll;
+
 @property (assign) MKCoordinateRegion m_lastregion;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *m_control_button;

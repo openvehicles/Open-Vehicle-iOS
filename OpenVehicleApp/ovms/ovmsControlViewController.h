@@ -12,11 +12,14 @@
 @interface ovmsControlViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *m_chargemode;
+@property (strong, nonatomic) NSString *carEditing;
 
 - (IBAction)doneButton:(id)sender;
 - (IBAction)featuresButton:(id)sender;
 - (IBAction)parametersButton:(id)sender;
 - (IBAction)cellularUsageButton:(id)sender;
 - (IBAction)resetModuleButton:(id)sender;
+
+- (IBAction)handleConnections:(id)sender;
 
 @end

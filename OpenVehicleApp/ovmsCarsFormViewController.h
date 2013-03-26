@@ -24,10 +24,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *vehicleNetPass;
 @property (strong, nonatomic) IBOutlet UITextField *vehicleUserPass;
 @property (strong, nonatomic) IBOutlet UIPickerView *vehicleImage;
-@property (strong, nonatomic) NSString *connectionTypeIds;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *m_control_button;
 
-- (IBAction)handleConnections:(id)sender;
+//@property (strong, nonatomic) NSString *connectionTypeIds;
 
 @end

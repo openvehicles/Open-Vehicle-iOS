@@ -8,6 +8,7 @@
 
 #import "ovmsControlViewController.h"
 #import "JHNotificationManager.h"
+#import "ConnectionTypesController.h"
 
 @implementation ovmsControlViewController
 @synthesize m_chargemode;
@@ -88,6 +89,14 @@
 
 - (IBAction)resetModuleButton:(id)sender {
   [[ovmsAppDelegate myRef] commandDoReboot];
+}
+
+- (IBAction)handleConnections:(id)sender {
+    NSLog(@"handleConnections: %@", self.carEditing);
+    
+    ConnectionTypesController *cnt = [[ConnectionTypesController alloc] initWithStyle:UITableViewStylePlain];
+    cnt.carEditingId = self.carEditing;
+    [self.navigationController pushViewController:cnt animated:YES];
 }
 
 @end

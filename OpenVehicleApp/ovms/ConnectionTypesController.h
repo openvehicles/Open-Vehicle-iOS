@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Cars.h"
 
 @interface ConnectionTypesController : UITableViewController
 
-@property (nonatomic, strong) NSString *connectionTypeIds;
+//@property (nonatomic, strong) NSString *connectionTypeIds;
 
-@property (nonatomic, strong) id target;
-@property (nonatomic, unsafe_unretained) SEL action;
+//@property (nonatomic, strong) id target;
+//@property (nonatomic, unsafe_unretained) SEL action;
+@property (strong, nonatomic) NSString *carEditingId;
+
 
 @end

@@ -28,6 +28,7 @@
 @property (assign) BOOL isAutotrack;
 @property (assign) BOOL isFiltredChargingStation;
 @property (assign) BOOL isUseRange;
+@property (assign) BOOL isLoadAll;
 
 @property (assign) MKCoordinateRegion m_lastregion;
 

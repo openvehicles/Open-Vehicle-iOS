@@ -23,6 +23,7 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.isLoadAll = NO;
     self.isUseRange = YES;
 }
 
@@ -68,8 +69,8 @@
 - (IBAction)locationSnapped:(id)sender {
     NSArray *options = @[
         self.isAutotrack ? NSLocalizedString(@"Turn OFF autotrack", nil) : NSLocalizedString(@"Turn ON autotrack", nil),
-        self.isFiltredChargingStation ? NSLocalizedString(@"All charging stations", nil) : NSLocalizedString(@"Filtered charging stations", nil),
-        self.isUseRange ? NSLocalizedString(@"Ignore range", nil) : NSLocalizedString(@"Use range", nil)
+        self.isFiltredChargingStation ? NSLocalizedString(@"Filtered Charging Stations OFF", nil) : NSLocalizedString(@"Filtered Charging Stations ON", nil),
+        self.isUseRange ? NSLocalizedString(@"Only show Charging Stations in range OFF", nil) : NSLocalizedString(@"Only show Charging Stations in range ON", nil)
     ];
     
     [PopoverView showPopoverAtPoint:CGPointMake(10, 0)
@@ -121,8 +122,19 @@
     if (!self.loader) {
         self.loader = [[OCMSyncHelper alloc] initWithDelegate:self];
     }
-    double estimatedrange = self.isUseRange ? (double)[ovmsAppDelegate myRef].car_estimatedrange : 1000;
     
+    if (!self.isUseRange) {
+
+        if (self.isLoadAll) {
+            [self didFinishSync];
+        } else {
+            [self.loader startSyncAll:location];
+        }
+        
+        return;
+    }
+    
+    double estimatedrange = (double)[ovmsAppDelegate myRef].car_estimatedrange;
     NSString *connection_type_ids = [ovmsAppDelegate myRef].sel_connection_type_ids;
     if (self.isFiltredChargingStation && connection_type_ids.length) {
         [self.loader startSyncWhithCoordinate:location toDistance:estimatedrange connectiontypeid:connection_type_ids];
@@ -132,6 +144,8 @@
 }
 
 - (void)didFinishSync {
+    if (!self.isUseRange) self.isLoadAll = YES;
+    
     [self initAnnotations];
 }
 
@@ -167,7 +181,6 @@
         [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:[ovmsAppDelegate myRef].car_location radius:estimatedrange]];
     }
 }
-
 
 - (NSArray *)locations {
     NSFetchRequest *fr = [self fetchRequestWithEntityName:ENChargingLocation];

@@ -20,6 +20,8 @@
 - (id)initWithDelegate:(id)delegate;
 - (void)startSyncWhithCoordinate:(CLLocationCoordinate2D)coordinate toDistance:(double)distance;
 - (void)startSyncWhithCoordinate:(CLLocationCoordinate2D)coordinate toDistance:(double)distance connectiontypeid:(NSString *)connectiontypeid;
+- (void)startSyncAll:(CLLocationCoordinate2D)coordinate;
+- (void)startSyncWhithCountry:(NSString *)countrycode;
 - (void)startSyncAction;
 @end
 

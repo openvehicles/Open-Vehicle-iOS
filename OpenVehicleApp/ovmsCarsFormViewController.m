@@ -186,7 +186,7 @@
         self.vehicleNetPass.text = car.netpass;
         self.vehicleUserPass.text = car.userpass;
         NSString *imagepath = car.imagepath;
-        self.connectionTypeIds = car.connection_type_ids;
+//TMP        self.connectionTypeIds = car.connection_type_ids;
         for (int k=0;k<[carImages count];k++)
           {
           if ([[carImages objectAtIndex:k] isEqualToString:imagepath])
@@ -225,7 +225,7 @@
       car.netpass = vehicleNetPass.text;
       car.userpass = vehicleUserPass.text;
       car.imagepath = [carImages objectAtIndex:[vehicleImage selectedRowInComponent:0]];
-      car.connection_type_ids = self.connectionTypeIds;
+//TMP      car.connection_type_ids = self.connectionTypeIds;
       if (![_context save:&error])
         {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -252,7 +252,7 @@
           car.netpass = vehicleNetPass.text;
           car.userpass = vehicleUserPass.text;
           car.imagepath = [carImages objectAtIndex:[vehicleImage selectedRowInComponent:0]];
-          car.connection_type_ids = self.connectionTypeIds;
+//TMP          car.connection_type_ids = self.connectionTypeIds;
           if (![_context save:&error])
             {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -315,6 +315,14 @@
   return newview;
 }
 
+#pragma mark - Storyboard Delegate
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([@"segueControl" isEqualToString:segue.identifier]) {
+        id cnt = ((UINavigationController*)segue.destinationViewController).topViewController;
+        [cnt setCarEditing:self.carEditing];
+    }
+}
+
 #pragma mark -
 #pragma mark PickerView Delegate
 
@@ -331,28 +339,5 @@
   [textField resignFirstResponder]; 
   return YES;
 }
-
-#pragma mark - Setup connections
-- (IBAction)handleConnections:(id)sender {
-    NSLog(@"handleConnections: %@", self.connectionTypeIds);
-    
-    ConnectionTypesController *cnt = [[ConnectionTypesController alloc] initWithStyle:UITableViewStylePlain];
-    cnt.connectionTypeIds = self.connectionTypeIds;
-    cnt.target = self;
-    cnt.action = @selector(handleDoneConnections:);
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cnt];
-    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    
-    [self presentModalViewController:navController animated:YES];
-}
-
-- (void)handleDoneConnections:(NSString *)connectionTypeIds{
-    self.connectionTypeIds = connectionTypeIds;
-    
-    NSLog(@"setConnections: %@", self.connectionTypeIds);
-    
-}
-
 
 @end
