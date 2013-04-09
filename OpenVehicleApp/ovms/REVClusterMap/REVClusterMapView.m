@@ -25,7 +25,7 @@
 @synthesize delegate;
 
 
-- (id) initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
@@ -45,12 +45,15 @@
     return self;
 }
 
-- (void) setup
-{
+- (void)setup {
     annotationsCopy = nil;
     
-    self.minimumClusterLevel = 100000;
-    self.blocks = 5;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger val = 11 - round([defaults floatForKey:@"ovmsMapBlocs"]);
+    if (val < 1 || val > 10) val = 4;
+    
+    self.blocks = val;
+    self.minimumClusterLevel = MINIMUM_CLUSTER_LEVEL;
     
     super.delegate = self;
     

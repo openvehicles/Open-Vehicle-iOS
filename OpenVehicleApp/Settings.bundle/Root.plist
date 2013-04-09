@@ -148,6 +148,26 @@
 				<string>M</string>
 			</array>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Map Charger Station</string>
+			<key>FooterText</key>
+			<string>Factor groupings of charging stations on the map.</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSSliderSpecifier</string>
+			<key>Key</key>
+			<string>ovmsMapBlocs</string>
+			<key>DefaultValue</key>
+			<integer>7</integer>
+			<key>MinimumValue</key>
+			<integer>1</integer>
+			<key>MaximumValue</key>
+			<integer>10</integer>
+		</dict>
 	</array>
 	<key>Title</key>
 	<string>Open Vehicles</string>

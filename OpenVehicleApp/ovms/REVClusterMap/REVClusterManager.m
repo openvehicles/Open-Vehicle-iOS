@@ -9,11 +9,7 @@
 //
 
 #import "REVClusterManager.h"
-
-//#define BASE_RADIUS .5 // = 1 mile
-//#define MINIMUM_LATITUDE_DELTA 0.20
-#define BLOCKS 4
-#define MINIMUM_CLUSTER_LEVEL 100000
+#import "REVClusterMapView.h"
 
 @implementation REVClusterManager
 
@@ -111,7 +107,8 @@
 
 + (NSArray *) clusterForMapView:(MKMapView *)mapView forAnnotations:(NSArray *)pins
 {
-    return [self clusterAnnotationsForMapView:mapView forAnnotations:pins blocks:BLOCKS minClusterLevel:MINIMUM_CLUSTER_LEVEL];
+    REVClusterMapView *rMapView = (REVClusterMapView*) mapView;
+    return [self clusterAnnotationsForMapView:mapView forAnnotations:pins blocks:rMapView.blocks minClusterLevel:MINIMUM_CLUSTER_LEVEL];
 }
 
 + (MKPolygon *)polygonForMapRect:(MKMapRect)mapRect
@@ -129,10 +126,13 @@
 
 - (NSInteger)getGlobalTileNumberFromMapView:(MKMapView *)mapView forLocalTileNumber:(NSInteger)tileNumber
 {
+    REVClusterMapView *rMapView = (REVClusterMapView*) mapView;
+    int blocks = rMapView.blocks;
+    
     double tileX = mapView.visibleMapRect.origin.x;
     double tileY = mapView.visibleMapRect.origin.y;
-    double tileWidth = mapView.visibleMapRect.size.width/BLOCKS;
-    double tileHeight = mapView.visibleMapRect.size.height/BLOCKS;
+    double tileWidth = mapView.visibleMapRect.size.width/blocks;
+    double tileHeight = mapView.visibleMapRect.size.height/blocks;
     
     
     MKMapRect mapRect = MKMapRectWorld;
@@ -142,8 +142,8 @@
     double tileStartX = floor((tileX/mapRect.size.width) * maxWidthBlocks)*tileWidth;
     double tileStartY = floor((tileY/mapRect.size.height) * maxHeightBlocks)*tileHeight;
     
-    double currentTileX = tileStartX + (tileWidth * (tileNumber % (BLOCKS+1)));
-    double currentTileY = tileStartY + (tileHeight * floor(tileNumber/(BLOCKS+1)));
+    double currentTileX = tileStartX + (tileWidth * (tileNumber % (blocks+1)));
+    double currentTileY = tileStartY + (tileHeight * floor(tileNumber/(blocks+1)));
     
     NSInteger g = round((currentTileY / tileHeight) * maxWidthBlocks);
     g += round(currentTileX / tileWidth);

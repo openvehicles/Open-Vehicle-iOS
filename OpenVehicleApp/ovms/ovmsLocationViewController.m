@@ -45,11 +45,18 @@
     [[ovmsAppDelegate myRef] registerForUpdate:self];
     
     [self update];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(settingsChanged:)
+                                                 name:NSUserDefaultsDidChangeNotification
+                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
-  
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     // As we are about to disappear, remove all the car location objects
     // Remove all existing annotations
     for (int k=0; k < [myMapView.annotations count]; k++) {
@@ -66,11 +73,24 @@
     [[ovmsAppDelegate myRef] deregisterFromUpdate:self];
 }
 
+- (void)settingsChanged:(NSNotification *)notification {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger val = 11 - round([defaults floatForKey:@"ovmsMapBlocs"]);
+    if (val < 1 || val > 10) val = 4;
+    
+    if (self.myMapView.blocks != val) {
+        self.myMapView.blocks = val;
+        [self performSelector:@selector(initAnnotations) withObject:nil afterDelay:0.3f];
+        
+        NSLog(@"Setup MAP view blocks: %d",  val);
+    }
+}
+
 - (IBAction)locationSnapped:(id)sender {
     NSArray *options = @[
         self.isAutotrack ? NSLocalizedString(@"Turn OFF autotrack", nil) : NSLocalizedString(@"Turn ON autotrack", nil),
-        self.isFiltredChargingStation ? NSLocalizedString(@"Filtered Charging Stations OFF", nil) : NSLocalizedString(@"Filtered Charging Stations ON", nil),
-        self.isUseRange ? NSLocalizedString(@"Only show ChargingStations in range OFF", nil) : NSLocalizedString(@"Only show Charging Stations in range ON", nil)
+        self.isFiltredChargingStation ? NSLocalizedString(@"Filtered Stations OFF", nil) : NSLocalizedString(@"Filtered Stations ON", nil),
+        self.isUseRange ? NSLocalizedString(@"Only show Stations in range OFF", nil) : NSLocalizedString(@"Only show Stations in range ON", nil)
     ];
     
     [PopoverView showPopoverAtPoint:CGPointMake(10, 0)
@@ -130,7 +150,6 @@
         } else {
             [self.loader startSyncAll:location];
         }
-        
         return;
     }
     
@@ -150,6 +169,13 @@
 }
 
 - (void)didFailWithError:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:error.domain
+                                                    message:error.localizedDescription
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Ok"
+                                          otherButtonTitles:nil];
+    [alert show];
+
     [self initAnnotations];
 }
 
@@ -222,6 +248,8 @@
 -(void)update {
     // The car has reported updated information, and we may need to reflect that
     CLLocationCoordinate2D location = [ovmsAppDelegate myRef].car_location;
+//    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(22.315778,114.220304);
+    
 
     MKCoordinateRegion region = myMapView.region;
     if ( (region.center.latitude != location.latitude)&&

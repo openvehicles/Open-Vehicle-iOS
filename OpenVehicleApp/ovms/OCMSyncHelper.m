@@ -25,6 +25,7 @@
 @property (nonatomic, assign) BOOL isProcess;
 @property (nonatomic, assign) BOOL isSyncAction;
 @property (nonatomic, assign) CLLocationCoordinate2D lastCoordinate;
+@property (nonatomic, strong) NSString *connectiontypeid;
 
 @end
 
@@ -40,7 +41,11 @@
 }
 
 - (void)startSyncWhithCoordinate:(CLLocationCoordinate2D)coordinate toDistance:(double)distance connectiontypeid:(NSString *)connectiontypeid {
-    if (self.isProcess || ![self allowNextUpdate:coordinate]) return;
+    if (self.isProcess) return;
+    NSLog(@"startSyncWhithCoordinate: %@ = %@", connectiontypeid, self.connectiontypeid);
+
+    if (![self allowNextUpdate:coordinate] && [self.connectiontypeid isEqualToString:connectiontypeid]) return;
+    self.connectiontypeid = connectiontypeid;
     
     self.isProcess = YES;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -54,7 +59,11 @@
 
 
 - (void)startSyncWhithCoordinate:(CLLocationCoordinate2D)coordinate toDistance:(double)distance {
-    if (self.isProcess || ![self allowNextUpdate:coordinate]) return;
+    if (self.isProcess) return;
+    NSLog(@"startSyncWhithCoordinate: %@", self.connectiontypeid);
+    
+    if (![self allowNextUpdate:coordinate] && !self.connectiontypeid) return;
+    self.connectiontypeid = nil;
     
     self.isProcess = YES;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -173,6 +182,7 @@
 
 - (void)stop:(NSError *)error {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    self.isProcess = NO;
     
     if (error) {
         NSLog(@"ERROR %@, %@", error, [error userInfo]);
@@ -186,7 +196,6 @@
     if ([self.delegate respondsToSelector:@selector(didFinishSync)]) {
         [self.delegate didFinishSync];
     }
-    self.isProcess = NO;
 }
 
 #pragma mark - parse data

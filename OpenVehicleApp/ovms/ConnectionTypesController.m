@@ -105,7 +105,13 @@
     if (result.length) [result deleteCharactersInRange:NSMakeRange(result.length-1, 1)];
     
     self.carEditing.connection_type_ids = result;
-    [[ovmsAppDelegate myRef] saveContext];
+    
+    ovmsAppDelegate *app = [ovmsAppDelegate myRef];
+    [app saveContext];
+    
+    if ([app.sel_car isEqualToString:self.carEditingId]) {
+        app.sel_connection_type_ids = self.carEditing.connection_type_ids;
+    }
 }
 
 @end

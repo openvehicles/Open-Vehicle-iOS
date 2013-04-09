@@ -22,7 +22,7 @@
 
 @interface ovmsLocationViewController : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, OCMSyncDelegate, PopoverViewDelegate>
 
-@property (strong, nonatomic) IBOutlet MKMapView *myMapView;
+@property (strong, nonatomic) IBOutlet REVClusterMapView *myMapView;
 @property (strong, nonatomic) NSMutableDictionary* m_groupcar_locations;
 @property (strong, nonatomic) VehicleAnnotation *m_car_location;
 @property (assign) BOOL isAutotrack;

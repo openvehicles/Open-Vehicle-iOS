@@ -71,7 +71,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_weather;
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_tpmsboxes;
 
-@property (strong, nonatomic) IBOutlet MKMapView *myMapView;
+@property (strong, nonatomic) IBOutlet REVClusterMapView *myMapView;
 @property (nonatomic, retain) VehicleAnnotation *m_car_location;
 @property (strong, nonatomic) NSMutableDictionary* m_groupcar_locations;
 @property (assign) BOOL isAutotrack;

@@ -13,6 +13,10 @@
 #import "REVClusterBlock.h"
 #import "REVClusterPin.h"
 
+//#define BLOCKS 4
+#define MINIMUM_CLUSTER_LEVEL 100000
+
+
 @interface REVClusterManager : NSObject {
     
 }

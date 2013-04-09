@@ -87,7 +87,6 @@
 }
 
 #pragma mark - View lifecycle
-
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
@@ -181,12 +180,25 @@
 
   [[ovmsAppDelegate myRef] registerForUpdate:self];
     
-  [self update];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger val = 11 - round([defaults floatForKey:@"ovmsMapBlocs"]);
+    if (val < 1 || val > 10) val = 4;
+    self.myMapView.blocks = val;
+    [self initAnnotations];
+    
+    [self update];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(settingsChanged:)
+                                                 name:NSUserDefaultsDidChangeNotification
+                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
   
   // As we are about to disappear, remove all the car location objects
   
@@ -207,6 +219,20 @@
   
   [[ovmsAppDelegate myRef] deregisterFromUpdate:self];
 }
+
+- (void)settingsChanged:(NSNotification *)notification {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger val = 11 - round([defaults floatForKey:@"ovmsMapBlocs"]);
+    if (val < 1 || val > 10) val = 4;
+    
+    if (self.myMapView.blocks != val) {
+        self.myMapView.blocks = val;
+        [self performSelector:@selector(initAnnotations) withObject:nil afterDelay:0.3f];
+        
+        NSLog(@"Setup MAP view blocks: %d",  val);
+    }
+}
+
 
 - (void)viewDidUnload
 {
