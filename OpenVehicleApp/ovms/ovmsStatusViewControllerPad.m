@@ -11,6 +11,11 @@
 #import "ovmsStatusViewControllerPad.h"
 #import "OCMInformationController.h"
 
+
+#define IDENTIFIER_CLUSTER @"cluster"
+#define IDENTIFIER_PIN @"pin"
+#define IDENTIFIER_OVMS @"OVMS"
+
 @implementation ovmsStatusViewControllerPad
 
 @synthesize m_car_connection_image;
@@ -1255,17 +1260,14 @@
         return nil;
     }
     
-    static NSString *ovmsAnnotationIdentifier=@"OVMSAnnotationIdentifier";
     if([annotation isKindOfClass:[VehicleAnnotation class]]) {
-        MKAnnotationView *annotationView=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ovmsAnnotationIdentifier];
+        MKAnnotationView *annotationView=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:IDENTIFIER_OVMS];
         
         //Here's where the magic happens
         VehicleAnnotation *pa = (VehicleAnnotation*)annotation;
-        NSLog(@"setupView for %@", pa.title);
         [pa setupView:annotationView mapView:myMapView];
         return annotationView;
     }
-    
     
     ChargingAnnotation *pin = (ChargingAnnotation *)annotation;
     MKAnnotationView *annView;
@@ -1277,14 +1279,8 @@
             annView = (REVClusterAnnotationView*) [[REVClusterAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:IDENTIFIER_CLUSTER];
         }
         
-        if ([pin nodeCount] < 10) {
-            annView.image = [UIImage imageNamed:@"cluster0.png"];
-        } else {
-            if ([pin nodeCount] < 100) {
-                annView.image = [UIImage imageNamed:@"cluster1.png"];
-            } else {
-                annView.image = [UIImage imageNamed:@"cluster2.png"];
-            }
+        if ([pin nodeCount]) {
+            annView.image = [UIImage imageNamed:@"cluster.png"];
         }
         
         [(REVClusterAnnotationView*)annView setClusterText: [NSString stringWithFormat:@"%i",[pin nodeCount]]];
@@ -1295,7 +1291,6 @@
             annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:IDENTIFIER_PIN];
             annView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         }
-        
         annView.image = [UIImage imageNamed:[NSString stringWithFormat:@"level%d.png", pin.level]];
         annView.canShowCallout = YES;
         annView.centerOffset = CGPointMake(0.0, -25.0);
