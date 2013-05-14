@@ -353,9 +353,8 @@
 - (void)syncAction:(NSDictionary *)data {
     [self parseConnectionTypes:NULL_TO_NIL(data[@"ConnectionTypes"])];
     [self parseChargerTypes:NULL_TO_NIL(data[@"ChargerTypes"])];
+    [[ovmsAppDelegate myRef] saveContext];
 }
-
-
 
 - (void)parseConnectionTypes:(NSArray *)items {
     if (!items) return;
