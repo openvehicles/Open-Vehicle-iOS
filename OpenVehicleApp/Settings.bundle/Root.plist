@@ -154,7 +154,7 @@
 			<key>Title</key>
 			<string>Map Charger Station</string>
 			<key>FooterText</key>
-			<string>Factor groupings of charging stations on the map.</string>
+			<string>Slide to adjust how often Charging Stations are grouped together.</string>
 		</dict>
 		<dict>
 			<key>Type</key>

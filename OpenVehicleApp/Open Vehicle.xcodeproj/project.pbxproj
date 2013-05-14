@@ -1560,7 +1560,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -1589,6 +1589,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ovms/Open Vehicle-Prefix.pch";
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -1620,7 +1621,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -1649,6 +1650,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ovms/Open Vehicle-Prefix.pch";
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -1687,7 +1689,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -1705,14 +1707,15 @@
 		4D5AE3A614733758002F5F52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ALEKSEJ KARAJKOZA";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Oleksandr Klymenko (9Q2K39QZWZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Oleksandr Klymenko (9Q2K39QZWZ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ovms/Open Vehicle-Prefix.pch";
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -1723,8 +1726,8 @@
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "1C833212-4C8B-4E57-8BE2-20451DDDC297";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C833212-4C8B-4E57-8BE2-20451DDDC297";
+				PROVISIONING_PROFILE = "2D3AFC89-F5AB-48E6-81C6-50E7B35DF96E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2D3AFC89-F5AB-48E6-81C6-50E7B35DF96E";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

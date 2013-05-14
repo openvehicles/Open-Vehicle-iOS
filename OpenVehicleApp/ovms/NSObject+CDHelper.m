@@ -40,5 +40,23 @@
     return data.count > 0 ? data[0] : nil;
 }
 
+- (void)deleteAllEntityWithName:(NSString *)name {
+	NSFetchRequest *fr = [NSFetchRequest new];
+	[fr setEntity:[NSEntityDescription entityForName:name
+                              inManagedObjectContext:self.managedObjectContext]];
+    [fr setIncludesPropertyValues:NO];
+    
+    NSError *error = nil;
+    NSArray *items = [self.managedObjectContext executeFetchRequest:fr error:&error];
+//    if (error) return NO;
+    if (error) return;
+    
+    for (NSManagedObject *entity in items) {
+        [self.managedObjectContext deleteObject:entity];
+    }
+//    return [self.managedObjectContext save:&error];
+}
+
+
 
 @end

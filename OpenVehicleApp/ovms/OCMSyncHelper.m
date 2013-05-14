@@ -91,7 +91,6 @@
 
 - (void)startSyncWhithCountry:(NSString *)countrycode {
     if (self.isProcess) return;
-    
     self.isProcess = YES;
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -167,13 +166,26 @@
         return;
     }
     
-    [self syncAction:data];
+//    [self syncAction:data];
+//    self.isSyncAction = YES;
+//    
+//    if ([single boolValue]) {
+//        [self performSelectorOnMainThread:@selector(stop:) withObject:nil waitUntilDone:NO];
+//    }
+    [self performSelectorOnMainThread:@selector(syncActionAndStop:) withObject:@[data, single] waitUntilDone:NO];
+}
+
+- (void)syncActionAndStop:(NSArray *)data {
+    [self syncAction:data[0]];
     self.isSyncAction = YES;
+    
+    NSNumber *single = data[1];
     
     if ([single boolValue]) {
         [self performSelectorOnMainThread:@selector(stop:) withObject:nil waitUntilDone:NO];
     }
 }
+
 
 - (void)parseAndStop:(NSArray *)items {
     [self parseData:items];
@@ -242,13 +254,15 @@
         return;
     }
     
+    NSNumber *entityID = row[@"ID"];
+    
     AddressInfo *ai = cl.addres_info;
-    if (!ai || ![ai.id isEqualToNumber:row[@"ID"]]) {
+    if (!ai || ![ai.id isEqualToNumber:entityID]) {
         ai = [NSEntityDescription insertNewObjectForEntityForName:ENAddressInfo
                                                inManagedObjectContext:self.managedObjectContext];
         cl.addres_info = ai;
     }
-    ai.id = row[@"ID"];
+    ai.id = entityID;
     ai.access_comments = NULL_TO_NIL(row[@"AccessComments"]);
     ai.address_line1 = NULL_TO_NIL(row[@"AddressLine1"]);
     ai.contact_telephone1 = NULL_TO_NIL(row[@"ContactTelephone1"]);
@@ -269,13 +283,15 @@
         return;
     }
     
+    NSNumber *entityID = row[@"ID"];
+    
     OperatorInfo *oi = cl.operator_info;
-    if (!oi || ![oi.id isEqualToNumber:row[@"ID"]]) {
+    if (!oi || ![oi.id isEqualToNumber:entityID]) {
         oi = [NSEntityDescription insertNewObjectForEntityForName:ENOperatorInfo
                                            inManagedObjectContext:self.managedObjectContext];
         cl.operator_info = oi;
     }
-    oi.id = row[@"ID"];
+    oi.id = entityID;
     oi.address_info = NULL_TO_NIL(row[@"AddressInfo"]);
     oi.booking_url = NULL_TO_NIL(row[@"BookingURL"]);
     oi.comments = NULL_TO_NIL(row[@"Comments"]);
@@ -302,13 +318,15 @@
     }
     
     for (NSDictionary *row in items) {
-        Connection *co = [self entityWithName:ENConnection asWhere:@"id" inValue:row[@"ID"]];
+        NSNumber *entityID = row[@"ID"];
+        
+        Connection *co = [self entityWithName:ENConnection asWhere:@"id" inValue:[entityID stringValue]];
         if (!co) {
             co = [NSEntityDescription insertNewObjectForEntityForName:ENConnection
                                                    inManagedObjectContext:self.managedObjectContext];
         }
         
-        co.id = row[@"ID"];
+        co.id = entityID;
         co.amps = NULL_TO_NIL(row[@"Amps"]);
         co.comments = NULL_TO_NIL(row[@"Comments"]);
         co.voltage = NULL_TO_NIL(row[@"Voltage"]);
@@ -322,10 +340,10 @@
         }
         
         if (NULL_TO_NIL(row[@"ConnectionType"])) {
-            co.connection_type = [self entityWithName:ENConnectionTypes asWhere:@"id" inValue:row[@"ConnectionType"][@"ID"]];
+            co.connection_type = [self entityWithName:ENConnectionTypes asWhere:@"id" inValue:[row[@"ConnectionType"][@"ID"] stringValue] ];
         }
         if (NULL_TO_NIL(row[@"Level"])) {
-            co.level = [self entityWithName:ENChargerTypes asWhere:@"id" inValue:row[@"Level"][@"ID"]];
+            co.level = [self entityWithName:ENChargerTypes asWhere:@"id" inValue:[row[@"Level"][@"ID"] stringValue] ];
         }
         
         [cl addConectionsObject:co];
@@ -338,16 +356,23 @@
 }
 
 
+
 - (void)parseConnectionTypes:(NSArray *)items {
     if (!items) return;
+
+    [self deleteAllEntityWithName:ENConnectionTypes];
     
     for (NSDictionary *row in items) {
-        ConnectionTypes *entity = [self entityWithName:ENConnectionTypes asWhere:@"id" inValue:row[@"ID"]];
-        if (!entity) {
-            entity = [NSEntityDescription insertNewObjectForEntityForName:ENConnectionTypes
-                                               inManagedObjectContext:self.managedObjectContext];
-        }
+//        NSNumber *entityID = row[@"ID"];
+//        
+//        ConnectionTypes *entity = [self entityWithName:ENConnectionTypes asWhere:@"id" inValue:[entityID stringValue]];
+//        if (!entity) {
+//            entity = [NSEntityDescription insertNewObjectForEntityForName:ENConnectionTypes
+//                                               inManagedObjectContext:self.managedObjectContext];
+//        }
         
+        ConnectionTypes *entity = [NSEntityDescription insertNewObjectForEntityForName:ENConnectionTypes
+                                                                inManagedObjectContext:self.managedObjectContext];
         entity.id = row[@"ID"];
         entity.title = NULL_TO_NIL(row[@"Title"]);
         entity.formal_name = NULL_TO_NIL(row[@"FormalName"]);
@@ -358,14 +383,20 @@
 
 - (void)parseChargerTypes:(NSArray *)items {
     if (!items) return;
+
+    [self deleteAllEntityWithName:ENChargerTypes];
     
     for (NSDictionary *row in items) {
-        ChargerTypes *entity = [self entityWithName:ENChargerTypes asWhere:@"id" inValue:row[@"ID"]];
-        if (!entity) {
-            entity = [NSEntityDescription insertNewObjectForEntityForName:ENChargerTypes
-                                                   inManagedObjectContext:self.managedObjectContext];
-        }
+//        NSNumber *entityID = row[@"ID"];
+//        
+//        ChargerTypes *entity = [self entityWithName:ENChargerTypes asWhere:@"id" inValue:[entityID stringValue]];
+//        if (!entity) {
+//            entity = [NSEntityDescription insertNewObjectForEntityForName:ENChargerTypes
+//                                                   inManagedObjectContext:self.managedObjectContext];
+//        }
         
+        ChargerTypes *entity = [NSEntityDescription insertNewObjectForEntityForName:ENChargerTypes
+                                                             inManagedObjectContext:self.managedObjectContext];
         entity.id = row[@"ID"];
         entity.title = NULL_TO_NIL(row[@"Title"]);
         entity.comments = NULL_TO_NIL(row[@"Comments"]);

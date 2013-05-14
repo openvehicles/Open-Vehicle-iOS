@@ -15,5 +15,6 @@
 - (NSArray *)executeFetchRequest: (NSFetchRequest *)request;
 - (NSFetchRequest *)fetchRequestWithEntityName: (NSString *)entityName;
 - (id)entityWithName: (NSString *)name asWhere: (NSString *)where inValue: (NSString *)value;
+- (void)deleteAllEntityWithName:(NSString *)name;
 
 @end
