@@ -1707,8 +1707,8 @@
 		4D5AE3A614733758002F5F52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Oleksandr Klymenko (9Q2K39QZWZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Oleksandr Klymenko (9Q2K39QZWZ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ALEKSEJ KARAJKOZA";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1726,8 +1726,8 @@
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "2D3AFC89-F5AB-48E6-81C6-50E7B35DF96E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2D3AFC89-F5AB-48E6-81C6-50E7B35DF96E";
+				PROVISIONING_PROFILE = "1C833212-4C8B-4E57-8BE2-20451DDDC297";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C833212-4C8B-4E57-8BE2-20451DDDC297";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

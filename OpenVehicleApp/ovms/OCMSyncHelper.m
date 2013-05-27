@@ -330,7 +330,7 @@
         co.amps = NULL_TO_NIL(row[@"Amps"]);
         co.comments = NULL_TO_NIL(row[@"Comments"]);
         co.voltage = NULL_TO_NIL(row[@"Voltage"]);
-        co.power_kw = NULL_TO_NIL(row[@"PowerKW"]) ;
+        co.power_kw = [NULL_TO_NIL(row[@"PowerKW"]) stringValue];
         co.quantity = NULL_TO_NIL(row[@"Quantity"]);
         co.reference = NULL_TO_NIL(row[@"Reference"]);
 
