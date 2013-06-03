@@ -27,7 +27,10 @@
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Information", nil);
     
-    ChargingLocation *cl = [self entityWithName:ENChargingLocation asWhere:@"uuid" inValue:self.locationUUID];
+    
+    ChargingLocation *cl = [self entityWithName:ENChargingLocation
+                                        asWhere:@"uuid"
+                                        inValue:self.locationUUID];
 
     if (cl) {
         NSMutableArray *keys = [NSMutableArray array];

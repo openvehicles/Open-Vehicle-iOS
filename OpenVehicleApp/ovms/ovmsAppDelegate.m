@@ -301,8 +301,7 @@
   return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-- (void)saveContext
-{
+- (void)saveContext {
   NSError *error = nil;
   NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
   if (managedObjectContext != nil)
@@ -317,8 +316,30 @@
       NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
       abort();
       } 
+    } else {
+        NSLog(@"managedObjectContext is nil");
     }
 }
+
+- (void)saveContext:(NSManagedObjectContext *) objectContext {
+    NSError *error = nil;
+    if (objectContext != nil)
+    {
+        if ([objectContext hasChanges] && ![objectContext save:&error])
+        {
+            /*
+             Replace this implementation with code to handle the error appropriately.
+             
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+             */
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    } else {
+        NSLog(@"objectContext is nil");
+    }
+}
+
 
 - (void)switchCar:(NSString*)car
 {

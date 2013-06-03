@@ -31,7 +31,11 @@
     self.title = NSLocalizedString(@"Connections", nil);
     self.view.backgroundColor = UIColorFromRGB(0x121b2f);
     
-    NSFetchRequest *fr =[self fetchRequestWithEntityName:ENConnectionTypes];
+    
+    NSFetchRequest *fr = [NSFetchRequest new];
+    [fr setEntity:[NSEntityDescription entityForName:ENConnectionTypes
+                              inManagedObjectContext:self.managedObjectContext]];
+
     NSSortDescriptor *sd = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
     
     [fr setSortDescriptors:@[sd]];
@@ -54,7 +58,11 @@
 - (Cars*)carEditing {
     if (_carEditing) return _carEditing;
  
-    NSFetchRequest *fr =[self fetchRequestWithEntityName:ENCars];
+    NSManagedObjectContext *context = [ovmsAppDelegate myRef].managedObjectContext;
+    NSFetchRequest *fr = [NSFetchRequest new];
+    [fr setEntity:[NSEntityDescription entityForName:ENCars
+                              inManagedObjectContext:context]];
+
     [fr setPredicate:[NSPredicate predicateWithFormat:@"vehicleid = %@", self.carEditingId]];
     NSArray *result = [self executeFetchRequest:fr];
     

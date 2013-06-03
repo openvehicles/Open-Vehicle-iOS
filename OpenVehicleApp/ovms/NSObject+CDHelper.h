@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSObject (CDHelper)
+@interface NSObject (CDHelper) 
 
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 
-- (NSArray *)executeFetchRequest: (NSFetchRequest *)request;
-- (NSFetchRequest *)fetchRequestWithEntityName: (NSString *)entityName;
-- (id)entityWithName: (NSString *)name asWhere: (NSString *)where inValue: (NSString *)value;
-- (void)deleteAllEntityWithName:(NSString *)name;
+- (NSFetchRequest *)fetchRequestWithEntityName:(NSString *) entityName;
+- (NSArray *)executeFetchRequest:(NSFetchRequest *)request;
+- (id)entityWithName:(NSString *)name asWhere:(NSString *)where inValue:(NSString *)value;
+//- (void)deleteAllEntityWithName:(NSString *)name;
 
 @end

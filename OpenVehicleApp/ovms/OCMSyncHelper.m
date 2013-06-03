@@ -50,7 +50,7 @@
     self.isProcess = YES;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=1000&connectiontypeid=%@", BASE_URL,
+    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500&connectiontypeid=%@", BASE_URL,
                          coordinate.latitude, coordinate.longitude, distance, connectiontypeid);
     NSLog(@"start sync: %@", surl);
     
@@ -68,7 +68,7 @@
     self.isProcess = YES;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=1000", BASE_URL,
+    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500", BASE_URL,
                          coordinate.latitude, coordinate.longitude, distance);
     NSLog(@"start sync: %@", surl);
     
@@ -135,6 +135,7 @@
     NSArray* json = [NSJSONSerialization JSONObjectWithData:receivedData
                                                     options:kNilOptions
                                                       error:&error];
+
     if (error) {
         [self performSelectorOnMainThread:@selector(stop:) withObject:error waitUntilDone:NO];
         return;
@@ -142,6 +143,9 @@
     
     if (json.count) {
         [self performSelectorOnMainThread:@selector(parseAndStop:) withObject:json waitUntilDone:NO];
+//        [self parseData:json];
+    
+        [self performSelectorOnMainThread:@selector(stop:) withObject:nil waitUntilDone:NO];
     } else {
         NSLog(@"Response empty data");
         [self performSelectorOnMainThread:@selector(stop:) withObject:nil waitUntilDone:NO];
@@ -166,13 +170,15 @@
         return;
     }
     
-//    [self syncAction:data];
-//    self.isSyncAction = YES;
-//    
+    [self performSelectorOnMainThread:@selector(syncActionAndStop:) withObject:@[data, single] waitUntilDone:NO];
+//    if (data.count) {
+//        [self syncAction:data];
+//        self.isSyncAction = YES;
+//    }
+//
 //    if ([single boolValue]) {
 //        [self performSelectorOnMainThread:@selector(stop:) withObject:nil waitUntilDone:NO];
 //    }
-    [self performSelectorOnMainThread:@selector(syncActionAndStop:) withObject:@[data, single] waitUntilDone:NO];
 }
 
 - (void)syncActionAndStop:(NSArray *)data {
@@ -182,7 +188,7 @@
     NSNumber *single = data[1];
     
     if ([single boolValue]) {
-        [self performSelectorOnMainThread:@selector(stop:) withObject:nil waitUntilDone:NO];
+        [self stop:nil];
     }
 }
 
@@ -212,19 +218,24 @@
 
 #pragma mark - parse data
 - (void)parseData:(NSArray *)items {
+    NSLog(@"parseData: %d", items.count);
+
     for (NSDictionary *row in items) {
         [self parseChargingLocations:row];
     }
+    
     [[ovmsAppDelegate myRef] saveContext];
     
     NSLog(@"Sync %d records.", items.count);
 }
 
 - (void)parseChargingLocations:(NSDictionary *)row {
-    ChargingLocation *cl = [self entityWithName:ENChargingLocation asWhere:@"uuid" inValue:row[@"UUID"]];
+    ChargingLocation *cl = [self entityWithName:ENChargingLocation
+                                        asWhere:@"uuid"
+                                        inValue:row[@"UUID"]];
     if (!cl) {
         cl = [NSEntityDescription insertNewObjectForEntityForName:ENChargingLocation
-                                                                inManagedObjectContext:self.managedObjectContext];
+                                           inManagedObjectContext:self.managedObjectContext];
     }
     
     cl.uuid = NULL_TO_NIL(row[@"UUID"]);
@@ -249,6 +260,7 @@
 }
 
 - (void)parseAddressInfoToChargingLocations:(ChargingLocation *)cl asObject:(NSDictionary *)row {
+//    NSLog(@"parseAddressInfoToChargingLocations: %d", row.count);
     if (!row) {
         cl.addres_info = nil;
         return;
@@ -278,6 +290,7 @@
 }
 
 - (void)parseOperatorInfoToChargingLocations:(ChargingLocation *)cl asObject:(NSDictionary *)row {
+//    NSLog(@"parseOperatorInfoToChargingLocations: %d", row.count);
     if (!row) {
         cl.operator_info = nil;
         return;
@@ -305,6 +318,8 @@
 }
 
 - (void)parseConnectionToChargingLocations:(ChargingLocation *)cl asArray:(NSArray *)items {
+//    NSLog(@"parseConnectionToChargingLocations: %d", items.count);
+
     if (!items) {
         cl.conections = nil;
         return;
@@ -320,10 +335,12 @@
     for (NSDictionary *row in items) {
         NSNumber *entityID = row[@"ID"];
         
-        Connection *co = [self entityWithName:ENConnection asWhere:@"id" inValue:[entityID stringValue]];
+        Connection *co = [self entityWithName:ENConnection
+                                      asWhere:@"id"
+                                      inValue:[entityID stringValue]];
         if (!co) {
             co = [NSEntityDescription insertNewObjectForEntityForName:ENConnection
-                                                   inManagedObjectContext:self.managedObjectContext];
+                                               inManagedObjectContext:self.managedObjectContext];
         }
         
         co.id = entityID;
@@ -340,38 +357,45 @@
         }
         
         if (NULL_TO_NIL(row[@"ConnectionType"])) {
-            co.connection_type = [self entityWithName:ENConnectionTypes asWhere:@"id" inValue:[row[@"ConnectionType"][@"ID"] stringValue] ];
+            co.connection_type = [self entityWithName:ENConnectionTypes
+                                              asWhere:@"id"
+                                              inValue:[row[@"ConnectionType"][@"ID"] stringValue]];
         }
         if (NULL_TO_NIL(row[@"Level"])) {
-            co.level = [self entityWithName:ENChargerTypes asWhere:@"id" inValue:[row[@"Level"][@"ID"] stringValue] ];
+            co.level = [self entityWithName:ENChargerTypes
+                                    asWhere:@"id"
+                                    inValue:[row[@"Level"][@"ID"] stringValue]];
         }
         
         [cl addConectionsObject:co];
     }
 }
 
+#pragma mark - syncAction
 - (void)syncAction:(NSDictionary *)data {
+    NSLog(@"syncAction: %d", data.count);
+    
     [self parseConnectionTypes:NULL_TO_NIL(data[@"ConnectionTypes"])];
     [self parseChargerTypes:NULL_TO_NIL(data[@"ChargerTypes"])];
+
     [[ovmsAppDelegate myRef] saveContext];
 }
 
 - (void)parseConnectionTypes:(NSArray *)items {
+    NSLog(@"parseConnectionTypes: %d", items.count);
     if (!items) return;
-
-    [self deleteAllEntityWithName:ENConnectionTypes];
     
     for (NSDictionary *row in items) {
-//        NSNumber *entityID = row[@"ID"];
-//        
-//        ConnectionTypes *entity = [self entityWithName:ENConnectionTypes asWhere:@"id" inValue:[entityID stringValue]];
-//        if (!entity) {
-//            entity = [NSEntityDescription insertNewObjectForEntityForName:ENConnectionTypes
-//                                               inManagedObjectContext:self.managedObjectContext];
-//        }
+        NSNumber *entityID = row[@"ID"];
         
-        ConnectionTypes *entity = [NSEntityDescription insertNewObjectForEntityForName:ENConnectionTypes
-                                                                inManagedObjectContext:self.managedObjectContext];
+        ConnectionTypes *entity = [self entityWithName:ENConnectionTypes
+                                               asWhere:@"id"
+                                               inValue:[entityID stringValue]];
+        if (!entity) {
+            entity = [NSEntityDescription insertNewObjectForEntityForName:ENConnectionTypes
+                                                   inManagedObjectContext:self.managedObjectContext];
+        }
+        
         entity.id = row[@"ID"];
         entity.title = NULL_TO_NIL(row[@"Title"]);
         entity.formal_name = NULL_TO_NIL(row[@"FormalName"]);
@@ -381,21 +405,20 @@
 }
 
 - (void)parseChargerTypes:(NSArray *)items {
+    NSLog(@"parseChargerTypes: %d", items.count);
     if (!items) return;
-
-    [self deleteAllEntityWithName:ENChargerTypes];
     
     for (NSDictionary *row in items) {
-//        NSNumber *entityID = row[@"ID"];
-//        
-//        ChargerTypes *entity = [self entityWithName:ENChargerTypes asWhere:@"id" inValue:[entityID stringValue]];
-//        if (!entity) {
-//            entity = [NSEntityDescription insertNewObjectForEntityForName:ENChargerTypes
-//                                                   inManagedObjectContext:self.managedObjectContext];
-//        }
+        NSNumber *entityID = row[@"ID"];
         
-        ChargerTypes *entity = [NSEntityDescription insertNewObjectForEntityForName:ENChargerTypes
-                                                             inManagedObjectContext:self.managedObjectContext];
+        ChargerTypes *entity = [self entityWithName:ENChargerTypes
+                                            asWhere:@"id"
+                                            inValue:[entityID stringValue]];
+        if (!entity) {
+            entity = [NSEntityDescription insertNewObjectForEntityForName:ENChargerTypes
+                                                   inManagedObjectContext:self.managedObjectContext];
+        }
+        
         entity.id = row[@"ID"];
         entity.title = NULL_TO_NIL(row[@"Title"]);
         entity.comments = NULL_TO_NIL(row[@"Comments"]);

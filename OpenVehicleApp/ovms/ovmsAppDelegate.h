@@ -231,6 +231,7 @@
 + (void)routeFrom:(CLLocationCoordinate2D)from To:(CLLocationCoordinate2D)to;
 
 - (void)saveContext;
+- (void)saveContext:(NSManagedObjectContext *) objectContext;
 - (NSURL *)applicationDocumentsDirectory;
 - (void)didStartNetworking;
 - (void)didStopNetworking;

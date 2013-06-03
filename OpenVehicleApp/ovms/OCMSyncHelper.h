@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CLLocation.h>
 
+#import "ovmsAppDelegate.h"
+
 @protocol OCMSyncDelegate <NSObject>
 @optional
 - (void)didFailWithError:(NSError *)error;
@@ -16,6 +18,8 @@
 @end
 
 @interface OCMSyncHelper : NSObject
+
+//@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 - (id)initWithDelegate:(id)delegate;
 - (void)startSyncWhithCoordinate:(CLLocationCoordinate2D)coordinate toDistance:(double)distance;
