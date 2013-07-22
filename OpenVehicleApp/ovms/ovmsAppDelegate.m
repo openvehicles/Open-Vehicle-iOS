@@ -700,7 +700,7 @@
           // There is no valid cached value, so we need to get it
           car_ambient_weather = 0; // "0" means request pending...
           NSString *reqString = [NSString stringWithFormat:
-                                 @"http://free.worldweatheronline.com/feed/weather.ashx?q=%0.3f,%0.3f&format=csv&num_of_days=2&key=49cd7ebb0d125043122103",
+                                 @"http://api.worldweatheronline.com/free/v1/weather.ashx?q=%0.3f,%0.3f&format=csv&num_of_days=2&key=vmsb5smatuw7t43kqvy77fza",
                                  car_location.latitude, car_location.longitude];
           NSURL *theURL =  [[NSURL alloc]initWithString:reqString];
           NSURLRequest *theRequest=[NSURLRequest requestWithURL:theURL
