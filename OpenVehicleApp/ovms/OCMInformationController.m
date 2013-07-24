@@ -68,9 +68,9 @@
         for (Connection *cn in cl.conections) {
             num++;
             if (cn.level) {
-                NSString *key = isOneConnection ? NSLocalizedString(@"Voltage", nil) : [NSString stringWithFormat:NSLocalizedString(@"Voltage #%d", nil), num];
+                NSString *key = isOneConnection ? NSLocalizedString(@"Level", nil) : [NSString stringWithFormat:NSLocalizedString(@"Level #%d", nil), num];
                 [cokeys addObject:key];
-                [covalues addObject:[NSString stringWithFormat:@"%@, %@", cn.level.comments, cn.level.title]];
+                [covalues addObject:cn.level.title];
             }
             
             if (cn.amps) {

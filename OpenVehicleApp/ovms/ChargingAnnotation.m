@@ -29,10 +29,10 @@
             Connection *cn = location.conections.allObjects[0];
             self.title = cn.connection_type.title;
             if (cn.level) {
-                self.subtitle = [NSString stringWithFormat:@"Status: %@, Points: %@, Voltage: %@",
+                self.subtitle = [NSString stringWithFormat:@"Status: %@, Points: %@, %@",
                                  location.status_title,
                                  location.number_of_points,
-                                 cn.level.comments];
+                                 cn.level.title];
             } else {
                 self.subtitle = [NSString stringWithFormat:@"Status: %@, Points: %@",
                                  location.status_title,
