@@ -17,7 +17,7 @@
 - (id)initWithChargingLocation: (ChargingLocation*)location {
     if ([self init]) {
         self.uuid = location.uuid;
-        self.title = location.operator_info.title;
+        self.title = location.addres_info.title;
         self.subtitle = [NSString stringWithFormat:@"Status: %@, Points: %@",
                          location.status_title,
                          location.number_of_points];
@@ -27,7 +27,7 @@
                                                      [location.addres_info.longitude doubleValue]);
         if (location.conections.count) {
             Connection *cn = location.conections.allObjects[0];
-            self.title = cn.connection_type.title;
+            // self.title = cn.connection_type.title;
             if (cn.level) {
                 self.subtitle = [NSString stringWithFormat:@"Status: %@, Points: %@, Voltage: %@",
                                  location.status_title,
