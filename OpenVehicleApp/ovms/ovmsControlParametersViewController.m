@@ -269,6 +269,27 @@
     case PARAM_S_GROUP2:
       [cellLabel setText:[NSString stringWithFormat:@"#%d: Social Group #2",indexPath.row]];
       break;
+    case PARAM_GSMLOCK:
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: GSM Lock",indexPath.row]];
+      break;
+    case PARAM_VEHICLETYPE:
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Vehicle Type",indexPath.row]];
+      break;
+    case PARAM_COOLDOWN:
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Cooldown",indexPath.row]];
+      break;
+    case PARAM_ACC_1:
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #1",indexPath.row]];
+      break;
+    case PARAM_ACC_2:
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #2",indexPath.row]];
+      break;
+    case PARAM_ACC_3:
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #3",indexPath.row]];
+      break;
+    case PARAM_ACC_4:
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #4",indexPath.row]];
+      break;
     default:
       [cellLabel setText:[NSString stringWithFormat:@"#%d:",indexPath.row]];
       break;
