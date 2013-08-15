@@ -230,13 +230,16 @@
   switch (indexPath.row)
     {
     case FEATURE_SPEEDO:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Digital Speedo",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Digital Speedo (<2.5)",indexPath.row]];
       break;
     case FEATURE_STREAM:
       [cellLabel setText:[NSString stringWithFormat:@"#%d: GPS Stream",indexPath.row]];
       break;
     case FEATURE_MINSOC:
       [cellLabel setText:[NSString stringWithFormat:@"#%d: Minimum SOC",indexPath.row]];
+      break;
+    case FEATURE_OPTIN:
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Opt-In Bits",indexPath.row]];
       break;
     case FEATURE_CARBITS:
       [cellLabel setText:[NSString stringWithFormat:@"#%d: Car Bits",indexPath.row]];
