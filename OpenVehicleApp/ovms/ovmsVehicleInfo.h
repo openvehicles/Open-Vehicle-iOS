@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *m_carfirmware;
 @property (strong, nonatomic) IBOutlet UITextField *m_appfirmware;
 @property (strong, nonatomic) IBOutlet UIImageView *m_gsm_signalbars;
+@property (strong, nonatomic) IBOutlet UITextField *m_cac;
 
 - (IBAction)Done:(id)sender;
 

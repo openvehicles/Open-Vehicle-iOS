@@ -101,6 +101,8 @@
   int car_write_enabled;
   NSString* car_type;
   int car_gsmlevel;
+  NSString* car_cac;
+
   int car_tpem;
   int car_tmotor;
   int car_tbattery;
@@ -191,6 +193,7 @@
 @property (assign) int car_write_enabled;
 @property (strong, nonatomic) NSString* car_type;
 @property (assign) int car_gsmlevel;
+@property (strong, nonatomic) NSString* car_cac;
 @property (assign) int car_tpem;
 @property (assign) int car_tmotor;
 @property (assign) int car_tbattery;

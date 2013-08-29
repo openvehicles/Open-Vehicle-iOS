@@ -68,6 +68,7 @@
 @synthesize car_write_enabled;
 @synthesize car_type;
 @synthesize car_gsmlevel;
+@synthesize car_cac;
 @synthesize car_tpem;
 @synthesize car_tmotor;
 @synthesize car_tbattery;
@@ -535,6 +536,7 @@
   server_firmware = @"";
   car_write_enabled = 0;
   car_type = @"";
+  car_cac = @"";
 
   car_gsmlevel = 0;
   car_tpem = 0;
@@ -659,6 +661,10 @@
         car_chargesubstate = [[lparts objectAtIndex:12] intValue];
         car_chargestateN = [[lparts objectAtIndex:13] intValue];
         car_chargemodeN = [[lparts objectAtIndex:14] intValue];
+        }
+      if ([lparts count]>=19)
+        {
+        car_cac = [lparts objectAtIndex:18];
         }
       }
       break;

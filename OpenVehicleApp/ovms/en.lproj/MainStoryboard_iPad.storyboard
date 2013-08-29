@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="yen-VS-8ek">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="yen-VS-8ek">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -1226,8 +1226,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CAC" minimumFontSize="17" id="4s1-pt-V3G">
+                                <rect key="frame" x="236" y="212" width="511" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="GSM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="WLO-DH-uUY">
                                 <rect key="frame" x="20" y="178" width="56" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="CAC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="COU-Ut-IrK">
+                                <rect key="frame" x="20" y="217" width="56" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -1257,6 +1270,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <connections>
                         <outlet property="m_appfirmware" destination="6L4-ek-x5F" id="dNm-Qs-4Q0"/>
+                        <outlet property="m_cac" destination="4s1-pt-V3G" id="Mu2-HE-f2y"/>
                         <outlet property="m_carfirmware" destination="CfM-Js-ojf" id="qaJ-sf-AqK"/>
                         <outlet property="m_gsm" destination="IL1-Oz-Odi" id="klF-fh-xfG"/>
                         <outlet property="m_gsm_signalbars" destination="FfI-eL-89c" id="9ox-se-sE1"/>
@@ -1566,7 +1580,7 @@
                 <relationship kind="outlet" name="m_lock_button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="m_valet_button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="m_wakeup_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="myMapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="myMapView" candidateClass="REVClusterMapView"/>
             </relationships>
         </class>
         <class className="ovmsVehicleInfo" superclassName="UIViewController">
@@ -1574,6 +1588,7 @@
             <relationships>
                 <relationship kind="action" name="Done:"/>
                 <relationship kind="outlet" name="m_appfirmware" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="m_cac" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="m_carfirmware" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="m_gsm" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="m_gsm_signalbars" candidateClass="UIImageView"/>

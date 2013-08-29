@@ -18,6 +18,7 @@
 @synthesize m_carfirmware;
 @synthesize m_appfirmware;
 @synthesize m_gsm_signalbars;
+@synthesize m_cac;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
   {
@@ -44,6 +45,7 @@
   [self setM_carfirmware:nil];
   [self setM_appfirmware:nil];
   [self setM_gsm_signalbars:nil];
+  [self setM_cac:nil];
   [super viewDidUnload];
   // Release any retained subviews of the main view.
   }
@@ -89,6 +91,8 @@
     car_signalbars = 5;
   
   m_gsm_signalbars.image = [UIImage imageNamed:[NSString stringWithFormat:@"signalbars-%d.png",car_signalbars]];
+
+  m_cac.text = [ovmsAppDelegate myRef].car_cac;
 
   [super viewWillAppear:animated];
   
