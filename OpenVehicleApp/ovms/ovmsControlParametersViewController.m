@@ -120,9 +120,12 @@
         case 0:
           break;
         case 1: // failed
-          [JHNotificationManager
-           notificationWithMessage:
-           [NSString stringWithFormat:@"Failed: %@",[result objectAtIndex:2]]];
+          if ([result count]>2)
+            {
+            [JHNotificationManager
+             notificationWithMessage:
+             [NSString stringWithFormat:@"Failed: %@",[result objectAtIndex:2]]];
+            }
           break;
         case 2: // unsupported
           [JHNotificationManager notificationWithMessage:@"Unsupported operation"];
