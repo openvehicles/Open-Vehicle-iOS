@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 Hong Hay Villa. All rights reserved.
 //
 
+#import <TargetConditionals.h>
 #import "ovmsAppDelegate.h"
 #import "GCDAsyncSocket.h"
 #import "JHNotificationManager.h"
@@ -190,9 +191,11 @@
     }
   
   // Let the device know we want to receive push notifications
-	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-   (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-  
+#ifndef TARGET_IPHONE_SIMULATOR
+  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+  (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+#endif // TARGET_IPHONE_SIMULATOR
+
   return YES;
 }
 	
