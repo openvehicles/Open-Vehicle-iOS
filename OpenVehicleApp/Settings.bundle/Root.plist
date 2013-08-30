@@ -152,9 +152,19 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Map Charger Station</string>
+			<string>Charging Stations</string>
 			<key>FooterText</key>
 			<string>Slide to adjust how often Charging Stations are grouped together.</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Open Charge Map</string>
+			<key>Key</key>
+			<string>ovmsOpenChargeMap</string>
+			<key>DefaultValue</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>Type</key>

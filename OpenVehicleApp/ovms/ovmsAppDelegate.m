@@ -127,6 +127,7 @@
                                dictionaryWithObjectsAndKeys:@"tmc.openvehicles.com", @"ovmsServer",
                                                             @"6867", @"ovmsPort",
                                                             @"1", @"ovmsShareColour",
+                                                            @"1", @"ovmsOpenChargeMap",
                                                             @"-", @"ovmsTemperatures",
                                                             @"-", @"ovmsDistances",
                                                             @"DEMO", @"selCar",

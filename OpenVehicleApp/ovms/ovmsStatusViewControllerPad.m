@@ -854,10 +854,16 @@
     
     double estimatedrange = (double)[ovmsAppDelegate myRef].car_estimatedrange;
     NSString *connection_type_ids = [ovmsAppDelegate myRef].sel_connection_type_ids;
-    if (self.isFiltredChargingStation && connection_type_ids.length) {
-        [self.loader startSyncWhithCoordinate:location toDistance:estimatedrange connectiontypeid:connection_type_ids];
-    } else {
-        [self.loader startSyncWhithCoordinate:location toDistance:estimatedrange];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL ovmsOpenChargeMap = [defaults integerForKey:@"ovmsOpenChargeMap"];
+    if (ovmsOpenChargeMap)
+      {
+      if (self.isFiltredChargingStation && connection_type_ids.length) {
+          [self.loader startSyncWhithCoordinate:location toDistance:estimatedrange connectiontypeid:connection_type_ids];
+      } else {
+          [self.loader startSyncWhithCoordinate:location toDistance:estimatedrange];
+      }
     }
 }
 
@@ -1000,7 +1006,7 @@
             [myMapView regionThatFits:region];
         }
         
-        [self loadData:location];
+    [self loadData:location];
     }
 }
 
