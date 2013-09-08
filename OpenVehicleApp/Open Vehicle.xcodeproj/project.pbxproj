@@ -219,6 +219,18 @@
 		4DD90164152C3FF6002C2B3B /* roadster_outline_cd.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD90161152C3FF5002C2B3B /* roadster_outline_cd.png */; };
 		4DD90165152C3FF6002C2B3B /* roadster_outline_cs.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD90162152C3FF5002C2B3B /* roadster_outline_cs.png */; };
 		4DD90166152C3FF6002C2B3B /* roadster_outline_cu.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD90163152C3FF6002C2B3B /* roadster_outline_cu.png */; };
+		4DD9A39717DC215F0063049B /* car_thinkcity_brightred.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A39317DC215F0063049B /* car_thinkcity_brightred.png */; };
+		4DD9A39817DC215F0063049B /* car_thinkcity_citrusyellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A39417DC215F0063049B /* car_thinkcity_citrusyellow.png */; };
+		4DD9A39917DC215F0063049B /* car_thinkcity_classicblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A39517DC215F0063049B /* car_thinkcity_classicblack.png */; };
+		4DD9A39A17DC215F0063049B /* car_thinkcity_skyblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A39617DC215F0063049B /* car_thinkcity_skyblue.png */; };
+		4DD9A39F17DC216F0063049B /* ol_car_thinkcity_brightred.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A39B17DC216F0063049B /* ol_car_thinkcity_brightred.png */; };
+		4DD9A3A017DC216F0063049B /* ol_car_thinkcity_citrusyellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A39C17DC216F0063049B /* ol_car_thinkcity_citrusyellow.png */; };
+		4DD9A3A117DC216F0063049B /* ol_car_thinkcity_classicblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A39D17DC216F0063049B /* ol_car_thinkcity_classicblack.png */; };
+		4DD9A3A217DC216F0063049B /* ol_car_thinkcity_skyblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A39E17DC216F0063049B /* ol_car_thinkcity_skyblue.png */; };
+		4DD9A3A717DC217E0063049B /* map_car_thinkcity_brightred.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A3A317DC217E0063049B /* map_car_thinkcity_brightred.png */; };
+		4DD9A3A817DC217E0063049B /* map_car_thinkcity_citrusyellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A3A417DC217E0063049B /* map_car_thinkcity_citrusyellow.png */; };
+		4DD9A3A917DC217E0063049B /* map_car_thinkcity_classicblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A3A517DC217E0063049B /* map_car_thinkcity_classicblack.png */; };
+		4DD9A3AA17DC217E0063049B /* map_car_thinkcity_skyblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD9A3A617DC217E0063049B /* map_car_thinkcity_skyblue.png */; };
 		4DDA222F1476962700BA40AA /* teslapin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDA222E1476962700BA40AA /* teslapin.png */; };
 		4DDF384714E4246000B4ACC0 /* carlights.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDF384614E4246000B4ACC0 /* carlights.png */; };
 		4DE26E60147E7E3000E3161D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE26E5F147E7E3000E3161D /* CoreData.framework */; };
@@ -540,6 +552,18 @@
 		4DD90161152C3FF5002C2B3B /* roadster_outline_cd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadster_outline_cd.png; sourceTree = "<group>"; };
 		4DD90162152C3FF5002C2B3B /* roadster_outline_cs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadster_outline_cs.png; sourceTree = "<group>"; };
 		4DD90163152C3FF6002C2B3B /* roadster_outline_cu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadster_outline_cu.png; sourceTree = "<group>"; };
+		4DD9A39317DC215F0063049B /* car_thinkcity_brightred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_thinkcity_brightred.png; sourceTree = "<group>"; };
+		4DD9A39417DC215F0063049B /* car_thinkcity_citrusyellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_thinkcity_citrusyellow.png; sourceTree = "<group>"; };
+		4DD9A39517DC215F0063049B /* car_thinkcity_classicblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_thinkcity_classicblack.png; sourceTree = "<group>"; };
+		4DD9A39617DC215F0063049B /* car_thinkcity_skyblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_thinkcity_skyblue.png; sourceTree = "<group>"; };
+		4DD9A39B17DC216F0063049B /* ol_car_thinkcity_brightred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_thinkcity_brightred.png; sourceTree = "<group>"; };
+		4DD9A39C17DC216F0063049B /* ol_car_thinkcity_citrusyellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_thinkcity_citrusyellow.png; sourceTree = "<group>"; };
+		4DD9A39D17DC216F0063049B /* ol_car_thinkcity_classicblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_thinkcity_classicblack.png; sourceTree = "<group>"; };
+		4DD9A39E17DC216F0063049B /* ol_car_thinkcity_skyblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_thinkcity_skyblue.png; sourceTree = "<group>"; };
+		4DD9A3A317DC217E0063049B /* map_car_thinkcity_brightred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_thinkcity_brightred.png; sourceTree = "<group>"; };
+		4DD9A3A417DC217E0063049B /* map_car_thinkcity_citrusyellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_thinkcity_citrusyellow.png; sourceTree = "<group>"; };
+		4DD9A3A517DC217E0063049B /* map_car_thinkcity_classicblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_thinkcity_classicblack.png; sourceTree = "<group>"; };
+		4DD9A3A617DC217E0063049B /* map_car_thinkcity_skyblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_thinkcity_skyblue.png; sourceTree = "<group>"; };
 		4DDA222E1476962700BA40AA /* teslapin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teslapin.png; sourceTree = "<group>"; };
 		4DDF384614E4246000B4ACC0 /* carlights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carlights.png; sourceTree = "<group>"; };
 		4DE26E5F147E7E3000E3161D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -758,6 +782,10 @@
 		4D82FA70154829A9009D73E8 /* Car Map Images */ = {
 			isa = PBXGroup;
 			children = (
+				4DD9A3A317DC217E0063049B /* map_car_thinkcity_brightred.png */,
+				4DD9A3A417DC217E0063049B /* map_car_thinkcity_citrusyellow.png */,
+				4DD9A3A517DC217E0063049B /* map_car_thinkcity_classicblack.png */,
+				4DD9A3A617DC217E0063049B /* map_car_thinkcity_skyblue.png */,
 				4D9697E6165BB00300DF0364 /* map_car_holdenvolt_black.png */,
 				4D9697E7165BB00300DF0364 /* map_car_holdenvolt_crystalclaret.png */,
 				4D9697E8165BB00300DF0364 /* map_car_holdenvolt_silvernitrate.png */,
@@ -958,6 +986,10 @@
 		4DF2FF1114981FB900E488F2 /* Car Outlines */ = {
 			isa = PBXGroup;
 			children = (
+				4DD9A39B17DC216F0063049B /* ol_car_thinkcity_brightred.png */,
+				4DD9A39C17DC216F0063049B /* ol_car_thinkcity_citrusyellow.png */,
+				4DD9A39D17DC216F0063049B /* ol_car_thinkcity_classicblack.png */,
+				4DD9A39E17DC216F0063049B /* ol_car_thinkcity_skyblue.png */,
 				4D9697D4165BAFED00DF0364 /* ol_car_holdenvolt_black.png */,
 				4D9697D5165BAFED00DF0364 /* ol_car_holdenvolt_crystalclaret.png */,
 				4D9697D6165BAFED00DF0364 /* ol_car_holdenvolt_silvernitrate.png */,
@@ -998,6 +1030,10 @@
 		4DF754CA147F1D5B00C33AA4 /* Car Images */ = {
 			isa = PBXGroup;
 			children = (
+				4DD9A39317DC215F0063049B /* car_thinkcity_brightred.png */,
+				4DD9A39417DC215F0063049B /* car_thinkcity_citrusyellow.png */,
+				4DD9A39517DC215F0063049B /* car_thinkcity_classicblack.png */,
+				4DD9A39617DC215F0063049B /* car_thinkcity_skyblue.png */,
 				4D9697C1165BAFD700DF0364 /* car_holdenvolt_black.png */,
 				4D9697C2165BAFD700DF0364 /* car_holdenvolt_crystalclaret.png */,
 				4D9697C3165BAFD700DF0364 /* car_holdenvolt_silvernitrate.png */,
@@ -1460,6 +1496,18 @@
 				6347B4C016E8C44500140ABA /* level3@2x.png in Resources */,
 				4DA1732417CF7C2700165B9E /* README.md in Resources */,
 				4DA1732517CF7C2700165B9E /* release_notes.md in Resources */,
+				4DD9A39717DC215F0063049B /* car_thinkcity_brightred.png in Resources */,
+				4DD9A39817DC215F0063049B /* car_thinkcity_citrusyellow.png in Resources */,
+				4DD9A39917DC215F0063049B /* car_thinkcity_classicblack.png in Resources */,
+				4DD9A39A17DC215F0063049B /* car_thinkcity_skyblue.png in Resources */,
+				4DD9A39F17DC216F0063049B /* ol_car_thinkcity_brightred.png in Resources */,
+				4DD9A3A017DC216F0063049B /* ol_car_thinkcity_citrusyellow.png in Resources */,
+				4DD9A3A117DC216F0063049B /* ol_car_thinkcity_classicblack.png in Resources */,
+				4DD9A3A217DC216F0063049B /* ol_car_thinkcity_skyblue.png in Resources */,
+				4DD9A3A717DC217E0063049B /* map_car_thinkcity_brightred.png in Resources */,
+				4DD9A3A817DC217E0063049B /* map_car_thinkcity_citrusyellow.png in Resources */,
+				4DD9A3A917DC217E0063049B /* map_car_thinkcity_classicblack.png in Resources */,
+				4DD9A3AA17DC217E0063049B /* map_car_thinkcity_skyblue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
