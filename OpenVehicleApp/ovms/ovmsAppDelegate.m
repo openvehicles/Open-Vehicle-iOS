@@ -969,6 +969,7 @@
   for (NSString *wl in wla)
     {
     if ((car_ambient_weather<=0)&&
+        ([wl length] > 0)&&
         ([wl characterAtIndex:0] != '#'))
       {
       // We can assume this is the first line of the good response
