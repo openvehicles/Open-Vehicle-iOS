@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="yen-VS-8ek">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="yen-VS-8ek">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1280" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Ovms Status View Controller Pad - Status-->
@@ -16,7 +17,7 @@
                                 <rect key="frame" x="424" y="89" width="267" height="305"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Oqg-IH-ZKz" customClass="REVClusterMapView">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" id="Oqg-IH-ZKz" customClass="REVClusterMapView">
                                 <rect key="frame" x="20" y="416" width="728" height="474"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
@@ -244,7 +245,7 @@
                                 </accessibility>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="STANDARD" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="AXn-eT-0IG" userLabel="car_charge_mode">
-                                <rect key="frame" x="104" y="317" width="201" height="19"/>
+                                <rect key="frame" x="95" y="317" width="201" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
@@ -298,7 +299,7 @@
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" continuous="NO" id="aiv-UH-I7F">
-                                <rect key="frame" x="166" y="195" width="117" height="23"/>
+                                <rect key="frame" x="166" y="195" width="117" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="ChargeSliderTouch:" destination="KQf-3p-4Zw" eventType="touchUpInside" id="EgV-ws-4Dn"/>
@@ -314,9 +315,6 @@
                                     <color key="titleColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <connections>
                                     <segue destination="pvM-YC-brA" kind="modal" identifier="ChargerSettings" modalTransitionStyle="coverVertical" id="AUN-Un-mA2"/>
                                 </connections>
@@ -329,9 +327,6 @@
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="lpu-dN-GRr" kind="modal" identifier="LockUnlock" modalTransitionStyle="coverVertical" id="2RF-1p-64r"/>
@@ -346,9 +341,6 @@
                                     <color key="titleColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <connections>
                                     <segue destination="lpu-dN-GRr" kind="modal" identifier="ValetMode" modalTransitionStyle="coverVertical" id="iH8-LJ-yA2"/>
                                 </connections>
@@ -361,9 +353,6 @@
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="WakeupButton:" destination="KQf-3p-4Zw" eventType="touchUpInside" id="0Ap-cI-TIC"/>
@@ -393,9 +382,6 @@
                                     <color key="titleColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <connections>
                                     <action selector="HomelinkButton:" destination="KQf-3p-4Zw" eventType="touchUpInside" id="LAe-EZ-Yv4"/>
                                 </connections>
@@ -407,6 +393,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Status" image="49-battery.png" id="ltk-Aa-W7F"/>
                     <navigationItem key="navigationItem" id="6ol-L2-L2d">
                         <barButtonItem key="leftBarButtonItem" image="ic_pin.png" id="73Q-Ll-2FM">
@@ -420,7 +407,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="m_battery_button" destination="ULr-Iw-zpV" id="F3h-rM-NQT"/>
                         <outlet property="m_battery_charging" destination="7ZY-WZ-8jd" id="oTS-WH-3t0"/>
@@ -480,9 +467,10 @@
         <scene sceneID="LBL-91-hfX">
             <objects>
                 <tabBarController id="yen-VS-8ek" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="r6m-1c-JPh">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="r6m-1c-JPh">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -500,9 +488,10 @@
         <scene sceneID="2tD-lO-Yqo">
             <objects>
                 <navigationController definesPresentationContext="YES" id="aVr-bq-lN6" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Settings" image="20-gear2.png" id="Roq-t4-hlC"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="71L-Nt-Rqi">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="71L-Nt-Rqi">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -520,13 +509,12 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="rbt-Zb-27p">
                         <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CellIdentifier" rowHeight="200" id="bgS-Zb-VCe">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellIdentifier" rowHeight="200" id="bgS-Zb-VCe">
                                 <rect key="frame" x="0.0" y="22" width="768" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="199"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bgS-Zb-VCe" id="Ne1-xJ-u1v">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView tag="2" contentMode="scaleAspectFit" image="car_roadster_thundergray.png" id="Yje-sZ-bej">
@@ -543,7 +531,7 @@
                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
                                         <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="FRl-f6-bSE" userLabel="disclosure">
-                                            <rect key="frame" x="722" y="84" width="29" height="31"/>
+                                            <rect key="frame" x="729" y="84" width="22" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal">
@@ -562,7 +550,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <button hidden="YES" opaque="NO" tag="5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="J4i-ub-ruY" userLabel="info">
-                                            <rect key="frame" x="727" y="160" width="18" height="19"/>
+                                            <rect key="frame" x="51" y="160" width="22" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                             <state key="normal">
@@ -577,9 +565,9 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="backgroundColor" red="0.086274509803921567" green="0.14509803921568626" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.086274509803921567" green="0.14509803921568626" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -587,6 +575,7 @@
                             <outlet property="delegate" destination="xdX-PC-pUv" id="Dcm-Y8-N2T"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Cars" id="Hr3-ac-6fX">
                         <barButtonItem key="leftBarButtonItem" title="New" id="tBu-Pn-p1d">
                             <connections>
@@ -594,7 +583,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CrE-Gw-aBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -655,6 +643,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="4So-nH-Sz0">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="ihC-oO-yDM"/>
                         <barButtonItem key="rightBarButtonItem" title="Control" id="EPY-sf-guK">
@@ -663,7 +652,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="m_control_button" destination="EPY-sf-guK" id="x5E-5D-9HC"/>
                         <outlet property="vehicleImage" destination="wi3-LI-KEr" id="XY3-RO-DoT"/>
@@ -681,10 +670,11 @@
         <scene sceneID="057-Rn-1Wh">
             <objects>
                 <navigationController definesPresentationContext="YES" id="rOH-qE-UmW" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Battery" image="49-battery.png" id="xhk-5W-DoK"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="U9H-dB-TO7">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="U9H-dB-TO7">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -700,10 +690,10 @@
             <objects>
                 <viewController id="lpu-dN-GRr" customClass="ovmsControlPINEntry" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jO1-K2-uMH">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" id="Bw3-qY-Tsp">
+                            <navigationBar contentMode="scaleToFill" barStyle="black" id="Bw3-qY-Tsp">
                                 <rect key="frame" x="0.0" y="-8" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
@@ -749,8 +739,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Vehicle PIN" id="WCT-r8-8LD"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="m_done" destination="Jbn-q3-nna" id="Z8b-9r-rg4"/>
                         <outlet property="m_message" destination="tPO-lt-rpc" id="FOX-2k-TtK"/>
@@ -773,13 +764,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="4BP-Xb-k7p">
                                 <rect key="frame" x="20" y="31" width="728" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Features">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="featuresButton:" destination="H0G-Tq-aOT" eventType="touchUpInside" id="vW9-et-niX"/>
@@ -789,13 +775,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="RD7-hn-m5j">
                                 <rect key="frame" x="20" y="120" width="728" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Parameters">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="parametersButton:" destination="H0G-Tq-aOT" eventType="touchUpInside" id="rpW-mq-Kwh"/>
@@ -805,13 +786,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="3Fh-Z5-aaW">
                                 <rect key="frame" x="20" y="582" width="728" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Reset OVMS Module">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="resetModuleButton:" destination="H0G-Tq-aOT" eventType="touchUpInside" id="WSu-p4-kqR"/>
@@ -820,13 +796,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="gw9-5f-UTK">
                                 <rect key="frame" x="20" y="494" width="728" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Cellular Usage">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="parametersButton:" destination="H0G-Tq-aOT" eventType="touchUpInside" id="aaQ-JO-j3v"/>
@@ -836,13 +807,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="NbC-Nt-Sqg">
                                 <rect key="frame" x="20" y="208" width="728" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="MMI/USSD Code">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="parametersButton:" destination="H0G-Tq-aOT" eventType="touchUpInside" id="90p-EQ-Bo6"/>
@@ -852,13 +818,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="jFg-xR-PN1">
                                 <rect key="frame" x="20" y="297" width="728" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Connections">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="handleConnections:" destination="H0G-Tq-aOT" eventType="touchUpInside" id="2oT-D9-ui6"/>
@@ -868,6 +829,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.070588238540000001" green="0.11372549830000001" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Control" id="9aU-kG-kmp">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="0Aa-NA-cbf">
                             <connections>
@@ -875,7 +837,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZt-16-HqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -885,15 +847,14 @@
         <scene sceneID="ygi-DR-Mdt">
             <objects>
                 <tableViewController id="X2Y-9I-T4M" customClass="ovmsControlParametersViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="A5g-2v-lZI">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="A5g-2v-lZI">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ParamCell" rowHeight="48" id="zI2-Dt-WIg">
                                 <rect key="frame" x="0.0" y="22" width="768" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zI2-Dt-WIg" id="lp4-cG-hYy">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="47"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -916,8 +877,8 @@
                                             </connections>
                                         </textField>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                    <color key="backgroundColor" red="0.086274509803921567" green="0.14509803921568626" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -925,8 +886,9 @@
                             <outlet property="delegate" destination="X2Y-9I-T4M" id="sCS-1m-CjO"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Parameters" id="gft-X4-C4h"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="m_table" destination="A5g-2v-lZI" id="aFd-gJ-iPG"/>
                     </connections>
@@ -939,15 +901,14 @@
         <scene sceneID="obE-2C-ur6">
             <objects>
                 <tableViewController id="csq-LT-Krs" customClass="ovmsControlFeaturesViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="bOO-1n-FgL">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="bOO-1n-FgL">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeatureCell" rowHeight="48" id="GcG-a4-GT6">
                                 <rect key="frame" x="0.0" y="22" width="768" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GcG-a4-GT6" id="TS5-G1-ZKX">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="47"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -970,8 +931,8 @@
                                             </connections>
                                         </textField>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -979,8 +940,9 @@
                             <outlet property="delegate" destination="csq-LT-Krs" id="oa2-up-aHk"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Features" id="0TR-OU-4XI"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="m_table" destination="bOO-1n-FgL" id="DwS-kU-yd7"/>
                     </connections>
@@ -1009,8 +971,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Cellular Usage" id="YoC-fh-SWI"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="m_webview" destination="Vf7-sO-v8I" id="0tM-vJ-hoX"/>
                     </connections>
@@ -1030,6 +993,7 @@
                             <pickerView contentMode="scaleToFill" id="Bbj-SG-Zma">
                                 <rect key="frame" x="244" y="200" width="280" height="216"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="tBg-fU-ReV" id="Qfl-Lm-MbK"/>
                                     <outlet property="delegate" destination="tBg-fU-ReV" id="l1z-TZ-qc2"/>
@@ -1066,6 +1030,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.070588238540000001" green="0.11372549830000001" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Charger Settings" id="OsA-AL-zxg">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="nEz-bG-p3D">
                             <connections>
@@ -1078,7 +1043,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="m_charger_current" destination="Bbj-SG-Zma" id="f79-Bj-0ne"/>
                         <outlet property="m_charger_mode" destination="ImU-9k-Fk4" id="fCa-Oy-dZ7"/>
@@ -1093,8 +1058,9 @@
         <scene sceneID="fdU-Vy-hJT">
             <objects>
                 <navigationController definesPresentationContext="YES" id="pvM-YC-brA" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="PBJ-yB-L0M">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="PBJ-yB-L0M">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1109,9 +1075,10 @@
         <scene sceneID="oVB-p2-2fg">
             <objects>
                 <navigationController id="h2F-ed-J2N" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="76w-4N-u07">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="76w-4N-u07">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
@@ -1132,10 +1099,10 @@
             <objects>
                 <viewController id="YMP-T6-PgX" customClass="ovmsVehicleInfo" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GJB-fl-B3C">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" id="UoW-o2-jWM">
+                            <navigationBar contentMode="scaleToFill" barStyle="black" id="UoW-o2-jWM">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
@@ -1227,7 +1194,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CAC" minimumFontSize="17" id="4s1-pt-V3G">
-                                <rect key="frame" x="236" y="212" width="511" height="31"/>
+                                <rect key="frame" x="236.0000003555889" y="212" width="511" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1251,7 +1218,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="app firmware" minimumFontSize="17" id="6L4-ek-x5F">
-                                <rect key="frame" x="236" y="448" width="511" height="31"/>
+                                <rect key="frame" x="236.0000003555889" y="448" width="511" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1266,8 +1233,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Vehicle PIN" id="5f2-EY-xea"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="m_appfirmware" destination="6L4-ek-x5F" id="dNm-Qs-4Q0"/>
                         <outlet property="m_cac" destination="4s1-pt-V3G" id="Mu2-HE-f2y"/>
@@ -1288,9 +1256,10 @@
         <scene sceneID="rYI-k8-JM1">
             <objects>
                 <navigationController definesPresentationContext="YES" id="vRM-9f-ikW" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Settings" image="20-gear2.png" id="auo-uH-d2u"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="4JT-AB-g5R">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="4JT-AB-g5R">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1305,7 +1274,7 @@
         <scene sceneID="6YK-BW-tHL">
             <objects>
                 <tableViewController id="nW2-wt-pCM" customClass="ovmsGroupsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" id="3qZ-Mr-BjH">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" id="3qZ-Mr-BjH">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
@@ -1313,7 +1282,7 @@
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="GroupCell" rowHeight="56" id="ect-yi-Gyy">
                                 <rect key="frame" x="0.0" y="22" width="768" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ect-yi-Gyy" id="KGm-17-yxb">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -1330,15 +1299,14 @@
                                             </connections>
                                         </textField>
                                         <switch opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="iCD-og-JUK">
-                                            <rect key="frame" x="684" y="14" width="79" height="27"/>
+                                            <rect key="frame" x="712" y="14" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="endswitchedit:" destination="nW2-wt-pCM" eventType="valueChanged" id="oH9-Kf-7C7"/>
                                             </connections>
                                         </switch>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                             </tableViewCell>
                         </prototypes>
@@ -1347,6 +1315,7 @@
                             <outlet property="delegate" destination="nW2-wt-pCM" id="C63-E6-qNJ"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Groups" id="fpI-Wc-eG8">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="OYU-D2-ary">
                             <connections>
@@ -1354,7 +1323,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKe-QX-fRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1393,6 +1362,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="MMI/USSD Code" id="dpf-Qs-9gg">
                         <barButtonItem key="rightBarButtonItem" title="Send" id="hRQ-GU-FZK">
                             <connections>
@@ -1400,7 +1370,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="m_ussd" destination="l9C-l9-v6Z" id="Up4-lt-y1G"/>
                     </connections>
@@ -1437,170 +1407,9 @@
         <image name="tirepress_letterbox.png" width="534" height="610"/>
         <image name="wsymbol_113.png" width="128" height="128"/>
     </resources>
-    <classes>
-        <class className="REVClusterMapView" superclassName="MKMapView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/REVClusterMapView.h"/>
-        </class>
-        <class className="ovmsCarsFormViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsCarsFormViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="m_control_button" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="vehicleImage" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="vehicleNetPass" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="vehicleUserPass" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="vehicleid" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="vehiclelabel" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ovmsCarsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsCarsTableViewController.h"/>
-        </class>
-        <class className="ovmsChargerSettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsChargerSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="CancelButton:"/>
-                <relationship kind="action" name="DoneButton:"/>
-                <relationship kind="action" name="ModeChanged:"/>
-                <relationship kind="outlet" name="m_charger_current" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="m_charger_mode" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="m_charger_warning" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ovmsControlCellularUsageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsControlCellularUsageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="m_webview" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="ovmsControlFeaturesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsControlFeaturesViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="m_table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="ovmsControlPINEntry" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsControlPINEntry.h"/>
-            <relationships>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="Done:"/>
-                <relationship kind="action" name="Edited:"/>
-                <relationship kind="outlet" name="m_done" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="m_message" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="m_navbar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="m_pin" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ovmsControlParametersViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsControlParametersViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="m_table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="ovmsControlUSSDEntry" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsControlUSSDEntry.h"/>
-            <relationships>
-                <relationship kind="action" name="Send:"/>
-                <relationship kind="outlet" name="m_ussd" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ovmsControlViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsControlViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cellularUsageButton:"/>
-                <relationship kind="action" name="doneButton:"/>
-                <relationship kind="action" name="featuresButton:"/>
-                <relationship kind="action" name="handleConnections:"/>
-                <relationship kind="action" name="parametersButton:"/>
-                <relationship kind="action" name="resetModuleButton:"/>
-                <relationship kind="outlet" name="m_chargemode" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="ovmsGroupsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsGroupsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="action" name="endedit:"/>
-                <relationship kind="action" name="endswitchedit:"/>
-            </relationships>
-        </class>
-        <class className="ovmsStatusViewControllerPad" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsStatusViewControllerPad.h"/>
-            <relationships>
-                <relationship kind="action" name="ChargeSliderTouch:"/>
-                <relationship kind="action" name="ChargeSliderValue:"/>
-                <relationship kind="action" name="HomelinkButton:"/>
-                <relationship kind="action" name="WakeupButton:"/>
-                <relationship kind="action" name="locationSnapped:"/>
-                <relationship kind="outlet" name="m_battery_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="m_battery_charging" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_battery_front" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_ambient_temp" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_charge_message" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_charge_mode" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_charge_state" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_charge_type" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_connection_image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_connection_state" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_door_cp" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_door_hd" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_door_ld" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_door_rd" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_door_tr" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_lights" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_lockunlock" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_outlineimage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_parking_image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_parking_state" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_range_estimated" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_range_ideal" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_soc" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_temp_battery" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_temp_battery_l" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_temp_motor" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_temp_motor_l" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_temp_pem" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_temp_pem_l" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_tpmsboxes" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_valetonoff" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_weather" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_car_wheel_fl_pressure" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_wheel_fl_temp" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_wheel_fr_pressure" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_wheel_fr_temp" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_wheel_rl_pressure" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_wheel_rl_temp" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_wheel_rr_pressure" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_car_wheel_rr_temp" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="m_charger_button" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_charger_plug" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_charger_slider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="m_control_button" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="m_homelink_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="m_lock_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="m_valet_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="m_wakeup_button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="myMapView" candidateClass="REVClusterMapView"/>
-            </relationships>
-        </class>
-        <class className="ovmsVehicleInfo" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ovmsVehicleInfo.h"/>
-            <relationships>
-                <relationship kind="action" name="Done:"/>
-                <relationship kind="outlet" name="m_appfirmware" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="m_cac" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="m_carfirmware" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="m_gsm" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="m_gsm_signalbars" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="m_serverfirmware" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="m_type" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="m_vehicleid" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="m_vin" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>

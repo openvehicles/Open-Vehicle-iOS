@@ -16,12 +16,12 @@
 @interface ovmsControlPINEntry : UIViewController
 {
   NSString *_instructions;
-  NSString *_heading;
+  NSString *_formtitle;
   NSString *_function;
 }
 
 @property (strong, nonatomic) NSString *instructions;
-@property (strong, nonatomic) NSString *heading;
+@property (strong, nonatomic) NSString *formtitle;
 @property (strong, nonatomic) NSString *function;
 @property (nonatomic, weak) id <ovmsControlPINEntryDelegate> delegate;
 

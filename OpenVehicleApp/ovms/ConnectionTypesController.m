@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Connections", nil);
-    self.view.backgroundColor = UIColorFromRGB(0x121b2f);
+    self.view.backgroundColor = UIColorFromRGB(0x162540);
     
     
     NSFetchRequest *fr = [NSFetchRequest new];
@@ -90,6 +90,8 @@
     ConnectionTypes *item = [self.dataSource objectAtIndex:[indexPath row]];
     cell.isSelected = [self.selectedMarks containsObject:item] ? YES : NO;
     cell.textLabel.text = item.title;
+    cell.backgroundColor = UIColorFromRGB(0x162540);
+    cell.textLabel.textColor = UIColorFromRGB(0xffffff);
     
     return cell;
 }

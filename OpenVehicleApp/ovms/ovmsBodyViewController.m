@@ -461,14 +461,14 @@
     if ([ovmsAppDelegate myRef].car_doors2 & 0x10)
       { // Valet is ON, let's offer to deactivate it
         [[segue destinationViewController] setInstructions:@"Enter PIN\nto deactivate valet mode"];
-        [[segue destinationViewController] setHeading:@"Valet Mode"];
+        [[segue destinationViewController] setFormtitle:@"Valet Mode"];
         [[segue destinationViewController] setFunction:@"Valet Off"];
         [[segue destinationViewController] setDelegate:self];
       }
     else
       { // Valet is OFF, let's offer to activate it
         [[segue destinationViewController] setInstructions:@"Enter PIN\nto activate valet mode"];
-        [[segue destinationViewController] setHeading:@"Valet Mode"];
+        [[segue destinationViewController] setFormtitle:@"Valet Mode"];
         [[segue destinationViewController] setFunction:@"Valet On"];
         [[segue destinationViewController] setDelegate:self];
       }
@@ -478,14 +478,14 @@
     if ([ovmsAppDelegate myRef].car_doors2 & 0x08)
       { // Car is locked, let's offer to unlock it
         [[segue destinationViewController] setInstructions:@"Enter PIN\nto unlock car"];
-        [[segue destinationViewController] setHeading:@"Unlock Car"];
+        [[segue destinationViewController] setFormtitle:@"Unlock Car"];
         [[segue destinationViewController] setFunction:@"Unlock Car"];
         [[segue destinationViewController] setDelegate:self];
       }
     else
       { // Car is unlocked, let's offer to lock it
         [[segue destinationViewController] setInstructions:@"Enter PIN\nto lock car"];
-        [[segue destinationViewController] setHeading:@"Lock Car"];
+        [[segue destinationViewController] setFormtitle:@"Lock Car"];
         [[segue destinationViewController] setFunction:@"Lock Car"];
         [[segue destinationViewController] setDelegate:self];
       }

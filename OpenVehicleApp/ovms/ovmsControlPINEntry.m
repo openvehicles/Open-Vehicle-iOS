@@ -13,7 +13,7 @@
 @synthesize delegate;
 
 @synthesize instructions = _instructions;
-@synthesize heading = _heading;
+@synthesize formtitle = _formtitle;
 @synthesize function = _function;
 
 @synthesize m_pin;
@@ -80,7 +80,7 @@
   [m_pin becomeFirstResponder];
   self.m_message.text = _instructions;
   m_done.title = _function;
-  self.m_navbar.topItem.title = _heading;
+  self.m_navbar.topItem.title = _formtitle;
 }
 
 - (IBAction)Edited:(id)sender {

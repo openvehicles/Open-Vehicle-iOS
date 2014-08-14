@@ -10,6 +10,7 @@
 		4D04C86914F28EF4002D6B69 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D04C86814F28EF4002D6B69 /* MBProgressHUD.m */; };
 		4D04E2E7147E7695007CB190 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D04E2E6147E7695007CB190 /* Settings.bundle */; };
 		4D0A96AF14939616000B74FC /* ovmsStatusViewControllerPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A96AE14939616000B74FC /* ovmsStatusViewControllerPad.m */; };
+		4D1056EA18004C66008C07ED /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA1731D17CF7C2700165B9E /* libTestFlight.a */; };
 		4D10FCF3147BC9AA0092FAF9 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D10FCF2147BC9AA0092FAF9 /* GCDAsyncSocket.m */; };
 		4D10FCF5147BCA0C0092FAF9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D10FCF4147BCA0B0092FAF9 /* CFNetwork.framework */; };
 		4D10FCF7147BCACD0092FAF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D10FCF6147BCACD0092FAF9 /* Security.framework */; };
@@ -150,9 +151,7 @@
 		4D99986D154C0CCA00214F2A /* 193-location-arrow-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D99986C154C0CCA00214F2A /* 193-location-arrow-white.png */; };
 		4DA1732417CF7C2700165B9E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4DA1731E17CF7C2700165B9E /* README.md */; };
 		4DA1732517CF7C2700165B9E /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 4DA1731F17CF7C2700165B9E /* release_notes.md */; };
-		4DA1732617CF7C8A00165B9E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA1731D17CF7C2700165B9E /* libTestFlight.a */; };
 		4DA3E52F16019C14009E1245 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3E52E16019C14009E1245 /* Default-568h@2x.png */; };
-		4DA492041510840A004D26E0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA492031510840A004D26E0 /* libz.dylib */; };
 		4DA91F7114EE896100106AD4 /* ovmsChargerSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA91F6F14EE896000106AD4 /* ovmsChargerSettingsViewController.m */; };
 		4DAB2C741492109C00E1098C /* ovmsBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB2C731492109C00E1098C /* ovmsBodyViewController.m */; };
 		4DAB2C77149216C000E1098C /* carlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DAB2C75149216C000E1098C /* carlock.png */; };
@@ -234,6 +233,7 @@
 		4DDA222F1476962700BA40AA /* teslapin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDA222E1476962700BA40AA /* teslapin.png */; };
 		4DDF384714E4246000B4ACC0 /* carlights.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDF384614E4246000B4ACC0 /* carlights.png */; };
 		4DE26E60147E7E3000E3161D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE26E5F147E7E3000E3161D /* CoreData.framework */; };
+		4DEA397118004948003D0127 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA492031510840A004D26E0 /* libz.dylib */; };
 		4DEF9F80155FE20E00623906 /* ovmsControlUSSDEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEF9F7F155FE20E00623906 /* ovmsControlUSSDEntry.m */; };
 		4DF2FF2014981FB900E488F2 /* ol_car_roadster_arcticwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2FF1214981FB900E488F2 /* ol_car_roadster_arcticwhite.png */; };
 		4DF2FF2114981FB900E488F2 /* ol_car_roadster_brilliantyellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2FF1314981FB900E488F2 /* ol_car_roadster_brilliantyellow.png */; };
@@ -382,6 +382,7 @@
 		4D69A85914DFC6F400CF0F74 /* tirepress_letterbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tirepress_letterbox.png; sourceTree = "<group>"; };
 		4D69A85B14DFCB0D00CF0F74 /* charger_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = charger_button.png; sourceTree = "<group>"; };
 		4D69A85C14DFCB0E00CF0F74 /* charger_plug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = charger_plug.png; sourceTree = "<group>"; };
+		4D6B3E20180045F200EB2514 /* Open Vehicle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "Open Vehicle.xcodeproj"; sourceTree = "<group>"; };
 		4D731E55153C3F0C0010921B /* ovmsGroupsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ovmsGroupsTableViewController.h; sourceTree = SOURCE_ROOT; };
 		4D731E56153C3F0C0010921B /* ovmsGroupsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ovmsGroupsTableViewController.m; sourceTree = SOURCE_ROOT; };
 		4D7439F6148F961600090BBA /* connection_good_paranoid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connection_good_paranoid.png; sourceTree = "<group>"; };
@@ -682,6 +683,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DEA397118004948003D0127 /* libz.dylib in Frameworks */,
+				4D1056EA18004C66008C07ED /* libTestFlight.a in Frameworks */,
 				4D69A84914DADA4400CF0F74 /* QuartzCore.framework in Frameworks */,
 				4DBF3762149B7333002323B5 /* SystemConfiguration.framework in Frameworks */,
 				4DE26E60147E7E3000E3161D /* CoreData.framework in Frameworks */,
@@ -692,8 +695,6 @@
 				4D5AE36914733757002F5F52 /* UIKit.framework in Frameworks */,
 				4D5AE36B14733757002F5F52 /* Foundation.framework in Frameworks */,
 				4D5AE36D14733757002F5F52 /* CoreGraphics.framework in Frameworks */,
-				4DA1732617CF7C8A00165B9E /* libTestFlight.a in Frameworks */,
-				4DA492041510840A004D26E0 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -720,6 +721,7 @@
 		4D5AE36714733757002F5F52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D6B3E20180045F200EB2514 /* Open Vehicle.xcodeproj */,
 				4DA492031510840A004D26E0 /* libz.dylib */,
 				4D69A84814DADA4400CF0F74 /* QuartzCore.framework */,
 				4DBF3761149B7333002323B5 /* SystemConfiguration.framework */,
@@ -777,6 +779,11 @@
 				4D5AE37614733758002F5F52 /* Open Vehicle-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4D6B3E21180045F200EB2514 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		4D82FA70154829A9009D73E8 /* Car Map Images */ = {
@@ -1240,8 +1247,13 @@
 		4D5AE35B14733757002F5F52 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Open Vehicle Systems";
+				TargetAttributes = {
+					4D5AE36314733757002F5F52 = {
+						DevelopmentTeam = 5NP6692GUS;
+					};
+				};
 			};
 			buildConfigurationList = 4D5AE35E14733757002F5F52 /* Build configuration list for PBXProject "Open Vehicle" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1253,6 +1265,12 @@
 			mainGroup = 4D5AE35914733757002F5F52;
 			productRefGroup = 4D5AE36514733757002F5F52 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4D6B3E21180045F200EB2514 /* Products */;
+					ProjectRef = 4D6B3E20180045F200EB2514 /* Open Vehicle.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4D5AE36314733757002F5F52 /* Open Vehicle */,
@@ -1603,14 +1621,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ALEKSEJ KARAJKOZA";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = "";
@@ -1622,8 +1639,8 @@
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "1C833212-4C8B-4E57-8BE2-20451DDDC297";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C833212-4C8B-4E57-8BE2-20451DDDC297";
+				PROVISIONING_PROFILE = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1633,8 +1650,8 @@
 		4D29A7F11485EFE60088122F /* Adhoc Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mark Webb-Johnson";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1648,14 +1665,13 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ovms/TestFlightSDK0\"",
-					"\"$(SRCROOT)/TestFlightSDK2\"",
+					"/Users/mark/Documents/ovms/Open-Vehicle-iOS/OpenVehicleApp/TestFlightSDK2",
 				);
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "C91F1CD6-7F09-42DA-9B5F-1878A35B7346";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C91F1CD6-7F09-42DA-9B5F-1878A35B7346";
+				PROVISIONING_PROFILE = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1665,14 +1681,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ALEKSEJ KARAJKOZA";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = "";
@@ -1684,8 +1699,8 @@
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "1C833212-4C8B-4E57-8BE2-20451DDDC297";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C833212-4C8B-4E57-8BE2-20451DDDC297";
+				PROVISIONING_PROFILE = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1695,8 +1710,8 @@
 		4D29A7F41485EFEE0088122F /* AppStore Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mark Webb-Johnson";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1710,14 +1725,13 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ovms/TestFlightSDK0\"",
-					"\"$(SRCROOT)/TestFlightSDK2\"",
+					"/Users/mark/Documents/ovms/Open-Vehicle-iOS/OpenVehicleApp/TestFlightSDK2",
 				);
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "C91F1CD6-7F09-42DA-9B5F-1878A35B7346";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C91F1CD6-7F09-42DA-9B5F-1878A35B7346";
+				PROVISIONING_PROFILE = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1727,14 +1741,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ALEKSEJ KARAJKOZA";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ALEKSEJ KARAJKOZA";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mark Webb-Johnson (CWJDQA6EJQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mark Webb-Johnson (CWJDQA6EJQ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1752,10 +1765,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
-				PROVISIONING_PROFILE = "1C833212-4C8B-4E57-8BE2-20451DDDC297";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C833212-4C8B-4E57-8BE2-20451DDDC297";
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "120E7581-816E-4B68-91D2-4E6815D2C75D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "120E7581-816E-4B68-91D2-4E6815D2C75D";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1776,14 +1791,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ovms/TestFlightSDK0\"",
-					"\"$(SRCROOT)/TestFlightSDK2\"",
+					"/Users/mark/Documents/ovms/Open-Vehicle-iOS/OpenVehicleApp/TestFlightSDK2",
 				);
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "48D3831B-DFF7-4B7F-8BC8-9A870F404032";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "48D3831B-DFF7-4B7F-8BC8-9A870F404032";
+				PROVISIONING_PROFILE = "120E7581-816E-4B68-91D2-4E6815D2C75D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "120E7581-816E-4B68-91D2-4E6815D2C75D";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

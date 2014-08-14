@@ -66,7 +66,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, notificationView.frame.size.height)];
     [label setText:message];
     [label setFont:[UIFont systemFontOfSize:14.0f]];
-    [label setTextAlignment:UITextAlignmentLeft];
+    [label setTextAlignment:NSTextAlignmentLeft];
     [label setTextColor:[UIColor whiteColor]];
     [label setBackgroundColor:[UIColor clearColor]];
     label.lineBreakMode=UILineBreakModeWordWrap;

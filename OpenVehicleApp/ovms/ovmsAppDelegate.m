@@ -112,14 +112,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Initialise TestFlight
-#ifdef DEBUG
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-#pragma GCC diagnostic warning "-Wdeprecated-declarations"
-#endif
-//  [TestFlight takeOff:@"5a4beeb296dd93d1971d64a94e74d9b6_NDM1MDAyMDExLTExLTI2IDAzOjQ0OjQxLjU1NjcxNQ"];
-//    [TestFlight takeOff:@"7e5194564905861e39191059a40412f7_MTkzMTMyMjAxMy0wMi0yOCAwOTozNzo1Mi45MTY2OTE"];
-    [TestFlight takeOff:@"4b2fde43-3af2-4ccd-9d3f-06cc7613e63a"];
+  //#ifdef DEBUG
+  //#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+  //    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+  //#pragma GCC diagnostic warning "-Wdeprecated-declarations"
+  //#endif
+  [TestFlight takeOff:@"4b2fde43-3af2-4ccd-9d3f-06cc7613e63a"];
 
   // Set the application defaults
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -192,7 +190,11 @@
     }
   
   // Let the device know we want to receive push notifications
-#ifndef TARGET_IPHONE_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR
+  // Nothing to do on the simulator, as APNS not supported by Apple
+  NSLog(@"No PUSH notifications on simultor, apns_deviceid: %@", apns_deviceid);
+#else
+  NSLog(@"Registering for PUSH notifications apns_deviceid: %@", apns_deviceid);
   [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
   (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 #endif // TARGET_IPHONE_SIMULATOR
