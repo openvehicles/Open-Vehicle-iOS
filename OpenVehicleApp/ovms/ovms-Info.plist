@@ -13,6 +13,9 @@
 		<string>Icon.png</string>
 		<string>icon114x114.png</string>
 		<string>icon72x72.png</string>
+		<string>icon120x120.png</string>
+		<string>icon152x152.png</string>
+		<string>icon76x76.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -35,11 +38,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.6.1</string>
+	<string>1.6.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>20140515</string>
+	<string>20140903</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>

@@ -159,6 +159,12 @@
 		4DAB4FE415739D8100D782E5 /* homelink-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DAB4FE315739D8100D782E5 /* homelink-logo.png */; };
 		4DAD5325147D301C00949EE8 /* ovmsCarsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD5324147D301C00949EE8 /* ovmsCarsTableViewController.m */; };
 		4DAD532C147D317300949EE8 /* ovmsCarsFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD532B147D317300949EE8 /* ovmsCarsFormViewController.m */; };
+		4DB5B24919B749FF00C42A66 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB5B24319B749FF00C42A66 /* Icon.png */; };
+		4DB5B24A19B749FF00C42A66 /* icon72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB5B24419B749FF00C42A66 /* icon72x72.png */; };
+		4DB5B24C19B749FF00C42A66 /* icon114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB5B24619B749FF00C42A66 /* icon114x114.png */; };
+		4DB5B24D19B749FF00C42A66 /* icon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB5B24719B749FF00C42A66 /* icon120x120.png */; };
+		4DB5B24E19B749FF00C42A66 /* icon152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB5B24819B749FF00C42A66 /* icon152x152.png */; };
+		4DB5B25019B74AF000C42A66 /* icon76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB5B24F19B74AF000C42A66 /* icon76x76.png */; };
 		4DBB7930148270A50055769F /* connection_good.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBB792D148270A50055769F /* connection_good.png */; };
 		4DBB7931148270A50055769F /* connection_bad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBB792E148270A50055769F /* connection_bad.png */; };
 		4DBB7932148270A50055769F /* connection_unknown.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DBB792F148270A50055769F /* connection_unknown.png */; };
@@ -493,6 +499,12 @@
 		4DAD5324147D301C00949EE8 /* ovmsCarsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ovmsCarsTableViewController.m; sourceTree = "<group>"; };
 		4DAD532A147D317300949EE8 /* ovmsCarsFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ovmsCarsFormViewController.h; sourceTree = SOURCE_ROOT; };
 		4DAD532B147D317300949EE8 /* ovmsCarsFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ovmsCarsFormViewController.m; sourceTree = SOURCE_ROOT; };
+		4DB5B24319B749FF00C42A66 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		4DB5B24419B749FF00C42A66 /* icon72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon72x72.png; sourceTree = "<group>"; };
+		4DB5B24619B749FF00C42A66 /* icon114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon114x114.png; sourceTree = "<group>"; };
+		4DB5B24719B749FF00C42A66 /* icon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120x120.png; sourceTree = "<group>"; };
+		4DB5B24819B749FF00C42A66 /* icon152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon152x152.png; sourceTree = "<group>"; };
+		4DB5B24F19B74AF000C42A66 /* icon76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon76x76.png; sourceTree = "<group>"; };
 		4DBB792D148270A50055769F /* connection_good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connection_good.png; sourceTree = "<group>"; };
 		4DBB792E148270A50055769F /* connection_bad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connection_bad.png; sourceTree = "<group>"; };
 		4DBB792F148270A50055769F /* connection_unknown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connection_unknown.png; sourceTree = "<group>"; };
@@ -761,6 +773,7 @@
 				4DF2FF1114981FB900E488F2 /* Car Outlines */,
 				4D82FA70154829A9009D73E8 /* Car Map Images */,
 				4D91CEF81473ECE500CBA435 /* Other Images */,
+				4DB5AFCF19B7497100C42A66 /* Icons */,
 				4DCABE59151B666100CB3D2A /* Weather Symbols */,
 				4D5AE36F14733757002F5F52 /* Supporting Files */,
 				4DA1731C17CF7C2700165B9E /* TestFlightSDK2 */,
@@ -908,6 +921,19 @@
 			);
 			name = TestFlightSDK2;
 			path = ../TestFlightSDK2;
+			sourceTree = "<group>";
+		};
+		4DB5AFCF19B7497100C42A66 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				4DB5B24319B749FF00C42A66 /* Icon.png */,
+				4DB5B24419B749FF00C42A66 /* icon72x72.png */,
+				4DB5B24F19B74AF000C42A66 /* icon76x76.png */,
+				4DB5B24619B749FF00C42A66 /* icon114x114.png */,
+				4DB5B24719B749FF00C42A66 /* icon120x120.png */,
+				4DB5B24819B749FF00C42A66 /* icon152x152.png */,
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 		4DCABE59151B666100CB3D2A /* Weather Symbols */ = {
@@ -1294,6 +1320,7 @@
 				4D91CEFC1473F26D00CBA435 /* 49-battery.png in Resources */,
 				4D91CEFE1473F27D00CBA435 /* 51-outlet.png in Resources */,
 				4D91CF001473F29400CBA435 /* 54-lock.png in Resources */,
+				4DB5B24E19B749FF00C42A66 /* icon152x152.png in Resources */,
 				4D91CF021473F2B500CBA435 /* 74-location.png in Resources */,
 				4D91CF041473F2BE00CBA435 /* 77-ekg.png in Resources */,
 				4D91CF061473F2CC00CBA435 /* 81-dashboard.png in Resources */,
@@ -1301,6 +1328,7 @@
 				4D91CF0A1473F36000CBA435 /* 00-icons-license.txt in Resources */,
 				4DFAD7EB14752B8800416D38 /* Icon.png in Resources */,
 				4DFAD7EE14752BA100416D38 /* icon114x114.png in Resources */,
+				4DB5B25019B74AF000C42A66 /* icon76x76.png in Resources */,
 				4DFAD7F014752CFB00416D38 /* Default.png in Resources */,
 				4DFAD7F414752D4F00416D38 /* icon72x72.png in Resources */,
 				4DFAD7F614752ECD00416D38 /* Default-Portrait~ipad.png in Resources */,
@@ -1363,8 +1391,10 @@
 				4D69A85E14DFCB0E00CF0F74 /* charger_plug.png in Resources */,
 				4DDF384714E4246000B4ACC0 /* carlights.png in Resources */,
 				4D3C35C914EAA42000126F47 /* Nothing.png in Resources */,
+				4DB5B24919B749FF00C42A66 /* Icon.png in Resources */,
 				4D3C35CB14EAA43300126F47 /* charger_blank.png in Resources */,
 				4D777F6914ED2EC900B46223 /* carlock_b.png in Resources */,
+				4DB5B24C19B749FF00C42A66 /* icon114x114.png in Resources */,
 				4D777F6A14ED2EC900B46223 /* carunlock_b.png in Resources */,
 				4D777F6B14ED2EC900B46223 /* carvaletoff_b.png in Resources */,
 				4D777F6C14ED2EC900B46223 /* carvaleton_b.png in Resources */,
@@ -1380,6 +1410,7 @@
 				4DCABE8B151B666100CB3D2A /* wsymbol_116.png in Resources */,
 				4DCABE8C151B666100CB3D2A /* wsymbol_119.png in Resources */,
 				4DCABE8D151B666100CB3D2A /* wsymbol_122.png in Resources */,
+				4DB5B24A19B749FF00C42A66 /* icon72x72.png in Resources */,
 				4DCABE8E151B666100CB3D2A /* wsymbol_143.png in Resources */,
 				4DCABE8F151B666100CB3D2A /* wsymbol_176.png in Resources */,
 				4DCABE90151B666100CB3D2A /* wsymbol_179.png in Resources */,
@@ -1432,6 +1463,7 @@
 				4D82FA8115482A66009D73E8 /* map_car_roadster_electricblue.png in Resources */,
 				4D82FA8215482A66009D73E8 /* map_car_roadster_fushionred.png in Resources */,
 				4D82FA8315482A66009D73E8 /* map_car_roadster_glacierblue.png in Resources */,
+				4DB5B24D19B749FF00C42A66 /* icon120x120.png in Resources */,
 				4D82FA8415482A66009D73E8 /* map_car_roadster_jetblack.png in Resources */,
 				4D82FA8515482A66009D73E8 /* map_car_roadster_lightninggreen.png in Resources */,
 				4D82FA8615482A66009D73E8 /* map_car_roadster_obsidianblack.png in Resources */,
