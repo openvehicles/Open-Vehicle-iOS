@@ -190,7 +190,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
   {
-  UIView *cell = [[[textField superview] superview] superview];
+  UIView *cell = [[textField superview] superview];
   int fn = cell.tag-200;
   int val = [textField.text intValue];
 
