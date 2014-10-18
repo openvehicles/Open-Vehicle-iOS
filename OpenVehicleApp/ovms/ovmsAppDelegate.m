@@ -199,6 +199,13 @@
   (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 #endif // TARGET_IPHONE_SIMULATOR
 
+  if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+    {
+    // Nasty kludge for iOS <7.0 to seet tint colour to black
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    [[UITabBar appearance] setTintColor:[UIColor blackColor]];
+    }
+    
   return YES;
 }
 	

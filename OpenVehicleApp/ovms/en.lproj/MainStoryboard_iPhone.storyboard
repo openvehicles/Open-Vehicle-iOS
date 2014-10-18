@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="4">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Ovms Status View Controller - Status-->
+        <!--Status-->
         <scene sceneID="11">
             <objects>
                 <viewController title="Status" id="2" customClass="ovmsStatusViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="charger_plug.png" id="Geg-T8-Lqj">
@@ -147,7 +147,7 @@
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" continuous="NO" id="Tjp-Kr-c3l">
-                                <rect key="frame" x="135" y="158" width="117" height="29"/>
+                                <rect key="frame" x="135" y="164" width="117" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <action selector="ChargeSliderTouch:" destination="2" eventType="touchUpInside" id="ohl-Ph-w2p"/>
@@ -198,12 +198,12 @@
             </objects>
             <point key="canvasLocation" x="1074" y="-430"/>
         </scene>
-        <!--Ovms Location View Controller - Location-->
+        <!--Location-->
         <scene sceneID="13">
             <objects>
                 <viewController title="Location" id="3" customClass="ovmsLocationViewController" sceneMemberID="viewController">
                     <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" id="JvO-lL-aI7" customClass="REVClusterMapView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <connections>
                             <outlet property="delegate" destination="3" id="UDT-J4-WSS"/>
@@ -237,8 +237,9 @@
             <objects>
                 <tabBarController id="4" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="5">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black" translucent="NO"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -254,12 +255,13 @@
             </objects>
             <point key="canvasLocation" x="132" y="180"/>
         </scene>
-        <!--Navigation Controller - Settings-->
+        <!--Settings-->
         <scene sceneID="KFo-dg-nI6">
             <objects>
                 <navigationController definesPresentationContext="YES" id="vgl-h6-lDD" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Settings" image="20-gear2.png" id="X1U-1S-yvr"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="Jy1-Ct-pq0">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -271,12 +273,12 @@
             </objects>
             <point key="canvasLocation" x="689" y="1275"/>
         </scene>
-        <!--Ovms Cars Table View Controller - Cars-->
+        <!--Cars-->
         <scene sceneID="9Oa-SP-kvN">
             <objects>
                 <tableViewController id="T4g-Sv-yXP" customClass="ovmsCarsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="144" sectionHeaderHeight="22" sectionFooterHeight="22" id="UpT-qx-GHI">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
@@ -301,7 +303,7 @@
                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
                                         <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="fjw-OR-BUu" userLabel="disclosure">
-                                            <rect key="frame" x="282" y="56" width="22" height="22"/>
+                                            <rect key="frame" x="275" y="56" width="29" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                             <state key="normal">
@@ -320,7 +322,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <button hidden="YES" opaque="NO" tag="5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="G9S-Yv-Uag" userLabel="info">
-                                            <rect key="frame" x="50" y="101" width="22" height="22"/>
+                                            <rect key="frame" x="54" y="101" width="18" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                             <state key="normal">
@@ -362,7 +364,7 @@
             <objects>
                 <viewController id="BXs-pp-JHG" customClass="ovmsCarsFormViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mjE-2E-gqv">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vehicle ID" minimumFontSize="17" clearButtonMode="whileEditing" id="4Xd-yt-3M8">
@@ -402,7 +404,7 @@
                                 </connections>
                             </textField>
                             <pickerView tag="5" contentMode="scaleAspectFit" showsSelectionIndicator="NO" id="fbz-J9-5fJ">
-                                <rect key="frame" x="0.0" y="151" width="320" height="216"/>
+                                <rect key="frame" x="0.0" y="200" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BXs-pp-JHG" id="s0H-9K-QFL"/>
@@ -434,13 +436,13 @@
             </objects>
             <point key="canvasLocation" x="1486" y="1819"/>
         </scene>
-        <!--Navigation Controller - Location-->
+        <!--Location-->
         <scene sceneID="sZB-Ex-xt6">
             <objects>
                 <navigationController definesPresentationContext="YES" id="LXA-tU-F3h" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Location" image="74-location.png" id="BC8-EA-ecr"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="AJY-X3-ny6">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -452,19 +454,20 @@
             </objects>
             <point key="canvasLocation" x="689" y="700"/>
         </scene>
-        <!--Navigation Controller - Status-->
+        <!--Status-->
         <scene sceneID="TO2-d0-1xO">
             <objects>
                 <navigationController definesPresentationContext="YES" id="ORt-fv-3cW" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Status" image="49-battery.png" id="bPi-UE-IG5"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="AkA-v0-yQB">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="b4k-X7-RjA">
                         <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </toolbar>
                     <connections>
                         <segue destination="2" kind="relationship" relationship="rootViewController" id="8jF-Vy-nM9"/>
@@ -474,13 +477,13 @@
             </objects>
             <point key="canvasLocation" x="689" y="-430"/>
         </scene>
-        <!--Navigation Controller - Car-->
+        <!--Car-->
         <scene sceneID="mA1-O9-EXD">
             <objects>
                 <navigationController definesPresentationContext="YES" id="IAg-Vm-0nZ" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Car" image="54-lock.png" id="RZn-iv-slr"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="BVO-58-Vqw">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -492,12 +495,12 @@
             </objects>
             <point key="canvasLocation" x="689" y="135"/>
         </scene>
-        <!--Ovms Body View Controller - Car-->
+        <!--Car-->
         <scene sceneID="66v-s6-RzB">
             <objects>
                 <viewController title="Car" id="QVp-45-P9a" customClass="ovmsBodyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TVX-rE-5HE">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ol_car_roadster_thundergray.png" id="yy1-Al-VLM">
@@ -763,12 +766,12 @@
             </objects>
             <point key="canvasLocation" x="1074" y="135"/>
         </scene>
-        <!--Ovms Control View Controller - Control-->
+        <!--Control-->
         <scene sceneID="3Qb-bc-MYS">
             <objects>
                 <viewController id="SsU-0d-yX8" customClass="ovmsControlViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LDM-Dw-lTh">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="mHX-1w-gLc">
@@ -851,12 +854,12 @@
             </objects>
             <point key="canvasLocation" x="2284" y="1819"/>
         </scene>
-        <!--Ovms ControlPIN Entry - Vehicle PIN-->
+        <!--Vehicle PIN-->
         <scene sceneID="A9I-hX-b5M">
             <objects>
                 <viewController id="cgm-Vv-Biu" customClass="ovmsControlPINEntry" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jni-bp-gse">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" barStyle="black" id="GjN-y7-rTR">
@@ -918,12 +921,12 @@
             </objects>
             <point key="canvasLocation" x="1486" y="135"/>
         </scene>
-        <!--Ovms Control Parameters View Controller - Parameters-->
+        <!--Parameters-->
         <scene sceneID="Z5c-Qj-YRV">
             <objects>
                 <tableViewController id="WYu-zK-Uku" customClass="ovmsControlParametersViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" id="jpS-gQ-XEd">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
@@ -972,12 +975,12 @@
             </objects>
             <point key="canvasLocation" x="3211" y="1652"/>
         </scene>
-        <!--Ovms Control Features View Controller - Features-->
+        <!--Features-->
         <scene sceneID="CgH-xe-eJm">
             <objects>
                 <tableViewController id="c4t-Fe-tyb" customClass="ovmsControlFeaturesViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="eKo-3s-wib">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
@@ -1026,12 +1029,12 @@
             </objects>
             <point key="canvasLocation" x="2804" y="1367"/>
         </scene>
-        <!--Ovms Control Cellular Usage View Controller - Cellular Usage-->
+        <!--Cellular Usage-->
         <scene sceneID="o7M-rV-knj">
             <objects>
                 <viewController id="ea2-qH-NLr" customClass="ovmsControlCellularUsageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="680-FP-B2x" customClass="CPTGraphHostingView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scalesPageToFit="YES" id="IHW-5M-OrN">
@@ -1056,12 +1059,12 @@
             </objects>
             <point key="canvasLocation" x="2809" y="2542"/>
         </scene>
-        <!--Ovms Charger Settings View Controller - Charger Settings-->
+        <!--Charger Settings-->
         <scene sceneID="Kev-uy-6HY">
             <objects>
                 <viewController id="NfD-wf-3qX" customClass="ovmsChargerSettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sNT-Cv-UJh">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView opaque="NO" contentMode="scaleToFill" id="X8M-5y-crp">
@@ -1165,12 +1168,12 @@
             </objects>
             <point key="canvasLocation" x="1895" y="1813"/>
         </scene>
-        <!--Ovms Vehicle Info - Vehicle PIN-->
+        <!--Vehicle PIN-->
         <scene sceneID="iQ6-82-3zm">
             <objects>
                 <viewController id="Ohb-tf-Jjj" customClass="ovmsVehicleInfo" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BxJ-VL-Oww">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" barStyle="black" id="VT6-MB-cHG">
@@ -1187,7 +1190,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="vehicle id" minimumFontSize="17" id="TvA-0V-loG">
-                                <rect key="frame" x="95.000000116301777" y="56" width="205" height="31"/>
+                                <rect key="frame" x="95.000000372682237" y="56" width="205" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1200,7 +1203,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="vin" minimumFontSize="17" id="2dK-Un-sPU">
-                                <rect key="frame" x="95.000000116301777" y="95" width="205" height="31"/>
+                                <rect key="frame" x="95.000000372682237" y="95" width="205" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1213,40 +1216,40 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="OVMS Firmware:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="1bn-oo-j51">
-                                <rect key="frame" x="20" y="320" width="131" height="21"/>
+                                <rect key="frame" x="20" y="300" width="131" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="server firmware" minimumFontSize="17" id="xnD-R6-qWE">
-                                <rect key="frame" x="95.000000116301777" y="354" width="205" height="31"/>
+                                <rect key="frame" x="95.000000372682237" y="334" width="205" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="car firmware" minimumFontSize="17" id="5vj-ow-P5Q">
-                                <rect key="frame" x="95.000000116301777" y="393" width="205" height="31"/>
+                                <rect key="frame" x="95" y="373" width="205.00000037268222" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Server" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="vg3-Ec-bVj">
-                                <rect key="frame" x="32" y="359" width="56" height="21"/>
+                                <rect key="frame" x="32" y="339" width="56" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Car" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="LK8-fu-f3s">
-                                <rect key="frame" x="32" y="398" width="56" height="21"/>
+                                <rect key="frame" x="32" y="378" width="56" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="type" minimumFontSize="17" id="btW-xG-bsy">
-                                <rect key="frame" x="95.000000116301777" y="134" width="205" height="31"/>
+                                <rect key="frame" x="95.000000372682237" y="134" width="205" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1259,13 +1262,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="gsm" minimumFontSize="17" id="kAU-ia-0FE">
-                                <rect key="frame" x="140.00000011630178" y="174" width="160" height="31"/>
+                                <rect key="frame" x="140.00000037268225" y="174" width="160" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CAC" minimumFontSize="17" id="cBe-QY-rdQ">
-                                <rect key="frame" x="140" y="213" width="160.00000011630178" height="31"/>
+                                <rect key="frame" x="140.00000037268225" y="213" width="160" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1289,14 +1292,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="App" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yuz-cb-YcE">
-                                <rect key="frame" x="32" y="437" width="56" height="21"/>
+                                <rect key="frame" x="32" y="417" width="56" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="app firmware" minimumFontSize="17" id="J5d-5S-y83">
-                                <rect key="frame" x="96" y="432" width="205" height="31"/>
+                                <rect key="frame" x="96" y="412" width="205" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1322,7 +1325,7 @@
             </objects>
             <point key="canvasLocation" x="1486" y="1275"/>
         </scene>
-        <!--Navigation Controller - Settings-->
+        <!--Settings-->
         <scene sceneID="REd-xQ-G4B">
             <objects>
                 <navigationController definesPresentationContext="YES" id="zJt-YK-6ec" sceneMemberID="viewController">
@@ -1339,12 +1342,12 @@
             </objects>
             <point key="canvasLocation" x="1486" y="700"/>
         </scene>
-        <!--Ovms Groups Table View Controller - Groups-->
+        <!--Groups-->
         <scene sceneID="byX-sb-zAx">
             <objects>
                 <tableViewController id="RWy-RN-EWE" customClass="ovmsGroupsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" id="ItC-rX-r8q">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.086274512110000007" green="0.14509804549999999" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
@@ -1368,7 +1371,7 @@
                                             </connections>
                                         </textField>
                                         <switch opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="rUf-ys-Avl">
-                                            <rect key="frame" x="264" y="14" width="51" height="31"/>
+                                            <rect key="frame" x="236" y="14" width="79" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="endswitchedit:" destination="RWy-RN-EWE" eventType="valueChanged" id="bjQ-3Y-5Lw"/>
@@ -1397,12 +1400,12 @@
             </objects>
             <point key="canvasLocation" x="1871" y="700"/>
         </scene>
-        <!--Ovms ControlUSSD Entry - MMI/USSD Code-->
+        <!--MMI/USSD Code-->
         <scene sceneID="y8c-qX-XLr">
             <objects>
                 <viewController title="MMI/USSD Code" id="xj4-PT-y2E" customClass="ovmsControlUSSDEntry" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="83q-Pj-nZb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="Ikb-lr-c6u">
@@ -1476,7 +1479,6 @@
         <image name="tirepress_letterbox.png" width="534" height="610"/>
         <image name="wsymbol_395.png" width="128" height="128"/>
     </resources>
-    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -1486,4 +1488,5 @@
         <segue reference="mTX-H5-o9Y"/>
         <segue reference="gam-vz-1Nr"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
