@@ -13,7 +13,7 @@
 #import "EntityName.h"
 
 #define NULL_TO_NIL(obj) ({ __typeof__ (obj) __obj = (obj); __obj == [NSNull null] ? nil : obj; })
-#define BASE_URL @"http://www.openchargemap.org/api/?output=json"
+#define BASE_URL @"http://api.openchargemap.io/v2/poi/?output=json&verbose=false"
 #define SWF(format, args...) [NSString stringWithFormat:format, args]
 
 //#define UPDATE_SEC 120.0
