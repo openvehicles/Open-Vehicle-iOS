@@ -281,6 +281,21 @@
 		4DFAD8071475448000416D38 /* crypto_rc4.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD8061475448000416D38 /* crypto_rc4.c */; };
 		4DFAD8091475448A00416D38 /* crypto_hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD8081475448A00416D38 /* crypto_hmac.c */; };
 		4DFAD80B1475449600416D38 /* crypto_base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD80A1475449600416D38 /* crypto_base64.c */; };
+		5D5E4D141BD3D669001502E3 /* car_kiasoul_carribianblueclearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D0F1BD3D669001502E3 /* car_kiasoul_carribianblueclearwhite.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D151BD3D669001502E3 /* car_kiasoul_cherryblackinfernored.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D101BD3D669001502E3 /* car_kiasoul_cherryblackinfernored.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D161BD3D669001502E3 /* car_kiasoul_clearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D111BD3D669001502E3 /* car_kiasoul_clearwhite.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D171BD3D669001502E3 /* car_kiasoul_pearlwhiteelectronicblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D121BD3D669001502E3 /* car_kiasoul_pearlwhiteelectronicblue.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D181BD3D669001502E3 /* car_kiasoul_titaniumsilver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D131BD3D669001502E3 /* car_kiasoul_titaniumsilver.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D1A1BD3D8ED001502E3 /* ol_car_kiasoul_carribianblueclearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D191BD3D8ED001502E3 /* ol_car_kiasoul_carribianblueclearwhite.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D1C1BD3DA47001502E3 /* map_car_kiasoul_carribianblueclearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1B1BD3DA47001502E3 /* map_car_kiasoul_carribianblueclearwhite.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D211BD3E8FF001502E3 /* ol_car_kiasoul_cherryblackredinferno.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1D1BD3E8FF001502E3 /* ol_car_kiasoul_cherryblackredinferno.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D221BD3E8FF001502E3 /* ol_car_kiasoul_titaniumsilver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1E1BD3E8FF001502E3 /* ol_car_kiasoul_titaniumsilver.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D231BD3E8FF001502E3 /* ol_car_kiasoul_clearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1F1BD3E8FF001502E3 /* ol_car_kiasoul_clearwhite.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D241BD3E8FF001502E3 /* ol_car_kiasoul_pearlwhiteelectronicblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D201BD3E8FF001502E3 /* ol_car_kiasoul_pearlwhiteelectronicblue.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D291BD3E91B001502E3 /* map_car_kiasoul_cherryblackredinferno.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D251BD3E91B001502E3 /* map_car_kiasoul_cherryblackredinferno.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D2A1BD3E91B001502E3 /* map_car_kiasoul_clearwhite kopi.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D261BD3E91B001502E3 /* map_car_kiasoul_clearwhite kopi.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D2B1BD3E91B001502E3 /* map_car_kiasoul_pearlwhiteelectronicblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D271BD3E91B001502E3 /* map_car_kiasoul_pearlwhiteelectronicblue.png */; settings = {ASSET_TAGS = (); }; };
+		5D5E4D2C1BD3E91B001502E3 /* map_car_kiasoul_titaniumsilver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D281BD3E91B001502E3 /* map_car_kiasoul_titaniumsilver.png */; settings = {ASSET_TAGS = (); }; };
 		6347B4BB16E8C44500140ABA /* level0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4B516E8C44400140ABA /* level0.png */; };
 		6347B4BC16E8C44500140ABA /* level0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4B616E8C44400140ABA /* level0@2x.png */; };
 		6347B4BD16E8C44500140ABA /* level1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4B716E8C44500140ABA /* level1.png */; };
@@ -627,6 +642,21 @@
 		4DFAD8081475448A00416D38 /* crypto_hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypto_hmac.c; sourceTree = "<group>"; };
 		4DFAD80A1475449600416D38 /* crypto_base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypto_base64.c; sourceTree = "<group>"; };
 		4DFAD80C1475455C00416D38 /* crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto.h; sourceTree = "<group>"; };
+		5D5E4D0F1BD3D669001502E3 /* car_kiasoul_carribianblueclearwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_kiasoul_carribianblueclearwhite.png; sourceTree = "<group>"; };
+		5D5E4D101BD3D669001502E3 /* car_kiasoul_cherryblackinfernored.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_kiasoul_cherryblackinfernored.png; sourceTree = "<group>"; };
+		5D5E4D111BD3D669001502E3 /* car_kiasoul_clearwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_kiasoul_clearwhite.png; sourceTree = "<group>"; };
+		5D5E4D121BD3D669001502E3 /* car_kiasoul_pearlwhiteelectronicblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_kiasoul_pearlwhiteelectronicblue.png; sourceTree = "<group>"; };
+		5D5E4D131BD3D669001502E3 /* car_kiasoul_titaniumsilver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_kiasoul_titaniumsilver.png; sourceTree = "<group>"; };
+		5D5E4D191BD3D8ED001502E3 /* ol_car_kiasoul_carribianblueclearwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_kiasoul_carribianblueclearwhite.png; sourceTree = "<group>"; };
+		5D5E4D1B1BD3DA47001502E3 /* map_car_kiasoul_carribianblueclearwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_kiasoul_carribianblueclearwhite.png; sourceTree = "<group>"; };
+		5D5E4D1D1BD3E8FF001502E3 /* ol_car_kiasoul_cherryblackredinferno.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_kiasoul_cherryblackredinferno.png; sourceTree = "<group>"; };
+		5D5E4D1E1BD3E8FF001502E3 /* ol_car_kiasoul_titaniumsilver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_kiasoul_titaniumsilver.png; sourceTree = "<group>"; };
+		5D5E4D1F1BD3E8FF001502E3 /* ol_car_kiasoul_clearwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_kiasoul_clearwhite.png; sourceTree = "<group>"; };
+		5D5E4D201BD3E8FF001502E3 /* ol_car_kiasoul_pearlwhiteelectronicblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_kiasoul_pearlwhiteelectronicblue.png; sourceTree = "<group>"; };
+		5D5E4D251BD3E91B001502E3 /* map_car_kiasoul_cherryblackredinferno.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_kiasoul_cherryblackredinferno.png; sourceTree = "<group>"; };
+		5D5E4D261BD3E91B001502E3 /* map_car_kiasoul_clearwhite kopi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_car_kiasoul_clearwhite kopi.png"; sourceTree = "<group>"; };
+		5D5E4D271BD3E91B001502E3 /* map_car_kiasoul_pearlwhiteelectronicblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_kiasoul_pearlwhiteelectronicblue.png; sourceTree = "<group>"; };
+		5D5E4D281BD3E91B001502E3 /* map_car_kiasoul_titaniumsilver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_kiasoul_titaniumsilver.png; sourceTree = "<group>"; };
 		6347B4B116E8C0F900140ABA /* Model4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model4.xcdatamodel; sourceTree = "<group>"; };
 		6347B4B516E8C44400140ABA /* level0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level0.png; sourceTree = "<group>"; };
 		6347B4B616E8C44400140ABA /* level0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level0@2x.png"; sourceTree = "<group>"; };
@@ -802,6 +832,11 @@
 		4D82FA70154829A9009D73E8 /* Car Map Images */ = {
 			isa = PBXGroup;
 			children = (
+				5D5E4D251BD3E91B001502E3 /* map_car_kiasoul_cherryblackredinferno.png */,
+				5D5E4D261BD3E91B001502E3 /* map_car_kiasoul_clearwhite kopi.png */,
+				5D5E4D271BD3E91B001502E3 /* map_car_kiasoul_pearlwhiteelectronicblue.png */,
+				5D5E4D281BD3E91B001502E3 /* map_car_kiasoul_titaniumsilver.png */,
+				5D5E4D1B1BD3DA47001502E3 /* map_car_kiasoul_carribianblueclearwhite.png */,
 				4DD9A3A317DC217E0063049B /* map_car_thinkcity_brightred.png */,
 				4DD9A3A417DC217E0063049B /* map_car_thinkcity_citrusyellow.png */,
 				4DD9A3A517DC217E0063049B /* map_car_thinkcity_classicblack.png */,
@@ -1019,6 +1054,11 @@
 		4DF2FF1114981FB900E488F2 /* Car Outlines */ = {
 			isa = PBXGroup;
 			children = (
+				5D5E4D1D1BD3E8FF001502E3 /* ol_car_kiasoul_cherryblackredinferno.png */,
+				5D5E4D1E1BD3E8FF001502E3 /* ol_car_kiasoul_titaniumsilver.png */,
+				5D5E4D1F1BD3E8FF001502E3 /* ol_car_kiasoul_clearwhite.png */,
+				5D5E4D201BD3E8FF001502E3 /* ol_car_kiasoul_pearlwhiteelectronicblue.png */,
+				5D5E4D191BD3D8ED001502E3 /* ol_car_kiasoul_carribianblueclearwhite.png */,
 				4DD9A39B17DC216F0063049B /* ol_car_thinkcity_brightred.png */,
 				4DD9A39C17DC216F0063049B /* ol_car_thinkcity_citrusyellow.png */,
 				4DD9A39D17DC216F0063049B /* ol_car_thinkcity_classicblack.png */,
@@ -1063,6 +1103,11 @@
 		4DF754CA147F1D5B00C33AA4 /* Car Images */ = {
 			isa = PBXGroup;
 			children = (
+				5D5E4D0F1BD3D669001502E3 /* car_kiasoul_carribianblueclearwhite.png */,
+				5D5E4D101BD3D669001502E3 /* car_kiasoul_cherryblackinfernored.png */,
+				5D5E4D111BD3D669001502E3 /* car_kiasoul_clearwhite.png */,
+				5D5E4D121BD3D669001502E3 /* car_kiasoul_pearlwhiteelectronicblue.png */,
+				5D5E4D131BD3D669001502E3 /* car_kiasoul_titaniumsilver.png */,
 				4DD9A39317DC215F0063049B /* car_thinkcity_brightred.png */,
 				4DD9A39417DC215F0063049B /* car_thinkcity_citrusyellow.png */,
 				4DD9A39517DC215F0063049B /* car_thinkcity_classicblack.png */,
@@ -1323,6 +1368,7 @@
 				4DB5B24E19B749FF00C42A66 /* icon152x152.png in Resources */,
 				4D91CF021473F2B500CBA435 /* 74-location.png in Resources */,
 				4D91CF041473F2BE00CBA435 /* 77-ekg.png in Resources */,
+				5D5E4D2C1BD3E91B001502E3 /* map_car_kiasoul_titaniumsilver.png in Resources */,
 				4D91CF061473F2CC00CBA435 /* 81-dashboard.png in Resources */,
 				4D91CF081473F33400CBA435 /* 193-location-arrow.png in Resources */,
 				4D91CF0A1473F36000CBA435 /* 00-icons-license.txt in Resources */,
@@ -1336,9 +1382,11 @@
 				4DFAD7FB14753D7900416D38 /* battery_000.png in Resources */,
 				4DFAD7FC14753D7900416D38 /* battery_100.png in Resources */,
 				4DDA222F1476962700BA40AA /* teslapin.png in Resources */,
+				5D5E4D181BD3D669001502E3 /* car_kiasoul_titaniumsilver.png in Resources */,
 				4D04E2E7147E7695007CB190 /* Settings.bundle in Resources */,
 				4DF754EB147F1D5C00C33AA4 /* car_roadster_arcticwhite.png in Resources */,
 				4DF754EC147F1D5C00C33AA4 /* car_roadster_brilliantyellow.png in Resources */,
+				5D5E4D291BD3E91B001502E3 /* map_car_kiasoul_cherryblackredinferno.png in Resources */,
 				4DF754ED147F1D5C00C33AA4 /* car_roadster_electricblue.png in Resources */,
 				4DF754EE147F1D5C00C33AA4 /* car_roadster_fushionred.png in Resources */,
 				4DF754EF147F1D5C00C33AA4 /* car_roadster_glacierblue.png in Resources */,
@@ -1352,6 +1400,8 @@
 				4DF754F7147F1D5C00C33AA4 /* car_roadster_twilightblue.png in Resources */,
 				4DF754F8147F1D5C00C33AA4 /* car_roadster_veryorange.png in Resources */,
 				4DBB7930148270A50055769F /* connection_good.png in Resources */,
+				5D5E4D2B1BD3E91B001502E3 /* map_car_kiasoul_pearlwhiteelectronicblue.png in Resources */,
+				5D5E4D1C1BD3DA47001502E3 /* map_car_kiasoul_carribianblueclearwhite.png in Resources */,
 				4DBB7931148270A50055769F /* connection_bad.png in Resources */,
 				4DBB7932148270A50055769F /* connection_unknown.png in Resources */,
 				4D16EF3514874AE7004A80AE /* notification_background.png in Resources */,
@@ -1376,7 +1426,9 @@
 				4DF2FF2614981FB900E488F2 /* ol_car_roadster_lightninggreen.png in Resources */,
 				4DF2FF2714981FB900E488F2 /* ol_car_roadster_obsidianblack.png in Resources */,
 				4DF2FF2814981FB900E488F2 /* ol_car_roadster_racinggreen.png in Resources */,
+				5D5E4D241BD3E8FF001502E3 /* ol_car_kiasoul_pearlwhiteelectronicblue.png in Resources */,
 				4DF2FF2914981FB900E488F2 /* ol_car_roadster_radiantred.png in Resources */,
+				5D5E4D171BD3D669001502E3 /* car_kiasoul_pearlwhiteelectronicblue.png in Resources */,
 				4DF2FF2A14981FB900E488F2 /* ol_car_roadster_sterlingsilver.png in Resources */,
 				4DF2FF2B14981FB900E488F2 /* ol_car_roadster_thundergray.png in Resources */,
 				4DF2FF2C14981FB900E488F2 /* ol_car_roadster_twilightblue.png in Resources */,
@@ -1406,6 +1458,8 @@
 				4D2D3DE215175ABD0014A0AD /* signalbars-4.png in Resources */,
 				4D2D3DE315175ABD0014A0AD /* signalbars-5.png in Resources */,
 				4DCABE57151B5C4600CB3D2A /* motortemp_letterbox.png in Resources */,
+				5D5E4D141BD3D669001502E3 /* car_kiasoul_carribianblueclearwhite.png in Resources */,
+				5D5E4D1A1BD3D8ED001502E3 /* ol_car_kiasoul_carribianblueclearwhite.png in Resources */,
 				4DCABE8A151B666100CB3D2A /* wsymbol_113.png in Resources */,
 				4DCABE8B151B666100CB3D2A /* wsymbol_116.png in Resources */,
 				4DCABE8C151B666100CB3D2A /* wsymbol_119.png in Resources */,
@@ -1428,6 +1482,7 @@
 				4DCABE9C151B666100CB3D2A /* wsymbol_293.png in Resources */,
 				4DCABE9D151B666100CB3D2A /* wsymbol_296.png in Resources */,
 				4DCABE9E151B666100CB3D2A /* wsymbol_299.png in Resources */,
+				5D5E4D151BD3D669001502E3 /* car_kiasoul_cherryblackinfernored.png in Resources */,
 				4DCABE9F151B666100CB3D2A /* wsymbol_302.png in Resources */,
 				4DCABEA0151B666100CB3D2A /* wsymbol_305.png in Resources */,
 				4DCABEA1151B666100CB3D2A /* wsymbol_308.png in Resources */,
@@ -1467,6 +1522,7 @@
 				4D82FA8415482A66009D73E8 /* map_car_roadster_jetblack.png in Resources */,
 				4D82FA8515482A66009D73E8 /* map_car_roadster_lightninggreen.png in Resources */,
 				4D82FA8615482A66009D73E8 /* map_car_roadster_obsidianblack.png in Resources */,
+				5D5E4D2A1BD3E91B001502E3 /* map_car_kiasoul_clearwhite kopi.png in Resources */,
 				4D82FA8715482A66009D73E8 /* map_car_roadster_racinggreen.png in Resources */,
 				4D82FA8815482A66009D73E8 /* map_car_roadster_radiantred.png in Resources */,
 				4D82FA8915482A66009D73E8 /* map_car_roadster_sterlingsilver.png in Resources */,
@@ -1480,6 +1536,7 @@
 				4DAB4FE415739D8100D782E5 /* homelink-logo.png in Resources */,
 				4DA3E52F16019C14009E1245 /* Default-568h@2x.png in Resources */,
 				4D8C3DCC1641812F00BA254C /* car_ampera_black.png in Resources */,
+				5D5E4D161BD3D669001502E3 /* car_kiasoul_clearwhite.png in Resources */,
 				4D8C3DCD1641812F00BA254C /* car_ampera_crystalred.png in Resources */,
 				4D8C3DCE1641812F00BA254C /* car_ampera_cybergray.png in Resources */,
 				4D8C3DCF1641812F00BA254C /* car_ampera_lithiumwhite.png in Resources */,
@@ -1494,6 +1551,7 @@
 				4D8C3DE11641813F00BA254C /* ol_car_ampera_powerblue.png in Resources */,
 				4D8C3DE21641813F00BA254C /* ol_car_ampera_silvertopas.png in Resources */,
 				4D8C3DE31641813F00BA254C /* ol_car_ampera_sovereignsilver.png in Resources */,
+				5D5E4D221BD3E8FF001502E3 /* ol_car_kiasoul_titaniumsilver.png in Resources */,
 				4D8C3DE41641813F00BA254C /* ol_car_ampera_summitwhite.png in Resources */,
 				4D8C3DED1641814D00BA254C /* map_car_ampera_black.png in Resources */,
 				4D8C3DEE1641814D00BA254C /* map_car_ampera_crystalred.png in Resources */,
@@ -1506,6 +1564,7 @@
 				4D9697CA165BAFD700DF0364 /* car_holdenvolt_black.png in Resources */,
 				4D9697CB165BAFD700DF0364 /* car_holdenvolt_crystalclaret.png in Resources */,
 				4D9697CC165BAFD700DF0364 /* car_holdenvolt_silvernitrate.png in Resources */,
+				5D5E4D231BD3E8FF001502E3 /* ol_car_kiasoul_clearwhite.png in Resources */,
 				4D9697CD165BAFD700DF0364 /* car_holdenvolt_urbanfresh.png in Resources */,
 				4D9697CE165BAFD700DF0364 /* car_holdenvolt_whitediamond.png in Resources */,
 				4D9697CF165BAFD700DF0364 /* car_twizy_diamondblackwithivygreen.png in Resources */,
@@ -1520,6 +1579,7 @@
 				4D9697E2165BAFED00DF0364 /* ol_car_twizy_diamondblackwithivygreen.png in Resources */,
 				4D9697E3165BAFED00DF0364 /* ol_car_twizy_snowwhiteandflameorange.png in Resources */,
 				4D9697E4165BAFED00DF0364 /* ol_car_twizy_snowwhiteandurbanblue.png in Resources */,
+				5D5E4D211BD3E8FF001502E3 /* ol_car_kiasoul_cherryblackredinferno.png in Resources */,
 				4D9697E5165BAFED00DF0364 /* ol_car_twizy_snowwhitewithblack.png in Resources */,
 				4D9697EF165BB00300DF0364 /* map_car_holdenvolt_black.png in Resources */,
 				4D9697F0165BB00300DF0364 /* map_car_holdenvolt_crystalclaret.png in Resources */,
