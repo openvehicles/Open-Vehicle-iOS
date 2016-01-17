@@ -57,6 +57,11 @@
 @synthesize car_chargestateN;
 @synthesize car_chargemodeN;
 
+@synthesize car_minutestofull;
+@synthesize car_minutestorangelimit;
+@synthesize car_rangelimit;
+@synthesize car_soclimit;
+
 @synthesize car_doors1;
 @synthesize car_doors2;
 @synthesize car_doors3;
@@ -540,6 +545,11 @@
   car_chargestateN = 0;
   car_chargemodeN = 0;
 
+  car_minutestofull = -1;
+  car_minutestorangelimit = -1;
+  car_rangelimit = -1;
+  car_soclimit = -1;
+    
   car_doors1 = 0;
   car_doors2 = 0;
   car_doors3 = 0;
@@ -680,6 +690,13 @@
       if ([lparts count]>=19)
         {
         car_cac = [lparts objectAtIndex:18];
+        }
+      if ([lparts count]>=20)
+        {
+        car_minutestofull = [[lparts objectAtIndex:19] intValue];
+        car_minutestorangelimit = [[lparts objectAtIndex:20] intValue];
+        car_rangelimit = [[lparts objectAtIndex:21] intValue];
+        car_soclimit = [[lparts objectAtIndex:22] intValue];
         }
       }
       break;

@@ -102,6 +102,11 @@
   NSString* car_type;
   int car_gsmlevel;
   NSString* car_cac;
+    
+  int car_minutestofull;
+  int car_minutestorangelimit;
+  int car_rangelimit;
+  int car_soclimit;
 
   float car_aux_battery_voltage;
   
@@ -181,6 +186,11 @@
 @property (assign) int car_chargesubstate;
 @property (assign) int car_chargestateN;
 @property (assign) int car_chargemodeN;
+
+@property (assign) int car_minutestofull;
+@property (assign) int car_minutestorangelimit;
+@property (assign) int car_rangelimit;        
+@property (assign) int car_soclimit;
 
 @property (assign) int car_doors1;
 @property (assign) int car_doors2;
