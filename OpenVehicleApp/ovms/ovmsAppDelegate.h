@@ -103,6 +103,8 @@
   int car_gsmlevel;
   NSString* car_cac;
 
+  float car_aux_battery_voltage;
+  
   int car_tpem;
   int car_tmotor;
   int car_tbattery;
@@ -213,6 +215,8 @@
 @property (assign) int car_stale_tpms;
 
 @property (assign) int car_ambient_weather;
+
+@property (assign) float car_aux_battery_voltage;
 
 @property (strong, nonatomic) NSString* car_idealrange_s;
 @property (strong, nonatomic) NSString* car_estimatedrange_s;

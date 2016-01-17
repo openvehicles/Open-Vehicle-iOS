@@ -104,6 +104,8 @@
 @synthesize car_tpms_fl_temp_s;
 @synthesize car_tpms_rl_temp_s;
 
+@synthesize car_aux_battery_voltage;
+
 + (ovmsAppDelegate *) myRef
 {
   //return self;
@@ -807,6 +809,10 @@
           {
           car_stale_pemtemps = 1;
           car_stale_ambienttemps = 1;
+          }
+        if ([lparts count] >= 15)
+          {
+            car_aux_battery_voltage = [[lparts objectAtIndex:14] floatValue];
           }
         }
       }
