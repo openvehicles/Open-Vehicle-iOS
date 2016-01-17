@@ -281,21 +281,22 @@
 		4DFAD8071475448000416D38 /* crypto_rc4.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD8061475448000416D38 /* crypto_rc4.c */; };
 		4DFAD8091475448A00416D38 /* crypto_hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD8081475448A00416D38 /* crypto_hmac.c */; };
 		4DFAD80B1475449600416D38 /* crypto_base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DFAD80A1475449600416D38 /* crypto_base64.c */; };
-		5D5E4D141BD3D669001502E3 /* car_kiasoul_carribianblueclearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D0F1BD3D669001502E3 /* car_kiasoul_carribianblueclearwhite.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D151BD3D669001502E3 /* car_kiasoul_cherryblackinfernored.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D101BD3D669001502E3 /* car_kiasoul_cherryblackinfernored.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D161BD3D669001502E3 /* car_kiasoul_clearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D111BD3D669001502E3 /* car_kiasoul_clearwhite.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D171BD3D669001502E3 /* car_kiasoul_pearlwhiteelectronicblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D121BD3D669001502E3 /* car_kiasoul_pearlwhiteelectronicblue.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D181BD3D669001502E3 /* car_kiasoul_titaniumsilver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D131BD3D669001502E3 /* car_kiasoul_titaniumsilver.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D1A1BD3D8ED001502E3 /* ol_car_kiasoul_carribianblueclearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D191BD3D8ED001502E3 /* ol_car_kiasoul_carribianblueclearwhite.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D1C1BD3DA47001502E3 /* map_car_kiasoul_carribianblueclearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1B1BD3DA47001502E3 /* map_car_kiasoul_carribianblueclearwhite.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D211BD3E8FF001502E3 /* ol_car_kiasoul_cherryblackredinferno.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1D1BD3E8FF001502E3 /* ol_car_kiasoul_cherryblackredinferno.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D221BD3E8FF001502E3 /* ol_car_kiasoul_titaniumsilver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1E1BD3E8FF001502E3 /* ol_car_kiasoul_titaniumsilver.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D231BD3E8FF001502E3 /* ol_car_kiasoul_clearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1F1BD3E8FF001502E3 /* ol_car_kiasoul_clearwhite.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D241BD3E8FF001502E3 /* ol_car_kiasoul_pearlwhiteelectronicblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D201BD3E8FF001502E3 /* ol_car_kiasoul_pearlwhiteelectronicblue.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D291BD3E91B001502E3 /* map_car_kiasoul_cherryblackredinferno.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D251BD3E91B001502E3 /* map_car_kiasoul_cherryblackredinferno.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D2A1BD3E91B001502E3 /* map_car_kiasoul_clearwhite kopi.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D261BD3E91B001502E3 /* map_car_kiasoul_clearwhite kopi.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D2B1BD3E91B001502E3 /* map_car_kiasoul_pearlwhiteelectronicblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D271BD3E91B001502E3 /* map_car_kiasoul_pearlwhiteelectronicblue.png */; settings = {ASSET_TAGS = (); }; };
-		5D5E4D2C1BD3E91B001502E3 /* map_car_kiasoul_titaniumsilver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D281BD3E91B001502E3 /* map_car_kiasoul_titaniumsilver.png */; settings = {ASSET_TAGS = (); }; };
+		5D1A05181C4BBD3500D7F4B0 /* aux_battery.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D1A05171C4BBD3500D7F4B0 /* aux_battery.png */; };
+		5D5E4D141BD3D669001502E3 /* car_kiasoul_carribianblueclearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D0F1BD3D669001502E3 /* car_kiasoul_carribianblueclearwhite.png */; };
+		5D5E4D151BD3D669001502E3 /* car_kiasoul_cherryblackinfernored.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D101BD3D669001502E3 /* car_kiasoul_cherryblackinfernored.png */; };
+		5D5E4D161BD3D669001502E3 /* car_kiasoul_clearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D111BD3D669001502E3 /* car_kiasoul_clearwhite.png */; };
+		5D5E4D171BD3D669001502E3 /* car_kiasoul_pearlwhiteelectronicblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D121BD3D669001502E3 /* car_kiasoul_pearlwhiteelectronicblue.png */; };
+		5D5E4D181BD3D669001502E3 /* car_kiasoul_titaniumsilver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D131BD3D669001502E3 /* car_kiasoul_titaniumsilver.png */; };
+		5D5E4D1A1BD3D8ED001502E3 /* ol_car_kiasoul_carribianblueclearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D191BD3D8ED001502E3 /* ol_car_kiasoul_carribianblueclearwhite.png */; };
+		5D5E4D1C1BD3DA47001502E3 /* map_car_kiasoul_carribianblueclearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1B1BD3DA47001502E3 /* map_car_kiasoul_carribianblueclearwhite.png */; };
+		5D5E4D211BD3E8FF001502E3 /* ol_car_kiasoul_cherryblackredinferno.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1D1BD3E8FF001502E3 /* ol_car_kiasoul_cherryblackredinferno.png */; };
+		5D5E4D221BD3E8FF001502E3 /* ol_car_kiasoul_titaniumsilver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1E1BD3E8FF001502E3 /* ol_car_kiasoul_titaniumsilver.png */; };
+		5D5E4D231BD3E8FF001502E3 /* ol_car_kiasoul_clearwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D1F1BD3E8FF001502E3 /* ol_car_kiasoul_clearwhite.png */; };
+		5D5E4D241BD3E8FF001502E3 /* ol_car_kiasoul_pearlwhiteelectronicblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D201BD3E8FF001502E3 /* ol_car_kiasoul_pearlwhiteelectronicblue.png */; };
+		5D5E4D291BD3E91B001502E3 /* map_car_kiasoul_cherryblackredinferno.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D251BD3E91B001502E3 /* map_car_kiasoul_cherryblackredinferno.png */; };
+		5D5E4D2A1BD3E91B001502E3 /* map_car_kiasoul_clearwhite kopi.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D261BD3E91B001502E3 /* map_car_kiasoul_clearwhite kopi.png */; };
+		5D5E4D2B1BD3E91B001502E3 /* map_car_kiasoul_pearlwhiteelectronicblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D271BD3E91B001502E3 /* map_car_kiasoul_pearlwhiteelectronicblue.png */; };
+		5D5E4D2C1BD3E91B001502E3 /* map_car_kiasoul_titaniumsilver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E4D281BD3E91B001502E3 /* map_car_kiasoul_titaniumsilver.png */; };
 		6347B4BB16E8C44500140ABA /* level0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4B516E8C44400140ABA /* level0.png */; };
 		6347B4BC16E8C44500140ABA /* level0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4B616E8C44400140ABA /* level0@2x.png */; };
 		6347B4BD16E8C44500140ABA /* level1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6347B4B716E8C44500140ABA /* level1.png */; };
@@ -642,6 +643,7 @@
 		4DFAD8081475448A00416D38 /* crypto_hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypto_hmac.c; sourceTree = "<group>"; };
 		4DFAD80A1475449600416D38 /* crypto_base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypto_base64.c; sourceTree = "<group>"; };
 		4DFAD80C1475455C00416D38 /* crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto.h; sourceTree = "<group>"; };
+		5D1A05171C4BBD3500D7F4B0 /* aux_battery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aux_battery.png; sourceTree = "<group>"; };
 		5D5E4D0F1BD3D669001502E3 /* car_kiasoul_carribianblueclearwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_kiasoul_carribianblueclearwhite.png; sourceTree = "<group>"; };
 		5D5E4D101BD3D669001502E3 /* car_kiasoul_cherryblackinfernored.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_kiasoul_cherryblackinfernored.png; sourceTree = "<group>"; };
 		5D5E4D111BD3D669001502E3 /* car_kiasoul_clearwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_kiasoul_clearwhite.png; sourceTree = "<group>"; };
@@ -881,6 +883,7 @@
 		4D91CEF81473ECE500CBA435 /* Other Images */ = {
 			isa = PBXGroup;
 			children = (
+				5D1A05171C4BBD3500D7F4B0 /* aux_battery.png */,
 				4DAB4FE315739D8100D782E5 /* homelink-logo.png */,
 				4D2D3DD815175ABD0014A0AD /* signalbars-0.png */,
 				4D2D3DD915175ABD0014A0AD /* signalbars-1.png */,
@@ -1322,7 +1325,7 @@
 				ORGANIZATIONNAME = "Open Vehicle Systems";
 				TargetAttributes = {
 					4D5AE36314733757002F5F52 = {
-						DevelopmentTeam = 5NP6692GUS;
+						DevelopmentTeam = 464ARQP8WR;
 					};
 				};
 			};
@@ -1603,6 +1606,7 @@
 				6347B4BD16E8C44500140ABA /* level1.png in Resources */,
 				6347B4BE16E8C44500140ABA /* level1@2x.png in Resources */,
 				6347B4BF16E8C44500140ABA /* level3.png in Resources */,
+				5D1A05181C4BBD3500D7F4B0 /* aux_battery.png in Resources */,
 				6347B4C016E8C44500140ABA /* level3@2x.png in Resources */,
 				4DA1732417CF7C2700165B9E /* README.md in Resources */,
 				4DA1732517CF7C2700165B9E /* release_notes.md in Resources */,
@@ -1727,7 +1731,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -1742,9 +1746,10 @@
 		4D29A7F11485EFE60088122F /* Adhoc Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1754,15 +1759,12 @@
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/mark/Documents/ovms/Open-Vehicle-iOS/OpenVehicleApp/TestFlightSDK2",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = ./TestFlightSDK2;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1787,7 +1789,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -1802,9 +1804,10 @@
 		4D29A7F41485EFEE0088122F /* AppStore Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1814,15 +1817,12 @@
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/mark/Documents/ovms/Open-Vehicle-iOS/OpenVehicleApp/TestFlightSDK2",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = ./TestFlightSDK2;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1838,8 +1838,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mark Webb-Johnson (CWJDQA6EJQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mark Webb-Johnson (CWJDQA6EJQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1854,12 +1854,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "120E7581-816E-4B68-91D2-4E6815D2C75D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "120E7581-816E-4B68-91D2-4E6815D2C75D";
+				PROVISIONING_PROFILE = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A3F5C02-04F6-443E-BF07-6915CAD07186";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -1869,8 +1869,9 @@
 		4D5AE3A614733758002F5F52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mark Webb-Johnson (CWJDQA6EJQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mark Webb-Johnson (CWJDQA6EJQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1880,17 +1881,14 @@
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/mark/Documents/ovms/Open-Vehicle-iOS/OpenVehicleApp/TestFlightSDK2",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = ./TestFlightSDK2;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Open Vehicle";
-				PROVISIONING_PROFILE = "120E7581-816E-4B68-91D2-4E6815D2C75D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "120E7581-816E-4B68-91D2-4E6815D2C75D";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
