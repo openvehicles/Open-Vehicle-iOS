@@ -13,7 +13,8 @@
 #import "EntityName.h"
 
 #define NULL_TO_NIL(obj) ({ __typeof__ (obj) __obj = (obj); __obj == [NSNull null] ? nil : obj; })
-#define BASE_URL @"http://api.openchargemap.io/v2/poi/?output=json&verbose=false"
+#define BASE_URL @"https://api.openchargemap.io/v2"
+
 #define SWF(format, args...) [NSString stringWithFormat:format, args]
 
 //#define UPDATE_SEC 120.0
@@ -50,7 +51,7 @@
     self.isProcess = YES;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500&connectiontypeid=%@", BASE_URL,
+    NSString *surl = SWF(@"%@/poi/?output=json&verbose=false&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500&connectiontypeid=%@", BASE_URL,
                          coordinate.latitude, coordinate.longitude, distance, connectiontypeid);
     NSLog(@"start sync: %@", surl);
     
@@ -68,7 +69,7 @@
     self.isProcess = YES;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    NSString *surl = SWF(@"%@&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500", BASE_URL,
+    NSString *surl = SWF(@"%@/poi/?output=json&verbose=false&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500", BASE_URL,
                          coordinate.latitude, coordinate.longitude, distance);
     NSLog(@"start sync: %@", surl);
     
@@ -95,7 +96,7 @@
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    NSString *surl = SWF(@"%@&countrycode=%@&maxresults=5000", BASE_URL, countrycode);
+    NSString *surl = SWF(@"%@/poi/?output=json&verbose=false&countrycode=%@&maxresults=5000", BASE_URL, countrycode);
     NSLog(@"start sync: %@", surl);
     
     [self performSelectorInBackground:@selector(start:) withObject:[NSURL URLWithString:surl]];
@@ -154,7 +155,7 @@
 
 - (void)startAction:(NSNumber *)single {
     NSError* error = nil;
-    NSString *surl = SWF(@"%@&action=getcorereferencedata", BASE_URL);
+    NSString *surl = SWF(@"%@/referencedata", BASE_URL);
     NSLog(@"SyncAction: %@", surl);
     NSData *receivedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:surl] options:NSDataReadingUncached error:&error];
     if (error) {
