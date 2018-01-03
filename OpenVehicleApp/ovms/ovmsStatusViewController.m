@@ -140,6 +140,8 @@
   int hours = minutes/60;
   int days = minutes/(60*24);
   
+  NSString* mode;
+
   NSString* c_good;
   NSString* c_bad;
   NSString* c_unknown;
@@ -393,9 +395,17 @@
         m_car_charge_type.text = [NSString stringWithFormat:@"%dV @%dA",
                                   [ovmsAppDelegate myRef].car_linevoltage,
                                   [ovmsAppDelegate myRef].car_chargecurrent];
+        
+        if( [ovmsAppDelegate myRef].car_chargetype==1 ){
+            mode = @"Type 1";
+        }else if( [ovmsAppDelegate myRef].car_chargetype==2 ){
+            mode = @"ChaDeMo";
+        }else{
+            mode = [[ovmsAppDelegate myRef].car_chargemode uppercaseString];
+        }
         m_car_charge_mode.text = [NSString stringWithFormat:@"%@ %dA",
-                                  [[ovmsAppDelegate myRef].car_chargemode uppercaseString],
-                                  [ovmsAppDelegate myRef].car_chargelimit];
+                                mode,
+                                [ovmsAppDelegate myRef].car_chargelimit];
         // Slider on the right, message blank
         m_charger_slider.value = 1.0;        
         m_car_charge_message.hidden = 1;

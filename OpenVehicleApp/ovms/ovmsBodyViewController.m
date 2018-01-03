@@ -147,6 +147,7 @@
     [self setM_car_tpmsboxes:nil];
   [self setM_homelink_button:nil];
   [self setM_car_aux_battery:nil];
+    
   [super viewDidUnload];
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
@@ -554,7 +555,7 @@
     }
   else if ([sender.title isEqualToString:@"Homelink"])
     {
-    int button = index - [sender firstOtherButtonIndex];
+    int button = (int)(index - [sender firstOtherButtonIndex]);
     if ((button>=0)&&(button<3))
       {
       [[ovmsAppDelegate myRef] commandDoHomelink:button];

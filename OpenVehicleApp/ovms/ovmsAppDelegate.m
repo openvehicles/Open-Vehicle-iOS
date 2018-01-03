@@ -56,6 +56,7 @@
 @synthesize car_chargesubstate;
 @synthesize car_chargestateN;
 @synthesize car_chargemodeN;
+@synthesize car_chargetype;
 
 @synthesize car_minutestofull;
 @synthesize car_minutestorangelimit;
@@ -202,8 +203,19 @@
   NSLog(@"No PUSH notifications on simultor, apns_deviceid: %@", apns_deviceid);
 #else
   NSLog(@"Registering for PUSH notifications apns_deviceid: %@", apns_deviceid);
-  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-  (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    //-- Set Notification
+   if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
+   {
+       // iOS 8 Notifications
+       [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil]];
+       [application registerForRemoteNotifications];
+   }
+   else
+   {
+       // iOS < 8 Notifications
+       [application registerForRemoteNotificationTypes:
+        (UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
+   }
 #endif // TARGET_IPHONE_SIMULATOR
 
   if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
@@ -416,7 +428,7 @@
         char output[1024];
         NSString* cmd = [NSString stringWithFormat:@"MP-0 G%@",groupname];
         strcpy(buf, [cmd UTF8String]);
-        int len = strlen(buf);
+        int len = (int)strlen(buf);
         RC4_crypt(&txCrypto, (uint8_t*)buf, (uint8_t*)buf, len);
         base64encode((uint8_t*)buf, len, (uint8_t*)output);
         NSString *pushStr = [NSString stringWithFormat:@"%s\r\n",output];
@@ -468,7 +480,7 @@
     NSString* ovmsServer = [defaults stringForKey:@"ovmsServer"];
     BOOL ovmsShareColour = [defaults integerForKey:@"ovmsShareColour"];
     NSString* ovmsSelImagePath = [defaults stringForKey:@"selImagePath"];
-    int ovmsPort = [defaults integerForKey:@"ovmsPort"];
+    int ovmsPort = (int)[defaults integerForKey:@"ovmsPort"];
     const char *password = [sel_netpass UTF8String];
     const char *vehicleid = [sel_car UTF8String];
     
@@ -491,7 +503,7 @@
       }
     token[TOKEN_SIZE] = 0;
     
-    hmac_md5(token, TOKEN_SIZE, (const uint8_t*)password, strlen(password), digest);
+    hmac_md5(token, TOKEN_SIZE, (const uint8_t*)password, (int)strlen(password), digest);
     base64encode(digest, MD5_SIZE, edigest);
     NSString *welcomeStr;
     if (ovmsShareColour)
@@ -544,7 +556,8 @@
   car_chargesubstate = 0;
   car_chargestateN = 0;
   car_chargemodeN = 0;
-
+  car_chargetype = 0;
+    
   car_minutestofull = -1;
   car_minutestorangelimit = -1;
   car_rangelimit = -1;
@@ -620,7 +633,7 @@
       // Set the paranoid token
       pmToken =  [[NSString alloc] initWithCString:pm+1 encoding:NSUTF8StringEncoding];
       const char *password = [sel_userpass UTF8String];
-      hmac_md5((uint8_t*)pm+1, strlen(pm+1), (const uint8_t*)password, strlen(password), (uint8_t*)&pmDigest);
+      hmac_md5((uint8_t*)pm+1, (int)strlen(pm+1), (const uint8_t*)password, (int)strlen(password), (uint8_t*)&pmDigest);
       return;
       }
     else if (*pm == 'M')
@@ -691,12 +704,16 @@
         {
         car_cac = [lparts objectAtIndex:18];
         }
-      if ([lparts count]>=20)
+      if ([lparts count]>=23)
         {
         car_minutestofull = [[lparts objectAtIndex:19] intValue];
         car_minutestorangelimit = [[lparts objectAtIndex:20] intValue];
         car_rangelimit = [[lparts objectAtIndex:21] intValue];
         car_soclimit = [[lparts objectAtIndex:22] intValue];
+        }
+      if([lparts count]>=30)
+        {
+        car_chargetype = [[lparts objectAtIndex:30] intValue];
         }
       }
       break;
@@ -1092,7 +1109,7 @@
       }
       
     // Validate server token
-    hmac_md5((const uint8_t*)cstoken, strlen(cstoken), (const uint8_t*)password, strlen(password), digest);
+    hmac_md5((const uint8_t*)cstoken, (int)strlen(cstoken), (const uint8_t*)password, (int)strlen(password), digest);
     base64encode(digest, MD5_SIZE, edigest);
     if (strncmp([etoken UTF8String],(const char*)edigest,strlen((const char*)edigest))!=0)
       {
@@ -1107,11 +1124,11 @@
       }
       
     // Ok, at this point, our token is ok
-    int keylen = strlen((const char*)token)+strlen(cstoken)+1;
+    int keylen = (int)(strlen((const char*)token)+strlen(cstoken)+1);
     char key[keylen];
     strcpy(key,cstoken);
     strcat(key,(const char*)token);
-    hmac_md5((const uint8_t*)key, strlen(key), (const uint8_t*)password, strlen(password), digest);
+    hmac_md5((const uint8_t*)key, (int)strlen(key), (const uint8_t*)password, (int)strlen(password), digest);
       
     // Setup, and prime the rx and tx cryptos
     RC4_setup(&rxCrypto, digest, MD5_SIZE);
@@ -1142,7 +1159,7 @@
       NSString* pns = [NSString stringWithFormat:@"MP-0 p%@,apns,%@,%@,%@,%@",
                        apns_deviceid, apns_pushkeytype, sel_car, sel_netpass, apns_devicetoken];
       strcpy(buf, [pns UTF8String]);
-      int len = strlen(buf);
+      int len = (int)strlen(buf);
       RC4_crypt(&txCrypto, (uint8_t*)buf, (uint8_t*)buf, len);
       base64encode((uint8_t*)buf, len, (uint8_t*)output);
       NSString *pushStr = [NSString stringWithFormat:@"%s\r\n",output];
@@ -1179,7 +1196,7 @@
   char buf[1024];
   char output[1024];
   strcpy(buf, "MP-0 A");
-  int len = strlen(buf);
+  int len = (int)strlen(buf);
   RC4_crypt(&txCrypto, (uint8_t*)buf, (uint8_t*)buf, len);
   base64encode((uint8_t*)buf, len, (uint8_t*)output);
   NSString *pushStr = [NSString stringWithFormat:@"%s\r\n",output];
@@ -1214,7 +1231,7 @@
   char output[1024];
   NSString* cmd = [NSString stringWithFormat:@"MP-0 C%@",command];
   strcpy(buf, [cmd UTF8String]);
-  int len = strlen(buf);
+  int len = (int)strlen(buf);
   RC4_crypt(&txCrypto, (uint8_t*)buf, (uint8_t*)buf, len);
   base64encode((uint8_t*)buf, len, (uint8_t*)output);
   NSString *pushStr = [NSString stringWithFormat:@"%s\r\n",output];

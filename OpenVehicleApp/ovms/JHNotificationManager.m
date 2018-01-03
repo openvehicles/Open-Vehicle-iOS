@@ -69,7 +69,7 @@
     [label setTextAlignment:NSTextAlignmentLeft];
     [label setTextColor:[UIColor whiteColor]];
     [label setBackgroundColor:[UIColor clearColor]];
-    label.lineBreakMode=UILineBreakModeWordWrap;
+    label.lineBreakMode=NSLineBreakByWordWrapping;
     label.numberOfLines=0;
     [notificationView addSubview:label];
     

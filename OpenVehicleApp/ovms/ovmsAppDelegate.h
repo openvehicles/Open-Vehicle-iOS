@@ -88,6 +88,7 @@
   int car_chargesubstate;
   int car_chargestateN;
   int car_chargemodeN;
+  int car_chargetype;
 
   int car_doors1;
   int car_doors2;
@@ -186,6 +187,7 @@
 @property (assign) int car_chargesubstate;
 @property (assign) int car_chargestateN;
 @property (assign) int car_chargemodeN;
+@property (assign) int car_chargetype;
 
 @property (assign) int car_minutestofull;
 @property (assign) int car_minutestorangelimit;
