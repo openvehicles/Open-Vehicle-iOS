@@ -26,6 +26,9 @@
 @synthesize m_battery_button;
 @synthesize m_car_charge_message;
 @synthesize m_car_charge_mode;
+@synthesize m_car_charge_time;
+@synthesize m_car_charge_remaining_time;
+@synthesize m_car_chargekwh;
 @synthesize m_battery_charging;
 
 - (void)didReceiveMemoryWarning
@@ -61,6 +64,9 @@
     [self setM_car_image:nil];
     [self setM_car_charge_state:nil];
     [self setM_car_charge_type:nil];
+    [self setM_car_charge_time:nil];
+    [self setM_car_charge_remaining_time:nil];
+    [self setM_car_chargekwh:nil];
     [self setM_car_soc:nil];
     [self setM_battery_front:nil];
     [self setM_car_connection_state:nil];
@@ -134,6 +140,8 @@
   int hours = minutes/60;
   int days = minutes/(60*24);
   
+  NSString* mode;
+
   NSString* c_good;
   NSString* c_bad;
   NSString* c_unknown;
@@ -222,8 +230,11 @@
     }
 
   int parktime = [ovmsAppDelegate myRef].car_parktime;
+  int chargetime = [ovmsAppDelegate myRef].car_chargeduration;
+  int chargeremainingtime = [ovmsAppDelegate myRef].car_minutestofull;
+  int chargekWh = [ovmsAppDelegate myRef].car_chargekwh;
   if ((parktime > 0)&&(lastupdated>0)) parktime += seconds;
-
+  
   if (parktime == 0)
     {
     m_car_parking_image.hidden = 1;
@@ -252,21 +263,70 @@
     m_car_parking_state.text = [NSString stringWithFormat:@"%d days",parktime/(3600*24)];
     }
 
+  if (chargetime == 0 || m_charger_plug.hidden == 1)
+  {
+      m_car_charge_time.text = @"";
+  }
+  else if (chargetime < 120)
+  {
+      m_car_charge_time.text = @"CHARGING STARTED";
+  }
+  else if (chargetime < 3600)
+  {
+      m_car_charge_time.text = [NSString stringWithFormat:@"%d mins",chargetime/60];
+  }
+  else if (chargetime < (3600*24*2))
+  {
+     m_car_charge_time.text = [NSString stringWithFormat:@"%02d:%02d",
+                                      chargetime/3660,
+                                      (chargetime%3600)/60];
+  }
+
+  if (chargeremainingtime <= 0)
+  {
+      m_car_charge_remaining_time.text = @"";
+  }
+  else if (chargeremainingtime < 60)
+  {
+      m_car_charge_remaining_time.text = [NSString stringWithFormat:@"%d mins",chargeremainingtime];
+  }
+  else
+  {
+      m_car_charge_remaining_time.text = [NSString stringWithFormat:@"%02d:%02d",
+                               chargeremainingtime/60,
+                               chargeremainingtime%60];
+  }
+
+  if( chargekWh==0 ){
+      m_car_chargekwh.text = @"";
+  }else{
+      float effect=[ovmsAppDelegate myRef].car_linevoltage*[ovmsAppDelegate myRef].car_chargecurrent/1000.00;
+      if(effect>0){
+          m_car_chargekwh.text = [NSString stringWithFormat:@"%dkWh@%.01fkW",chargekWh,effect];
+      }else{
+          m_car_chargekwh.text = [NSString stringWithFormat:@"%dkWh",chargekWh];
+      }
+  }
+
   m_car_image.image=[UIImage imageNamed:[ovmsAppDelegate myRef].sel_imagepath];
   m_car_soc.text = [NSString stringWithFormat:@"%d%%",[ovmsAppDelegate myRef].car_soc];
   m_car_range_ideal.text = [ovmsAppDelegate myRef].car_idealrange_s;
   m_car_range_estimated.text = [ovmsAppDelegate myRef].car_estimatedrange_s;
-  
+      
   CGRect bounds = m_battery_front.bounds;
   CGPoint center = m_battery_front.center;
   CGFloat oldwidth = bounds.size.width;
-  CGFloat newwidth = (((0.0+[ovmsAppDelegate myRef].car_soc)/100.0)*(233-17))+17;
+  CGFloat newwidth = (((0.0+[ovmsAppDelegate myRef].car_soc)/100.0)*(233-17))+18;
   bounds.size.width = newwidth;
   center.x = center.x + ((newwidth - oldwidth)/2);
   m_battery_front.bounds = bounds;
   m_battery_front.center = center;
   bounds = m_battery_front.bounds;
-  
+
+  center = m_car_charge_remaining_time.center;
+      center.x = (m_battery_front.center.x+bounds.size.width/2 + 233+17)/2;
+  m_car_charge_remaining_time.center = center;
+      
   if ((([ovmsAppDelegate myRef].car_doors1 & 0x04)==0)||
       ([ovmsAppDelegate myRef].car_chargesubstate == 0x07))
     { // Charge port is closed, or connect-pwr-cable charge sub-state
@@ -309,6 +369,7 @@
         m_car_charge_type.hidden = 1;
         m_battery_charging.hidden = 1;
         m_car_charge_mode.hidden = 1;
+        
         break;
 
       case 0x0e:    // Wait for schedule charge
@@ -334,9 +395,17 @@
         m_car_charge_type.text = [NSString stringWithFormat:@"%dV @%dA",
                                   [ovmsAppDelegate myRef].car_linevoltage,
                                   [ovmsAppDelegate myRef].car_chargecurrent];
+        
+        if( [ovmsAppDelegate myRef].car_chargetype==1 ){
+            mode = @"Type 1";
+        }else if( [ovmsAppDelegate myRef].car_chargetype==2 ){
+            mode = @"ChaDeMo";
+        }else{
+            mode = [[ovmsAppDelegate myRef].car_chargemode uppercaseString];
+        }
         m_car_charge_mode.text = [NSString stringWithFormat:@"%@ %dA",
-                                  [[ovmsAppDelegate myRef].car_chargemode uppercaseString],
-                                  [ovmsAppDelegate myRef].car_chargelimit];
+                                mode,
+                                [ovmsAppDelegate myRef].car_chargelimit];
         // Slider on the right, message blank
         m_charger_slider.value = 1.0;        
         m_car_charge_message.hidden = 1;

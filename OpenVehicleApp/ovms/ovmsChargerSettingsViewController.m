@@ -114,7 +114,7 @@
 
 - (IBAction)CancelButton:(id)sender
   {
-  [self dismissModalViewControllerAnimated:YES];
+      [self dismissViewControllerAnimated:YES completion:nil];
   }
 
 - (IBAction)DoneButton:(id)sender
@@ -123,7 +123,7 @@
   if (ncm>=2) ncm++;
   int ncl = [m_charger_current selectedRowInComponent:0] + 10;
 
-  [self dismissModalViewControllerAnimated:YES];
+  [self dismissViewControllerAnimated:YES completion:nil];
 
   if ((ncm != [ovmsAppDelegate myRef].car_chargemodeN)&&
       (ncl != [ovmsAppDelegate myRef].car_chargelimit))

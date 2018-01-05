@@ -41,6 +41,7 @@
 @synthesize m_valet_button;
 @synthesize m_wakeup_button;
 @synthesize m_homelink_button;
+@synthesize m_car_aux_battery;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -145,6 +146,8 @@
     [self setM_car_weather:nil];
     [self setM_car_tpmsboxes:nil];
   [self setM_homelink_button:nil];
+  [self setM_car_aux_battery:nil];
+    
   [super viewDidUnload];
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
@@ -452,6 +455,9 @@
     m_car_wheel_rl_pressure.text = @"";
     m_car_wheel_rl_temp.text = @"";
     }
+    
+    m_car_aux_battery.text = [NSString stringWithFormat:@"%0.1fV",
+                                [ovmsAppDelegate myRef].car_aux_battery_voltage];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -549,7 +555,7 @@
     }
   else if ([sender.title isEqualToString:@"Homelink"])
     {
-    int button = index - [sender firstOtherButtonIndex];
+    int button = (int)(index - [sender firstOtherButtonIndex]);
     if ((button>=0)&&(button<3))
       {
       [[ovmsAppDelegate myRef] commandDoHomelink:button];

@@ -72,7 +72,7 @@
   {
   [super setEditing:editing animated:animated];
 
-  if (editing) editing_insertrow = [locationGroups count];
+  if (editing) editing_insertrow = (int)[locationGroups count];
 
   NSIndexPath *path = [NSIndexPath indexPathForRow:editing_insertrow inSection:0];
   NSArray *paths = [NSArray arrayWithObject:path];
@@ -182,7 +182,7 @@
   if (editingStyle == UITableViewCellEditingStyleDelete)
     {
     // Delete the row from the data source
-    int row = indexPath.row;
+    int row = (int)indexPath.row;
     [locationGroups removeObjectAtIndex:row];
     editing_insertrow--;
     [self savegroups];
@@ -197,8 +197,8 @@
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
   {
-  int fromrow = fromIndexPath.row;
-  int torow = toIndexPath.row;
+  int fromrow = (int)fromIndexPath.row;
+  int torow = (int)toIndexPath.row;
   
   if (fromrow != torow)
     {
@@ -241,7 +241,7 @@
 - (IBAction)done:(id)sender
   {
   [[ovmsAppDelegate myRef] subscribeGroups];
-  [self dismissModalViewControllerAnimated:YES];
+  [self dismissViewControllerAnimated:YES completion:nil];
   }
 
 - (IBAction)endedit:(id)sender
@@ -251,7 +251,7 @@
   NSIndexPath *indexpath = [[self tableView] indexPathForCell:cell];
   if (indexpath)
     {
-    int row = indexpath.row;
+    NSInteger row = indexpath.row;
 
     NSString *label = [cellLabel text];
     if (row < [locationGroups count])
@@ -272,7 +272,7 @@
   NSIndexPath *indexpath = [[self tableView] indexPathForCell:cell];
   if (indexpath)
     {
-    int row = indexpath.row;
+    int row = (int)indexpath.row;
     
     BOOL switchv = cellSwitch.on;
     if (row < [locationGroups count])

@@ -34,6 +34,8 @@
 @synthesize m_car_range_ideal;
 @synthesize m_car_range_estimated;
 @synthesize m_car_charge_message;
+@synthesize m_car_charge_time;
+@synthesize m_car_charge_remaining_time;
 @synthesize m_car_lights;
 @synthesize m_battery_charging;
 
@@ -246,6 +248,8 @@
     [self setM_car_image:nil];
     [self setM_car_charge_state:nil];
     [self setM_car_charge_type:nil];
+    [self setM_car_charge_time:nil];
+    [self setM_car_charge_remaining_time:nil];
     [self setM_car_soc:nil];
     [self setM_battery_front:nil];
     [self setM_car_lockunlock:nil];
