@@ -14,7 +14,6 @@
 
 #define NULL_TO_NIL(obj) ({ __typeof__ (obj) __obj = (obj); __obj == [NSNull null] ? nil : obj; })
 #define BASE_URL @"https://api.openchargemap.io/v2"
-
 #define SWF(format, args...) [NSString stringWithFormat:format, args]
 
 //#define UPDATE_SEC 120.0

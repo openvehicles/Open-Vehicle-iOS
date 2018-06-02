@@ -44,6 +44,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *m_car_range_ideal;
 @property (strong, nonatomic) IBOutlet UILabel *m_car_range_estimated;
 @property (strong, nonatomic) IBOutlet UILabel *m_car_charge_message;
+@property (strong, nonatomic) IBOutlet UILabel *m_car_charge_time;
+@property (strong, nonatomic) IBOutlet UILabel *m_car_charge_remaining_time;
 
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_lockunlock;
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_lights;

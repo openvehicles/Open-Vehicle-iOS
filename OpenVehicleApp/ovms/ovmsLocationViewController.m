@@ -82,7 +82,7 @@
         self.myMapView.blocks = val;
         [self performSelector:@selector(initAnnotations) withObject:nil afterDelay:0.3f];
         
-        NSLog(@"Setup MAP view blocks: %d",  val);
+        NSLog(@"Setup MAP view blocks: %ld", (long)val);
     }
 }
 
@@ -361,7 +361,7 @@
             [pa setSpeed:[[ovmsAppDelegate myRef] convertSpeedUnits:speed]];
             [m_groupcar_locations setObject:pa forKey:vehicleid];
             [myMapView addAnnotation:pa];
-            NSLog(@"groupCarCreated %@ count=%d", vehicleid,[[myMapView annotations] count]);
+            NSLog(@"groupCarCreated %@ count=%lu", vehicleid,(unsigned long)[[myMapView annotations] count]);
         }
     }  
 }
@@ -395,7 +395,7 @@
             annView.image = [UIImage imageNamed:@"cluster.png"];
         }
         
-        [(REVClusterAnnotationView*)annView setClusterText: [NSString stringWithFormat:@"%i",[pin nodeCount]]];
+        [(REVClusterAnnotationView*)annView setClusterText: [NSString stringWithFormat:@"%lu",(unsigned long)[pin nodeCount]]];
         annView.canShowCallout = NO;
     } else {
         annView = [mapView dequeueReusableAnnotationViewWithIdentifier:IDENTIFIER_PIN];
@@ -403,7 +403,7 @@
             annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:IDENTIFIER_PIN];
             annView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         }
-        annView.image = [UIImage imageNamed:[NSString stringWithFormat:@"level%d.png", pin.level]];
+        annView.image = [UIImage imageNamed:[NSString stringWithFormat:@"level%ld.png", (long)pin.level]];
         annView.canShowCallout = YES;
         annView.centerOffset = CGPointMake(0.0, -25.0);
     }
@@ -461,8 +461,9 @@
     }
 }
 
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay {
-    MKCircleView *circleView = [[MKCircleView alloc] initWithOverlay:overlay];
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay {
+    //MKCircleView *circleView = [[MKCircleView alloc] initWithOverlay:overlay];
+    MKCircleRenderer *circleView = [[MKCircleRenderer alloc] initWithOverlay:overlay];
     circleView.lineWidth = 3;
 
     if ([mapView.overlays indexOfObject:overlay]) {

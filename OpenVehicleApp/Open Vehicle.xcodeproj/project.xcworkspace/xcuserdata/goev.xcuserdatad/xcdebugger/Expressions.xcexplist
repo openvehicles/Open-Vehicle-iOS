@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[ovmsBodyViewController update]:ovmsBodyViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[ovmsAppDelegate myRef]">
+            </PersistentString>
+            <PersistentString
+               value = "[ovmsAppDelegate myRef].car_tpms_rl_pressure">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ovmsAppDelegate handleCommand:command:]:ovmsAppDelegate.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

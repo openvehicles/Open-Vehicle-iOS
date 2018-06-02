@@ -93,7 +93,7 @@
     [self.delegate omvsControlPINEntryDelegateDidCancel:_function];
     }
 
-  [self dismissModalViewControllerAnimated:YES];
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)Done:(id)sender {
@@ -103,6 +103,6 @@
     [self.delegate omvsControlPINEntryDelegateDidSave:_function pin:m_pin.text];
     }
 
-  [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

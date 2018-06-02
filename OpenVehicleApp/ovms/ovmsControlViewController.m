@@ -75,7 +75,8 @@
   }
 
 - (IBAction)doneButton:(id)sender {
-  [self dismissModalViewControllerAnimated:YES];
+  //[self dismissModalViewControllerAnimated:YES];
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)featuresButton:(id)sender {

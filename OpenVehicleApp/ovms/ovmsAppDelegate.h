@@ -88,6 +88,7 @@
   int car_chargesubstate;
   int car_chargestateN;
   int car_chargemodeN;
+  int car_chargetype;
 
   int car_doors1;
   int car_doors2;
@@ -102,7 +103,14 @@
   NSString* car_type;
   int car_gsmlevel;
   NSString* car_cac;
+    
+  int car_minutestofull;
+  int car_minutestorangelimit;
+  int car_rangelimit;
+  int car_soclimit;
 
+  float car_aux_battery_voltage;
+  
   int car_tpem;
   int car_tmotor;
   int car_tbattery;
@@ -179,6 +187,12 @@
 @property (assign) int car_chargesubstate;
 @property (assign) int car_chargestateN;
 @property (assign) int car_chargemodeN;
+@property (assign) int car_chargetype;
+
+@property (assign) int car_minutestofull;
+@property (assign) int car_minutestorangelimit;
+@property (assign) int car_rangelimit;        
+@property (assign) int car_soclimit;
 
 @property (assign) int car_doors1;
 @property (assign) int car_doors2;
@@ -213,6 +227,8 @@
 @property (assign) int car_stale_tpms;
 
 @property (assign) int car_ambient_weather;
+
+@property (assign) float car_aux_battery_voltage;
 
 @property (strong, nonatomic) NSString* car_idealrange_s;
 @property (strong, nonatomic) NSString* car_estimatedrange_s;
