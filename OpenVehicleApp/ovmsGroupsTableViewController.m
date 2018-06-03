@@ -44,8 +44,6 @@
       [locationGroups addObject:target];
       }
     }
-
-  [TestFlight passCheckpoint:@"GROUPS_VISITED"];
   
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;

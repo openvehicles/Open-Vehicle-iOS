@@ -95,8 +95,6 @@
   m_cac.text = [ovmsAppDelegate myRef].car_cac;
 
   [super viewWillAppear:animated];
-  
-  [TestFlight passCheckpoint:@"VEHICLE_INFO"];
   }
 
 - (IBAction)Done:(id)sender

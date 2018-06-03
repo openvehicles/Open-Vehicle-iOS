@@ -49,8 +49,6 @@
 {
   [super viewWillAppear:animated];
   [m_ussd becomeFirstResponder];
-  
-  [TestFlight passCheckpoint:@"MMIUSSD_ENTRY"];
 }
 
 - (IBAction)Send:(id)sender

@@ -10,7 +10,6 @@
 		4D04C86914F28EF4002D6B69 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D04C86814F28EF4002D6B69 /* MBProgressHUD.m */; };
 		4D04E2E7147E7695007CB190 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D04E2E6147E7695007CB190 /* Settings.bundle */; };
 		4D0A96AF14939616000B74FC /* ovmsStatusViewControllerPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A96AE14939616000B74FC /* ovmsStatusViewControllerPad.m */; };
-		4D1056EA18004C66008C07ED /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA1731D17CF7C2700165B9E /* libTestFlight.a */; };
 		4D10FCF3147BC9AA0092FAF9 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D10FCF2147BC9AA0092FAF9 /* GCDAsyncSocket.m */; };
 		4D10FCF5147BCA0C0092FAF9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D10FCF4147BCA0B0092FAF9 /* CFNetwork.framework */; };
 		4D10FCF7147BCACD0092FAF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D10FCF6147BCACD0092FAF9 /* Security.framework */; };
@@ -149,8 +148,6 @@
 		4D9697F6165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697ED165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png */; };
 		4D9697F7165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9697EE165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png */; };
 		4D99986D154C0CCA00214F2A /* 193-location-arrow-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D99986C154C0CCA00214F2A /* 193-location-arrow-white.png */; };
-		4DA1732417CF7C2700165B9E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4DA1731E17CF7C2700165B9E /* README.md */; };
-		4DA1732517CF7C2700165B9E /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 4DA1731F17CF7C2700165B9E /* release_notes.md */; };
 		4DA3E52F16019C14009E1245 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3E52E16019C14009E1245 /* Default-568h@2x.png */; };
 		4DA91F7114EE896100106AD4 /* ovmsChargerSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA91F6F14EE896000106AD4 /* ovmsChargerSettingsViewController.m */; };
 		4DAB2C741492109C00E1098C /* ovmsBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB2C731492109C00E1098C /* ovmsBodyViewController.m */; };
@@ -496,12 +493,6 @@
 		4D9697ED165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_twizy_snowwhiteandurbanblue.png; sourceTree = "<group>"; };
 		4D9697EE165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_twizy_snowwhitewithblack.png; sourceTree = "<group>"; };
 		4D99986C154C0CCA00214F2A /* 193-location-arrow-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "193-location-arrow-white.png"; sourceTree = "<group>"; };
-		4DA1731D17CF7C2700165B9E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		4DA1731E17CF7C2700165B9E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		4DA1731F17CF7C2700165B9E /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		4DA1732017CF7C2700165B9E /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
-		4DA1732117CF7C2700165B9E /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
-		4DA1732217CF7C2700165B9E /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		4DA3E52E16019C14009E1245 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4DA492031510840A004D26E0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4DA91F6E14EE896000106AD4 /* ovmsChargerSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ovmsChargerSettingsViewController.h; sourceTree = "<group>"; };
@@ -728,7 +719,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DEA397118004948003D0127 /* libz.dylib in Frameworks */,
-				4D1056EA18004C66008C07ED /* libTestFlight.a in Frameworks */,
 				4D69A84914DADA4400CF0F74 /* QuartzCore.framework in Frameworks */,
 				4DBF3762149B7333002323B5 /* SystemConfiguration.framework in Frameworks */,
 				4DE26E60147E7E3000E3161D /* CoreData.framework in Frameworks */,
@@ -808,7 +798,6 @@
 				4DB5AFCF19B7497100C42A66 /* Icons */,
 				4DCABE59151B666100CB3D2A /* Weather Symbols */,
 				4D5AE36F14733757002F5F52 /* Supporting Files */,
-				4DA1731C17CF7C2700165B9E /* TestFlightSDK2 */,
 			);
 			path = ovms;
 			sourceTree = "<group>";
@@ -945,20 +934,6 @@
 				4DFAD7FD1475430900416D38 /* Icons */,
 			);
 			name = "Other Images";
-			sourceTree = "<group>";
-		};
-		4DA1731C17CF7C2700165B9E /* TestFlightSDK2 */ = {
-			isa = PBXGroup;
-			children = (
-				4DA1731D17CF7C2700165B9E /* libTestFlight.a */,
-				4DA1731E17CF7C2700165B9E /* README.md */,
-				4DA1731F17CF7C2700165B9E /* release_notes.md */,
-				4DA1732017CF7C2700165B9E /* TestFlight+AsyncLogging.h */,
-				4DA1732117CF7C2700165B9E /* TestFlight+ManualSessions.h */,
-				4DA1732217CF7C2700165B9E /* TestFlight.h */,
-			);
-			name = TestFlightSDK2;
-			path = ../TestFlightSDK2;
 			sourceTree = "<group>";
 		};
 		4DB5AFCF19B7497100C42A66 /* Icons */ = {
@@ -1609,8 +1584,6 @@
 				6347B4BF16E8C44500140ABA /* level3.png in Resources */,
 				5D1A05181C4BBD3500D7F4B0 /* aux_battery.png in Resources */,
 				6347B4C016E8C44500140ABA /* level3@2x.png in Resources */,
-				4DA1732417CF7C2700165B9E /* README.md in Resources */,
-				4DA1732517CF7C2700165B9E /* release_notes.md in Resources */,
 				4DD9A39717DC215F0063049B /* car_thinkcity_brightred.png in Resources */,
 				4DD9A39817DC215F0063049B /* car_thinkcity_citrusyellow.png in Resources */,
 				4DD9A39917DC215F0063049B /* car_thinkcity_classicblack.png in Resources */,
@@ -1762,7 +1735,7 @@
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LIBRARY_SEARCH_PATHS = ./TestFlightSDK3;
+				LIBRARY_SEARCH_PATHS = "";
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -1825,7 +1798,7 @@
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LIBRARY_SEARCH_PATHS = ./TestFlightSDK3;
+				LIBRARY_SEARCH_PATHS = "";
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -1895,7 +1868,7 @@
 				HEADER_SEARCH_PATHS = "../core-plot/framework/**";
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LIBRARY_SEARCH_PATHS = ./TestFlightSDK3;
+				LIBRARY_SEARCH_PATHS = "";
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
