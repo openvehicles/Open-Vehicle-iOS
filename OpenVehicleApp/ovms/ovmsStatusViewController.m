@@ -135,8 +135,8 @@
   
   int connected = [ovmsAppDelegate myRef].car_connected;
   time_t lastupdated = [ovmsAppDelegate myRef].car_lastupdated;
-  int seconds = (time(0)-lastupdated);
-  int minutes = (time(0)-lastupdated)/60;
+  int seconds = (int)(time(0)-lastupdated);
+  int minutes = (int)(time(0)-lastupdated)/60;
   int hours = minutes/60;
   int days = minutes/(60*24);
   

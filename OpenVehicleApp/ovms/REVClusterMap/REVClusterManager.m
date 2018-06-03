@@ -48,7 +48,7 @@
     
     NSMutableArray *clusteredBlocks = [NSMutableArray array];
     int i = 0;
-    int length = (blocks+1)*(blocks+1);
+    int length = ((int)blocks+1)*((int)blocks+1);
     for ( ; i < length ; i ++ )
     {
         REVClusterBlock *block = [[REVClusterBlock alloc] init];
@@ -67,7 +67,7 @@
         
         int localTileNumberX = floor( localPointX / tileWidth );
         int localTileNumberY = floor( localPointY / tileHeight );
-        int localTileNumber = localTileNumberX + (localTileNumberY * (blocks+1));
+        int localTileNumber = localTileNumberX + (localTileNumberY * ((int)blocks+1));
         
         [(REVClusterBlock *)[clusteredBlocks objectAtIndex:localTileNumber] addAnnotation:pin];
     }
@@ -127,7 +127,7 @@
 - (NSInteger)getGlobalTileNumberFromMapView:(MKMapView *)mapView forLocalTileNumber:(NSInteger)tileNumber
 {
     REVClusterMapView *rMapView = (REVClusterMapView*) mapView;
-    int blocks = rMapView.blocks;
+    int blocks = (int)rMapView.blocks;
     
     double tileX = mapView.visibleMapRect.origin.x;
     double tileY = mapView.visibleMapRect.origin.y;

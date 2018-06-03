@@ -236,7 +236,7 @@
         self.myMapView.blocks = val;
         [self performSelector:@selector(initAnnotations) withObject:nil afterDelay:0.3f];
         
-        NSLog(@"Setup MAP view blocks: %d",  val);
+        NSLog(@"Setup MAP view blocks: %d",  (int)val);
     }
 }
 
@@ -341,8 +341,8 @@
   
   int connected = [ovmsAppDelegate myRef].car_connected;
   time_t lastupdated = [ovmsAppDelegate myRef].car_lastupdated;
-  int seconds = (time(0)-lastupdated);
-  int minutes = (time(0)-lastupdated)/60;
+  int seconds = (int)(time(0)-lastupdated);
+  int minutes = (int)(time(0)-lastupdated)/60;
   int hours = minutes/60;
   int days = minutes/(60*24);
   
@@ -1059,7 +1059,7 @@
       [pa setSpeed:[[ovmsAppDelegate myRef] convertSpeedUnits:speed]];
       [m_groupcar_locations setObject:pa forKey:vehicleid];
       [myMapView addAnnotation:pa];
-      NSLog(@"groupCarCreated %@ count=%d", vehicleid,[[myMapView annotations] count]);
+      NSLog(@"groupCarCreated %@ count=%d", vehicleid,(int)[[myMapView annotations] count]);
       }
     }  
 }
@@ -1256,7 +1256,7 @@
     }
   else if ([sender.title isEqualToString:@"Homelink"])
     {
-    int button = index - [sender firstOtherButtonIndex];
+    int button = index - (int)[sender firstOtherButtonIndex];
     if ((button>=0)&&(button<3))
       {
       [[ovmsAppDelegate myRef] commandDoHomelink:button];
@@ -1293,7 +1293,7 @@
             annView.image = [UIImage imageNamed:@"cluster.png"];
         }
         
-        [(REVClusterAnnotationView*)annView setClusterText: [NSString stringWithFormat:@"%i",[pin nodeCount]]];
+        [(REVClusterAnnotationView*)annView setClusterText: [NSString stringWithFormat:@"%i",(int)[pin nodeCount]]];
         annView.canShowCallout = NO;
     } else {
         annView = [mapView dequeueReusableAnnotationViewWithIdentifier:IDENTIFIER_PIN];
@@ -1301,7 +1301,7 @@
             annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:IDENTIFIER_PIN];
             annView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         }
-        annView.image = [UIImage imageNamed:[NSString stringWithFormat:@"level%d.png", pin.level]];
+        annView.image = [UIImage imageNamed:[NSString stringWithFormat:@"level%d.png", (int)pin.level]];
         annView.canShowCallout = YES;
         annView.centerOffset = CGPointMake(0.0, -25.0);
     }

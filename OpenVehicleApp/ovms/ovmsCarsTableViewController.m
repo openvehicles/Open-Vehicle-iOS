@@ -63,7 +63,7 @@
   [loader startSyncAction];
       
 
-  int originalcount = [_cars count];
+  int originalcount = (int)[_cars count];
   
   _context = [ovmsAppDelegate myRef].managedObjectContext;
   NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

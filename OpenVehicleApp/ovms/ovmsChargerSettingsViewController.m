@@ -96,7 +96,7 @@
 
 - (IBAction)ModeChanged:(id)sender
   {
-  int cm_row = m_charger_mode.selectedSegmentIndex;
+  int cm_row = (int)m_charger_mode.selectedSegmentIndex;
   
   switch (cm_row)
     {
@@ -119,9 +119,9 @@
 
 - (IBAction)DoneButton:(id)sender
   {
-  int ncm = m_charger_mode.selectedSegmentIndex;
+  int ncm = (int)m_charger_mode.selectedSegmentIndex;
   if (ncm>=2) ncm++;
-  int ncl = [m_charger_current selectedRowInComponent:0] + 10;
+  int ncl = (int)[m_charger_current selectedRowInComponent:0] + 10;
 
   [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -158,7 +158,7 @@
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component
 {
-  return [NSString stringWithFormat:@"%d Amps",10+row];
+  return [NSString stringWithFormat:@"%d Amps",10+(int)row];
 } 
 
 #pragma mark -
