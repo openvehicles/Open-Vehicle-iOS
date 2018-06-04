@@ -2299,7 +2299,7 @@ enum GCDAsyncSocketConfig
             }
 		});
 		
-		dispatch_source_t theConnectTimer = connectTimer;
+		//dispatch_source_t theConnectTimer = connectTimer;
 		dispatch_source_set_cancel_handler(connectTimer, ^{
 			LogVerbose(@"dispatch_release(connectTimer)");
 			//dispatch_release(theConnectTimer);
@@ -3316,8 +3316,8 @@ enum GCDAsyncSocketConfig
 	
 	__block int socketFDRefCount = 2;
 	
-	dispatch_source_t theReadSource = readSource;
-	dispatch_source_t theWriteSource = writeSource;
+	//dispatch_source_t theReadSource = readSource;
+	//dispatch_source_t theWriteSource = writeSource;
 	
 	dispatch_source_set_cancel_handler(readSource, ^{
 		
@@ -4466,7 +4466,7 @@ enum GCDAsyncSocketConfig
             }
 		});
 		
-		dispatch_source_t theReadTimer = readTimer;
+		//dispatch_source_t theReadTimer = readTimer;
 		dispatch_source_set_cancel_handler(readTimer, ^{
 			LogVerbose(@"dispatch_release(readTimer)");
 			//dispatch_release(theReadTimer);
@@ -4982,7 +4982,7 @@ enum GCDAsyncSocketConfig
             }
 		});
 		
-		dispatch_source_t theWriteTimer = writeTimer;
+		//dispatch_source_t theWriteTimer = writeTimer;
 		dispatch_source_set_cancel_handler(writeTimer, ^{
 			LogVerbose(@"dispatch_release(writeTimer)");
 			//dispatch_release(theWriteTimer);

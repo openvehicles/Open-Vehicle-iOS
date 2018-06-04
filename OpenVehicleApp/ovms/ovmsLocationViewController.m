@@ -113,12 +113,18 @@
         }
         case 1: {
             if (![ovmsAppDelegate myRef].sel_connection_type_ids.length) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
-                                                                message:NSLocalizedString(@"The selected car has no setup of charger type. Please go to settings car and setup the charger types.", nil)
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil];
-                [alert show];
+                UIAlertController * alert = [UIAlertController
+                                             alertControllerWithTitle:NSLocalizedString(@"Warning", nil)
+                                             message:NSLocalizedString(@"The selected car has no setup of charger type. Please go to settings car and setup the charger types.",nil)
+                                             preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* okButton = [UIAlertAction
+                                            actionWithTitle:@"Ok"
+                                            style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction * action) {
+                                                //Handle your yes please button action here
+                                            }];
+                [alert addAction:okButton];
+                [self presentViewController:alert animated:YES completion:nil];
             } else {
                 self.isFiltredChargingStation = !self.isFiltredChargingStation;
                 if (self.m_car_location) [self loadData:[ovmsAppDelegate myRef].car_location];
@@ -176,13 +182,6 @@
 
 - (void)didFailWithError:(NSError *)error {
 // Just swallow the error for now, as OCM failures were littering the screen
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:error.domain
-//                                                    message:error.localizedDescription
-//                                                   delegate:nil
-//                                          cancelButtonTitle:@"Ok"
-//                                          otherButtonTitles:nil];
-//    [alert show];
-
     [self initAnnotations];
 }
 

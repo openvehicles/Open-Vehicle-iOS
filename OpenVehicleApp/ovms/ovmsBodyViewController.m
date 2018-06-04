@@ -544,7 +544,7 @@
   [actionSheet showInView:[self.view window]];
   }
 
-- (void)actionSheet:(UIActionSheet *)sender clickedButtonAtIndex:(int)index
+- (void)actionSheet:(UIActionSheet *)sender clickedButtonAtIndex:(NSInteger)index
   {
   if ([sender.title isEqualToString:@"Wakeup Car"])
     {

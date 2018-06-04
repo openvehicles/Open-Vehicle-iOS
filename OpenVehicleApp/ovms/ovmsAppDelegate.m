@@ -452,11 +452,18 @@
   NetworkStatus netStatus = [internetReach currentReachabilityStatus];
   if (netStatus == NotReachable)
     {
-    UIAlertView *alert = [[UIAlertView alloc]
-                           initWithTitle:@"Connection Error"
-                           message:@"You have a connection failure. OVMS requires a wi-fi or cell network to get an Internet connection."
-                           delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    [alert show];
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"Connection Error"
+                                 message:@"You have a connection failure. OVMS requires a wi-fi or cell network to get an Internet connection."
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* okButton = [UIAlertAction
+                               actionWithTitle:@"Ok"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                                   //Handle your yes please button action here
+                               }];
+    [alert addAction:okButton];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     return;
     }
   

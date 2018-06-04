@@ -1222,12 +1222,18 @@
         }
         case 1: {
             if (![ovmsAppDelegate myRef].sel_connection_type_ids.length) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
-                                                                message:NSLocalizedString(@"The selected car has no setup of charger type. Please go to settings car and setup the charger types.", nil)
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil];
-                [alert show];
+                UIAlertController * alert = [UIAlertController
+                                             alertControllerWithTitle:NSLocalizedString(@"Warning", nil)
+                                             message:NSLocalizedString(@"The selected car has no setup of charger type. Please go to settings car and setup the charger types.",nil)
+                                             preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* okButton = [UIAlertAction
+                                           actionWithTitle:@"Ok"
+                                           style:UIAlertActionStyleDefault
+                                           handler:^(UIAlertAction * action) {
+                                               //Handle your yes please button action here
+                                           }];
+                [alert addAction:okButton];
+                [self presentViewController:alert animated:YES completion:nil];
             } else {
                 self.isFiltredChargingStation = !self.isFiltredChargingStation;
                 if (self.m_car_location) [self loadData:[ovmsAppDelegate myRef].car_location];
@@ -1245,7 +1251,7 @@
     [popoverView performSelector:@selector(dismiss) withObject:nil afterDelay:0.5f];
 }
 
-- (void)actionSheet:(UIActionSheet *)sender clickedButtonAtIndex:(int)index
+- (void)actionSheet:(UIActionSheet *)sender clickedButtonAtIndex:(NSInteger)index
   {
   if ([sender.title isEqualToString:@"Wakeup Car"])
     {
@@ -1256,7 +1262,7 @@
     }
   else if ([sender.title isEqualToString:@"Homelink"])
     {
-    int button = index - (int)[sender firstOtherButtonIndex];
+    int button = (int)index - (int)[sender firstOtherButtonIndex];
     if ((button>=0)&&(button<3))
       {
       [[ovmsAppDelegate myRef] commandDoHomelink:button];
