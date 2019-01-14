@@ -1319,9 +1319,16 @@
           }
         break;
       case 1: // failed
-        [JHNotificationManager
-         notificationWithMessage:
-         [NSString stringWithFormat:@"Failed: %@",[result objectAtIndex:2]]];
+        if ([result count]>=3)
+          {
+          [JHNotificationManager
+           notificationWithMessage:
+           [NSString stringWithFormat:@"Failed: %@",[result objectAtIndex:2]]];
+          }
+        else
+          {
+          [JHNotificationManager notificationWithMessage:@"Failed"];
+          }
         [self didStopNetworking];
         break;
       case 2: // unsupported
