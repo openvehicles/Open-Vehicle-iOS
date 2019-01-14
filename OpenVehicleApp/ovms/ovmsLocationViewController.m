@@ -27,9 +27,8 @@
     self.isUseRange = YES;
 }
 
-- (void)viewDidUnload {
+- (void)dealloc {
     [self setMyMapView:nil];
-    [super viewDidUnload];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -460,7 +459,7 @@
     }
 }
 
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay {
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id)overlay {
     //MKCircleView *circleView = [[MKCircleView alloc] initWithOverlay:overlay];
     MKCircleRenderer *circleView = [[MKCircleRenderer alloc] initWithOverlay:overlay];
     circleView.lineWidth = 3;

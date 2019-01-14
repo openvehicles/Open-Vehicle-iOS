@@ -59,20 +59,20 @@
   [self update];
 }
 
-- (void)viewDidUnload
+- (void)dealloc
 {
-    [self setM_car_image:nil];
-    [self setM_car_charge_state:nil];
-    [self setM_car_charge_type:nil];
-    [self setM_car_charge_time:nil];
-    [self setM_car_charge_remaining_time:nil];
-    [self setM_car_chargekwh:nil];
-    [self setM_car_soc:nil];
-    [self setM_battery_front:nil];
-    [self setM_car_connection_state:nil];
-    [self setM_car_connection_image:nil];
-    [self setM_car_parking_image:nil];
-    [self setM_car_parking_state:nil];
+  [self setM_car_image:nil];
+  [self setM_car_charge_state:nil];
+  [self setM_car_charge_type:nil];
+  [self setM_car_charge_time:nil];
+  [self setM_car_charge_remaining_time:nil];
+  [self setM_car_chargekwh:nil];
+  [self setM_car_soc:nil];
+  [self setM_battery_front:nil];
+  [self setM_car_connection_state:nil];
+  [self setM_car_connection_image:nil];
+  [self setM_car_parking_image:nil];
+  [self setM_car_parking_state:nil];
   [self setM_battery_charging:nil];
   [self setM_car_range_ideal:nil];
   [self setM_car_range_estimated:nil];
@@ -81,9 +81,6 @@
   [self setM_charger_slider:nil];
   [self setM_car_charge_message:nil];
   [self setM_battery_button:nil];
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated

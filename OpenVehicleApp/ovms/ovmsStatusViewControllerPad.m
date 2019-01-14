@@ -241,7 +241,7 @@
 }
 
 
-- (void)viewDidUnload
+- (void)dealloc
 {
     [self setM_car_connection_image:nil];
     [self setM_car_connection_state:nil];
@@ -285,7 +285,7 @@
     [self setM_charger_button:nil];
     [self setM_car_range_estimated:nil];
     [self setM_car_range_ideal:nil];
-  [self setM_car_valetonoff:nil];
+    [self setM_car_valetonoff:nil];
     [self setM_car_lights:nil];
     [self setM_car_charge_message:nil];
     [self setM_control_button:nil];
@@ -297,9 +297,6 @@
     [self setM_car_weather:nil];
     [self setM_car_tpmsboxes:nil];
     [self setM_homelink_button:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

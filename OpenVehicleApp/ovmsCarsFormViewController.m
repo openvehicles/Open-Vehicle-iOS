@@ -65,7 +65,7 @@
 //    _context = [ovmsAppDelegate myRef].managedObjectContext;
 //}
 
-- (void)viewDidUnload
+- (void)dealloc
 {
   [self setVehicleid:nil];
   [self setVehiclelabel:nil];
@@ -74,9 +74,6 @@
   [self setVehicleImage:nil];
   [self setContext:nil];
   [self setM_control_button:nil];
-  [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

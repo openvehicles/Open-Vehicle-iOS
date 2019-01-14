@@ -24,17 +24,9 @@
   return self;
 }
 
-- (void)viewDidLoad
-{
-  [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)viewDidUnload
+- (void)dealloc
 {
   [self setM_ussd:nil];
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

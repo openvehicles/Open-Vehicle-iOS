@@ -35,7 +35,7 @@
 	// Do any additional setup after loading the view.
   }
 
-- (void)viewDidUnload
+- (void)dealloc
   {
   [self setM_vehicleid:nil];
   [self setM_vin:nil];
@@ -46,8 +46,6 @@
   [self setM_appfirmware:nil];
   [self setM_gsm_signalbars:nil];
   [self setM_cac:nil];
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
   }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -65,14 +65,11 @@
     }
 }
 
-- (void)viewDidUnload
+- (void)dealloc
 {
   [self setM_charger_mode:nil];
   [self setM_charger_current:nil];
   [self setM_charger_warning:nil];
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
 }
 
 -(void) viewWillAppear:(BOOL)animated

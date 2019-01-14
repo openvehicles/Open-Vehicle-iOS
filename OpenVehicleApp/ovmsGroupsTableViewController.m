@@ -51,13 +51,6 @@
   self.navigationItem.rightBarButtonItem = self.editButtonItem;
   }
 
-- (void)viewDidUnload
-  {
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
-  }
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
   {
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
