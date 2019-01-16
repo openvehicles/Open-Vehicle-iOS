@@ -43,12 +43,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewDidUnload
+- (void)dealloc
 {
   [self setM_table:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -191,7 +188,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
   {
   UIView *cell = [[textField superview] superview];
-  int fn = cell.tag-200;
+  int fn = (int)cell.tag-200;
   int val = [textField.text intValue];
 
   textField.text = [NSString stringWithFormat:@"%d",val];
@@ -233,25 +230,25 @@
   switch (indexPath.row)
     {
     case FEATURE_SPEEDO:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Digital Speedo (<2.5)",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Digital Speedo (<2.5)",(int)indexPath.row]];
       break;
     case FEATURE_STREAM:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: GPS Stream",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: GPS Stream",(int)indexPath.row]];
       break;
     case FEATURE_MINSOC:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Minimum SOC",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Minimum SOC",(int)indexPath.row]];
       break;
     case FEATURE_OPTIN:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Opt-In Bits",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Opt-In Bits",(int)indexPath.row]];
       break;
     case FEATURE_CARBITS:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Car Bits",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Car Bits",(int)indexPath.row]];
       break;
     case FEATURE_CANWRITE:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: CAN Write",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: CAN Write",(int)indexPath.row]];
       break;
     default:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d:",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d:",(int)indexPath.row]];
       break;
     }
 

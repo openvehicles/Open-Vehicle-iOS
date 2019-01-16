@@ -55,15 +55,12 @@
 }
 */
 
-- (void)viewDidUnload
+- (void)dealloc
 {
   [self setM_pin:nil];
   [self setM_done:nil];
   [self setM_message:nil];
   [self setM_navbar:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

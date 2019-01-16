@@ -218,7 +218,7 @@
 
 #pragma mark - parse data
 - (void)parseData:(NSArray *)items {
-    NSLog(@"parseData: %d", items.count);
+    NSLog(@"parseData: %d", (int)items.count);
 
     for (NSDictionary *row in items) {
         [self parseChargingLocations:row];
@@ -226,7 +226,7 @@
     
     [[ovmsAppDelegate myRef] saveContext];
     
-    NSLog(@"Sync %d records.", items.count);
+    NSLog(@"Sync %d records.", (int)items.count);
 }
 
 - (void)parseChargingLocations:(NSDictionary *)row {
@@ -373,7 +373,7 @@
 
 #pragma mark - syncAction
 - (void)syncAction:(NSDictionary *)data {
-    NSLog(@"syncAction: %d", data.count);
+    NSLog(@"syncAction: %d", (int)data.count);
     
     [self parseConnectionTypes:NULL_TO_NIL(data[@"ConnectionTypes"])];
     [self parseChargerTypes:NULL_TO_NIL(data[@"ChargerTypes"])];
@@ -382,7 +382,7 @@
 }
 
 - (void)parseConnectionTypes:(NSArray *)items {
-    NSLog(@"parseConnectionTypes: %d", items.count);
+    NSLog(@"parseConnectionTypes: %d", (int)items.count);
     if (!items) return;
     
     for (NSDictionary *row in items) {
@@ -405,7 +405,7 @@
 }
 
 - (void)parseChargerTypes:(NSArray *)items {
-    NSLog(@"parseChargerTypes: %d", items.count);
+    NSLog(@"parseChargerTypes: %d", (int)items.count);
     if (!items) return;
     
     for (NSDictionary *row in items) {

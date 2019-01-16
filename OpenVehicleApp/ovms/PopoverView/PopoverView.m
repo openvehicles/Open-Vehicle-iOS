@@ -273,7 +273,7 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 0.f, titleSize.width, titleSize.height)];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.font = kTitleFont;
-    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = kTitleColor;
     titleLabel.text = title;
     
@@ -610,7 +610,7 @@
     
     if (subviewsArray && (subviewsArray.count > 0)) {
         [UIView animateWithDuration:0.2f animations:^{
-            for (UIView *view in subviewsArray) {
+            for (UIView *view in self->subviewsArray) {
                 view.alpha = 0.f;
             }
         }];
@@ -642,11 +642,11 @@
     
     [activityIndicator stopAnimating];
     [UIView animateWithDuration:0.1f animations:^{
-        activityIndicator.alpha = 0.f;
+        self->activityIndicator.alpha = 0.f;
     } completion:^(BOOL finished) {
-        [activityIndicator RELEASE];
-        [activityIndicator removeFromSuperview];
-        activityIndicator = nil;
+        [self->activityIndicator RELEASE];
+        [self->activityIndicator removeFromSuperview];
+        self->activityIndicator = nil;
     }];
 }
 
@@ -661,7 +661,7 @@
     
     if (subviewsArray && (subviewsArray.count > 0)) {
         [UIView animateWithDuration:0.2f animations:^{
-            for (UIView *view in subviewsArray) {
+            for (UIView *view in self->subviewsArray) {
                 view.alpha = 0.f;
             }
         }];
@@ -697,7 +697,7 @@
     
     if (subviewsArray && (subviewsArray.count > 0)) {
         [UIView animateWithDuration:0.1f animations:^{
-            for (UIView *view in subviewsArray) {
+            for (UIView *view in self->subviewsArray) {
                 view.alpha = 0.f;
             }
         }];
@@ -728,7 +728,7 @@
     
     if (subviewsArray && (subviewsArray.count > 0)) {
         [UIView animateWithDuration:0.1f animations:^{
-            for (UIView *view in subviewsArray) {
+            for (UIView *view in self->subviewsArray) {
                 view.alpha = 0.f;
             }
         }];
@@ -797,7 +797,7 @@
 
 - (void)didTapButton:(UIButton *)sender
 {
-    int index = [subviewsArray indexOfObject:sender];
+    int index = (int)[subviewsArray indexOfObject:sender];
     
     if (index == NSNotFound) {
         return;

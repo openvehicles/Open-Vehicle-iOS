@@ -12,7 +12,6 @@
 #import "JHNotificationManager.h"
 #import "Reachability.h"
 #import "Cars.h"
-#import "TestFlight.h"
 
 @implementation ovmsAppDelegate
 
@@ -119,14 +118,6 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Initialise TestFlight
-  //#ifdef DEBUG
-  //#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-  //    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-  //#pragma GCC diagnostic warning "-Wdeprecated-declarations"
-  //#endif
-  [TestFlight takeOff:@"4b2fde43-3af2-4ccd-9d3f-06cc7613e63a"];
-
   // Set the application defaults
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSDictionary *appDefaults = [NSDictionary
@@ -461,11 +452,18 @@
   NetworkStatus netStatus = [internetReach currentReachabilityStatus];
   if (netStatus == NotReachable)
     {
-    UIAlertView *alert = [[UIAlertView alloc]
-                           initWithTitle:@"Connection Error"
-                           message:@"You have a connection failure. OVMS requires a wi-fi or cell network to get an Internet connection."
-                           delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    [alert show];
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"Connection Error"
+                                 message:@"You have a connection failure. OVMS requires a wi-fi or cell network to get an Internet connection."
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* okButton = [UIAlertAction
+                               actionWithTitle:@"Ok"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                                   //Handle your yes please button action here
+                               }];
+    [alert addAction:okButton];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     return;
     }
   
@@ -1168,8 +1166,6 @@
       }
     
     [self subscribeGroups];
-
-    [TestFlight passCheckpoint:@"CONNECTED_TO_CAR"];
     }
   else if (tag==1)
     { // Normal encrypted data packet
@@ -1323,9 +1319,16 @@
           }
         break;
       case 1: // failed
-        [JHNotificationManager
-         notificationWithMessage:
-         [NSString stringWithFormat:@"Failed: %@",[result objectAtIndex:2]]];
+        if ([result count]>=3)
+          {
+          [JHNotificationManager
+           notificationWithMessage:
+           [NSString stringWithFormat:@"Failed: %@",[result objectAtIndex:2]]];
+          }
+        else
+          {
+          [JHNotificationManager notificationWithMessage:@"Failed"];
+          }
         [self didStopNetworking];
         break;
       case 2: // unsupported
@@ -1357,39 +1360,33 @@
 - (void)commandDoRequestFeatureList
   {
   [self commandIssue:@"1"];
-  [TestFlight passCheckpoint:@"COMMAND_FEATURES"];
   }
 
 - (void)commandDoSetFeature:(int)feature value:(NSString*)value
   {
   [self commandIssue:[NSString stringWithFormat:@"2,%d,%@",feature,value]];
-  [TestFlight passCheckpoint:@"COMMAND_SETFEATURE"];
   }
 
 - (void)commandDoRequestParameterList
   {
   [self commandIssue:@"3"];
-  [TestFlight passCheckpoint:@"COMMAND_PARAMETERS"];
   }
 
 - (void)commandDoSetParameter:(int)param value:(NSString*)value
   {
   [self commandIssue:[NSString stringWithFormat:@"4,%d,%@",param,value]];
-  [TestFlight passCheckpoint:@"COMMAND_SETPARAMETER"];
   }
 
 - (void)commandDoReboot
   {
   [JHNotificationManager notificationWithMessage:@"Rebooting Car Module..."];
   [self commandIssue:@"5"];
-  [TestFlight passCheckpoint:@"COMMAND_REBOOT"];
   }
 
 - (void)commandDoSetChargeMode:(int)mode
   {
   [JHNotificationManager notificationWithMessage:@"Setting Charge Mode..."];
-  [self commandIssue:[NSString stringWithFormat:@"10,%d",mode]];  
-  [TestFlight passCheckpoint:@"COMMAND_SETCHARGEMODE"];
+  [self commandIssue:[NSString stringWithFormat:@"10,%d",mode]];
   }
 
 - (void)commandDoStartCharge
@@ -1401,7 +1398,6 @@
   self.car_chargestate = @"starting";
   self.car_chargestateN = 0x101;
   [self notifyUpdates];
-  [TestFlight passCheckpoint:@"COMMAND_STARTCHARGE"];
   }
 
 - (void)commandDoStopCharge
@@ -1413,78 +1409,66 @@
   self.car_chargestate = @"stopping";
   self.car_chargestateN = 0x115;
   [self notifyUpdates];
-  [TestFlight passCheckpoint:@"COMMAND_STOPCHARGE"];
   }
 
 - (void)commandDoSetChargeCurrent:(int)current
   {
   [JHNotificationManager notificationWithMessage:@"Setting Charge Current..."];
   [self commandIssue:[NSString stringWithFormat:@"15,%d",current]];
-  [TestFlight passCheckpoint:@"COMMAND_SETCHARGECURRENT"];
   }
 
 - (void)commandDoSetChargeModecurrent:(int)mode current:(int)current
   {
   [JHNotificationManager notificationWithMessage:@"Setting Charge Mode and Current..."];
   [self commandIssue:[NSString stringWithFormat:@"16,%d,%d",mode,current]];
-  [TestFlight passCheckpoint:@"COMMAND_SETCHARGEMODECURRENT"];
   }
 
 - (void)commandDoWakeupCar
   {
   [JHNotificationManager notificationWithMessage:@"Waking up Car..."];
   [self commandIssue:@"18"];
-  [TestFlight passCheckpoint:@"COMMAND_WAKEUPCAR"];
   }
 
 - (void)commandDoWakeupTempSubsystem
   {
   [JHNotificationManager notificationWithMessage:@"Waking up Temperature Subsystem..."];
   [self commandIssue:@"19"];
-  [TestFlight passCheckpoint:@"COMMAND_WAKEUPTEMP"];
   }
 
 - (void)commandDoLockCar:(NSString*)pin
   {
   [self commandIssue:[NSString stringWithFormat:@"20,%@",pin]];
-  [TestFlight passCheckpoint:@"COMMAND_LOCKCAR"];
   }
 
 - (void)commandDoActivateValet:(NSString*)pin
   {
   [self commandIssue:[NSString stringWithFormat:@"21,%@",pin]];
-  [TestFlight passCheckpoint:@"COMMAND_ACTIVATEVALET"];
   }
 
 - (void)commandDoUnlockCar:(NSString*)pin
   {
   [self commandIssue:[NSString stringWithFormat:@"22,%@",pin]];
-  [TestFlight passCheckpoint:@"COMMAND_UNLOCKCAR"];
   }
 
 - (void)commandDoDeactivateValet:(NSString*)pin
   {
   [self commandIssue:[NSString stringWithFormat:@"23,%@",pin]];
-  [TestFlight passCheckpoint:@"COMMAND_DEACTIVEVALET"];
   }
 
 - (void)commandDoUSSD:(NSString*)ussd
   {
   [self commandIssue:[NSString stringWithFormat:@"41,%@",ussd]];
-  [TestFlight passCheckpoint:@"COMMAND_MMIUSSD"];
   }
 
 - (void)commandDoRequestGPRSData
   {
   [self commandIssue:@"30"];
-  [TestFlight passCheckpoint:@"COMMAND_GPRSDATA"];
   }
 
 - (void)commandDoHomelink:(int)button
   {
   [JHNotificationManager notificationWithMessage:@"Issuing Homelink Command..."];
   [self commandIssue:[NSString stringWithFormat:@"24,%d",button]];
-  [TestFlight passCheckpoint:@"COMMAND_HOMELINK"];
   }
 
 /**
