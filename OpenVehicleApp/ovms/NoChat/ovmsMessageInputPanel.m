@@ -57,22 +57,22 @@
     self = [super initWithFrame:frame];
     if (self) {
         _baseHeight = 45;
-        _inputFieldInsets = UIEdgeInsetsMake(9, 41, 8, 0);
+        _inputFieldInsets = UIEdgeInsetsMake(9, 7, 8, 0);
         _inputFieldInternalEdgeInsets = UIEdgeInsetsMake(-3 - TGRetinaPixel, 0, 0, 0);
         
         _sendButtonWidth = MIN(150, [NSLocalizedString(@"Send", @"") sizeWithAttributes:@{NSFontAttributeName:[UIFont noc_mediumSystemFontOfSize:17]}].width + 8);
         
         _backgroundView = [[UIView alloc] init];
-        _backgroundView.backgroundColor = [UIColor colorWithRed:250/255.0 green:250/255.0 blue:250/255.0 alpha:0.98];
+        _backgroundView.backgroundColor = [UIColor blackColor];
         [self addSubview:_backgroundView];
         
         _stripeLayer = [[CALayer alloc] init];
-        _stripeLayer.backgroundColor = [UIColor colorWithRed:179/255.0 green:170/255.0 blue:178/255.0 alpha:0.4].CGColor;
+        _stripeLayer.backgroundColor = [UIColor blackColor].CGColor;
         [self.layer addSublayer:_stripeLayer];
         
         UIImage *filedBackgroundImage = [UIImage imageNamed:@"OvmsInputFieldBackground"];
         _fieldBackground = [[UIImageView alloc] initWithImage:filedBackgroundImage];
-        _fieldBackground.frame = CGRectMake(41, 9, frame.size.width - 41 - _sendButtonWidth - 1, 28);
+        _fieldBackground.frame = CGRectMake(7, 9, frame.size.width - 7 - _sendButtonWidth - 1, 28);
         [self addSubview:_fieldBackground];
         
         CGRect inputFieldClippingFrame = _fieldBackground.frame;
@@ -93,6 +93,8 @@
         _inputField.internalTextView.backgroundColor = [UIColor clearColor];
         _inputField.internalTextView.opaque = NO;
         _inputField.internalTextView.contentMode = UIViewContentModeLeft;
+        _inputField.internalTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        _inputField.internalTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
         _inputField.maxNumberOfLines = [self maxNumberOfLinesForSize:_parentSize];
         _inputField.delegate = self;
         
@@ -103,23 +105,13 @@
         _sendButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _sendButton.exclusiveTouch = YES;
         [_sendButton setTitle:NSLocalizedString(@"Send", @"") forState:UIControlStateNormal];
-        [_sendButton setTitleColor:[UIColor colorWithRed:0/255.0 green:126/255.0 blue:229/255.0 alpha:1] forState:UIControlStateNormal];
-        [_sendButton setTitleColor:[UIColor colorWithRed:142/255.0 green:142/255.0 blue:147/255.0 alpha:1] forState:UIControlStateDisabled];
+        [_sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_sendButton setTitleColor:[UIColor blackColor] forState:UIControlStateDisabled];
         _sendButton.titleLabel.font = [UIFont noc_mediumSystemFontOfSize:17];
         _sendButton.enabled = NO;
         _sendButton.hidden= YES;
         [_sendButton addTarget:self action:@selector(didTapSendButton:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_sendButton];
-        
-        _attachButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        _attachButton.exclusiveTouch = YES;
-        [_attachButton setImage:[UIImage imageNamed:@"TGAttachButton"] forState:UIControlStateNormal];
-        [self addSubview:_attachButton];
-        
-        _micButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        _micButton.exclusiveTouch = YES;
-        [_micButton setImage:[UIImage imageNamed:@"TGMicButton"] forState:UIControlStateNormal];
-        [self addSubview:_micButton];
     }
     return self;
 }
@@ -144,10 +136,6 @@
     self.inputFieldClippingContainer.frame = inputFieldClippingFrame;
     
     self.sendButton.frame = CGRectMake(bounds.size.width - sendButtonWidth, bounds.size.height - baseHeight, sendButtonWidth, baseHeight);
-    
-    self.attachButton.frame = CGRectMake(0, bounds.size.height - baseHeight, 40, baseHeight);
-    
-    self.micButton.frame = CGRectMake(bounds.size.width - sendButtonWidth, bounds.size.height - baseHeight, sendButtonWidth, baseHeight);
 }
 
 - (void)endInputting:(BOOL)animated
@@ -220,14 +208,12 @@
     BOOL hasText = self.inputField.internalTextView.hasText;
     self.sendButton.enabled = hasText;
     self.sendButton.hidden = !hasText;
-    self.micButton.hidden = hasText;
 }
 
 - (void)clearInputField
 {
     self.inputField.internalTextView.text = nil;
     [self.inputField refreshHeight];
-    
     [self toggleSendButtonEnabled];
 }
 
@@ -252,6 +238,17 @@
 - (void)growingTextViewDidChange:(HPGrowingTextView *)growingTextView
 {
     [self toggleSendButtonEnabled];
+}
+
+-(BOOL)growingTextViewShouldReturn:(HPGrowingTextView *)growingTextView
+{
+    return TRUE;
+}
+
+-(void)growingTextViewDidEndEditing:(HPGrowingTextView *)growingTextView
+{
+    [self didTapSendButton:NULL];
+    [self.inputField becomeFirstResponder];
 }
 
 #pragma mark - Private

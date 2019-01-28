@@ -13,7 +13,7 @@
 #import "ovmsAppDelegate.h"
 #import "NoChat/NoChat.h"
 
-@interface ovmsMessagesViewController : NOCChatViewController <ovmsUpdateDelegate>
+@interface ovmsMessagesViewController : NOCChatViewController <UINavigationControllerDelegate, ovmsUpdateDelegate>
 
 @end
 

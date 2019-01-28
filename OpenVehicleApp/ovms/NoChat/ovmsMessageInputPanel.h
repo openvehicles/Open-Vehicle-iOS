@@ -31,8 +31,6 @@
 @property (nonatomic, strong) UIImageView *fieldBackground;
 
 @property (nonatomic, strong) UIButton *sendButton;
-@property (nonatomic, strong) UIButton *attachButton;
-@property (nonatomic, strong) UIButton *micButton;
 
 - (void)toggleSendButtonEnabled;
 - (void)clearInputField;

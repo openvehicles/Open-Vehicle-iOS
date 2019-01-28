@@ -32,7 +32,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
+    self.navigationController.delegate = self;
     [self update];
 }
 
@@ -94,9 +96,45 @@
      [self.collectionView registerClass:[OvmsTextMessageCell class] forCellWithReuseIdentifier:[OvmsTextMessageCell reuseIdentifier]];
 }
 
+ - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+ {
+ return 2;
+ }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NOCChatCell" forIndexPath:indexPath];
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"Telegram";
+        cell.imageView.image = [UIImage imageNamed:@"TGIcon"];
+    } else if (indexPath.row == 1) {
+        cell.textLabel.text = @"WeChat";
+        cell.imageView.image = [UIImage imageNamed:@"MMIcon"];
+    }
+    return cell;
+}
+
 -(void) update
 {
 }
 
+#pragma mark - OvmsChatInputTextPanelDelegate
+
+- (void)inputTextPanel:(OvmsChatInputTextPanel *)inputTextPanel requestSendText:(NSString *)text
+{
+    NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 1)];
+    NSMutableArray *layouts = [[NSMutableArray alloc] init];
+
+    OvmsMessage *message = [OvmsMessage alloc];
+    message.text = text;
+    message.senderId = 0;
+    message.outgoing = YES;
+    message.date = [NSDate date];
+    message.deliveryStatus = OvmsMessageDeliveryStatusDelivered;
+    id<NOCChatItemCellLayout> layout = [self createLayoutWithItem:message];
+    [layouts insertObject:layout atIndex:0];
+    [self insertLayouts:layouts atIndexes:indexes animated:true];
+    [self scrollToBottomAnimated:true];
+}
 
 @end

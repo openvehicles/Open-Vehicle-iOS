@@ -23,6 +23,11 @@
 		4D2D3DE315175ABD0014A0AD /* signalbars-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D2D3DDD15175ABD0014A0AD /* signalbars-5.png */; };
 		4D3C35C914EAA42000126F47 /* Nothing.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D3C35C814EAA42000126F47 /* Nothing.png */; };
 		4D3C35CB14EAA43300126F47 /* charger_blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D3C35CA14EAA43300126F47 /* charger_blank.png */; };
+		4D41FD3A21FB3DE200C30437 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D41FD3621FB3DE100C30437 /* car.png */; };
+		4D41FD3B21FB3DE200C30437 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D41FD3721FB3DE200C30437 /* settings.png */; };
+		4D41FD3C21FB3DE200C30437 /* geo_fence.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D41FD3821FB3DE200C30437 /* geo_fence.png */; };
+		4D41FD3D21FB3DE200C30437 /* high_battery.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D41FD3921FB3DE200C30437 /* high_battery.png */; };
+		4D41FD3F21FDF35B00C30437 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D41FD3E21FDF35B00C30437 /* Assets.xcassets */; };
 		4D5480511555781A00DE575A /* car_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5480501555781A00DE575A /* car_default.png */; };
 		4D5480531555783A00DE575A /* ol_car_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5480521555783A00DE575A /* ol_car_default.png */; };
 		4D5480551555785A00DE575A /* map_car_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5480541555785A00DE575A /* map_car_default.png */; };
@@ -396,6 +401,11 @@
 		4D2D3DDD15175ABD0014A0AD /* signalbars-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signalbars-5.png"; sourceTree = "<group>"; };
 		4D3C35C814EAA42000126F47 /* Nothing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nothing.png; sourceTree = "<group>"; };
 		4D3C35CA14EAA43300126F47 /* charger_blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = charger_blank.png; sourceTree = "<group>"; };
+		4D41FD3621FB3DE100C30437 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
+		4D41FD3721FB3DE200C30437 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		4D41FD3821FB3DE200C30437 /* geo_fence.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geo_fence.png; sourceTree = "<group>"; };
+		4D41FD3921FB3DE200C30437 /* high_battery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = high_battery.png; sourceTree = "<group>"; };
+		4D41FD3E21FDF35B00C30437 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D5480501555781A00DE575A /* car_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_default.png; sourceTree = "<group>"; };
 		4D5480521555783A00DE575A /* ol_car_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ol_car_default.png; sourceTree = "<group>"; };
 		4D5480541555785A00DE575A /* map_car_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_car_default.png; sourceTree = "<group>"; };
@@ -950,6 +960,7 @@
 		4D5AE36F14733757002F5F52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4D41FD3E21FDF35B00C30437 /* Assets.xcassets */,
 				4D04E2E6147E7695007CB190 /* Settings.bundle */,
 				4D91CF091473F36000CBA435 /* 00-icons-license.txt */,
 				4D5AE37014733757002F5F52 /* ovms-Info.plist */,
@@ -1017,6 +1028,10 @@
 		4D91CEF81473ECE500CBA435 /* Other Images */ = {
 			isa = PBXGroup;
 			children = (
+				4D41FD3621FB3DE100C30437 /* car.png */,
+				4D41FD3821FB3DE200C30437 /* geo_fence.png */,
+				4D41FD3921FB3DE200C30437 /* high_battery.png */,
+				4D41FD3721FB3DE200C30437 /* settings.png */,
 				5D1A05171C4BBD3500D7F4B0 /* aux_battery.png */,
 				4DAB4FE315739D8100D782E5 /* homelink-logo.png */,
 				4D2D3DD815175ABD0014A0AD /* signalbars-0.png */,
@@ -1628,6 +1643,7 @@
 				4D91CF081473F33400CBA435 /* 193-location-arrow.png in Resources */,
 				4D91CF0A1473F36000CBA435 /* 00-icons-license.txt in Resources */,
 				4DB5B25019B74AF000C42A66 /* icon76x76.png in Resources */,
+				4D41FD3C21FB3DE200C30437 /* geo_fence.png in Resources */,
 				4DFAD7F014752CFB00416D38 /* Default.png in Resources */,
 				4DFAD7F614752ECD00416D38 /* Default-Portrait~ipad.png in Resources */,
 				4DFAD7F814752F0F00416D38 /* Default-Landscape~ipad.png in Resources */,
@@ -1668,6 +1684,7 @@
 				4D6734B81497896B00F7919F /* roadster_outline_hd.png in Resources */,
 				4D6734BA1497898100F7919F /* roadster_outline_cp.png in Resources */,
 				4D6734BC1497898A00F7919F /* roadster_outline_ce.png in Resources */,
+				4D41FD3F21FDF35B00C30437 /* Assets.xcassets in Resources */,
 				4D6734C01497927500F7919F /* roadster_outline.png in Resources */,
 				4DF2FF2014981FB900E488F2 /* ol_car_roadster_arcticwhite.png in Resources */,
 				4DF2FF2114981FB900E488F2 /* ol_car_roadster_brilliantyellow.png in Resources */,
@@ -1735,6 +1752,8 @@
 				4DCABE9D151B666100CB3D2A /* wsymbol_296.png in Resources */,
 				4DCABE9E151B666100CB3D2A /* wsymbol_299.png in Resources */,
 				5D5E4D151BD3D669001502E3 /* car_kiasoul_cherryblackinfernored.png in Resources */,
+				4D41FD3D21FB3DE200C30437 /* high_battery.png in Resources */,
+				4D41FD3B21FB3DE200C30437 /* settings.png in Resources */,
 				4DCABE9F151B666100CB3D2A /* wsymbol_302.png in Resources */,
 				4DCABEA0151B666100CB3D2A /* wsymbol_305.png in Resources */,
 				4DCABEA1151B666100CB3D2A /* wsymbol_308.png in Resources */,
@@ -1843,6 +1862,7 @@
 				4D9697F5165BB00300DF0364 /* map_car_twizy_snowwhiteandflameorange.png in Resources */,
 				4D9697F6165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png in Resources */,
 				4D9697F7165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png in Resources */,
+				4D41FD3A21FB3DE200C30437 /* car.png in Resources */,
 				6358BC8416DB9C45008310DA /* cluster.png in Resources */,
 				6358BC8516DB9C45008310DA /* cluster@2x.png in Resources */,
 				63A04D2816E2781600471816 /* ic_pin.png in Resources */,

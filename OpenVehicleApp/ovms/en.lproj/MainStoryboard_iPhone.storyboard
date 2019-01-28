@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" colorMatched="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" colorMatched="YES" initialViewController="4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1522,13 +1522,14 @@
         <!--Messages-->
         <scene sceneID="O8c-Ru-BnI">
             <objects>
-                <viewController title="Messages" id="H1m-bJ-b0G" customClass="ovmsMessagesViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5T6-KL-tAu">
+                <viewController title="Messages" id="H1m-bJ-b0G" sceneMemberID="viewController">
+                    <containerView key="view" opaque="NO" contentMode="scaleToFill" id="hSu-ll-V2H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.069420576100000006" green="0.1059532762" blue="0.19171994919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <gestureRecognizers/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <connections>
+                            <segue destination="Ufz-99-Mxl" kind="embed" id="2Bm-dQ-LQT"/>
+                        </connections>
+                    </containerView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Messages" image="message.png" id="Mah-UG-Krb"/>
                     <navigationItem key="navigationItem" title="Messages" id="fej-Ql-coh"/>
@@ -1537,6 +1538,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jud-WC-T1L" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1774" y="592"/>
+        </scene>
+        <!--Ovms Messages View Controller-->
+        <scene sceneID="2GQ-4E-pxI">
+            <objects>
+                <viewController id="Ufz-99-Mxl" customClass="ovmsMessagesViewController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A2t-2u-Jx5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2494" y="592"/>
         </scene>
     </scenes>
     <resources>
