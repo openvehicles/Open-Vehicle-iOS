@@ -513,6 +513,7 @@
                     <containerView key="view" opaque="NO" contentMode="scaleToFill" id="alB-Sw-yy6">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="904"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" red="0.069420576100000006" green="0.1059532762" blue="0.19171994919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <segue destination="qUx-Fh-wND" kind="embed" id="mbJ-ez-CPc"/>
                         </connections>

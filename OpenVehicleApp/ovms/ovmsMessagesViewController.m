@@ -44,6 +44,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.backgroundView.backgroundColor = [UIColor colorWithRed:0.069420576095581055 green:0.10595327615737915 blue:0.19171994924545288 alpha:1.0];
     [super viewWillAppear:animated];
     self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
     
@@ -129,6 +130,7 @@
     message.text = text;
     message.senderId = 0;
     message.outgoing = YES;
+    message.outgoing = (time (NULL) % 2 == 0);
     message.date = [NSDate date];
     message.deliveryStatus = OvmsMessageDeliveryStatusDelivered;
     id<NOCChatItemCellLayout> layout = [self createLayoutWithItem:message];
