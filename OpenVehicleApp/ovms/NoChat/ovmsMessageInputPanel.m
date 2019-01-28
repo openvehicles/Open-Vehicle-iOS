@@ -88,6 +88,7 @@
         _inputField.animationDuration = 0;
         _inputField.font = [UIFont systemFontOfSize:16];
         _inputField.backgroundColor = [UIColor clearColor];
+        _inputField.tintColor = [UIColor blackColor];
         _inputField.opaque = NO;
         _inputField.clipsToBounds = YES;
         _inputField.internalTextView.backgroundColor = [UIColor clearColor];
