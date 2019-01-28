@@ -643,7 +643,7 @@
 			if (![delegate performSelector:@selector(growingTextViewShouldReturn:) withObject:self]) {
 				return YES;
 			} else {
-				[textView resignFirstResponder];
+				//[textView resignFirstResponder]; // MWJ disabled, as no idea why we would want to resign on RETURN
 				return NO;
 			}
 		}

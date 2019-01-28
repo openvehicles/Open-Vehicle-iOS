@@ -242,13 +242,9 @@
 
 -(BOOL)growingTextViewShouldReturn:(HPGrowingTextView *)growingTextView
 {
-    return TRUE;
-}
-
--(void)growingTextViewDidEndEditing:(HPGrowingTextView *)growingTextView
-{
     [self didTapSendButton:NULL];
     [self.inputField becomeFirstResponder];
+    return true;
 }
 
 #pragma mark - Private
