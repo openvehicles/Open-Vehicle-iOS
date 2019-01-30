@@ -1125,8 +1125,6 @@
 				4DCCF1BF21FAD5C7002B4FC0 /* ovmsBaseMessageCell.m */,
 				4DCCF1C121FAD5DA002B4FC0 /* ovmsBaseMessageCellLayout.h */,
 				4DCCF1C221FAD5E7002B4FC0 /* ovmsBaseMessageCellLayout.m */,
-				4DCCF1C421FAD76C002B4FC0 /* ovmsMessage.h */,
-				4DCCF1C521FAD779002B4FC0 /* ovmsMessage.m */,
 				4DCCF1C721FAD7DA002B4FC0 /* ovmsChat.h */,
 				4DCCF1C821FAD7E8002B4FC0 /* ovmsChat.m */,
 				4DCCF1D821FAEDF6002B4FC0 /* ovmsDeliveryStatusView.h */,
@@ -1301,6 +1299,8 @@
 			isa = PBXGroup;
 			children = (
 				4DC8B38A147E7BF2007FDFB2 /* Model.xcdatamodeld */,
+				4DCCF1C421FAD76C002B4FC0 /* ovmsMessage.h */,
+				4DCCF1C521FAD779002B4FC0 /* ovmsMessage.m */,
 				6347B4C416E8D2A500140ABA /* ChargingLocation.h */,
 				6347B4C516E8D2A500140ABA /* ChargingLocation.m */,
 				63F9E37416E0EA9D00E3B313 /* ConnectionTypes.h */,

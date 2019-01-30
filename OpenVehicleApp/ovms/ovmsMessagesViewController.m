@@ -15,12 +15,6 @@
 
 @implementation ovmsMessagesViewController
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
-
 #pragma mark - View lifecycle
 
 + (UITableViewStyle)tableViewStyleForCoder:(NSCoder *)decoder
@@ -49,7 +43,7 @@
     self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
     
     [[ovmsAppDelegate myRef] registerForUpdate:self];
-    
+    [self loadMessages];
     [self update];
 }
 
@@ -97,46 +91,58 @@
      [self.collectionView registerClass:[OvmsTextMessageCell class] forCellWithReuseIdentifier:[OvmsTextMessageCell reuseIdentifier]];
 }
 
- - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
- {
- return 2;
- }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NOCChatCell" forIndexPath:indexPath];
-    if (indexPath.row == 0) {
-        cell.textLabel.text = @"Telegram";
-        cell.imageView.image = [UIImage imageNamed:@"TGIcon"];
-    } else if (indexPath.row == 1) {
-        cell.textLabel.text = @"WeChat";
-        cell.imageView.image = [UIImage imageNamed:@"MMIcon"];
-    }
-    return cell;
-}
-
 -(void) update
 {
+}
+
+-(void) clearMessages
+{
+    [self.layouts removeAllObjects];
+}
+
+-(void) addMessage:(OvmsMessage*)message
+{
+    NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 1)];
+    NSMutableArray *layouts = [[NSMutableArray alloc] init];
+    id<NOCChatItemCellLayout> layout = [self createLayoutWithItem:message];
+    [layouts insertObject:layout atIndex:0];
+    [self insertLayouts:layouts atIndexes:indexes animated:true];
+    [self scrollToBottomAnimated:true];
+}
+
+-(void) addMessages:(NSMutableArray*)messages animated:(BOOL)animated
+{
+    if ((messages!=nil)&&(messages.count > 0))
+        {
+        NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, messages.count)];
+        NSMutableArray *layouts = [[NSMutableArray alloc] init];
+    
+        [messages enumerateObjectsUsingBlock:^(OvmsMessage *message, NSUInteger idx, BOOL *stop) {
+            id<NOCChatItemCellLayout> layout = [self createLayoutWithItem:message];
+            [layouts insertObject:layout atIndex:0];
+        }];
+    
+        [self insertLayouts:layouts atIndexes:indexes animated:animated];
+        [self scrollToBottomAnimated:animated];
+        }
+    else
+    {
+        [self.collectionView reloadData];
+    }
+}
+
+-(void) loadMessages
+{
+    [self.layouts removeAllObjects];
+    [self addMessages:(NSMutableArray*)[ovmsAppDelegate myRef].sel_messages animated:NO];
 }
 
 #pragma mark - OvmsChatInputTextPanelDelegate
 
 - (void)inputTextPanel:(OvmsChatInputTextPanel *)inputTextPanel requestSendText:(NSString *)text
 {
-    NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 1)];
-    NSMutableArray *layouts = [[NSMutableArray alloc] init];
-
-    OvmsMessage *message = [OvmsMessage alloc];
-    message.text = text;
-    message.senderId = 0;
-    message.outgoing = YES;
-    message.outgoing = (time (NULL) % 2 == 0);
-    message.date = [NSDate date];
-    message.deliveryStatus = OvmsMessageDeliveryStatusDelivered;
-    id<NOCChatItemCellLayout> layout = [self createLayoutWithItem:message];
-    [layouts insertObject:layout atIndex:0];
-    [self insertLayouts:layouts atIndexes:indexes animated:true];
-    [self scrollToBottomAnimated:true];
+    [[ovmsAppDelegate myRef] addMessage:text incoming:NO];
+    [[ovmsAppDelegate myRef] commandDoCommand:text];
 }
 
 @end

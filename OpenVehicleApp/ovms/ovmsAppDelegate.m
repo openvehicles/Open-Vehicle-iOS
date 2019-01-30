@@ -22,6 +22,7 @@
 @synthesize sel_netpass;
 @synthesize sel_userpass;
 @synthesize sel_imagepath;
+@synthesize sel_messages;
 
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
@@ -392,6 +393,7 @@
       sel_imagepath = car.imagepath;
       if ((![oldcar isEqualToString:sel_car])||(![oldnewpass isEqualToString:sel_netpass]))
         {
+        [self clearMessages];
         [self serverDisconnect];
         [self serverConnect];
         }
@@ -670,6 +672,7 @@
       {
       NSString* message = [cmd substringFromIndex:1];
       [JHNotificationManager notificationWithMessage:message];
+      [self addMessage:message incoming:YES];
       }
       break;
     case 'S': // STATUS
@@ -1009,6 +1012,60 @@
     }
   }
 
+- (void)clearMessages
+  {
+  if (sel_messages == nil)
+    sel_messages = [[NSMutableArray alloc] init];
+  [sel_messages removeAllObjects];
+
+  NSEnumerator *enumerator = [update_delegates objectEnumerator];
+  id target;
+      
+  while ((target = [enumerator nextObject]))
+    {
+    if (([target conformsToProtocol:@protocol(ovmsUpdateDelegate)])&&
+        ([target respondsToSelector:@selector(clearMessages)]))
+      [target clearMessages];
+    }
+  }
+
+- (void)addMessage:(OvmsMessage*)message
+  {
+  if (sel_messages == nil)
+    sel_messages = [[NSMutableArray alloc] init];
+
+  [sel_messages addObject:message];
+
+  NSEnumerator *enumerator = [update_delegates objectEnumerator];
+  id target;
+    
+  while ((target = [enumerator nextObject]))
+    {
+    if (([target conformsToProtocol:@protocol(ovmsUpdateDelegate)])&&
+        ([target respondsToSelector:@selector(addMessage:)]))
+      [target addMessage:message];
+    }
+  }
+
+- (void)addMessage:(NSString*)text incoming:(BOOL)incoming
+  {
+  OvmsMessage *message = [OvmsMessage alloc];
+  message.text = text;
+  if (incoming)
+    {
+    message.senderId = @"car";
+    message.outgoing = NO;
+    }
+  else
+    {
+    message.senderId = @"app";
+    message.outgoing = YES;
+    }
+  message.date = [NSDate date];
+  message.deliveryStatus = OvmsMessageDeliveryStatusDelivering;
+  [self addMessage:message];
+  }
+
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
   {
   NSString *reply = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -1266,6 +1323,12 @@
             [JHNotificationManager notificationWithMessage:@"Car Module Reboot..."];
             [self didStopNetworking];
             break;
+          case 7:
+            {
+            NSString* msgtext = [response substringFromIndex:4];
+            [self addMessage:msgtext incoming:YES];
+            }
+            break;
           case 10:
             [JHNotificationManager notificationWithMessage:@"Set Charge Mode"];
             [self didStopNetworking];
@@ -1381,6 +1444,11 @@
   {
   [JHNotificationManager notificationWithMessage:@"Rebooting Car Module..."];
   [self commandIssue:@"5"];
+  }
+
+- (void)commandDoCommand:(NSString*)command
+  {
+  [self commandIssue:[NSString stringWithFormat:@"7,%@",command]];
   }
 
 - (void)commandDoSetChargeMode:(int)mode
