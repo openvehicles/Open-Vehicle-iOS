@@ -364,7 +364,6 @@
 		6358BC9216DB9C77008310DA /* EntityName.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC9116DB9C77008310DA /* EntityName.m */; };
 		6358BC9516DB9D26008310DA /* ChargingAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358BC9416DB9D25008310DA /* ChargingAnnotation.m */; };
 		63A04D2616E25E6E00471816 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A04D2416E25E6E00471816 /* PopoverView.m */; };
-		63A04D2816E2781600471816 /* ic_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D2716E2781600471816 /* ic_pin.png */; };
 		63A04D2A16E2782E00471816 /* ic_pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D2916E2782E00471816 /* ic_pin@2x.png */; };
 		63A04D2D16E27D7B00471816 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D2B16E27D7B00471816 /* success.png */; };
 		63A04D2E16E27D7B00471816 /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A04D2C16E27D7B00471816 /* success@2x.png */; };
@@ -590,6 +589,7 @@
 		4DB5B24719B749FF00C42A66 /* icon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120x120.png; sourceTree = "<group>"; };
 		4DB5B24819B749FF00C42A66 /* icon152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon152x152.png; sourceTree = "<group>"; };
 		4DB5B24F19B74AF000C42A66 /* icon76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon76x76.png; sourceTree = "<group>"; };
+		4DB9426422031839002972F4 /* Open Vehicle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Open Vehicle.entitlements"; sourceTree = "<group>"; };
 		4DBB792D148270A50055769F /* connection_good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connection_good.png; sourceTree = "<group>"; };
 		4DBB792E148270A50055769F /* connection_bad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connection_bad.png; sourceTree = "<group>"; };
 		4DBB792F148270A50055769F /* connection_unknown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connection_unknown.png; sourceTree = "<group>"; };
@@ -832,7 +832,6 @@
 		63A04D2316E25E6E00471816 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
 		63A04D2416E25E6E00471816 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
 		63A04D2516E25E6E00471816 /* PopoverView_Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView_Configuration.h; sourceTree = "<group>"; };
-		63A04D2716E2781600471816 /* ic_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_pin.png; sourceTree = "<group>"; };
 		63A04D2916E2782E00471816 /* ic_pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_pin@2x.png"; sourceTree = "<group>"; };
 		63A04D2B16E27D7B00471816 /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
 		63A04D2C16E27D7B00471816 /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@2x.png"; sourceTree = "<group>"; };
@@ -886,6 +885,7 @@
 		4D5AE35914733757002F5F52 = {
 			isa = PBXGroup;
 			children = (
+				4DB9426422031839002972F4 /* Open Vehicle.entitlements */,
 				4D5AE36E14733757002F5F52 /* ovms */,
 				4D5AE36714733757002F5F52 /* Frameworks */,
 				4D5AE36514733757002F5F52 /* Products */,
@@ -1533,7 +1533,6 @@
 		6358BC7716DB9C2F008310DA /* res */ = {
 			isa = PBXGroup;
 			children = (
-				63A04D2716E2781600471816 /* ic_pin.png */,
 				63A04D2916E2782E00471816 /* ic_pin@2x.png */,
 				6347B4B516E8C44400140ABA /* level0.png */,
 				6347B4B616E8C44400140ABA /* level0@2x.png */,
@@ -1591,8 +1590,21 @@
 				ORGANIZATIONNAME = "Open Vehicle Systems";
 				TargetAttributes = {
 					4D5AE36314733757002F5F52 = {
-						DevelopmentTeam = 464ARQP8WR;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.VPNLite = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -1865,7 +1877,6 @@
 				4D41FD3A21FB3DE200C30437 /* car.png in Resources */,
 				6358BC8416DB9C45008310DA /* cluster.png in Resources */,
 				6358BC8516DB9C45008310DA /* cluster@2x.png in Resources */,
-				63A04D2816E2781600471816 /* ic_pin.png in Resources */,
 				63A04D2A16E2782E00471816 /* ic_pin@2x.png in Resources */,
 				63A04D2D16E27D7B00471816 /* success.png in Resources */,
 				63A04D2E16E27D7B00471816 /* success@2x.png in Resources */,
@@ -2045,8 +2056,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2075,10 +2086,13 @@
 		4D29A7F11485EFE60088122F /* Adhoc Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Open Vehicle.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 464ARQP8WR;
+				DEVELOPMENT_TEAM = 5NP6692GUS;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2127,8 +2141,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mark Webb-Johnson (5NP6692GUS)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2157,10 +2171,13 @@
 		4D29A7F41485EFEE0088122F /* AppStore Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Open Vehicle.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 464ARQP8WR;
+				DEVELOPMENT_TEAM = 5NP6692GUS;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2245,9 +2262,12 @@
 		4D5AE3A614733758002F5F52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Open Vehicle.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 464ARQP8WR;
+				DEVELOPMENT_TEAM = 5NP6692GUS;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
