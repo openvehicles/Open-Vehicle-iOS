@@ -428,7 +428,7 @@
 		4D5AE38C14733758002F5F52 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		4D5AE39414733758002F5F52 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4D6557A81516183B00369AAC /* ovmsVehicleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ovmsVehicleInfo.h; sourceTree = "<group>"; };
-		4D6557A91516183B00369AAC /* ovmsVehicleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ovmsVehicleInfo.m; sourceTree = "<group>"; };
+		4D6557A91516183B00369AAC /* ovmsVehicleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = ovmsVehicleInfo.m; sourceTree = "<group>"; tabWidth = 2; };
 		4D6734B11497891E00F7919F /* roadster_outline_tr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadster_outline_tr.png; sourceTree = "<group>"; };
 		4D6734B31497893F00F7919F /* roadster_outline_rd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadster_outline_rd.png; sourceTree = "<group>"; };
 		4D6734B51497895700F7919F /* roadster_outline_ld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadster_outline_ld.png; sourceTree = "<group>"; };

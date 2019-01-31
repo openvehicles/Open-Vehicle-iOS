@@ -299,10 +299,9 @@
     [self setM_homelink_button:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
 {
-    // Return YES for supported orientations
-	return YES;
+  return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

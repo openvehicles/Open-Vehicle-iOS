@@ -63,17 +63,12 @@
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
 {
-    // Return YES for supported orientations
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    }
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return UIInterfaceOrientationMaskAll;
     else
-    {
-        return YES;
-    }
+        return UIInterfaceOrientationMaskPortrait;
 }
 
 + (Class)cellLayoutClassForItemType:(NSString *)type
