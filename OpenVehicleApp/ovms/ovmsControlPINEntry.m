@@ -83,23 +83,12 @@
 - (IBAction)Edited:(id)sender {
 }
 
-- (IBAction)Cancel:(id)sender {
-
-  if ([self.delegate conformsToProtocol:@protocol(ovmsControlPINEntryDelegate)])
-    {
-    [self.delegate omvsControlPINEntryDelegateDidCancel:_function];
-    }
-
-  [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (IBAction)Done:(id)sender {
 
   if ([self.delegate conformsToProtocol:@protocol(ovmsControlPINEntryDelegate)])
     {
     [self.delegate omvsControlPINEntryDelegateDidSave:_function pin:m_pin.text];
     }
-
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end
