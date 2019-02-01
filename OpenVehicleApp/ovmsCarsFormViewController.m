@@ -141,11 +141,18 @@
     self.carImages = [[NSMutableArray alloc] initWithCapacity:100];
     NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
     NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleRoot error:nil];
-    for (NSString *tString in dirContents) {
+        for (NSString *tString in dirContents) {
         if ([tString hasPrefix:@"car_"] && [tString hasSuffix:@".png"]) {
             [self.carImages addObject: tString];
         }
     }
+    [self.carImages sortUsingComparator:^NSComparisonResult(NSString* a, NSString* b)
+     {
+         NSString* a1 = [a lastPathComponent];
+         NSString* b1 = [b lastPathComponent];
+         return [a1 localizedCaseInsensitiveCompare:b1];
+     }
+     ];
     _context = [ovmsAppDelegate myRef].managedObjectContext;
     
     // only enable the vehicleid field if this is a NEW car
