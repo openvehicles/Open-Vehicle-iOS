@@ -929,14 +929,9 @@
 			children = (
 				4D5AE37714733758002F5F52 /* ovmsAppDelegate.h */,
 				4D5AE37814733758002F5F52 /* ovmsAppDelegate.m */,
-				4DBF375E149B7312002323B5 /* Reachability.h */,
-				4DBF375F149B7312002323B5 /* Reachability.m */,
-				4D16EF30148747EC004A80AE /* JHNotificationManager.h */,
-				4D16EF31148747EC004A80AE /* JHNotificationManager.m */,
-				4D04C86714F28EF4002D6B69 /* MBProgressHUD.h */,
-				4D04C86814F28EF4002D6B69 /* MBProgressHUD.m */,
 				4D5AE37A14733758002F5F52 /* MainStoryboard_iPhone.storyboard */,
 				4D5AE37D14733758002F5F52 /* MainStoryboard_iPad.storyboard */,
+				4DB9426B220490FB002972F4 /* Support Views */,
 				6358BC6D16DB9BF0008310DA /* OCM */,
 				63A04D2216E25E6E00471816 /* PopoverView */,
 				6358BC5916DB9BB2008310DA /* REVClusterMap */,
@@ -1146,6 +1141,19 @@
 				4DB5B24819B749FF00C42A66 /* icon152x152.png */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		4DB9426B220490FB002972F4 /* Support Views */ = {
+			isa = PBXGroup;
+			children = (
+				4DBF375E149B7312002323B5 /* Reachability.h */,
+				4DBF375F149B7312002323B5 /* Reachability.m */,
+				4D16EF30148747EC004A80AE /* JHNotificationManager.h */,
+				4D16EF31148747EC004A80AE /* JHNotificationManager.m */,
+				4D04C86714F28EF4002D6B69 /* MBProgressHUD.h */,
+				4D04C86814F28EF4002D6B69 /* MBProgressHUD.m */,
+			);
+			path = "Support Views";
 			sourceTree = "<group>";
 		};
 		4DCABE59151B666100CB3D2A /* Weather Symbols */ = {
