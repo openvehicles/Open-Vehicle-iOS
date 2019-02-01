@@ -1,29 +1,36 @@
 //
 //  JHNotificationManager.h
-//  Notification
+//  Notifications
 //
 //  Created by Jeff Hodnett on 13/09/2011.
-//  Copyright 2011 Applausible. All rights reserved.
+//
+//  Updated by Toni Chau on 12/12/13.
+//  Copyright (c) 2013 Toni Chau. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    JHNotificationAnimationDirectionSlideInTop,
+    JHNotificationAnimationDirectionSlideInLeft,
+    JHNotificationAnimationDirectionSlideInLeftOutRight,
+    JHNotificationAnimationDirectionSlideInRight,
+    JHNotificationAnimationDirectionSlideInRightOutLeft,
+    JHNotificationAnimationDirectionFlipDown,
+    JHNotificationAnimationDirectionRotateIn,
+    JHNotificationAnimationDirectionSwingInUpLeft,
+    JHNotificationAnimationDirectionSwingInDownLeft,
+    JHNotificationAnimationDirectionSwingInUpRight,
+    JHNotificationAnimationDirectionSwingInDownRight
+}JHNotificationAnimationDirection;
 
-@interface JHNotificationManager : NSObject {
- 
-@private
-    // The notificatin views array
-    NSMutableArray *notificationQueue;
-    
-    // Are we showing a notification
-    BOOL showingNotification;
-}
+@interface JHNotificationManager : NSObject
 
 +(JHNotificationManager *)sharedManager;
 
 +(void)notificationWithMessage:(NSString *)message;
++(void)notificationWithMessage:(NSString *)message direction:(JHNotificationAnimationDirection)direction;
 
--(void)addNotificationViewWithMessage:(NSString *)message;
--(void)showNotificationView:(UIView *)notificationView;
+-(void)showNotificationView:(UIView *)notificationView direction:(JHNotificationAnimationDirection)direction;
 
 @end
