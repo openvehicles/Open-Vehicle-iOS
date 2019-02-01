@@ -56,7 +56,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _baseHeight = 45;
+        _baseHeight = 50;
         _inputFieldInsets = UIEdgeInsetsMake(9, 7, 8, 0);
         _inputFieldInternalEdgeInsets = UIEdgeInsetsMake(-3 - TGRetinaPixel, 0, 0, 0);
         
