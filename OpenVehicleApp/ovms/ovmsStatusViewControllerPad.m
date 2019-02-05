@@ -161,23 +161,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
-  
-  CGRect bvframe = m_car_temp_pem_l.frame;
 
-  // This seems to pickup the orientation correctly, even if we haven't turned on notifications for it
-  UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-  
-  if (orientation == UIInterfaceOrientationLandscapeLeft ||
-      orientation == UIInterfaceOrientationLandscapeRight)
-    {
-    myMapView.frame = CGRectMake(20, bvframe.origin.y+bvframe.size.height+44,
-                                 984, 635-(bvframe.origin.y+bvframe.size.height+44));
-    }
-  else
-    {
-    myMapView.frame = CGRectMake(20, 417, 728, 474);
-    }
+  self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
+
+  myMapView = [myMapView initWithFrame: myMapView.frame];
 
   [self animateLayer];
 
@@ -301,23 +288,7 @@
 
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations
 {
-  return UIInterfaceOrientationMaskPortrait;
-}
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-  CGRect bvframe = m_car_temp_pem_l.frame;
-  
-  if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-      toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
-    {
-    myMapView.frame = CGRectMake(20, bvframe.origin.y+bvframe.size.height+44,
-                                 984, 635-(bvframe.origin.y+bvframe.size.height+44));
-    }
-  else
-    {
-    myMapView.frame = CGRectMake(20, 417, 728, 474);
-    }
+  return UIInterfaceOrientationMaskAll;
 }
 
 -(void) update
@@ -1143,10 +1114,6 @@
         [[segue destinationViewController] setDelegate:self];
       }
     }
-}
-
-- (void)omvsControlPINEntryDelegateDidCancel:(NSString*)fn
-{
 }
 
 - (void)omvsControlPINEntryDelegateDidSave:(NSString*)fn pin:(NSString*)pin
