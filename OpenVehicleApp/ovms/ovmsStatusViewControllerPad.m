@@ -1139,23 +1139,37 @@
 - (IBAction)WakeupButton:(id)sender
 {
   // The wakeup button has been pressed - let's wakeup the car
-  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Wakeup Car"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Cancel"
-                                             destructiveButtonTitle:nil
-                                                  otherButtonTitles:@"Wakeup",nil];
-  [actionSheet showInView:[self.view window]];
+  UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Wakeup Car" message:@"This will wake up the car" preferredStyle:UIAlertControllerStyleActionSheet];
+
+  [actionSheet addAction:[UIAlertAction actionWithTitle:@"Wakeup" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+    [[ovmsAppDelegate myRef] commandDoWakeupCar];
+    [self dismissViewControllerAnimated:YES completion:^{}];
+  }]];
+
+  actionSheet.popoverPresentationController.sourceView = m_wakeup_button;
+  [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
 - (IBAction)HomelinkButton:(id)sender
 {
   // The homelink button has been pressed - let's ask which one he wants
-  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Homelink"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Cancel"
-                                             destructiveButtonTitle:nil
-                                                  otherButtonTitles:@"1",@"2",@"3",nil];
-  [actionSheet showInView:[self.view window]];
+  UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Homelink" message:@"This will activate Homelink" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+  [actionSheet addAction:[UIAlertAction actionWithTitle:@"1" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+      [[ovmsAppDelegate myRef] commandDoHomelink:0];
+      [self dismissViewControllerAnimated:YES completion:^{}];
+  }]];
+  [actionSheet addAction:[UIAlertAction actionWithTitle:@"2" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+      [[ovmsAppDelegate myRef] commandDoHomelink:1];
+      [self dismissViewControllerAnimated:YES completion:^{}];
+  }]];
+  [actionSheet addAction:[UIAlertAction actionWithTitle:@"3" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+      [[ovmsAppDelegate myRef] commandDoHomelink:2];
+      [self dismissViewControllerAnimated:YES completion:^{}];
+  }]];
+
+  actionSheet.popoverPresentationController.sourceView = m_homelink_button;
+  [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
 - (IBAction)locationSnapped:(id)sender {
@@ -1213,25 +1227,6 @@
     [popoverView showSuccess];
     [popoverView performSelector:@selector(dismiss) withObject:nil afterDelay:0.5f];
 }
-
-- (void)actionSheet:(UIActionSheet *)sender clickedButtonAtIndex:(NSInteger)index
-  {
-  if ([sender.title isEqualToString:@"Wakeup Car"])
-    {
-    if (index == [sender firstOtherButtonIndex])
-      {
-      [[ovmsAppDelegate myRef] commandDoWakeupCar];
-      }
-    }
-  else if ([sender.title isEqualToString:@"Homelink"])
-    {
-    int button = (int)index - (int)[sender firstOtherButtonIndex];
-    if ((button>=0)&&(button<3))
-      {
-      [[ovmsAppDelegate myRef] commandDoHomelink:button];
-      }
-    }
-  }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     // Provide a custom view for the ovmsVehicleAnnotation
