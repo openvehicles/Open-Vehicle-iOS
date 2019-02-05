@@ -26,7 +26,7 @@
 
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
-@interface ovmsStatusViewControllerPad : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, ovmsControlPINEntryDelegate, UIActionSheetDelegate, OCMSyncDelegate, PopoverViewDelegate>
+@interface ovmsStatusViewControllerPad : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, ovmsControlPINEntryDelegate, OCMSyncDelegate, PopoverViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_connection_image;
 @property (strong, nonatomic) IBOutlet UILabel *m_car_connection_state;
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_image;
