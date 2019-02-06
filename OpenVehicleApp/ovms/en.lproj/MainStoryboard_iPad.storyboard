@@ -1594,6 +1594,19 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ODOMETER" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EBc-9x-Lte">
+                                <rect key="frame" x="237" y="251" width="511" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Odometer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FJa-hh-EUB">
+                                <rect key="frame" x="20" y="256" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="5Z7-Hx-dgM"/>
@@ -1607,6 +1620,7 @@
                         <outlet property="m_carfirmware" destination="CfM-Js-ojf" id="qaJ-sf-AqK"/>
                         <outlet property="m_gsm" destination="IL1-Oz-Odi" id="klF-fh-xfG"/>
                         <outlet property="m_gsm_signalbars" destination="FfI-eL-89c" id="9ox-se-sE1"/>
+                        <outlet property="m_odometer" destination="EBc-9x-Lte" id="xCo-MI-Hka"/>
                         <outlet property="m_serverfirmware" destination="oNo-h0-pHm" id="IST-x3-Zyi"/>
                         <outlet property="m_type" destination="LQC-Ci-lRe" id="gf0-gZ-uiK"/>
                         <outlet property="m_vehicleid" destination="A4l-sj-xo5" id="SQF-BS-3JQ"/>

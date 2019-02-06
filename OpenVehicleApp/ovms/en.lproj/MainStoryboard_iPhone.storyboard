@@ -187,11 +187,11 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <size key="shadowOffset" width="2" height="2"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="STANDARD" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="DOE-r2-aEW" userLabel="battery_charge_mode">
-                                        <rect key="frame" x="25" y="57" width="208" height="14"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" text="STANDARD" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="DOE-r2-aEW" userLabel="battery_charge_mode">
+                                        <rect key="frame" x="129" y="52" width="104" height="14"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="208" id="gaV-ld-d2Q"/>
+                                            <constraint firstAttribute="width" constant="104" id="gaV-ld-d2Q"/>
                                             <constraint firstAttribute="height" constant="14" id="ygO-Wn-A9F"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
@@ -213,9 +213,9 @@
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg kWh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fU-jP-Msu" userLabel="battery_charge_kwh">
-                                        <rect key="frame" x="25" y="52" width="75" height="14"/>
+                                        <rect key="frame" x="25" y="52" width="104" height="14"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="PdH-m2-d6B"/>
+                                            <constraint firstAttribute="width" constant="104" id="PdH-m2-d6B"/>
                                             <constraint firstAttribute="height" constant="14" id="UkN-aH-Fjj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
@@ -224,8 +224,8 @@
                                         <color key="shadowColor" red="0.098044829842931946" green="0.098044829842931946" blue="0.098044829842931946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg Rem" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4j-Z1-IjW" userLabel="battery_charge_remaining_time">
-                                        <rect key="frame" x="161" y="36" width="75" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Chg Rem" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4j-Z1-IjW" userLabel="battery_charge_remaining_time">
+                                        <rect key="frame" x="158" y="36" width="75" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="WGD-x9-Xih"/>
                                             <constraint firstAttribute="width" constant="75" id="cIn-4P-VT3"/>
@@ -869,7 +869,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="homelink-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="HBh-mc-tup" userLabel="Homelink Logo">
-                                        <rect key="frame" x="240" y="151" width="24" height="24"/>
+                                        <rect key="frame" x="239" y="151" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="7k4-wj-eKu"/>
                                             <constraint firstAttribute="width" constant="24" id="vWU-nQ-oVR"/>
@@ -927,7 +927,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="uyN-xq-DsY">
-                                        <rect key="frame" x="226" y="72" width="52" height="16"/>
+                                        <rect key="frame" x="225" y="72" width="52" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="0EU-lC-zAn"/>
                                             <constraint firstAttribute="width" constant="52" id="emK-uo-cz6"/>
@@ -937,7 +937,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="yOm-eK-EiO">
-                                        <rect key="frame" x="226" y="237" width="52" height="18"/>
+                                        <rect key="frame" x="225" y="237" width="52" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="52" id="7YQ-wP-VS1"/>
                                             <constraint firstAttribute="height" constant="18" id="MbI-kG-K21"/>
@@ -947,7 +947,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="8Qv-w9-QFk">
-                                        <rect key="frame" x="226" y="255" width="52" height="18"/>
+                                        <rect key="frame" x="225" y="255" width="52" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="52" id="QOV-AU-un4"/>
                                             <constraint firstAttribute="height" constant="18" id="sXd-ai-ay1"/>
@@ -1044,7 +1044,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="BATTERY" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="dSt-fr-TTW">
-                                        <rect key="frame" x="220" y="320" width="58" height="21"/>
+                                        <rect key="frame" x="220" y="320" width="57" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="57" id="MYF-5z-C5M"/>
                                             <constraint firstAttribute="height" constant="21" id="nG3-E3-xbh"/>
@@ -1054,7 +1054,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hvm-f7-boq">
-                                        <rect key="frame" x="226" y="340" width="52" height="18"/>
+                                        <rect key="frame" x="225" y="340" width="52" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="7kS-zr-iZh"/>
                                             <constraint firstAttribute="width" constant="52" id="uTL-V8-HQl"/>
@@ -1696,7 +1696,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CAC" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cBe-QY-rdQ">
-                                <rect key="frame" x="166" y="177" width="189" height="31"/>
+                                <rect key="frame" x="112" y="177" width="243" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1719,6 +1719,19 @@
                                 <rect key="frame" x="95" y="137" width="31" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ODOMETER" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u8I-O6-mPz">
+                                <rect key="frame" x="111" y="216" width="243" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Odometer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="5nk-nw-3ZI">
+                                <rect key="frame" x="20" y="221" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Ax-2K-48U"/>
@@ -1731,6 +1744,7 @@
                         <outlet property="m_carfirmware" destination="5vj-ow-P5Q" id="qf3-SD-JdI"/>
                         <outlet property="m_gsm" destination="kAU-ia-0FE" id="wBI-Mx-Bh9"/>
                         <outlet property="m_gsm_signalbars" destination="ceb-zL-0MD" id="b1L-F2-L2c"/>
+                        <outlet property="m_odometer" destination="u8I-O6-mPz" id="Rbl-qT-TXG"/>
                         <outlet property="m_serverfirmware" destination="xnD-R6-qWE" id="UQT-LS-JEb"/>
                         <outlet property="m_type" destination="btW-xG-bsy" id="KRE-x3-GR1"/>
                         <outlet property="m_vehicleid" destination="TvA-0V-loG" id="R1d-6k-PDV"/>
@@ -1739,7 +1753,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPR-VW-RVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2409" y="1407"/>
+            <point key="canvasLocation" x="2408.8000000000002" y="1406.4467766116943"/>
         </scene>
         <!--Settings-->
         <scene sceneID="REd-xQ-G4B">

@@ -19,6 +19,7 @@
 @synthesize m_appfirmware;
 @synthesize m_gsm_signalbars;
 @synthesize m_cac;
+@synthesize m_odometer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
   {
@@ -46,6 +47,7 @@
   [self setM_appfirmware:nil];
   [self setM_gsm_signalbars:nil];
   [self setM_cac:nil];
+  [self setM_odometer:nil];
   }
 
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations
@@ -91,6 +93,7 @@
   m_gsm_signalbars.image = [UIImage imageNamed:[NSString stringWithFormat:@"signalbars-%d.png",car_signalbars]];
 
   m_cac.text = [ovmsAppDelegate myRef].car_cac;
+  m_odometer.text = [ovmsAppDelegate myRef].car_odometer_s;
 
   [super viewWillAppear:animated];
   }
