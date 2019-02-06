@@ -815,7 +815,7 @@
         car_tmotor = [[lparts objectAtIndex:4] intValue];
         car_tbattery = [[lparts objectAtIndex:5] intValue];
         car_trip = [[lparts objectAtIndex:6] intValue];
-        car_odometer = [[lparts objectAtIndex:7] intValue];
+        car_odometer = [[lparts objectAtIndex:7] intValue] / 10;
         car_speed = [[lparts objectAtIndex:8] intValue];
         car_tpem_s = [self convertTemperatureUnits:car_tpem];
         car_tmotor_s = [self convertTemperatureUnits:car_tmotor];
