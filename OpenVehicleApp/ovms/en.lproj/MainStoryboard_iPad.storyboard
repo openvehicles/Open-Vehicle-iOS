@@ -605,17 +605,59 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8C-4W-PMg" userLabel="battery_charge_time">
+                                        <rect key="frame" x="91" y="33" width="80" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="RPe-m1-Wmx"/>
+                                            <constraint firstAttribute="height" constant="14" id="XtI-lJ-oe2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg kWh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPm-4w-IB6" userLabel="battery_charge_kwh">
+                                        <rect key="frame" x="91" y="48" width="104" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="104" id="f1W-5D-AJB"/>
+                                            <constraint firstAttribute="height" constant="14" id="jfx-Ki-hMV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.09804482984" green="0.09804482984" blue="0.09804482984" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg Rem" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HN8-2G-25z" userLabel="battery_charge_remaining_time">
+                                        <rect key="frame" x="212" y="33" width="75" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="q9v-7W-evc"/>
+                                            <constraint firstAttribute="width" constant="75" id="scs-a3-9DW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="B8C-4W-PMg" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="8NN-jY-LFS"/>
                                     <constraint firstItem="AXn-eT-0IG" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="9eg-d7-VcR"/>
+                                    <constraint firstItem="FPm-4w-IB6" firstAttribute="top" secondItem="B8C-4W-PMg" secondAttribute="bottom" constant="1" id="FdK-dU-Aip"/>
                                     <constraint firstItem="mnC-x1-YJF" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="HYW-TH-MTd"/>
                                     <constraint firstItem="mnC-x1-YJF" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="85" id="I4z-bc-9V2"/>
+                                    <constraint firstAttribute="trailing" secondItem="HN8-2G-25z" secondAttribute="trailing" constant="56" id="L6X-M3-DlE"/>
                                     <constraint firstAttribute="width" constant="343" id="MIz-DW-261"/>
                                     <constraint firstItem="vZC-ps-wlb" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="QF3-E2-6Fa"/>
+                                    <constraint firstItem="HN8-2G-25z" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="SEk-vh-QUC"/>
+                                    <constraint firstItem="HN8-2G-25z" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="VzB-NG-Lzz"/>
                                     <constraint firstItem="ULr-Iw-zpV" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="85" id="Xig-YP-raN"/>
                                     <constraint firstItem="7ZY-WZ-8jd" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="YuV-E6-dB8"/>
+                                    <constraint firstItem="FPm-4w-IB6" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="ctM-4M-oUF"/>
+                                    <constraint firstItem="B8C-4W-PMg" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="dEJ-GA-eH0"/>
                                     <constraint firstItem="7ZY-WZ-8jd" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="eNv-FJ-0o6"/>
                                     <constraint firstAttribute="height" constant="80" id="pa9-HH-Sbq"/>
                                     <constraint firstItem="vZC-ps-wlb" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="sgM-8m-U4Q"/>
@@ -751,9 +793,12 @@
                         <outlet property="m_battery_charging" destination="7ZY-WZ-8jd" id="oTS-WH-3t0"/>
                         <outlet property="m_battery_front" destination="vZC-ps-wlb" id="wfU-Ba-h1E"/>
                         <outlet property="m_car_ambient_temp" destination="M0c-0x-SFf" id="ihj-KW-64f"/>
+                        <outlet property="m_car_charge_kwh" destination="FPm-4w-IB6" id="uhm-Ba-kai"/>
                         <outlet property="m_car_charge_message" destination="sY1-P1-ZKD" id="t3i-zt-oFg"/>
                         <outlet property="m_car_charge_mode" destination="AXn-eT-0IG" id="HRK-lt-qag"/>
+                        <outlet property="m_car_charge_remaining" destination="HN8-2G-25z" id="UV9-WQ-Yq9"/>
                         <outlet property="m_car_charge_state" destination="cxp-Ri-Hbt" id="AUl-Eh-ruI"/>
+                        <outlet property="m_car_charge_time" destination="B8C-4W-PMg" id="1aM-O7-0N8"/>
                         <outlet property="m_car_charge_type" destination="PAB-B9-2QB" id="MFZ-dV-1hh"/>
                         <outlet property="m_car_connection_image" destination="JoM-cn-ghC" id="wwy-2b-7Tj"/>
                         <outlet property="m_car_connection_state" destination="K2G-Mz-umh" id="eZl-AY-rsM"/>

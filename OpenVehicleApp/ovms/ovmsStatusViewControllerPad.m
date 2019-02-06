@@ -35,7 +35,8 @@
 @synthesize m_car_range_estimated;
 @synthesize m_car_charge_message;
 @synthesize m_car_charge_time;
-@synthesize m_car_charge_remaining_time;
+@synthesize m_car_charge_kwh;
+@synthesize m_car_charge_remaining;
 @synthesize m_car_lights;
 @synthesize m_battery_charging;
 
@@ -236,7 +237,8 @@
     [self setM_car_charge_state:nil];
     [self setM_car_charge_type:nil];
     [self setM_car_charge_time:nil];
-    [self setM_car_charge_remaining_time:nil];
+    [self setM_car_charge_kwh:nil];
+    [self setM_car_charge_remaining:nil];
     [self setM_car_soc:nil];
     [self setM_battery_front:nil];
     [self setM_car_lockunlock:nil];
@@ -306,6 +308,10 @@
   else
     units = @"m";
   
+  int chargetime = [ovmsAppDelegate myRef].car_chargeduration;
+  int chargeremainingtime = [ovmsAppDelegate myRef].car_minutestofull;
+  int chargekWh = [ovmsAppDelegate myRef].car_chargekwh;
+
   int connected = [ovmsAppDelegate myRef].car_connected;
   time_t lastupdated = [ovmsAppDelegate myRef].car_lastupdated;
   int seconds = (int)(time(0)-lastupdated);
@@ -432,7 +438,58 @@
     m_car_parking_image.hidden = 0;
     m_car_parking_state.text = [NSString stringWithFormat:@"%d days",parktime/(3600*24)];
     }
-  
+
+  if (chargetime == 0 || m_charger_plug.hidden == 1)
+    {
+    m_car_charge_time.text = @"";
+    }
+   else if (chargetime < 120)
+    {
+    m_car_charge_time.text = @"CHARGING STARTED";
+    }
+  else if (chargetime < 3600)
+    {
+    m_car_charge_time.text = [NSString stringWithFormat:@"%d mins",chargetime/60];
+    }
+  else if (chargetime < (3600*24*2))
+    {
+    m_car_charge_time.text = [NSString stringWithFormat:@"%02d:%02d",
+                              chargetime/3660,
+                              (chargetime%3600)/60];
+    }
+    
+  if (chargeremainingtime <= 0)
+    {
+    m_car_charge_remaining.text = @"";
+    }
+  else if (chargeremainingtime < 60)
+    {
+      m_car_charge_remaining.text = [NSString stringWithFormat:@"%d mins",chargeremainingtime];
+    }
+  else
+    {
+    m_car_charge_remaining.text = [NSString stringWithFormat:@"%02d:%02d",
+                                            chargeremainingtime/60,
+                                            chargeremainingtime%60];
+    }
+    
+  if ( chargekWh==0 )
+    {
+    m_car_charge_kwh.text = @"";
+    }
+  else
+    {
+    float effect=([ovmsAppDelegate myRef].car_linevoltage*[ovmsAppDelegate myRef].car_chargecurrent)/1000.0;
+    if ((effect>0)&&(effect<250))
+      {
+      m_car_charge_kwh.text = [NSString stringWithFormat:@"%dkWh@%0.1fkW",chargekWh,effect];
+      }
+    else
+      {
+      m_car_charge_kwh.text = [NSString stringWithFormat:@"%dkWh",chargekWh];
+      }
+    }
+
   m_car_image.image=[UIImage imageNamed:[ovmsAppDelegate myRef].sel_imagepath];
   m_car_soc.text = [NSString stringWithFormat:@"%d%%",[ovmsAppDelegate myRef].car_soc];
   m_car_range_ideal.text = [ovmsAppDelegate myRef].car_idealrange_s;

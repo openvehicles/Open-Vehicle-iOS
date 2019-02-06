@@ -696,7 +696,7 @@
         car_chargelimit = [[lparts objectAtIndex:8] intValue];
         car_chargeduration = [[lparts objectAtIndex:9] intValue];
         car_chargeb4 = [[lparts objectAtIndex:10] intValue];
-        car_chargekwh = [[lparts objectAtIndex:11] intValue];
+        car_chargekwh = [[lparts objectAtIndex:11] intValue] / 10;
         car_chargesubstate = [[lparts objectAtIndex:12] intValue];
         car_chargestateN = [[lparts objectAtIndex:13] intValue];
         car_chargemodeN = [[lparts objectAtIndex:14] intValue];

@@ -256,49 +256,55 @@
     }
 
   if (chargetime == 0 || m_charger_plug.hidden == 1)
-  {
-      m_car_charge_time.text = @"";
-  }
+    {
+    m_car_charge_time.text = @"";
+    }
   else if (chargetime < 120)
-  {
-      m_car_charge_time.text = @"CHARGING STARTED";
-  }
+    {
+    m_car_charge_time.text = @"CHARGING STARTED";
+    }
   else if (chargetime < 3600)
-  {
-      m_car_charge_time.text = [NSString stringWithFormat:@"%d mins",chargetime/60];
-  }
+    {
+    m_car_charge_time.text = [NSString stringWithFormat:@"%d mins",chargetime/60];
+    }
   else if (chargetime < (3600*24*2))
-  {
-     m_car_charge_time.text = [NSString stringWithFormat:@"%02d:%02d",
-                                      chargetime/3660,
-                                      (chargetime%3600)/60];
-  }
+    {
+    m_car_charge_time.text = [NSString stringWithFormat:@"%02d:%02d",
+                                       chargetime/3660,
+                                       (chargetime%3600)/60];
+    }
 
   if (chargeremainingtime <= 0)
-  {
-      m_car_charge_remaining_time.text = @"";
-  }
+    {
+    m_car_charge_remaining_time.text = @"";
+    }
   else if (chargeremainingtime < 60)
-  {
-      m_car_charge_remaining_time.text = [NSString stringWithFormat:@"%d mins",chargeremainingtime];
-  }
+    {
+    m_car_charge_remaining_time.text = [NSString stringWithFormat:@"%d mins",chargeremainingtime];
+    }
   else
-  {
-      m_car_charge_remaining_time.text = [NSString stringWithFormat:@"%02d:%02d",
+    {
+    m_car_charge_remaining_time.text = [NSString stringWithFormat:@"%02d:%02d",
                                chargeremainingtime/60,
                                chargeremainingtime%60];
-  }
+    }
 
-  if( chargekWh==0 ){
-      m_car_chargekwh.text = @"";
-  }else{
-      float effect=[ovmsAppDelegate myRef].car_linevoltage*[ovmsAppDelegate myRef].car_chargecurrent/1000.00;
-      if(effect>0){
-          m_car_chargekwh.text = [NSString stringWithFormat:@"%dkWh@%.01fkW",chargekWh,effect];
-      }else{
-          m_car_chargekwh.text = [NSString stringWithFormat:@"%dkWh",chargekWh];
+  if ( chargekWh==0 )
+    {
+    m_car_chargekwh.text = @"";
+    }
+  else
+    {
+    float effect=([ovmsAppDelegate myRef].car_linevoltage*[ovmsAppDelegate myRef].car_chargecurrent)/1000.0;
+    if ((effect>0)&&(effect<250))
+      {
+      m_car_chargekwh.text = [NSString stringWithFormat:@"%dkWh@%0.1fkW",chargekWh,effect];
       }
-  }
+    else
+      {
+      m_car_chargekwh.text = [NSString stringWithFormat:@"%dkWh",chargekWh];
+      }
+    }
 
   m_car_image.image=[UIImage imageNamed:[ovmsAppDelegate myRef].sel_imagepath];
   m_car_soc.text = [NSString stringWithFormat:@"%d%%",[ovmsAppDelegate myRef].car_soc];
