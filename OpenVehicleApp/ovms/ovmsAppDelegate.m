@@ -639,7 +639,7 @@
     else if (*pm == 'M')
       {
       // Decrypt the paranoid message
-      char buf[1024];
+      char buf[[cmd length]*2 + 16];
       int len;
 
       code = pm[1];
@@ -1226,8 +1226,7 @@
     }
   else if (tag==1)
     { // Normal encrypted data packet
-    //char buf[[response length]+1];
-    char buf[1024];
+    char buf[[response length]*2 + 16];
     int len = base64decode((uint8_t*)[response UTF8String], (uint8_t*)buf);
     RC4_crypt(&rxCrypto, (uint8_t*)buf, (uint8_t*)buf, len);
       if ((buf[0]=='M')&&(buf[1]=='P')&&(buf[2]=='-')&&(buf[3]=='0'))
