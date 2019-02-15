@@ -532,21 +532,6 @@
                                             <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
-                                        <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjw-OR-BUu" userLabel="disclosure">
-                                            <rect key="frame" x="330" y="56" width="29" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                            <state key="normal">
-                                                <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <segue destination="BXs-pp-JHG" kind="push" identifier="editCar" id="X9h-Z2-0t4"/>
-                                            </connections>
-                                        </button>
                                         <imageView hidden="YES" userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" image="signalbars-5.png" translatesAutoresizingMaskIntoConstraints="NO" id="3hC-19-QT3">
                                             <rect key="frame" x="14" y="96" width="31" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -564,6 +549,14 @@
                                             </state>
                                             <connections>
                                                 <segue destination="Ohb-tf-Jjj" kind="push" identifier="infoView" id="297-dw-DXz"/>
+                                            </connections>
+                                        </button>
+                                        <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjw-OR-BUu" userLabel="disclosure">
+                                            <rect key="frame" x="334" y="52" width="25" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="disclosure.png"/>
+                                            <connections>
+                                                <segue destination="BXs-pp-JHG" kind="push" identifier="editCar" id="X9h-Z2-0t4"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -587,7 +580,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OVn-SP-h2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1718" y="1407"/>
+            <point key="canvasLocation" x="1717.5999999999999" y="1406.4467766116943"/>
         </scene>
         <!--Ovms Cars Form View Controller-->
         <scene sceneID="rV3-H9-bVt">
@@ -1946,6 +1939,7 @@
         <image name="carvaletoff.png" width="304" height="606"/>
         <image name="charger_plug.png" width="268" height="70"/>
         <image name="connection_good.png" width="64" height="64"/>
+        <image name="disclosure.png" width="50" height="80"/>
         <image name="homelink-logo.png" width="128" height="128"/>
         <image name="ic_pin.png" width="32" height="32"/>
         <image name="message.png" width="30" height="30"/>
