@@ -712,7 +712,7 @@
         car_rangelimit = [[lparts objectAtIndex:21] intValue];
         car_soclimit = [[lparts objectAtIndex:22] intValue];
         }
-      if([lparts count]>=30)
+      if([lparts count]>=31)
         {
         car_chargetype = [[lparts objectAtIndex:30] intValue];
         }
