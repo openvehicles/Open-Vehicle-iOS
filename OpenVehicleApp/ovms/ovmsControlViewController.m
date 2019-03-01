@@ -46,12 +46,9 @@
 //  self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
 }
 
-- (void)viewDidUnload
+- (void)dealloc
 {
   [self setM_chargemode:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -66,13 +63,13 @@
   [[ovmsAppDelegate myRef] commandCancel];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-  {
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return YES;
-  else
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-  }
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return UIInterfaceOrientationMaskAll;
+    else
+        return UIInterfaceOrientationMaskPortrait;
+}
 
 - (IBAction)doneButton:(id)sender {
   //[self dismissModalViewControllerAnimated:YES];

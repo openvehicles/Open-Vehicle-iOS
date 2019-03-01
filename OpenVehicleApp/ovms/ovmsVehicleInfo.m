@@ -19,6 +19,7 @@
 @synthesize m_appfirmware;
 @synthesize m_gsm_signalbars;
 @synthesize m_cac;
+@synthesize m_odometer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
   {
@@ -35,7 +36,7 @@
 	// Do any additional setup after loading the view.
   }
 
-- (void)viewDidUnload
+- (void)dealloc
   {
   [self setM_vehicleid:nil];
   [self setM_vin:nil];
@@ -46,17 +47,16 @@
   [self setM_appfirmware:nil];
   [self setM_gsm_signalbars:nil];
   [self setM_cac:nil];
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
+  [self setM_odometer:nil];
   }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-  {
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return YES;
+    return UIInterfaceOrientationMaskAll;
   else
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-  }
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 - (void)viewWillAppear:(BOOL)animated
   {
@@ -93,10 +93,9 @@
   m_gsm_signalbars.image = [UIImage imageNamed:[NSString stringWithFormat:@"signalbars-%d.png",car_signalbars]];
 
   m_cac.text = [ovmsAppDelegate myRef].car_cac;
+  m_odometer.text = [ovmsAppDelegate myRef].car_odometer_s;
 
   [super viewWillAppear:animated];
-  
-  [TestFlight passCheckpoint:@"VEHICLE_INFO"];
   }
 
 - (IBAction)Done:(id)sender

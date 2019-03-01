@@ -59,20 +59,20 @@
   [self update];
 }
 
-- (void)viewDidUnload
+- (void)dealloc
 {
-    [self setM_car_image:nil];
-    [self setM_car_charge_state:nil];
-    [self setM_car_charge_type:nil];
-    [self setM_car_charge_time:nil];
-    [self setM_car_charge_remaining_time:nil];
-    [self setM_car_chargekwh:nil];
-    [self setM_car_soc:nil];
-    [self setM_battery_front:nil];
-    [self setM_car_connection_state:nil];
-    [self setM_car_connection_image:nil];
-    [self setM_car_parking_image:nil];
-    [self setM_car_parking_state:nil];
+  [self setM_car_image:nil];
+  [self setM_car_charge_state:nil];
+  [self setM_car_charge_type:nil];
+  [self setM_car_charge_time:nil];
+  [self setM_car_charge_remaining_time:nil];
+  [self setM_car_chargekwh:nil];
+  [self setM_car_soc:nil];
+  [self setM_battery_front:nil];
+  [self setM_car_connection_state:nil];
+  [self setM_car_connection_image:nil];
+  [self setM_car_parking_image:nil];
+  [self setM_car_parking_state:nil];
   [self setM_battery_charging:nil];
   [self setM_car_range_ideal:nil];
   [self setM_car_range_estimated:nil];
@@ -81,9 +81,6 @@
   [self setM_charger_slider:nil];
   [self setM_car_charge_message:nil];
   [self setM_battery_button:nil];
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -112,17 +109,12 @@
 	[super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
 {
-  // Return YES for supported orientations
-  if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    }
-  else
-    {
-    return YES;
-    }
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return UIInterfaceOrientationMaskAll;
+    else
+        return UIInterfaceOrientationMaskPortrait;
 }
 
 -(void) update
@@ -135,8 +127,8 @@
   
   int connected = [ovmsAppDelegate myRef].car_connected;
   time_t lastupdated = [ovmsAppDelegate myRef].car_lastupdated;
-  int seconds = (time(0)-lastupdated);
-  int minutes = (time(0)-lastupdated)/60;
+  int seconds = (int)(time(0)-lastupdated);
+  int minutes = (int)(time(0)-lastupdated)/60;
   int hours = minutes/60;
   int days = minutes/(60*24);
   
@@ -264,49 +256,55 @@
     }
 
   if (chargetime == 0 || m_charger_plug.hidden == 1)
-  {
-      m_car_charge_time.text = @"";
-  }
+    {
+    m_car_charge_time.text = @"";
+    }
   else if (chargetime < 120)
-  {
-      m_car_charge_time.text = @"CHARGING STARTED";
-  }
+    {
+    m_car_charge_time.text = @"CHARGING STARTED";
+    }
   else if (chargetime < 3600)
-  {
-      m_car_charge_time.text = [NSString stringWithFormat:@"%d mins",chargetime/60];
-  }
+    {
+    m_car_charge_time.text = [NSString stringWithFormat:@"%d mins",chargetime/60];
+    }
   else if (chargetime < (3600*24*2))
-  {
-     m_car_charge_time.text = [NSString stringWithFormat:@"%02d:%02d",
-                                      chargetime/3660,
-                                      (chargetime%3600)/60];
-  }
+    {
+    m_car_charge_time.text = [NSString stringWithFormat:@"%02d:%02d",
+                                       chargetime/3660,
+                                       (chargetime%3600)/60];
+    }
 
   if (chargeremainingtime <= 0)
-  {
-      m_car_charge_remaining_time.text = @"";
-  }
+    {
+    m_car_charge_remaining_time.text = @"";
+    }
   else if (chargeremainingtime < 60)
-  {
-      m_car_charge_remaining_time.text = [NSString stringWithFormat:@"%d mins",chargeremainingtime];
-  }
+    {
+    m_car_charge_remaining_time.text = [NSString stringWithFormat:@"%d mins",chargeremainingtime];
+    }
   else
-  {
-      m_car_charge_remaining_time.text = [NSString stringWithFormat:@"%02d:%02d",
+    {
+    m_car_charge_remaining_time.text = [NSString stringWithFormat:@"%02d:%02d",
                                chargeremainingtime/60,
                                chargeremainingtime%60];
-  }
+    }
 
-  if( chargekWh==0 ){
-      m_car_chargekwh.text = @"";
-  }else{
-      float effect=[ovmsAppDelegate myRef].car_linevoltage*[ovmsAppDelegate myRef].car_chargecurrent/1000.00;
-      if(effect>0){
-          m_car_chargekwh.text = [NSString stringWithFormat:@"%dkWh@%.01fkW",chargekWh,effect];
-      }else{
-          m_car_chargekwh.text = [NSString stringWithFormat:@"%dkWh",chargekWh];
+  if ( chargekWh==0 )
+    {
+    m_car_chargekwh.text = @"";
+    }
+  else
+    {
+    float effect=([ovmsAppDelegate myRef].car_linevoltage*[ovmsAppDelegate myRef].car_chargecurrent)/1000.0;
+    if ((effect>0)&&(effect<250))
+      {
+      m_car_chargekwh.text = [NSString stringWithFormat:@"%dkWh@%0.1fkW",chargekWh,effect];
       }
-  }
+    else
+      {
+      m_car_chargekwh.text = [NSString stringWithFormat:@"%dkWh",chargekWh];
+      }
+    }
 
   m_car_image.image=[UIImage imageNamed:[ovmsAppDelegate myRef].sel_imagepath];
   m_car_soc.text = [NSString stringWithFormat:@"%d%%",[ovmsAppDelegate myRef].car_soc];

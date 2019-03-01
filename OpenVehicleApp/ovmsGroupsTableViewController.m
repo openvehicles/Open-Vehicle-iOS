@@ -44,8 +44,6 @@
       [locationGroups addObject:target];
       }
     }
-
-  [TestFlight passCheckpoint:@"GROUPS_VISITED"];
   
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
@@ -53,20 +51,13 @@
   self.navigationItem.rightBarButtonItem = self.editButtonItem;
   }
 
-- (void)viewDidUnload
-  {
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
-  }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-  {
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return YES;
-  else
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-  }
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return UIInterfaceOrientationMaskAll;
+    else
+        return UIInterfaceOrientationMaskPortrait;
+}
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
   {

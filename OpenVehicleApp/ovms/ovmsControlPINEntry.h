@@ -31,7 +31,6 @@
 @property (strong, nonatomic) IBOutlet UINavigationBar *m_navbar;
 
 - (IBAction)Edited:(id)sender;
-- (IBAction)Cancel:(id)sender;
 - (IBAction)Done:(id)sender;
 
 @end

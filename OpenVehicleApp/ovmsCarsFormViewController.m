@@ -65,7 +65,7 @@
 //    _context = [ovmsAppDelegate myRef].managedObjectContext;
 //}
 
-- (void)viewDidUnload
+- (void)dealloc
 {
   [self setVehicleid:nil];
   [self setVehiclelabel:nil];
@@ -74,19 +74,15 @@
   [self setVehicleImage:nil];
   [self setContext:nil];
   [self setM_control_button:nil];
-  [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-  {
-  // Return YES for supported orientations
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return YES;
-  else
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-  }
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return UIInterfaceOrientationMaskAll;
+    else
+        return UIInterfaceOrientationMaskPortrait;
+}
 
 //-(void) viewWillAppear:(BOOL)animated
 //{
@@ -145,11 +141,18 @@
     self.carImages = [[NSMutableArray alloc] initWithCapacity:100];
     NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
     NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:bundleRoot error:nil];
-    for (NSString *tString in dirContents) {
+        for (NSString *tString in dirContents) {
         if ([tString hasPrefix:@"car_"] && [tString hasSuffix:@".png"]) {
             [self.carImages addObject: tString];
         }
     }
+    [self.carImages sortUsingComparator:^NSComparisonResult(NSString* a, NSString* b)
+     {
+         NSString* a1 = [a lastPathComponent];
+         NSString* b1 = [b lastPathComponent];
+         return [a1 localizedCaseInsensitiveCompare:b1];
+     }
+     ];
     _context = [ovmsAppDelegate myRef].managedObjectContext;
     
     // only enable the vehicleid field if this is a NEW car

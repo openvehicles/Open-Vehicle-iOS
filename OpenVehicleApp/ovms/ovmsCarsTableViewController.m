@@ -48,13 +48,6 @@
   self.navigationItem.rightBarButtonItem = self.editButtonItem;
   }
 
-- (void)viewDidUnload
-  {
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
-  }
-
 - (void)viewWillAppear:(BOOL)animated
   {
     [super viewWillAppear:animated];
@@ -63,7 +56,7 @@
   [loader startSyncAction];
       
 
-  int originalcount = [_cars count];
+  int originalcount = (int)[_cars count];
   
   _context = [ovmsAppDelegate myRef].managedObjectContext;
   NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -118,13 +111,13 @@
   [super viewDidDisappear:animated];
   }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-  {
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return YES;
-  else
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-  }
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return UIInterfaceOrientationMaskAll;
+    else
+        return UIInterfaceOrientationMaskPortrait;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
   {

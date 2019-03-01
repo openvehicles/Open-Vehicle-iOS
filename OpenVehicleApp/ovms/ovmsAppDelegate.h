@@ -14,6 +14,7 @@
 #import "crypto_md5.h"
 #import "crypto_hmac.h"
 #import "crypto_rc4.h"
+#import "ovmsMessage.h"
 
 #define TOKEN_SIZE 22
 
@@ -28,6 +29,8 @@
 @optional
 -(void) update;
 -(void) groupUpdate:(NSArray*)result;
+-(void) clearMessages;
+-(void) addMessage:(OvmsMessage*)message;
 @end
 
 @protocol ovmsCommandDelegate
@@ -62,6 +65,7 @@
   NSString* sel_netpass;
   NSString* sel_userpass;
   NSString* sel_imagepath;
+  NSMutableArray* sel_messages;
 
   time_t car_lastupdated;
   int car_connected;
@@ -154,6 +158,7 @@
 @property (strong, nonatomic) NSString* sel_netpass;
 @property (strong, nonatomic) NSString* sel_userpass;
 @property (strong, nonatomic) NSString* sel_imagepath;
+@property (strong, nonatomic) NSMutableArray* sel_messages;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
@@ -268,6 +273,10 @@
 - (void)registerForUpdate:(id)target;
 - (void)deregisterFromUpdate:(id)target;
 
+- (void)clearMessages;
+- (void)addMessage:(OvmsMessage*)message;
+- (void)addMessage:(NSString*)text incoming:(BOOL)incoming;
+
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
 
@@ -285,6 +294,7 @@
 - (void)commandDoRequestParameterList;
 - (void)commandDoSetParameter:(int)param value:(NSString*)value;
 - (void)commandDoReboot;
+- (void)commandDoCommand:(NSString*)command;
 - (void)commandDoSetChargeMode:(int)mode;
 - (void)commandDoStartCharge;
 - (void)commandDoStopCharge;

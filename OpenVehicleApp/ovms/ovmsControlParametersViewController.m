@@ -43,12 +43,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewDidUnload
+- (void)dealloc
 {
     [self setM_table:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -78,13 +75,13 @@
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-  {
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return YES;
-  else
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-  }
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return UIInterfaceOrientationMaskAll;
+    else
+        return UIInterfaceOrientationMaskPortrait;
+}
 
 - (void)startSpinner:(NSString *)label
   {
@@ -192,7 +189,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
   {
   UIView *cell = [[textField superview] superview];
-  int fn = cell.tag-200;
+  int fn = (int)cell.tag-200;
   NSString* val = textField.text;
   
   if ([val compare:param[fn]])
@@ -234,67 +231,67 @@
   switch (indexPath.row)
     {
     case PARAM_REGPHONE:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Registered Telephone",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Registered Telephone",(int)indexPath.row]];
       break;
     case PARAM_REGPASS:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Module Password",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Module Password",(int)indexPath.row]];
       break;
     case PARAM_MILESKM:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Miles/Km",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Miles/Km",(int)indexPath.row]];
       break;
     case PARAM_NOTIFIES:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Notifications",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Notifications",(int)indexPath.row]];
       break;
     case PARAM_SERVERIP:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: OVMS Server IP",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: OVMS Server IP",(int)indexPath.row]];
       break;
     case PARAM_GPRSAPN:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Cellular Network APN",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Cellular Network APN",(int)indexPath.row]];
       break;
     case PARAM_GPRSUSER:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Cellular Network User",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Cellular Network User",(int)indexPath.row]];
       break;
     case PARAM_GPRSPASS:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Cellular Network Password",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Cellular Network Password",(int)indexPath.row]];
       break;
     case PARAM_MYID:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Vehicle ID",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Vehicle ID",(int)indexPath.row]];
       break;
     case PARAM_NETPASS1:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Server Password",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Server Password",(int)indexPath.row]];
       break;
     case PARAM_PARANOID:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Paranoid Mode",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Paranoid Mode",(int)indexPath.row]];
       break;
     case PARAM_S_GROUP1:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Social Group #1",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Social Group #1",(int)indexPath.row]];
       break;
     case PARAM_S_GROUP2:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Social Group #2",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Social Group #2",(int)indexPath.row]];
       break;
     case PARAM_GSMLOCK:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: GSM Lock",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: GSM Lock",(int)indexPath.row]];
       break;
     case PARAM_VEHICLETYPE:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Vehicle Type",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Vehicle Type",(int)indexPath.row]];
       break;
     case PARAM_COOLDOWN:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: Cooldown",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: Cooldown",(int)indexPath.row]];
       break;
     case PARAM_ACC_1:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #1",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #1",(int)indexPath.row]];
       break;
     case PARAM_ACC_2:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #2",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #2",(int)indexPath.row]];
       break;
     case PARAM_ACC_3:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #3",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #3",(int)indexPath.row]];
       break;
     case PARAM_ACC_4:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #4",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d: ACC #4",(int)indexPath.row]];
       break;
     default:
-      [cellLabel setText:[NSString stringWithFormat:@"#%d:",indexPath.row]];
+      [cellLabel setText:[NSString stringWithFormat:@"#%d:",(int)indexPath.row]];
       break;
     }
   

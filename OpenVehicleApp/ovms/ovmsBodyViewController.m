@@ -114,7 +114,7 @@
   self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
   }
 
-- (void)viewDidUnload
+- (void)dealloc
 {
   [self setM_car_lockunlock:nil];
   [self setM_car_door_ld:nil];
@@ -138,19 +138,15 @@
   [self setM_car_temp_battery_l:nil];
   [self setM_car_outlineimage:nil];
   [self setM_car_ambient_temp:nil];
-    [self setM_car_valetonoff:nil];
-    [self setM_car_lights:nil];
+  [self setM_car_valetonoff:nil];
+  [self setM_car_lights:nil];
   [self setM_lock_button:nil];
   [self setM_valet_button:nil];
   [self setM_wakeup_button:nil];
-    [self setM_car_weather:nil];
-    [self setM_car_tpmsboxes:nil];
+  [self setM_car_weather:nil];
+  [self setM_car_tpmsboxes:nil];
   [self setM_homelink_button:nil];
   [self setM_car_aux_battery:nil];
-    
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -180,17 +176,12 @@
 	[super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
 {
-  // Return YES for supported orientations
-  if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    }
-  else
-    {
-    return YES;
-    }
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return UIInterfaceOrientationMaskAll;
+    else
+        return UIInterfaceOrientationMaskPortrait;
 }
 
 -(void) update
@@ -544,7 +535,7 @@
   [actionSheet showInView:[self.view window]];
   }
 
-- (void)actionSheet:(UIActionSheet *)sender clickedButtonAtIndex:(int)index
+- (void)actionSheet:(UIActionSheet *)sender clickedButtonAtIndex:(NSInteger)index
   {
   if ([sender.title isEqualToString:@"Wakeup Car"])
     {

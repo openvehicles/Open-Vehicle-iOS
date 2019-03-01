@@ -35,7 +35,8 @@
 @synthesize m_car_range_estimated;
 @synthesize m_car_charge_message;
 @synthesize m_car_charge_time;
-@synthesize m_car_charge_remaining_time;
+@synthesize m_car_charge_kwh;
+@synthesize m_car_charge_remaining;
 @synthesize m_car_lights;
 @synthesize m_battery_charging;
 
@@ -161,23 +162,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
-  
-  CGRect bvframe = m_car_temp_pem_l.frame;
 
-  // This seems to pickup the orientation correctly, even if we haven't turned on notifications for it
-  UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-  
-  if (orientation == UIInterfaceOrientationLandscapeLeft ||
-      orientation == UIInterfaceOrientationLandscapeRight)
-    {
-    myMapView.frame = CGRectMake(20, bvframe.origin.y+bvframe.size.height+44,
-                                 984, 635-(bvframe.origin.y+bvframe.size.height+44));
-    }
-  else
-    {
-    myMapView.frame = CGRectMake(20, 417, 728, 474);
-    }
+  self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
+
+  myMapView = [myMapView initWithFrame: myMapView.frame];
 
   [self animateLayer];
 
@@ -236,12 +224,12 @@
         self.myMapView.blocks = val;
         [self performSelector:@selector(initAnnotations) withObject:nil afterDelay:0.3f];
         
-        NSLog(@"Setup MAP view blocks: %d",  val);
+        NSLog(@"Setup MAP view blocks: %d",  (int)val);
     }
 }
 
 
-- (void)viewDidUnload
+- (void)dealloc
 {
     [self setM_car_connection_image:nil];
     [self setM_car_connection_state:nil];
@@ -249,7 +237,8 @@
     [self setM_car_charge_state:nil];
     [self setM_car_charge_type:nil];
     [self setM_car_charge_time:nil];
-    [self setM_car_charge_remaining_time:nil];
+    [self setM_car_charge_kwh:nil];
+    [self setM_car_charge_remaining:nil];
     [self setM_car_soc:nil];
     [self setM_battery_front:nil];
     [self setM_car_lockunlock:nil];
@@ -285,7 +274,7 @@
     [self setM_charger_button:nil];
     [self setM_car_range_estimated:nil];
     [self setM_car_range_ideal:nil];
-  [self setM_car_valetonoff:nil];
+    [self setM_car_valetonoff:nil];
     [self setM_car_lights:nil];
     [self setM_car_charge_message:nil];
     [self setM_control_button:nil];
@@ -297,31 +286,11 @@
     [self setM_car_weather:nil];
     [self setM_car_tpmsboxes:nil];
     [self setM_homelink_button:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
 {
-    // Return YES for supported orientations
-	return YES;
-}
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-  CGRect bvframe = m_car_temp_pem_l.frame;
-  
-  if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-      toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
-    {
-    myMapView.frame = CGRectMake(20, bvframe.origin.y+bvframe.size.height+44,
-                                 984, 635-(bvframe.origin.y+bvframe.size.height+44));
-    }
-  else
-    {
-    myMapView.frame = CGRectMake(20, 417, 728, 474);
-    }
+  return UIInterfaceOrientationMaskAll;
 }
 
 -(void) update
@@ -339,10 +308,14 @@
   else
     units = @"m";
   
+  int chargetime = [ovmsAppDelegate myRef].car_chargeduration;
+  int chargeremainingtime = [ovmsAppDelegate myRef].car_minutestofull;
+  int chargekWh = [ovmsAppDelegate myRef].car_chargekwh;
+
   int connected = [ovmsAppDelegate myRef].car_connected;
   time_t lastupdated = [ovmsAppDelegate myRef].car_lastupdated;
-  int seconds = (time(0)-lastupdated);
-  int minutes = (time(0)-lastupdated)/60;
+  int seconds = (int)(time(0)-lastupdated);
+  int minutes = (int)(time(0)-lastupdated)/60;
   int hours = minutes/60;
   int days = minutes/(60*24);
   
@@ -465,7 +438,58 @@
     m_car_parking_image.hidden = 0;
     m_car_parking_state.text = [NSString stringWithFormat:@"%d days",parktime/(3600*24)];
     }
-  
+
+  if (chargetime == 0 || m_charger_plug.hidden == 1)
+    {
+    m_car_charge_time.text = @"";
+    }
+   else if (chargetime < 120)
+    {
+    m_car_charge_time.text = @"CHARGING STARTED";
+    }
+  else if (chargetime < 3600)
+    {
+    m_car_charge_time.text = [NSString stringWithFormat:@"%d mins",chargetime/60];
+    }
+  else if (chargetime < (3600*24*2))
+    {
+    m_car_charge_time.text = [NSString stringWithFormat:@"%02d:%02d",
+                              chargetime/3660,
+                              (chargetime%3600)/60];
+    }
+    
+  if (chargeremainingtime <= 0)
+    {
+    m_car_charge_remaining.text = @"";
+    }
+  else if (chargeremainingtime < 60)
+    {
+      m_car_charge_remaining.text = [NSString stringWithFormat:@"%d mins",chargeremainingtime];
+    }
+  else
+    {
+    m_car_charge_remaining.text = [NSString stringWithFormat:@"%02d:%02d",
+                                            chargeremainingtime/60,
+                                            chargeremainingtime%60];
+    }
+    
+  if ( chargekWh==0 )
+    {
+    m_car_charge_kwh.text = @"";
+    }
+  else
+    {
+    float effect=([ovmsAppDelegate myRef].car_linevoltage*[ovmsAppDelegate myRef].car_chargecurrent)/1000.0;
+    if ((effect>0)&&(effect<250))
+      {
+      m_car_charge_kwh.text = [NSString stringWithFormat:@"%dkWh@%0.1fkW",chargekWh,effect];
+      }
+    else
+      {
+      m_car_charge_kwh.text = [NSString stringWithFormat:@"%dkWh",chargekWh];
+      }
+    }
+
   m_car_image.image=[UIImage imageNamed:[ovmsAppDelegate myRef].sel_imagepath];
   m_car_soc.text = [NSString stringWithFormat:@"%d%%",[ovmsAppDelegate myRef].car_soc];
   m_car_range_ideal.text = [ovmsAppDelegate myRef].car_idealrange_s;
@@ -1059,7 +1083,7 @@
       [pa setSpeed:[[ovmsAppDelegate myRef] convertSpeedUnits:speed]];
       [m_groupcar_locations setObject:pa forKey:vehicleid];
       [myMapView addAnnotation:pa];
-      NSLog(@"groupCarCreated %@ count=%d", vehicleid,[[myMapView annotations] count]);
+      NSLog(@"groupCarCreated %@ count=%d", vehicleid,(int)[[myMapView annotations] count]);
       }
     }  
 }
@@ -1149,10 +1173,6 @@
     }
 }
 
-- (void)omvsControlPINEntryDelegateDidCancel:(NSString*)fn
-{
-}
-
 - (void)omvsControlPINEntryDelegateDidSave:(NSString*)fn pin:(NSString*)pin
 {
   if ([fn isEqualToString:@"Valet On"])
@@ -1176,23 +1196,37 @@
 - (IBAction)WakeupButton:(id)sender
 {
   // The wakeup button has been pressed - let's wakeup the car
-  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Wakeup Car"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Cancel"
-                                             destructiveButtonTitle:nil
-                                                  otherButtonTitles:@"Wakeup",nil];
-  [actionSheet showInView:[self.view window]];
+  UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Wakeup Car" message:@"This will wake up the car" preferredStyle:UIAlertControllerStyleActionSheet];
+
+  [actionSheet addAction:[UIAlertAction actionWithTitle:@"Wakeup" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+    [[ovmsAppDelegate myRef] commandDoWakeupCar];
+    [self dismissViewControllerAnimated:YES completion:^{}];
+  }]];
+
+  actionSheet.popoverPresentationController.sourceView = m_wakeup_button;
+  [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
 - (IBAction)HomelinkButton:(id)sender
 {
   // The homelink button has been pressed - let's ask which one he wants
-  UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Homelink"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Cancel"
-                                             destructiveButtonTitle:nil
-                                                  otherButtonTitles:@"1",@"2",@"3",nil];
-  [actionSheet showInView:[self.view window]];
+  UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Homelink" message:@"This will activate Homelink" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+  [actionSheet addAction:[UIAlertAction actionWithTitle:@"1" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+      [[ovmsAppDelegate myRef] commandDoHomelink:0];
+      [self dismissViewControllerAnimated:YES completion:^{}];
+  }]];
+  [actionSheet addAction:[UIAlertAction actionWithTitle:@"2" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+      [[ovmsAppDelegate myRef] commandDoHomelink:1];
+      [self dismissViewControllerAnimated:YES completion:^{}];
+  }]];
+  [actionSheet addAction:[UIAlertAction actionWithTitle:@"3" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+      [[ovmsAppDelegate myRef] commandDoHomelink:2];
+      [self dismissViewControllerAnimated:YES completion:^{}];
+  }]];
+
+  actionSheet.popoverPresentationController.sourceView = m_homelink_button;
+  [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
 - (IBAction)locationSnapped:(id)sender {
@@ -1222,12 +1256,18 @@
         }
         case 1: {
             if (![ovmsAppDelegate myRef].sel_connection_type_ids.length) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
-                                                                message:NSLocalizedString(@"The selected car has no setup of charger type. Please go to settings car and setup the charger types.", nil)
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil];
-                [alert show];
+                UIAlertController * alert = [UIAlertController
+                                             alertControllerWithTitle:NSLocalizedString(@"Warning", nil)
+                                             message:NSLocalizedString(@"The selected car has no setup of charger type. Please go to settings car and setup the charger types.",nil)
+                                             preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* okButton = [UIAlertAction
+                                           actionWithTitle:@"Ok"
+                                           style:UIAlertActionStyleDefault
+                                           handler:^(UIAlertAction * action) {
+                                               //Handle your yes please button action here
+                                           }];
+                [alert addAction:okButton];
+                [self presentViewController:alert animated:YES completion:nil];
             } else {
                 self.isFiltredChargingStation = !self.isFiltredChargingStation;
                 if (self.m_car_location) [self loadData:[ovmsAppDelegate myRef].car_location];
@@ -1244,25 +1284,6 @@
     [popoverView showSuccess];
     [popoverView performSelector:@selector(dismiss) withObject:nil afterDelay:0.5f];
 }
-
-- (void)actionSheet:(UIActionSheet *)sender clickedButtonAtIndex:(int)index
-  {
-  if ([sender.title isEqualToString:@"Wakeup Car"])
-    {
-    if (index == [sender firstOtherButtonIndex])
-      {
-      [[ovmsAppDelegate myRef] commandDoWakeupCar];
-      }
-    }
-  else if ([sender.title isEqualToString:@"Homelink"])
-    {
-    int button = index - [sender firstOtherButtonIndex];
-    if ((button>=0)&&(button<3))
-      {
-      [[ovmsAppDelegate myRef] commandDoHomelink:button];
-      }
-    }
-  }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     // Provide a custom view for the ovmsVehicleAnnotation
@@ -1293,7 +1314,7 @@
             annView.image = [UIImage imageNamed:@"cluster.png"];
         }
         
-        [(REVClusterAnnotationView*)annView setClusterText: [NSString stringWithFormat:@"%i",[pin nodeCount]]];
+        [(REVClusterAnnotationView*)annView setClusterText: [NSString stringWithFormat:@"%i",(int)[pin nodeCount]]];
         annView.canShowCallout = NO;
     } else {
         annView = [mapView dequeueReusableAnnotationViewWithIdentifier:IDENTIFIER_PIN];
@@ -1301,7 +1322,7 @@
             annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:IDENTIFIER_PIN];
             annView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         }
-        annView.image = [UIImage imageNamed:[NSString stringWithFormat:@"level%d.png", pin.level]];
+        annView.image = [UIImage imageNamed:[NSString stringWithFormat:@"level%d.png", (int)pin.level]];
         annView.canShowCallout = YES;
         annView.centerOffset = CGPointMake(0.0, -25.0);
     }

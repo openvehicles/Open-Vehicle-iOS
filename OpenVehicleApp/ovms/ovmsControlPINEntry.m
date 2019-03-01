@@ -55,24 +55,21 @@
 }
 */
 
-- (void)viewDidUnload
+- (void)dealloc
 {
   [self setM_pin:nil];
   [self setM_done:nil];
   [self setM_message:nil];
   [self setM_navbar:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-  {
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    return YES;
-  else
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-  }
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return UIInterfaceOrientationMaskAll;
+    else
+        return UIInterfaceOrientationMaskPortrait;
+}
 
 -(void) viewWillAppear:(BOOL)animated
 {
@@ -86,23 +83,12 @@
 - (IBAction)Edited:(id)sender {
 }
 
-- (IBAction)Cancel:(id)sender {
-
-  if ([self.delegate conformsToProtocol:@protocol(ovmsControlPINEntryDelegate)])
-    {
-    [self.delegate omvsControlPINEntryDelegateDidCancel:_function];
-    }
-
-  [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (IBAction)Done:(id)sender {
 
   if ([self.delegate conformsToProtocol:@protocol(ovmsControlPINEntryDelegate)])
     {
     [self.delegate omvsControlPINEntryDelegateDidSave:_function pin:m_pin.text];
     }
-
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

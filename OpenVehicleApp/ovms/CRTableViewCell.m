@@ -96,7 +96,7 @@
         label.textColor = [UIColor lightGrayColor];
 
         label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
-        label.textAlignment = UITextAlignmentLeft;
+        label.textAlignment = NSTextAlignmentLeft;
         label.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:label];
         
