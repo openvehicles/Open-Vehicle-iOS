@@ -14,8 +14,8 @@
         <scene sceneID="11">
             <objects>
                 <viewController title="Status" id="2" customClass="ovmsStatusViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="16">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="16">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="361"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="connection_good.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rcp-Jf-HIC">
@@ -587,7 +587,7 @@
             <objects>
                 <viewController id="BXs-pp-JHG" customClass="ovmsCarsFormViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mjE-2E-gqv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vehicle ID" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4Xd-yt-3M8">
@@ -623,7 +623,7 @@
                                 </connections>
                             </textField>
                             <pickerView tag="5" contentMode="scaleAspectFit" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="fbz-J9-5fJ">
-                                <rect key="frame" x="0.0" y="168" width="320" height="254"/>
+                                <rect key="frame" x="0.0" y="162" width="320" height="254"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BXs-pp-JHG" id="s0H-9K-QFL"/>
                                     <outlet property="delegate" destination="BXs-pp-JHG" id="3pr-F9-DhU"/>
@@ -700,7 +700,7 @@
                     <tabBarItem key="tabBarItem" title="Status" image="49-battery.png" id="bPi-UE-IG5"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="AkA-v0-yQB">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="b4k-X7-RjA">
@@ -1206,7 +1206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="og0-8h-9Xf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1717.5999999999999" y="-831.63418290854577"/>
+            <point key="canvasLocation" x="1717.5" y="-832.5"/>
         </scene>
         <!--Control-->
         <scene sceneID="3Qb-bc-MYS">
@@ -1911,7 +1911,7 @@
             <objects>
                 <viewController title="Messages" id="H1m-bJ-b0G" sceneMemberID="viewController">
                     <containerView key="view" opaque="NO" contentMode="scaleToFill" misplaced="YES" id="hSu-ll-V2H">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="361"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.069420576100000006" green="0.1059532762" blue="0.19171994919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
