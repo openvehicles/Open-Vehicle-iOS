@@ -37,6 +37,7 @@
 @synthesize m_car_charge_time;
 @synthesize m_car_charge_kwh;
 @synthesize m_car_charge_remaining;
+@synthesize m_car_aux_battery;
 @synthesize m_car_lights;
 @synthesize m_battery_charging;
 
@@ -239,6 +240,7 @@
     [self setM_car_charge_time:nil];
     [self setM_car_charge_kwh:nil];
     [self setM_car_charge_remaining:nil];
+    [self setM_car_aux_battery:nil];
     [self setM_car_soc:nil];
     [self setM_battery_front:nil];
     [self setM_car_lockunlock:nil];
@@ -862,6 +864,9 @@
     m_car_wheel_rl_pressure.text = @"";
     m_car_wheel_rl_temp.text = @"";
     }
+
+   m_car_aux_battery.text = [NSString stringWithFormat:@"%0.1fV",
+                             [ovmsAppDelegate myRef].car_aux_battery_voltage];
 }
 
 - (void)loadData:(CLLocationCoordinate2D)location {

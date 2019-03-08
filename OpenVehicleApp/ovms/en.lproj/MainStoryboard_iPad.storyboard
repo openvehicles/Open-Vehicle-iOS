@@ -65,8 +65,290 @@
                                     <constraint firstAttribute="width" secondItem="s2N-H5-QE1" secondAttribute="height" multiplier="32:13" id="Ha2-oH-M84"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Xy-5M-ICo" userLabel="Car OverView">
-                                <rect key="frame" x="421" y="40" width="287" height="368"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BD0-2S-IbY" userLabel="Car Range View">
+                                <rect key="frame" x="73" y="355" width="243" height="48"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="battery_textbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="DJ8-Ku-WSA" userLabel="range_textbox.png">
+                                        <rect key="frame" x="5" y="5" width="233" height="38"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="233" id="4Fm-Vg-9qH"/>
+                                            <constraint firstAttribute="height" constant="38" id="j79-Qg-WIj"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="IDEAL RANGE" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-Y8-XFf" userLabel="Ideal Range Label">
+                                        <rect key="frame" x="5" y="5" width="102" height="19"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="33o-JL-WOe"/>
+                                            <constraint firstAttribute="width" constant="102" id="d0E-PD-4QP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="ESTIMATED RANGE" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="11H-Am-RVv" userLabel="Estimated Range Label">
+                                        <rect key="frame" x="137" y="5" width="101" height="19"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="101" id="HE5-Ny-KQG"/>
+                                            <constraint firstAttribute="height" constant="19" id="KSA-pm-BpO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="-" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="RXX-Ys-N7e" userLabel="car_range_ideal">
+                                        <rect key="frame" x="5" y="25" width="103" height="18"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="103" id="bPS-NY-8g7"/>
+                                            <constraint firstAttribute="height" constant="18" id="grt-aS-dZ2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="-" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Ktx-XD-P0K" userLabel="car_range_estimated">
+                                        <rect key="frame" x="137" y="25" width="103" height="18"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="5j6-xH-tDg"/>
+                                            <constraint firstAttribute="width" constant="103" id="YiG-ga-UQN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Ktx-XD-P0K" secondAttribute="trailing" constant="3" id="4Eh-Fh-BeL"/>
+                                    <constraint firstItem="EGL-Y8-XFf" firstAttribute="leading" secondItem="BD0-2S-IbY" secondAttribute="leading" constant="5" id="4aD-bl-4HM"/>
+                                    <constraint firstItem="RXX-Ys-N7e" firstAttribute="leading" secondItem="BD0-2S-IbY" secondAttribute="leading" constant="5" id="60i-ia-ITf"/>
+                                    <constraint firstItem="DJ8-Ku-WSA" firstAttribute="centerX" secondItem="BD0-2S-IbY" secondAttribute="centerX" id="Bcr-MC-I00"/>
+                                    <constraint firstAttribute="width" constant="243" id="FWf-56-jgd"/>
+                                    <constraint firstItem="11H-Am-RVv" firstAttribute="top" secondItem="BD0-2S-IbY" secondAttribute="top" constant="5" id="J3V-Jq-w4r"/>
+                                    <constraint firstItem="DJ8-Ku-WSA" firstAttribute="centerY" secondItem="BD0-2S-IbY" secondAttribute="centerY" id="Qck-JI-0AC"/>
+                                    <constraint firstItem="Ktx-XD-P0K" firstAttribute="top" secondItem="11H-Am-RVv" secondAttribute="bottom" constant="1" id="XhL-k2-6jP"/>
+                                    <constraint firstItem="EGL-Y8-XFf" firstAttribute="top" secondItem="BD0-2S-IbY" secondAttribute="top" constant="5" id="ezr-wS-kDm"/>
+                                    <constraint firstAttribute="trailing" secondItem="11H-Am-RVv" secondAttribute="trailing" constant="5" id="g60-ND-bn4"/>
+                                    <constraint firstItem="RXX-Ys-N7e" firstAttribute="top" secondItem="EGL-Y8-XFf" secondAttribute="bottom" constant="1" id="v6F-v4-8OJ"/>
+                                    <constraint firstAttribute="height" constant="48" id="vfm-Lt-Vem"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lif-YM-HUL" userLabel="Battery View">
+                                <rect key="frame" x="0.0" y="265" width="343" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" alpha="0.10000000149011612" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULr-Iw-zpV" userLabel="Battery Button">
+                                        <rect key="frame" x="85" y="5" width="213" height="73"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="213" id="4ym-1a-3CG"/>
+                                            <constraint firstAttribute="height" constant="73" id="i3l-AL-WNI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="pvM-YC-brA" kind="modal" identifier="ChargerSettings" modalTransitionStyle="coverVertical" id="AUN-Un-mA2"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="left" image="battery_000.png" translatesAutoresizingMaskIntoConstraints="NO" id="SL7-PT-bkj" userLabel="battery_back">
+                                        <rect key="frame" x="65" y="5" width="268" height="70"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="ZGc-NY-MhE"/>
+                                            <constraint firstAttribute="width" constant="268" id="iH9-FT-zbl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" image="battery_100.png" translatesAutoresizingMaskIntoConstraints="NO" id="vZC-ps-wlb" userLabel="battery_front">
+                                        <rect key="frame" x="65" y="5" width="268" height="70"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="268" id="WJ4-XX-I8w"/>
+                                            <constraint firstAttribute="height" constant="70" id="sTy-Ra-VPu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView hidden="YES" autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" image="battery_coppertops.png" translatesAutoresizingMaskIntoConstraints="NO" id="7ZY-WZ-8jd" userLabel="battery_charging">
+                                        <rect key="frame" x="65" y="5" width="268" height="70"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="f8i-Vx-SOq"/>
+                                            <constraint firstAttribute="width" constant="268" id="gzX-Qk-2FC"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="-" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="mnC-x1-YJF" userLabel="car_soc">
+                                        <rect key="frame" x="85" y="5" width="209" height="70"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="209" id="IEG-YJ-i0x"/>
+                                            <constraint firstAttribute="height" constant="70" id="bpV-4F-nhD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="24"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="shadowOffset" width="2" height="2"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="STANDARD" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="AXn-eT-0IG" userLabel="car_charge_mode">
+                                        <rect key="frame" x="91" y="46" width="196" height="19"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="196" id="0GX-iD-HDA"/>
+                                            <constraint firstAttribute="height" constant="19" id="Tqg-Oo-V9i"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
+                                        <color key="textColor" red="0.91668087244033813" green="0.40754300355911255" blue="0.028594156727194786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8C-4W-PMg" userLabel="battery_charge_time">
+                                        <rect key="frame" x="91" y="33" width="80" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="RPe-m1-Wmx"/>
+                                            <constraint firstAttribute="height" constant="14" id="XtI-lJ-oe2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg kWh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPm-4w-IB6" userLabel="battery_charge_kwh">
+                                        <rect key="frame" x="91" y="48" width="104" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="104" id="f1W-5D-AJB"/>
+                                            <constraint firstAttribute="height" constant="14" id="jfx-Ki-hMV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.09804482984" green="0.09804482984" blue="0.09804482984" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg Rem" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HN8-2G-25z" userLabel="battery_charge_remaining_time">
+                                        <rect key="frame" x="212" y="33" width="75" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="q9v-7W-evc"/>
+                                            <constraint firstAttribute="width" constant="75" id="scs-a3-9DW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="B8C-4W-PMg" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="8NN-jY-LFS"/>
+                                    <constraint firstItem="AXn-eT-0IG" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="9eg-d7-VcR"/>
+                                    <constraint firstItem="FPm-4w-IB6" firstAttribute="top" secondItem="B8C-4W-PMg" secondAttribute="bottom" constant="1" id="FdK-dU-Aip"/>
+                                    <constraint firstItem="mnC-x1-YJF" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="HYW-TH-MTd"/>
+                                    <constraint firstItem="mnC-x1-YJF" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="85" id="I4z-bc-9V2"/>
+                                    <constraint firstAttribute="trailing" secondItem="HN8-2G-25z" secondAttribute="trailing" constant="56" id="L6X-M3-DlE"/>
+                                    <constraint firstAttribute="width" constant="343" id="MIz-DW-261"/>
+                                    <constraint firstItem="vZC-ps-wlb" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="QF3-E2-6Fa"/>
+                                    <constraint firstItem="HN8-2G-25z" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="SEk-vh-QUC"/>
+                                    <constraint firstItem="HN8-2G-25z" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="VzB-NG-Lzz"/>
+                                    <constraint firstItem="ULr-Iw-zpV" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="85" id="Xig-YP-raN"/>
+                                    <constraint firstItem="7ZY-WZ-8jd" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="YuV-E6-dB8"/>
+                                    <constraint firstItem="FPm-4w-IB6" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="ctM-4M-oUF"/>
+                                    <constraint firstItem="B8C-4W-PMg" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="dEJ-GA-eH0"/>
+                                    <constraint firstItem="7ZY-WZ-8jd" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="eNv-FJ-0o6"/>
+                                    <constraint firstAttribute="height" constant="80" id="pa9-HH-Sbq"/>
+                                    <constraint firstItem="vZC-ps-wlb" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="sgM-8m-U4Q"/>
+                                    <constraint firstItem="SL7-PT-bkj" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="sj2-lz-YC4"/>
+                                    <constraint firstItem="AXn-eT-0IG" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="46" id="ujD-WC-dn9"/>
+                                    <constraint firstItem="ULr-Iw-zpV" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="v5E-Wg-Aku"/>
+                                    <constraint firstItem="SL7-PT-bkj" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="xSz-aT-Rjg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3x-qr-9hc" userLabel="Charger View">
+                                <rect key="frame" x="0.0" y="175" width="343" height="80"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="charger_plug.png" translatesAutoresizingMaskIntoConstraints="NO" id="mDO-4f-x0R">
+                                        <rect key="frame" x="0.0" y="5" width="343" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="TfW-GC-lLo"/>
+                                            <constraint firstAttribute="width" constant="343" id="uOe-xy-Wdi"/>
+                                        </constraints>
+                                    </imageView>
+                                    <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiv-UH-I7F">
+                                        <rect key="frame" x="167" y="23" width="117" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="113" id="62N-3s-5RS"/>
+                                            <constraint firstAttribute="height" constant="22" id="kIv-QH-1ah"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="ChargeSliderTouch:" destination="KQf-3p-4Zw" eventType="touchUpInside" id="EgV-ws-4Dn"/>
+                                            <action selector="ChargeSliderValue:" destination="KQf-3p-4Zw" eventType="valueChanged" id="6JY-Vy-2f3"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="sY1-P1-ZKD" userLabel="car_charge_msg">
+                                        <rect key="frame" x="230" y="19" width="52" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="52" id="jkP-0d-frR"/>
+                                            <constraint firstAttribute="height" constant="35" id="x7O-7Y-l03"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="STANDARD" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="cxp-Ri-Hbt" userLabel="car_charge_state">
+                                        <rect key="frame" x="169" y="23" width="58" height="13"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="58" id="Rsx-el-J6Z"/>
+                                            <constraint firstAttribute="height" constant="13" id="a9B-GQ-GOb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
+                                        <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="220V @70A" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="PAB-B9-2QB" userLabel="car_charge_type">
+                                        <rect key="frame" x="169" y="34" width="58" height="13"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="13" id="Dsx-3f-FS2"/>
+                                            <constraint firstAttribute="width" constant="58" id="eq2-8w-g65"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="mDO-4f-x0R" firstAttribute="top" secondItem="M3x-qr-9hc" secondAttribute="top" constant="5" id="0gK-Qb-tIg"/>
+                                    <constraint firstItem="PAB-B9-2QB" firstAttribute="leading" secondItem="M3x-qr-9hc" secondAttribute="leading" constant="169" id="C8M-i0-h9W"/>
+                                    <constraint firstItem="mDO-4f-x0R" firstAttribute="leading" secondItem="M3x-qr-9hc" secondAttribute="leading" id="EoN-fn-XhJ"/>
+                                    <constraint firstItem="sY1-P1-ZKD" firstAttribute="leading" secondItem="M3x-qr-9hc" secondAttribute="leading" constant="230" id="Ivf-jb-5aA"/>
+                                    <constraint firstItem="aiv-UH-I7F" firstAttribute="top" secondItem="M3x-qr-9hc" secondAttribute="top" constant="23" id="LsP-dz-0Xh"/>
+                                    <constraint firstItem="aiv-UH-I7F" firstAttribute="leading" secondItem="M3x-qr-9hc" secondAttribute="leading" constant="169" id="bAh-Xw-Ss5"/>
+                                    <constraint firstItem="PAB-B9-2QB" firstAttribute="top" secondItem="M3x-qr-9hc" secondAttribute="top" constant="34" id="cf9-s2-pxI"/>
+                                    <constraint firstItem="cxp-Ri-Hbt" firstAttribute="leading" secondItem="M3x-qr-9hc" secondAttribute="leading" constant="169" id="d8F-yC-OQN"/>
+                                    <constraint firstAttribute="height" constant="80" id="dRo-DP-T30"/>
+                                    <constraint firstAttribute="bottom" secondItem="mDO-4f-x0R" secondAttribute="bottom" constant="5" id="i4d-v4-qa3"/>
+                                    <constraint firstItem="cxp-Ri-Hbt" firstAttribute="top" secondItem="M3x-qr-9hc" secondAttribute="top" constant="23" id="iYC-UL-w5D"/>
+                                    <constraint firstAttribute="width" constant="343" id="khK-ca-0Yr"/>
+                                    <constraint firstItem="sY1-P1-ZKD" firstAttribute="top" secondItem="M3x-qr-9hc" secondAttribute="top" constant="19" id="wRh-vs-1O6"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Xy-5M-ICo" userLabel="Car OverView">
+                                <rect key="frame" x="427" y="49" width="287" height="368"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="carlights.png" translatesAutoresizingMaskIntoConstraints="NO" id="zyk-Z4-RVj">
                                         <rect key="frame" x="67.5" y="10" width="152" height="317"/>
@@ -383,6 +665,23 @@
                                             <action selector="WakeupButton:" destination="KQf-3p-4Zw" eventType="touchUpInside" id="0Ap-cI-TIC"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="aux_battery.png" translatesAutoresizingMaskIntoConstraints="NO" id="DYf-yw-31t" userLabel="aux_battery frame pic">
+                                        <rect key="frame" x="10" y="8" width="30" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="365-Ou-8cw"/>
+                                            <constraint firstAttribute="width" constant="30" id="NGT-oD-CYM"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ilj-xV-4Zw" userLabel="car_aux_battery val">
+                                        <rect key="frame" x="10" y="8" width="30" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="7xq-nR-etN"/>
+                                            <constraint firstAttribute="width" constant="30" id="Ypq-7I-pmD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -458,288 +757,6 @@
                                     <constraint firstItem="wDP-Tk-4e1" firstAttribute="top" secondItem="0Xy-5M-ICo" secondAttribute="top" constant="69" id="zhp-GR-vTT"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BD0-2S-IbY" userLabel="Car Range View">
-                                <rect key="frame" x="73" y="355" width="243" height="48"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="battery_textbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="DJ8-Ku-WSA" userLabel="range_textbox.png">
-                                        <rect key="frame" x="5" y="5" width="233" height="38"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="233" id="4Fm-Vg-9qH"/>
-                                            <constraint firstAttribute="height" constant="38" id="j79-Qg-WIj"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="IDEAL RANGE" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-Y8-XFf" userLabel="Ideal Range Label">
-                                        <rect key="frame" x="5" y="5" width="102" height="19"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="19" id="33o-JL-WOe"/>
-                                            <constraint firstAttribute="width" constant="102" id="d0E-PD-4QP"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="ESTIMATED RANGE" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="11H-Am-RVv" userLabel="Estimated Range Label">
-                                        <rect key="frame" x="137" y="5" width="101" height="19"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="101" id="HE5-Ny-KQG"/>
-                                            <constraint firstAttribute="height" constant="19" id="KSA-pm-BpO"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="-" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="RXX-Ys-N7e" userLabel="car_range_ideal">
-                                        <rect key="frame" x="5" y="25" width="103" height="18"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="103" id="bPS-NY-8g7"/>
-                                            <constraint firstAttribute="height" constant="18" id="grt-aS-dZ2"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="-" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Ktx-XD-P0K" userLabel="car_range_estimated">
-                                        <rect key="frame" x="137" y="25" width="103" height="18"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="5j6-xH-tDg"/>
-                                            <constraint firstAttribute="width" constant="103" id="YiG-ga-UQN"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Ktx-XD-P0K" secondAttribute="trailing" constant="3" id="4Eh-Fh-BeL"/>
-                                    <constraint firstItem="EGL-Y8-XFf" firstAttribute="leading" secondItem="BD0-2S-IbY" secondAttribute="leading" constant="5" id="4aD-bl-4HM"/>
-                                    <constraint firstItem="RXX-Ys-N7e" firstAttribute="leading" secondItem="BD0-2S-IbY" secondAttribute="leading" constant="5" id="60i-ia-ITf"/>
-                                    <constraint firstItem="DJ8-Ku-WSA" firstAttribute="centerX" secondItem="BD0-2S-IbY" secondAttribute="centerX" id="Bcr-MC-I00"/>
-                                    <constraint firstAttribute="width" constant="243" id="FWf-56-jgd"/>
-                                    <constraint firstItem="11H-Am-RVv" firstAttribute="top" secondItem="BD0-2S-IbY" secondAttribute="top" constant="5" id="J3V-Jq-w4r"/>
-                                    <constraint firstItem="DJ8-Ku-WSA" firstAttribute="centerY" secondItem="BD0-2S-IbY" secondAttribute="centerY" id="Qck-JI-0AC"/>
-                                    <constraint firstItem="Ktx-XD-P0K" firstAttribute="top" secondItem="11H-Am-RVv" secondAttribute="bottom" constant="1" id="XhL-k2-6jP"/>
-                                    <constraint firstItem="EGL-Y8-XFf" firstAttribute="top" secondItem="BD0-2S-IbY" secondAttribute="top" constant="5" id="ezr-wS-kDm"/>
-                                    <constraint firstAttribute="trailing" secondItem="11H-Am-RVv" secondAttribute="trailing" constant="5" id="g60-ND-bn4"/>
-                                    <constraint firstItem="RXX-Ys-N7e" firstAttribute="top" secondItem="EGL-Y8-XFf" secondAttribute="bottom" constant="1" id="v6F-v4-8OJ"/>
-                                    <constraint firstAttribute="height" constant="48" id="vfm-Lt-Vem"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lif-YM-HUL" userLabel="Battery View">
-                                <rect key="frame" x="0.0" y="265" width="343" height="80"/>
-                                <subviews>
-                                    <button opaque="NO" alpha="0.10000000149011612" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULr-Iw-zpV" userLabel="Battery Button">
-                                        <rect key="frame" x="85" y="5" width="213" height="73"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="213" id="4ym-1a-3CG"/>
-                                            <constraint firstAttribute="height" constant="73" id="i3l-AL-WNI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                        <state key="normal">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="pvM-YC-brA" kind="modal" identifier="ChargerSettings" modalTransitionStyle="coverVertical" id="AUN-Un-mA2"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="left" image="battery_000.png" translatesAutoresizingMaskIntoConstraints="NO" id="SL7-PT-bkj" userLabel="battery_back">
-                                        <rect key="frame" x="65" y="5" width="268" height="70"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
-                                        </accessibility>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="ZGc-NY-MhE"/>
-                                            <constraint firstAttribute="width" constant="268" id="iH9-FT-zbl"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" image="battery_100.png" translatesAutoresizingMaskIntoConstraints="NO" id="vZC-ps-wlb" userLabel="battery_front">
-                                        <rect key="frame" x="65" y="5" width="268" height="70"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
-                                        </accessibility>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="268" id="WJ4-XX-I8w"/>
-                                            <constraint firstAttribute="height" constant="70" id="sTy-Ra-VPu"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView hidden="YES" autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" image="battery_coppertops.png" translatesAutoresizingMaskIntoConstraints="NO" id="7ZY-WZ-8jd" userLabel="battery_charging">
-                                        <rect key="frame" x="65" y="5" width="268" height="70"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
-                                        </accessibility>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="f8i-Vx-SOq"/>
-                                            <constraint firstAttribute="width" constant="268" id="gzX-Qk-2FC"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="-" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="mnC-x1-YJF" userLabel="car_soc">
-                                        <rect key="frame" x="85" y="5" width="209" height="70"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="209" id="IEG-YJ-i0x"/>
-                                            <constraint firstAttribute="height" constant="70" id="bpV-4F-nhD"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="24"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="shadowOffset" width="2" height="2"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="STANDARD" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="AXn-eT-0IG" userLabel="car_charge_mode">
-                                        <rect key="frame" x="91" y="46" width="196" height="19"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="196" id="0GX-iD-HDA"/>
-                                            <constraint firstAttribute="height" constant="19" id="Tqg-Oo-V9i"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
-                                        <color key="textColor" red="0.91668087244033813" green="0.40754300355911255" blue="0.028594156727194786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8C-4W-PMg" userLabel="battery_charge_time">
-                                        <rect key="frame" x="91" y="33" width="80" height="14"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="RPe-m1-Wmx"/>
-                                            <constraint firstAttribute="height" constant="14" id="XtI-lJ-oe2"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <size key="shadowOffset" width="1" height="1"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg kWh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPm-4w-IB6" userLabel="battery_charge_kwh">
-                                        <rect key="frame" x="91" y="48" width="104" height="14"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="104" id="f1W-5D-AJB"/>
-                                            <constraint firstAttribute="height" constant="14" id="jfx-Ki-hMV"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.09804482984" green="0.09804482984" blue="0.09804482984" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="shadowOffset" width="1" height="1"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg Rem" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HN8-2G-25z" userLabel="battery_charge_remaining_time">
-                                        <rect key="frame" x="212" y="33" width="75" height="14"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="14" id="q9v-7W-evc"/>
-                                            <constraint firstAttribute="width" constant="75" id="scs-a3-9DW"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="B8C-4W-PMg" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="8NN-jY-LFS"/>
-                                    <constraint firstItem="AXn-eT-0IG" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="9eg-d7-VcR"/>
-                                    <constraint firstItem="FPm-4w-IB6" firstAttribute="top" secondItem="B8C-4W-PMg" secondAttribute="bottom" constant="1" id="FdK-dU-Aip"/>
-                                    <constraint firstItem="mnC-x1-YJF" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="HYW-TH-MTd"/>
-                                    <constraint firstItem="mnC-x1-YJF" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="85" id="I4z-bc-9V2"/>
-                                    <constraint firstAttribute="trailing" secondItem="HN8-2G-25z" secondAttribute="trailing" constant="56" id="L6X-M3-DlE"/>
-                                    <constraint firstAttribute="width" constant="343" id="MIz-DW-261"/>
-                                    <constraint firstItem="vZC-ps-wlb" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="QF3-E2-6Fa"/>
-                                    <constraint firstItem="HN8-2G-25z" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="SEk-vh-QUC"/>
-                                    <constraint firstItem="HN8-2G-25z" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="VzB-NG-Lzz"/>
-                                    <constraint firstItem="ULr-Iw-zpV" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="85" id="Xig-YP-raN"/>
-                                    <constraint firstItem="7ZY-WZ-8jd" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="YuV-E6-dB8"/>
-                                    <constraint firstItem="FPm-4w-IB6" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="ctM-4M-oUF"/>
-                                    <constraint firstItem="B8C-4W-PMg" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="dEJ-GA-eH0"/>
-                                    <constraint firstItem="7ZY-WZ-8jd" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="eNv-FJ-0o6"/>
-                                    <constraint firstAttribute="height" constant="80" id="pa9-HH-Sbq"/>
-                                    <constraint firstItem="vZC-ps-wlb" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="sgM-8m-U4Q"/>
-                                    <constraint firstItem="SL7-PT-bkj" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="sj2-lz-YC4"/>
-                                    <constraint firstItem="AXn-eT-0IG" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="46" id="ujD-WC-dn9"/>
-                                    <constraint firstItem="ULr-Iw-zpV" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="v5E-Wg-Aku"/>
-                                    <constraint firstItem="SL7-PT-bkj" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="xSz-aT-Rjg"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3x-qr-9hc" userLabel="Charger View">
-                                <rect key="frame" x="0.0" y="175" width="343" height="80"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="charger_plug.png" translatesAutoresizingMaskIntoConstraints="NO" id="mDO-4f-x0R">
-                                        <rect key="frame" x="0.0" y="5" width="343" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="TfW-GC-lLo"/>
-                                            <constraint firstAttribute="width" constant="343" id="uOe-xy-Wdi"/>
-                                        </constraints>
-                                    </imageView>
-                                    <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiv-UH-I7F">
-                                        <rect key="frame" x="167" y="23" width="117" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="113" id="62N-3s-5RS"/>
-                                            <constraint firstAttribute="height" constant="22" id="kIv-QH-1ah"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="ChargeSliderTouch:" destination="KQf-3p-4Zw" eventType="touchUpInside" id="EgV-ws-4Dn"/>
-                                            <action selector="ChargeSliderValue:" destination="KQf-3p-4Zw" eventType="valueChanged" id="6JY-Vy-2f3"/>
-                                        </connections>
-                                    </slider>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="sY1-P1-ZKD" userLabel="car_charge_msg">
-                                        <rect key="frame" x="230" y="19" width="52" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="jkP-0d-frR"/>
-                                            <constraint firstAttribute="height" constant="35" id="x7O-7Y-l03"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="STANDARD" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="cxp-Ri-Hbt" userLabel="car_charge_state">
-                                        <rect key="frame" x="169" y="23" width="58" height="13"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="58" id="Rsx-el-J6Z"/>
-                                            <constraint firstAttribute="height" constant="13" id="a9B-GQ-GOb"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
-                                        <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="220V @70A" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="PAB-B9-2QB" userLabel="car_charge_type">
-                                        <rect key="frame" x="169" y="34" width="58" height="13"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="13" id="Dsx-3f-FS2"/>
-                                            <constraint firstAttribute="width" constant="58" id="eq2-8w-g65"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="mDO-4f-x0R" firstAttribute="top" secondItem="M3x-qr-9hc" secondAttribute="top" constant="5" id="0gK-Qb-tIg"/>
-                                    <constraint firstItem="PAB-B9-2QB" firstAttribute="leading" secondItem="M3x-qr-9hc" secondAttribute="leading" constant="169" id="C8M-i0-h9W"/>
-                                    <constraint firstItem="mDO-4f-x0R" firstAttribute="leading" secondItem="M3x-qr-9hc" secondAttribute="leading" id="EoN-fn-XhJ"/>
-                                    <constraint firstItem="sY1-P1-ZKD" firstAttribute="leading" secondItem="M3x-qr-9hc" secondAttribute="leading" constant="230" id="Ivf-jb-5aA"/>
-                                    <constraint firstItem="aiv-UH-I7F" firstAttribute="top" secondItem="M3x-qr-9hc" secondAttribute="top" constant="23" id="LsP-dz-0Xh"/>
-                                    <constraint firstItem="aiv-UH-I7F" firstAttribute="leading" secondItem="M3x-qr-9hc" secondAttribute="leading" constant="169" id="bAh-Xw-Ss5"/>
-                                    <constraint firstItem="PAB-B9-2QB" firstAttribute="top" secondItem="M3x-qr-9hc" secondAttribute="top" constant="34" id="cf9-s2-pxI"/>
-                                    <constraint firstItem="cxp-Ri-Hbt" firstAttribute="leading" secondItem="M3x-qr-9hc" secondAttribute="leading" constant="169" id="d8F-yC-OQN"/>
-                                    <constraint firstAttribute="height" constant="80" id="dRo-DP-T30"/>
-                                    <constraint firstAttribute="bottom" secondItem="mDO-4f-x0R" secondAttribute="bottom" constant="5" id="i4d-v4-qa3"/>
-                                    <constraint firstItem="cxp-Ri-Hbt" firstAttribute="top" secondItem="M3x-qr-9hc" secondAttribute="top" constant="23" id="iYC-UL-w5D"/>
-                                    <constraint firstAttribute="width" constant="343" id="khK-ca-0Yr"/>
-                                    <constraint firstItem="sY1-P1-ZKD" firstAttribute="top" secondItem="M3x-qr-9hc" secondAttribute="top" constant="19" id="wRh-vs-1O6"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -793,6 +810,7 @@
                         <outlet property="m_battery_charging" destination="7ZY-WZ-8jd" id="oTS-WH-3t0"/>
                         <outlet property="m_battery_front" destination="vZC-ps-wlb" id="wfU-Ba-h1E"/>
                         <outlet property="m_car_ambient_temp" destination="M0c-0x-SFf" id="ihj-KW-64f"/>
+                        <outlet property="m_car_aux_battery" destination="Ilj-xV-4Zw" id="XkG-yp-3ff"/>
                         <outlet property="m_car_charge_kwh" destination="FPm-4w-IB6" id="uhm-Ba-kai"/>
                         <outlet property="m_car_charge_message" destination="sY1-P1-ZKD" id="t3i-zt-oFg"/>
                         <outlet property="m_car_charge_mode" destination="AXn-eT-0IG" id="HRK-lt-qag"/>
@@ -1808,6 +1826,7 @@
     <resources>
         <image name="20-gear2.png" width="26" height="28"/>
         <image name="49-battery.png" width="26" height="14"/>
+        <image name="aux_battery.png" width="40" height="30"/>
         <image name="battery_000.png" width="268" height="70"/>
         <image name="battery_100.png" width="268" height="70"/>
         <image name="battery_coppertops.png" width="268" height="70"/>
