@@ -270,7 +270,7 @@
   else if (chargetime < (3600*24*2))
     {
     m_car_charge_time.text = [NSString stringWithFormat:@"%02d:%02d",
-                                       chargetime/3660,
+                                       chargetime/3600,
                                        (chargetime%3600)/60];
     }
 
