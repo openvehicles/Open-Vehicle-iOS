@@ -34,13 +34,17 @@
 @synthesize m_car_temp_pem_l;
 @synthesize m_car_temp_motor_l;
 @synthesize m_car_temp_battery_l;
+@synthesize m_car_temp_cabin_l;
 @synthesize m_car_ambient_temp;
+@synthesize m_car_cabin_temp;
+@synthesize m_car_hvac_status;
 @synthesize m_car_weather;
 @synthesize m_car_tpmsboxes;
 @synthesize m_lock_button;
 @synthesize m_valet_button;
 @synthesize m_wakeup_button;
 @synthesize m_homelink_button;
+@synthesize m_climatecontrol_button;
 @synthesize m_car_aux_battery;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -136,8 +140,11 @@
   [self setM_car_temp_pem_l:nil];
   [self setM_car_temp_motor_l:nil];
   [self setM_car_temp_battery_l:nil];
+  [self setM_car_temp_cabin_l:nil];
   [self setM_car_outlineimage:nil];
   [self setM_car_ambient_temp:nil];
+  [self setM_car_cabin_temp:nil];
+  [self setM_car_hvac_status:nil];
   [self setM_car_valetonoff:nil];
   [self setM_car_lights:nil];
   [self setM_lock_button:nil];
@@ -147,6 +154,7 @@
   [self setM_car_tpmsboxes:nil];
   [self setM_homelink_button:nil];
   [self setM_car_aux_battery:nil];
+  [self setM_climatecontrol_button:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -192,6 +200,7 @@
     m_valet_button.enabled=YES;
     m_wakeup_button.enabled=YES;
     m_homelink_button.enabled=YES;
+    m_climatecontrol_button.enabled=YES;
     }
   else
     {
@@ -199,6 +208,7 @@
     m_valet_button.enabled=NO;
     m_wakeup_button.enabled=NO;    
     m_homelink_button.enabled=NO;
+    m_climatecontrol_button.enabled=NO;
     }
   
   int car_ambient_weather = [ovmsAppDelegate myRef].car_ambient_weather;
@@ -311,9 +321,12 @@
     m_car_temp_pem.hidden = YES;
     m_car_temp_motor.hidden = YES;
     m_car_temp_battery.hidden = YES;
+    m_car_cabin_temp.hidden = YES;
+    m_car_hvac_status.hidden = YES;
     m_car_temp_pem_l.textColor = [UIColor grayColor];
     m_car_temp_motor_l.textColor = [UIColor grayColor];
     m_car_temp_battery_l.textColor = [UIColor grayColor];
+    m_car_temp_cabin_l.textColor = [UIColor grayColor];
     }
   else if (car_stale_pemtemps == 0)
     {
@@ -321,15 +334,22 @@
     m_car_temp_pem.hidden = NO;
     m_car_temp_motor.hidden = NO;
     m_car_temp_battery.hidden = NO;
+    m_car_cabin_temp.hidden = NO;
+    m_car_hvac_status.hidden = NO;
     m_car_temp_pem.textColor = [UIColor grayColor];
     m_car_temp_pem_l.textColor = [UIColor grayColor];
     m_car_temp_motor.textColor = [UIColor grayColor];
     m_car_temp_motor_l.textColor = [UIColor grayColor];
     m_car_temp_battery.textColor = [UIColor grayColor];
     m_car_temp_battery_l.textColor = [UIColor grayColor];
+    m_car_cabin_temp.textColor = [UIColor grayColor];
+    m_car_temp_cabin_l.textColor = [UIColor grayColor];
+    m_car_hvac_status.textColor = [UIColor grayColor];
     m_car_temp_pem.text = [ovmsAppDelegate myRef].car_tpem_s;
     m_car_temp_motor.text = [ovmsAppDelegate myRef].car_tmotor_s;
     m_car_temp_battery.text = [ovmsAppDelegate myRef].car_tbattery_s;
+    m_car_cabin_temp.text = [ovmsAppDelegate myRef].car_cabin_temp_s;
+    m_car_hvac_status.text = [ovmsAppDelegate myRef].car_hvac_s;
     }
   else
     {
@@ -337,15 +357,22 @@
     m_car_temp_pem.hidden = NO;
     m_car_temp_motor.hidden = NO;
     m_car_temp_battery.hidden = NO;
+    m_car_cabin_temp.hidden = NO;
+    m_car_hvac_status.hidden = NO;
     m_car_temp_pem.textColor = [UIColor whiteColor];
     m_car_temp_pem_l.textColor = [UIColor whiteColor];
     m_car_temp_motor.textColor = [UIColor whiteColor];
     m_car_temp_motor_l.textColor = [UIColor whiteColor];
     m_car_temp_battery.textColor = [UIColor whiteColor];
     m_car_temp_battery_l.textColor = [UIColor whiteColor];
+    m_car_cabin_temp.textColor = [UIColor whiteColor];
+    m_car_temp_cabin_l.textColor = [UIColor whiteColor];
+    m_car_hvac_status.textColor = [UIColor whiteColor];
     m_car_temp_pem.text = [ovmsAppDelegate myRef].car_tpem_s;
     m_car_temp_motor.text = [ovmsAppDelegate myRef].car_tmotor_s;
     m_car_temp_battery.text = [ovmsAppDelegate myRef].car_tbattery_s;
+    m_car_cabin_temp.text = [ovmsAppDelegate myRef].car_cabin_temp_s;
+    m_car_hvac_status.text = [ovmsAppDelegate myRef].car_hvac_s;
     }
 
   int car_stale_ambienttemps = [ovmsAppDelegate myRef].car_stale_ambienttemps;
@@ -406,8 +433,16 @@
     }
   else
     {
-    m_car_wheel_fr_pressure.text = @"";
     m_car_wheel_fr_temp.text = @"";
+    }
+  if ([ovmsAppDelegate myRef].car_tpms_fr_pressure > 0)
+    {
+    m_car_wheel_fr_pressure.text = [NSString stringWithFormat:@"%0.1f PSI",
+                                    [ovmsAppDelegate myRef].car_tpms_fr_pressure];
+    }
+  else
+    {
+    m_car_wheel_fr_pressure.text = @"";
     }
 
   if ([ovmsAppDelegate myRef].car_tpms_rr_temp > 0)
@@ -417,8 +452,16 @@
     }
   else
     {
-    m_car_wheel_rr_pressure.text = @"";
     m_car_wheel_rr_temp.text = @"";
+    }
+  if ([ovmsAppDelegate myRef].car_tpms_rr_pressure > 0)
+    {
+    m_car_wheel_rr_pressure.text = [NSString stringWithFormat:@"%0.1f PSI",
+                                    [ovmsAppDelegate myRef].car_tpms_rr_pressure];
+    }
+  else
+    {
+    m_car_wheel_rr_pressure.text = @"";
     }
 
   if ([ovmsAppDelegate myRef].car_tpms_fl_temp > 0)
@@ -428,8 +471,16 @@
     }
   else
     {
-    m_car_wheel_fl_pressure.text = @"";
     m_car_wheel_fl_temp.text = @"";
+    }
+  if ([ovmsAppDelegate myRef].car_tpms_fl_pressure > 0)
+    {
+    m_car_wheel_fl_pressure.text = [NSString stringWithFormat:@"%0.1f PSI",
+                                    [ovmsAppDelegate myRef].car_tpms_fl_pressure];
+    }
+  else
+    {
+    m_car_wheel_fl_pressure.text = @"";
     }
   
   if ([ovmsAppDelegate myRef].car_tpms_rl_temp > 0)
@@ -439,8 +490,16 @@
     }
   else
     {
-    m_car_wheel_rl_pressure.text = @"";
     m_car_wheel_rl_temp.text = @"";
+    }
+  if ([ovmsAppDelegate myRef].car_tpms_rl_pressure > 0)
+    {
+    m_car_wheel_rl_pressure.text = [NSString stringWithFormat:@"%0.1f PSI",
+                                    [ovmsAppDelegate myRef].car_tpms_rl_pressure];
+    }
+  else
+    {
+    m_car_wheel_rl_pressure.text = @"";
     }
     
     m_car_aux_battery.text = [NSString stringWithFormat:@"%0.1fV",
@@ -520,7 +579,19 @@
   [actionSheet showInView:[self.view window]];
   }
 
-- (IBAction)HomelinkButon:(id)sender
+- (IBAction)ClimateControlButton:(id)sender
+{
+    // The climate control button has been pressed - let's heat/cool the car
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Climate Control"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Stop",@"Start",nil];
+    [actionSheet showInView:[self.view window]];
+}
+
+
+- (IBAction)HomelinkButton:(id)sender
   {
   // The homelink button has been pressed - let's ask which one he wants
   UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Homelink"
@@ -546,6 +617,14 @@
     if ((button>=0)&&(button<3))
       {
       [[ovmsAppDelegate myRef] commandDoHomelink:button];
+      }
+    }
+  else if ([sender.title isEqualToString:@"Climate Control"])
+    {
+    int button = (int)(index - [sender firstOtherButtonIndex]);
+    if ((button>=0)&&(button<2))
+      {
+      [[ovmsAppDelegate myRef] commandDoClimateControl:button];
       }
     }
   }
