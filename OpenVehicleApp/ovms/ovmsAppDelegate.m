@@ -66,6 +66,7 @@
 @synthesize car_doors1;
 @synthesize car_doors2;
 @synthesize car_doors3;
+@synthesize car_doors5;
 @synthesize car_stale_pemtemps;
 @synthesize car_stale_ambienttemps;
 @synthesize car_lockstate;
@@ -84,6 +85,7 @@
 @synthesize car_speed;
 @synthesize car_parktime;
 @synthesize car_ambient_temp;
+@synthesize car_cabin_temp;
 @synthesize car_tpms_fr_pressure;
 @synthesize car_tpms_fr_temp;
 @synthesize car_tpms_rr_pressure;
@@ -105,6 +107,8 @@
 @synthesize car_odometer_s;
 @synthesize car_speed_s;
 @synthesize car_ambient_temp_s;
+@synthesize car_cabin_temp_s;
+@synthesize car_hvac_s;
 @synthesize car_tpms_fr_temp_s;
 @synthesize car_tpms_rr_temp_s;
 @synthesize car_tpms_fl_temp_s;
@@ -581,6 +585,7 @@
   car_tmotor = 0;
   car_tbattery = 0;
   car_ambient_temp = -127;
+  car_cabin_temp = -127;
   car_trip = 0;
   car_odometer = 0;
   car_speed = 0;
@@ -605,6 +610,7 @@
   car_odometer_s = @"";
   car_speed_s = @"";
   car_ambient_temp_s = @"";
+  car_cabin_temp_s = @"";
   car_tpms_fr_temp_s = @"";
   car_tpms_rr_temp_s = @"";
   car_tpms_fl_temp_s = @"";
@@ -847,8 +853,23 @@
           }
         if ([lparts count] >= 15)
           {
-            car_aux_battery_voltage = [[lparts objectAtIndex:14] floatValue];
+          car_aux_battery_voltage = [[lparts objectAtIndex:14] floatValue];
           }
+        if ([lparts count] >= 18)
+          {
+          car_doors5 = [[lparts objectAtIndex:17] intValue];
+          if (car_doors5 & 0x80) // HVAC
+              car_hvac_s = @"ON";
+          else
+              car_hvac_s = @"OFF";
+          }
+        if ([lparts count] >= 21)
+          {
+          car_cabin_temp = [[lparts objectAtIndex:20] intValue];
+          }
+        else
+          car_cabin_temp = -127;
+        car_cabin_temp_s = [self convertTemperatureUnits:car_cabin_temp];
         }
       }
       break;
@@ -1536,6 +1557,12 @@
   {
   [JHNotificationManager notificationWithMessage:@"Issuing Homelink Command..."];
   [self commandIssue:[NSString stringWithFormat:@"24,%d",button]];
+  }
+
+- (void)commandDoClimateControl:(int)button
+  {
+  [JHNotificationManager notificationWithMessage:@"Issuing Climate Control Command..."];
+  [self commandIssue:[NSString stringWithFormat:@"26,%d",button]];
   }
 
 /**

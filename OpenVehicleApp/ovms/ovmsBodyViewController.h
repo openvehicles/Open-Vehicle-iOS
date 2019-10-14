@@ -38,7 +38,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *m_car_temp_pem_l;
 @property (strong, nonatomic) IBOutlet UILabel *m_car_temp_motor_l;
 @property (strong, nonatomic) IBOutlet UILabel *m_car_temp_battery_l;
+@property (strong, nonatomic) IBOutlet UILabel *m_car_temp_cabin_l;
 @property (strong, nonatomic) IBOutlet UILabel *m_car_ambient_temp;
+@property (strong, nonatomic) IBOutlet UILabel *m_car_cabin_temp;
+@property (strong, nonatomic) IBOutlet UILabel *m_car_hvac_status;
 @property (strong, nonatomic) IBOutlet UILabel *m_car_aux_battery;
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_weather;
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_tpmsboxes;
@@ -47,8 +50,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *m_valet_button;
 @property (strong, nonatomic) IBOutlet UIButton *m_wakeup_button;
 @property (strong, nonatomic) IBOutlet UIButton *m_homelink_button;
+@property (strong, nonatomic) IBOutlet UIButton *m_climatecontrol_button;
 
 - (IBAction)WakeupButton:(id)sender;
-- (IBAction)HomelinkButon:(id)sender;
+- (IBAction)HomelinkButton:(id)sender;
+- (IBAction)ClimateControlButton:(id)sender;
 
 @end

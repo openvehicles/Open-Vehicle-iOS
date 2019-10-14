@@ -202,6 +202,7 @@
 @property (assign) int car_doors1;
 @property (assign) int car_doors2;
 @property (assign) int car_doors3;
+@property (assign) int car_doors5;
 @property (assign) int car_stale_pemtemps;
 @property (assign) int car_stale_ambienttemps;
 
@@ -221,6 +222,7 @@
 @property (assign) int car_speed;
 @property (assign) int car_parktime;
 @property (assign) int car_ambient_temp;
+@property (assign) int car_cabin_temp;
 @property (assign) float car_tpms_fr_pressure;
 @property (assign) int car_tpms_fr_temp;
 @property (assign) float car_tpms_rr_pressure;
@@ -245,6 +247,8 @@
 @property (strong, nonatomic) NSString* car_tmotor_s;
 @property (strong, nonatomic) NSString* car_tbattery_s;
 @property (strong, nonatomic) NSString* car_ambient_temp_s;
+@property (strong, nonatomic) NSString* car_cabin_temp_s;
+@property (strong, nonatomic) NSString* car_hvac_s;
 @property (strong, nonatomic) NSString* car_tpms_fr_temp_s;
 @property (strong, nonatomic) NSString* car_tpms_rr_temp_s;
 @property (strong, nonatomic) NSString* car_tpms_fl_temp_s;
@@ -309,5 +313,6 @@
 - (void)commandDoUSSD:(NSString*)ussd;
 - (void)commandDoRequestGPRSData;
 - (void)commandDoHomelink:(int)button;
+- (void)commandDoClimateControl:(int)button;
 
 @end
