@@ -735,7 +735,7 @@
     m_car_temp_motor_l.textColor = [UIColor grayColor];
     m_car_temp_battery_l.textColor = [UIColor grayColor];
     }
-  else if ((car_stale_pemtemps == 0)||(([ovmsAppDelegate myRef].car_doors3 & 0x02)==0))
+  else if (car_stale_pemtemps == 0)
     {
     // Stale PEM temperatures
     m_car_temp_pem.hidden = NO;
@@ -773,7 +773,7 @@
     {
     // No Ambient temperature
     }
-  else if ((car_stale_ambienttemps == 0)||(([ovmsAppDelegate myRef].car_doors3 & 0x02)==0))
+  else if (car_stale_ambienttemps == 0)
     {
     // Stale Ambient temperature
     m_car_ambient_temp.textColor = [UIColor grayColor];
