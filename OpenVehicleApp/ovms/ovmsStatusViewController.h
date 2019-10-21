@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *m_car_charge_message;
 @property (strong, nonatomic) IBOutlet UILabel *m_car_soc;
 @property (strong, nonatomic) IBOutlet UIImageView *m_battery_front;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *m_battery_front_width;
 @property (strong, nonatomic) IBOutlet UIImageView *m_battery_charging;
 @property (strong, nonatomic) IBOutlet UIImageView *m_car_parking_image;
 @property (strong, nonatomic) IBOutlet UILabel *m_car_parking_state;

@@ -17,6 +17,7 @@
 @synthesize m_car_charge_type;
 @synthesize m_car_soc;
 @synthesize m_battery_front;
+@synthesize m_battery_front_width;
 @synthesize m_car_parking_image;
 @synthesize m_car_parking_state;
 @synthesize m_car_range_ideal;
@@ -317,9 +318,10 @@
   CGFloat newwidth = (((0.0+[ovmsAppDelegate myRef].car_soc)/100.0)*(233-17))+18;
   bounds.size.width = newwidth;
   center.x = center.x + ((newwidth - oldwidth)/2);
-  m_battery_front.bounds = bounds;
-  m_battery_front.center = center;
-  bounds = m_battery_front.bounds;
+  m_battery_front_width.constant = newwidth;
+  //m_battery_front.bounds = bounds;
+  //m_battery_front.center = center;
+  //bounds = m_battery_front.bounds;
 
   center = m_car_charge_remaining_time.center;
       center.x = (m_battery_front.center.x+bounds.size.width/2 + 233+17)/2;

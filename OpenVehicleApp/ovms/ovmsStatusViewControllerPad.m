@@ -26,6 +26,7 @@
 @synthesize m_car_charge_mode;
 @synthesize m_car_soc;
 @synthesize m_battery_front;
+@synthesize m_battery_front_width;
 @synthesize m_car_outlineimage;
 @synthesize m_car_parking_image;
 @synthesize m_car_parking_state;
@@ -503,9 +504,10 @@
   CGFloat newwidth = (((0.0+[ovmsAppDelegate myRef].car_soc)/100.0)*(233-17))+17;
   bounds.size.width = newwidth;
   center.x = center.x + ((newwidth - oldwidth)/2);
-  m_battery_front.bounds = bounds;
-  m_battery_front.center = center;
-  bounds = m_battery_front.bounds;
+  m_battery_front_width.constant = newwidth;
+  //m_battery_front.bounds = bounds;
+  //m_battery_front.center = center;
+  //bounds = m_battery_front.bounds;
   
   if ((([ovmsAppDelegate myRef].car_doors1 & 0x04)==0)||
       ([ovmsAppDelegate myRef].car_chargesubstate == 0x07))

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yen-VS-8ek">
-    <device id="ipad9_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yen-VS-8ek">
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,11 +13,11 @@
             <objects>
                 <viewController title="Status" id="KQf-3p-4Zw" customClass="ovmsStatusViewControllerPad" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Atv-L5-6cu">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqg-IH-ZKz" customClass="REVClusterMapView">
-                                <rect key="frame" x="20" y="448" width="728" height="486"/>
+                                <rect key="frame" x="20" y="448" width="728" height="506"/>
                                 <connections>
                                     <outlet property="delegate" destination="KQf-3p-4Zw" id="rvb-1p-bzU"/>
                                 </connections>
@@ -809,6 +807,7 @@
                         <outlet property="m_battery_button" destination="ULr-Iw-zpV" id="F3h-rM-NQT"/>
                         <outlet property="m_battery_charging" destination="7ZY-WZ-8jd" id="oTS-WH-3t0"/>
                         <outlet property="m_battery_front" destination="vZC-ps-wlb" id="wfU-Ba-h1E"/>
+                        <outlet property="m_battery_front_width" destination="WJ4-XX-I8w" id="6gb-M0-EOt"/>
                         <outlet property="m_car_ambient_temp" destination="M0c-0x-SFf" id="ihj-KW-64f"/>
                         <outlet property="m_car_aux_battery" destination="Ilj-xV-4Zw" id="XkG-yp-3ff"/>
                         <outlet property="m_car_charge_kwh" destination="FPm-4w-IB6" id="uhm-Ba-kai"/>
@@ -892,7 +891,7 @@
                 <navigationController id="gZQ-Pw-ihG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Messages" image="message.png" id="AJj-Ua-sMg"/>
                     <navigationBar key="navigationBar" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="gKt-2b-tA9">
-                        <rect key="frame" x="0.0" y="20" width="768" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -908,7 +907,7 @@
             <objects>
                 <viewController id="yWl-qL-nP3" sceneMemberID="viewController">
                     <containerView key="view" opaque="NO" contentMode="scaleToFill" id="alB-Sw-yy6">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="904"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.069420576100000006" green="0.1059532762" blue="0.19171994919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
@@ -937,7 +936,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="20-gear2.png" id="Roq-t4-hlC"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="71L-Nt-Rqi">
-                        <rect key="frame" x="0.0" y="20" width="768" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -953,12 +952,12 @@
             <objects>
                 <tableViewController id="xdX-PC-pUv" customClass="ovmsCarsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="rbt-Zb-27p">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.054901960780000002" green="0.074509803920000006" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellIdentifier" rowHeight="200" id="bgS-Zb-VCe">
-                                <rect key="frame" x="0.0" y="22" width="768" height="200"/>
+                                <rect key="frame" x="0.0" y="28" width="768" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bgS-Zb-VCe" id="Ne1-xJ-u1v">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="200"/>
@@ -1039,7 +1038,7 @@
             <objects>
                 <viewController id="Tmg-Xo-UQI" customClass="ovmsCarsFormViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rmv-T8-5V7">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vehicle ID" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3qX-oF-YI4">
@@ -1121,7 +1120,7 @@
                     <tabBarItem key="tabBarItem" title="Battery" image="49-battery.png" id="xhk-5W-DoK"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="U9H-dB-TO7">
-                        <rect key="frame" x="0.0" y="20" width="768" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1137,7 +1136,7 @@
             <objects>
                 <viewController id="lpu-dN-GRr" customClass="ovmsControlPINEntry" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jO1-K2-uMH">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2D6-P5-k6W">
@@ -1193,11 +1192,11 @@
             <objects>
                 <viewController id="H0G-Tq-aOT" customClass="ovmsControlViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pzv-3g-h2m">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="4BP-Xb-k7p">
-                                <rect key="frame" x="20" y="31" width="728" height="68"/>
+                                <rect key="frame" x="20" y="31" width="672" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Features">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1208,7 +1207,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="RD7-hn-m5j">
-                                <rect key="frame" x="20" y="120" width="728" height="68"/>
+                                <rect key="frame" x="20" y="120" width="672" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Parameters">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1219,7 +1218,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Fh-Z5-aaW">
-                                <rect key="frame" x="20" y="582" width="728" height="68"/>
+                                <rect key="frame" x="20" y="582" width="672" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Reset OVMS Module">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1229,7 +1228,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gw9-5f-UTK">
-                                <rect key="frame" x="20" y="494" width="728" height="68"/>
+                                <rect key="frame" x="20" y="494" width="672" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cellular Usage">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1240,7 +1239,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NbC-Nt-Sqg">
-                                <rect key="frame" x="20" y="208" width="728" height="68"/>
+                                <rect key="frame" x="20" y="208" width="672" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="MMI/USSD Code">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1251,7 +1250,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jFg-xR-PN1">
-                                <rect key="frame" x="20" y="297" width="728" height="68"/>
+                                <rect key="frame" x="20" y="297" width="672" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Connections">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1284,14 +1283,14 @@
             <objects>
                 <tableViewController id="X2Y-9I-T4M" customClass="ovmsControlParametersViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="A5g-2v-lZI">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ParamCell" rowHeight="48" id="zI2-Dt-WIg">
-                                <rect key="frame" x="0.0" y="22" width="768" height="48"/>
+                                <rect key="frame" x="0.0" y="28" width="712" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zI2-Dt-WIg" id="lp4-cG-hYy">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="47.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="712" height="48"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="SRK-or-zMA">
@@ -1302,7 +1301,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" tag="1001" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="z8g-y4-cb6">
-                                            <rect key="frame" x="418" y="6" width="330" height="31"/>
+                                            <rect key="frame" x="362" y="6" width="330" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1338,14 +1337,14 @@
             <objects>
                 <tableViewController id="csq-LT-Krs" customClass="ovmsControlFeaturesViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="bOO-1n-FgL">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeatureCell" rowHeight="48" id="GcG-a4-GT6">
-                                <rect key="frame" x="0.0" y="22" width="768" height="48"/>
+                                <rect key="frame" x="0.0" y="28" width="712" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GcG-a4-GT6" id="TS5-G1-ZKX">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="47.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="712" height="48"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="OMT-Ia-Syr">
@@ -1356,7 +1355,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" tag="1001" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wDE-gP-hgF">
-                                            <rect key="frame" x="512" y="8" width="236" height="31"/>
+                                            <rect key="frame" x="456" y="8" width="236" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1392,11 +1391,11 @@
             <objects>
                 <viewController id="Guc-Xx-TjD" customClass="ovmsControlCellularUsageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rhv-gi-lyt" customClass="CPTGraphHostingView">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vf7-sO-v8I">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                                <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
@@ -1424,11 +1423,11 @@
             <objects>
                 <viewController id="tBg-fU-ReV" customClass="ovmsChargerSettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xCY-ht-qny">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bbj-SG-Zma">
-                                <rect key="frame" x="244" y="200" width="280" height="216"/>
+                                <rect key="frame" x="216" y="200" width="280" height="216"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -1437,7 +1436,7 @@
                                 </connections>
                             </pickerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ImU-9k-Fk4">
-                                <rect key="frame" x="244" y="86" width="280" height="30"/>
+                                <rect key="frame" x="216" y="86" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Standard"/>
@@ -1451,14 +1450,14 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" text="Range Mode limits power.  Frequent use will reduce long-term battery life." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1mG-pi-lgb">
-                                <rect key="frame" x="244" y="116" width="280" height="81"/>
+                                <rect key="frame" x="216" y="116" width="280" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="WARNING  Incorrect charger settings may damage electric systems!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="q12-IQ-Zr2">
-                                <rect key="frame" x="244" y="9" width="280" height="64"/>
+                                <rect key="frame" x="216" y="9" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1499,7 +1498,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="PBJ-yB-L0M">
-                        <rect key="frame" x="0.0" y="20" width="768" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1518,7 +1517,7 @@
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="76w-4N-u07">
-                        <rect key="frame" x="0.0" y="20" width="768" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="h2F-ed-J2N" id="vC3-KQ-e39"/>
@@ -1538,7 +1537,7 @@
             <objects>
                 <viewController id="YMP-T6-PgX" customClass="ovmsVehicleInfo" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GJB-fl-B3C">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="vehicle id" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A4l-sj-xo5">
@@ -1701,7 +1700,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="20-gear2.png" id="auo-uH-d2u"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="4JT-AB-g5R">
-                        <rect key="frame" x="0.0" y="20" width="768" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1717,15 +1716,15 @@
             <objects>
                 <tableViewController id="nW2-wt-pCM" customClass="ovmsGroupsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" id="3qZ-Mr-BjH">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="GroupCell" rowHeight="56" id="ect-yi-Gyy">
-                                <rect key="frame" x="0.0" y="22" width="768" height="56"/>
+                                <rect key="frame" x="0.0" y="28" width="712" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ect-yi-Gyy" id="KGm-17-yxb">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="55.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="712" height="56"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rmK-Pu-Kzw">
@@ -1741,7 +1740,7 @@
                                             </connections>
                                         </textField>
                                         <switch opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iCD-og-JUK">
-                                            <rect key="frame" x="684" y="14" width="79" height="27"/>
+                                            <rect key="frame" x="628" y="14" width="79" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="endswitchedit:" destination="nW2-wt-pCM" eventType="valueChanged" id="oH9-Kf-7C7"/>
@@ -1776,11 +1775,11 @@
             <objects>
                 <viewController title="MMI/USSD Code" id="Cch-yP-qiH" customClass="ovmsControlUSSDEntry" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hKK-NP-b9t">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rmq-EG-iYt">
-                                <rect key="frame" x="27" y="231" width="714" height="79"/>
+                                <rect key="frame" x="-1" y="231" width="714" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="l9C-l9-v6Z">
@@ -1794,7 +1793,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Enter the MMI/USSD Code, then tap SEND to transmit the code to your vehicle's cellular provider" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="f4v-rk-zIm">
-                                <rect key="frame" x="241" y="72" width="286" height="82"/>
+                                <rect key="frame" x="213" y="72" width="286" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1843,7 +1842,7 @@
         <image name="message.png" width="30" height="30"/>
         <image name="motortemp_letterbox.png" width="534" height="610"/>
         <image name="ol_car_roadster_thundergray.png" width="304" height="606"/>
-        <image name="parking.png" width="300" height="300"/>
+        <image name="parking.png" width="102.36966705322266" height="102.36966705322266"/>
         <image name="roadster_outline_cp.png" width="304" height="606"/>
         <image name="roadster_outline_hd.png" width="304" height="606"/>
         <image name="roadster_outline_ld.png" width="304" height="606"/>
