@@ -144,6 +144,10 @@
   NSString* car_odometer_s;
   NSString* car_speed_s;
   NSString* car_ambient_temp_s;
+  NSString* car_tpms_fr_pressure_s;
+  NSString* car_tpms_rr_pressure_s;
+  NSString* car_tpms_fl_pressure_s;
+  NSString* car_tpms_rl_pressure_s;
   NSString* car_tpms_fr_temp_s;
   NSString* car_tpms_rr_temp_s;
   NSString* car_tpms_fl_temp_s;
@@ -245,6 +249,10 @@
 @property (strong, nonatomic) NSString* car_tmotor_s;
 @property (strong, nonatomic) NSString* car_tbattery_s;
 @property (strong, nonatomic) NSString* car_ambient_temp_s;
+@property (strong, nonatomic) NSString* car_tpms_fr_pressure_s;
+@property (strong, nonatomic) NSString* car_tpms_rr_pressure_s;
+@property (strong, nonatomic) NSString* car_tpms_fl_pressure_s;
+@property (strong, nonatomic) NSString* car_tpms_rl_pressure_s;
 @property (strong, nonatomic) NSString* car_tpms_fr_temp_s;
 @property (strong, nonatomic) NSString* car_tpms_rr_temp_s;
 @property (strong, nonatomic) NSString* car_tpms_fl_temp_s;
@@ -269,6 +277,7 @@
 - (NSString*)convertDistanceUnits:(int)distance;
 - (NSString*)convertSpeedUnits:(int)speed;
 - (NSString*)convertTemperatureUnits:(int)temp;
+- (NSString*)convertPressureUnits:(float)pressure;
 
 - (void)registerForUpdate:(id)target;
 - (void)deregisterFromUpdate:(id)target;

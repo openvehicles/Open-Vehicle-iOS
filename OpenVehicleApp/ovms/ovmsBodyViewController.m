@@ -401,8 +401,7 @@
   
   if ([ovmsAppDelegate myRef].car_tpms_fr_temp > 0)
     {
-    m_car_wheel_fr_pressure.text = [NSString stringWithFormat:@"%0.1f PSI",
-                                    [ovmsAppDelegate myRef].car_tpms_fr_pressure];
+    m_car_wheel_fr_pressure.text = [ovmsAppDelegate myRef].car_tpms_fr_pressure_s;
     m_car_wheel_fr_temp.text = [ovmsAppDelegate myRef].car_tpms_fr_temp_s;
     }
   else
@@ -413,8 +412,7 @@
 
   if ([ovmsAppDelegate myRef].car_tpms_rr_temp > 0)
     {
-    m_car_wheel_rr_pressure.text = [NSString stringWithFormat:@"%0.1f PSI",
-                                    [ovmsAppDelegate myRef].car_tpms_rr_pressure];
+    m_car_wheel_rr_pressure.text = [ovmsAppDelegate myRef].car_tpms_rr_pressure_s;
     m_car_wheel_rr_temp.text = [ovmsAppDelegate myRef].car_tpms_rr_temp_s;
     }
   else
@@ -425,8 +423,7 @@
 
   if ([ovmsAppDelegate myRef].car_tpms_fl_temp > 0)
     {
-    m_car_wheel_fl_pressure.text = [NSString stringWithFormat:@"%0.1f PSI",
-                                    [ovmsAppDelegate myRef].car_tpms_fl_pressure];
+    m_car_wheel_fl_pressure.text = [ovmsAppDelegate myRef].car_tpms_fl_pressure_s;
     m_car_wheel_fl_temp.text = [ovmsAppDelegate myRef].car_tpms_fl_temp_s;
     }
   else
@@ -437,8 +434,7 @@
   
   if ([ovmsAppDelegate myRef].car_tpms_rl_temp > 0)
     {
-    m_car_wheel_rl_pressure.text = [NSString stringWithFormat:@"%0.1f PSI",
-                                    [ovmsAppDelegate myRef].car_tpms_rl_pressure];
+    m_car_wheel_rl_pressure.text = [ovmsAppDelegate myRef].car_tpms_rl_pressure_s;
     m_car_wheel_rl_temp.text = [ovmsAppDelegate myRef].car_tpms_rl_temp_s;
     }
   else

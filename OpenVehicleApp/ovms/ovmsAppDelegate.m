@@ -105,6 +105,10 @@
 @synthesize car_odometer_s;
 @synthesize car_speed_s;
 @synthesize car_ambient_temp_s;
+@synthesize car_tpms_fr_pressure_s;
+@synthesize car_tpms_rr_pressure_s;
+@synthesize car_tpms_fl_pressure_s;
+@synthesize car_tpms_rl_pressure_s;
 @synthesize car_tpms_fr_temp_s;
 @synthesize car_tpms_rr_temp_s;
 @synthesize car_tpms_fl_temp_s;
@@ -128,6 +132,7 @@
                                                             @"1", @"ovmsOpenChargeMap",
                                                             @"-", @"ovmsTemperatures",
                                                             @"-", @"ovmsDistances",
+                                                            @"-", @"ovmsPressures",
                                                             @"DEMO", @"selCar",
                                                             @"Demonstration Car", @"selLabel",
                                                             @"DEMO", @"selNetPass",
@@ -605,6 +610,10 @@
   car_odometer_s = @"";
   car_speed_s = @"";
   car_ambient_temp_s = @"";
+  car_tpms_fr_pressure_s = @"";
+  car_tpms_rr_pressure_s = @"";
+  car_tpms_fl_pressure_s = @"";
+  car_tpms_rl_pressure_s = @"";
   car_tpms_fr_temp_s = @"";
   car_tpms_rr_temp_s = @"";
   car_tpms_fl_temp_s = @"";
@@ -858,15 +867,19 @@
       if ([lparts count]>=8)
         {
         car_tpms_fr_pressure = [[lparts objectAtIndex:0] floatValue];
+        car_tpms_fr_pressure_s = [self convertPressureUnits:car_tpms_fr_pressure];
         car_tpms_fr_temp = [[lparts objectAtIndex:1] intValue];
         car_tpms_fr_temp_s = [self convertTemperatureUnits:car_tpms_fr_temp];
         car_tpms_rr_pressure = [[lparts objectAtIndex:2] floatValue];
+        car_tpms_rr_pressure_s = [self convertPressureUnits:car_tpms_rr_pressure];
         car_tpms_rr_temp = [[lparts objectAtIndex:3] intValue];
         car_tpms_rr_temp_s = [self convertTemperatureUnits:car_tpms_rr_temp];
         car_tpms_fl_pressure = [[lparts objectAtIndex:4] floatValue];
+        car_tpms_fl_pressure_s = [self convertPressureUnits:car_tpms_fl_pressure];
         car_tpms_fl_temp = [[lparts objectAtIndex:5] intValue];
         car_tpms_fl_temp_s = [self convertTemperatureUnits:car_tpms_fl_temp];
         car_tpms_rl_pressure = [[lparts objectAtIndex:6] floatValue];
+        car_tpms_rl_pressure_s = [self convertPressureUnits:car_tpms_rl_pressure];
         car_tpms_rl_temp = [[lparts objectAtIndex:7] intValue];
         car_tpms_rl_temp_s = [self convertTemperatureUnits:car_tpms_rl_temp];
         }
@@ -968,6 +981,28 @@
     return [NSString stringWithFormat:@"%d°F",9*temp/5+32];
     }
   }
+
+- (NSString*)convertPressureUnits:(float)pressure
+{
+NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+NSString *defaultsD = [defaults stringForKey:@"ovmsPressures"];
+
+if (([defaultsD isEqualToString:@"-"])||([defaultsD isEqualToString:@"PSI"]))
+  {
+  // PSI
+  return [NSString stringWithFormat:@"%0.1f%s",pressure," PSI"];
+  }
+else if ([defaultsD isEqualToString:@"kPa"])
+  {
+  // kPa
+  return [NSString stringWithFormat:@"%0.0f%s",(pressure * 6.89476)," kPa"];
+  }
+else
+  {
+  // BAR
+  return [NSString stringWithFormat:@"%0.1f%s",(pressure * 0.0689476)," BAR"];
+  }
+}
 
 - (void)registerForUpdate:(id)target
   {

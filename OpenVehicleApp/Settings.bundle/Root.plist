@@ -150,6 +150,30 @@
 		</dict>
 		<dict>
 			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Pressures</string>
+			<key>Key</key>
+			<string>ovmsPressures</string>
+			<key>DefaultValue</key>
+			<string>-</string>
+			<key>Titles</key>
+			<array>
+				<string>Car Chooses</string>
+				<string>PSI</string>
+				<string>kPa</string>
+				<string>BAR</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>-</string>
+				<string>PSI</string>
+				<string>kPa</string>
+				<string>BAR</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>Charging Stations</string>
