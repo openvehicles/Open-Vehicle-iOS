@@ -86,6 +86,7 @@
 		4D5AE38614733758002F5F52 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5AE38514733758002F5F52 /* first@2x.png */; };
 		4D5AE38B14733758002F5F52 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5AE38A14733758002F5F52 /* second.png */; };
 		4D5AE38D14733758002F5F52 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5AE38C14733758002F5F52 /* second@2x.png */; };
+		4D60D254235E8C09007CF008 /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D60D253235E8C09007CF008 /* disclosure.png */; };
 		4D6557AA1516183B00369AAC /* ovmsVehicleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6557A91516183B00369AAC /* ovmsVehicleInfo.m */; };
 		4D6734B21497891E00F7919F /* roadster_outline_tr.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6734B11497891E00F7919F /* roadster_outline_tr.png */; };
 		4D6734B41497893F00F7919F /* roadster_outline_rd.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6734B31497893F00F7919F /* roadster_outline_rd.png */; };
@@ -511,6 +512,7 @@
 		4D5AE38A14733758002F5F52 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		4D5AE38C14733758002F5F52 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		4D5AE39414733758002F5F52 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		4D60D253235E8C09007CF008 /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
 		4D6557A81516183B00369AAC /* ovmsVehicleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ovmsVehicleInfo.h; sourceTree = "<group>"; };
 		4D6557A91516183B00369AAC /* ovmsVehicleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = ovmsVehicleInfo.m; sourceTree = "<group>"; tabWidth = 2; };
 		4D6734B11497891E00F7919F /* roadster_outline_tr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadster_outline_tr.png; sourceTree = "<group>"; };
@@ -1107,6 +1109,7 @@
 		4D91CEF81473ECE500CBA435 /* Other Images */ = {
 			isa = PBXGroup;
 			children = (
+				4D60D253235E8C09007CF008 /* disclosure.png */,
 				4D41FD3621FB3DE100C30437 /* car.png */,
 				4D41FD3821FB3DE200C30437 /* geo_fence.png */,
 				4D41FD3921FB3DE200C30437 /* high_battery.png */,
@@ -2045,6 +2048,7 @@
 				4D9697F6165BB00300DF0364 /* map_car_twizy_snowwhiteandurbanblue.png in Resources */,
 				4D9697F7165BB00300DF0364 /* map_car_twizy_snowwhitewithblack.png in Resources */,
 				4D41FD3A21FB3DE200C30437 /* car.png in Resources */,
+				4D60D254235E8C09007CF008 /* disclosure.png in Resources */,
 				4D244D63235DDE1A005E27B6 /* car_kianiro_aluminium_silver.png in Resources */,
 				4D244D66235DDE1A005E27B6 /* car_leaf_forgedbronze.png in Resources */,
 				6358BC8416DB9C45008310DA /* cluster.png in Resources */,
