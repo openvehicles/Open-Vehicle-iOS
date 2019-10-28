@@ -38,6 +38,7 @@
 - (IBAction)locationSnapped:(id)sender;
 
 -(void) update;
+-(void) doupdate:(BOOL)forced;
 -(void) groupUpdate:(NSArray*)result;
 
 @end

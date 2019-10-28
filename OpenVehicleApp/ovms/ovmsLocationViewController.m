@@ -43,7 +43,7 @@
 
     [[ovmsAppDelegate myRef] registerForUpdate:self];
     
-    [self update];
+    [self doupdate: true];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(settingsChanged:)
@@ -251,14 +251,18 @@
 }
 
 -(void)update {
+    [self doupdate: false];
+}
+
+-(void)doupdate:(BOOL)forced {
     // The car has reported updated information, and we may need to reflect that
     CLLocationCoordinate2D location = [ovmsAppDelegate myRef].car_location;
 //    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(22.315778,114.220304);
     
 
     MKCoordinateRegion region = myMapView.region;
-    if ( (region.center.latitude != location.latitude)&&
-      (region.center.longitude != location.longitude) ) {
+    if (( (region.center.latitude != location.latitude)&&
+      (region.center.longitude != location.longitude) ) || forced) {
 
         if (self.m_car_location) {
             [UIView beginAnimations:@"ovmsVehicleAnnotationAnimation" context:nil];
