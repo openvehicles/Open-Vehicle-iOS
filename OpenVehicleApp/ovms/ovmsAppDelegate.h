@@ -110,6 +110,7 @@
     
   int car_minutestofull;
   int car_minutestorangelimit;
+  int car_minutestosoclimit;
   int car_rangelimit;
   int car_soclimit;
 
@@ -200,6 +201,7 @@
 
 @property (assign) int car_minutestofull;
 @property (assign) int car_minutestorangelimit;
+@property (assign) int car_minutestosoclimit;
 @property (assign) int car_rangelimit;        
 @property (assign) int car_soclimit;
 

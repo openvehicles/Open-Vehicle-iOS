@@ -32,6 +32,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *m_charger_plug;
 @property (strong, nonatomic) IBOutlet UISlider *m_charger_slider;
 @property (strong, nonatomic) IBOutlet UIButton *m_battery_button;
+@property (strong, nonatomic) IBOutlet UILabel *m_car_charge_remaining_soc;
 
 - (IBAction)ChargeSliderTouch:(id)sender;
 - (IBAction)ChargeSliderValue:(id)sender;
