@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yen-VS-8ek">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yen-VS-8ek">
     <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -138,7 +138,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lif-YM-HUL" userLabel="Battery View">
                                 <rect key="frame" x="0.0" y="265" width="343" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" alpha="0.10000000149011612" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULr-Iw-zpV" userLabel="Battery Button">
+                                    <button opaque="NO" alpha="0.10000000149011612" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULr-Iw-zpV" userLabel="Battery Button">
                                         <rect key="frame" x="85" y="5" width="213" height="73"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -219,7 +219,7 @@
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="shadowColor" systemColor="darkTextColor"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg kWh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPm-4w-IB6" userLabel="battery_charge_kwh">
@@ -245,6 +245,30 @@
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg Str Lim" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqv-KQ-M3z" userLabel="battery_charge_remaining_time_soc">
+                                        <rect key="frame" x="212" y="17" width="75" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="i1Q-m3-hrq"/>
+                                            <constraint firstAttribute="width" constant="75" id="zIK-Wg-Qsl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
+                                        <color key="textColor" red="1" green="0.71764714910000005" blue="0.14937014509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg Rem Rng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTl-wX-VQK" userLabel="battery_charge_remaining_time_range">
+                                        <rect key="frame" x="91" y="17" width="80" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="KzY-wu-Qqc"/>
+                                            <constraint firstAttribute="width" constant="80" id="YEl-YZ-9rt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
+                                        <color key="textColor" red="0.2215343266" green="0.7279030836" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -256,20 +280,24 @@
                                     <constraint firstItem="mnC-x1-YJF" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="85" id="I4z-bc-9V2"/>
                                     <constraint firstAttribute="trailing" secondItem="HN8-2G-25z" secondAttribute="trailing" constant="56" id="L6X-M3-DlE"/>
                                     <constraint firstAttribute="width" constant="343" id="MIz-DW-261"/>
+                                    <constraint firstAttribute="trailing" secondItem="jqv-KQ-M3z" secondAttribute="trailing" constant="56" id="Q85-fz-7Lr"/>
                                     <constraint firstItem="vZC-ps-wlb" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="QF3-E2-6Fa"/>
                                     <constraint firstItem="HN8-2G-25z" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="SEk-vh-QUC"/>
                                     <constraint firstItem="HN8-2G-25z" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="VzB-NG-Lzz"/>
                                     <constraint firstItem="ULr-Iw-zpV" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="85" id="Xig-YP-raN"/>
                                     <constraint firstItem="7ZY-WZ-8jd" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="YuV-E6-dB8"/>
+                                    <constraint firstItem="tTl-wX-VQK" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="Zje-ET-psn"/>
                                     <constraint firstItem="FPm-4w-IB6" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="ctM-4M-oUF"/>
                                     <constraint firstItem="B8C-4W-PMg" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="dEJ-GA-eH0"/>
                                     <constraint firstItem="7ZY-WZ-8jd" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="eNv-FJ-0o6"/>
+                                    <constraint firstItem="B8C-4W-PMg" firstAttribute="top" secondItem="tTl-wX-VQK" secondAttribute="bottom" constant="2" id="hFa-10-Mai"/>
                                     <constraint firstAttribute="height" constant="80" id="pa9-HH-Sbq"/>
                                     <constraint firstItem="vZC-ps-wlb" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="sgM-8m-U4Q"/>
                                     <constraint firstItem="SL7-PT-bkj" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="sj2-lz-YC4"/>
                                     <constraint firstItem="AXn-eT-0IG" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="46" id="ujD-WC-dn9"/>
                                     <constraint firstItem="ULr-Iw-zpV" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="v5E-Wg-Aku"/>
                                     <constraint firstItem="SL7-PT-bkj" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="xSz-aT-Rjg"/>
+                                    <constraint firstItem="HN8-2G-25z" firstAttribute="top" secondItem="jqv-KQ-M3z" secondAttribute="bottom" constant="2" id="y7G-zI-Jyl"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3x-qr-9hc" userLabel="Charger View">
@@ -411,7 +439,7 @@
                                             <constraint firstAttribute="height" constant="303" id="pvJ-pu-VkN"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" alpha="0.10000000149011612" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zqf-bg-cI2" userLabel="Lock Button">
+                                    <button opaque="NO" alpha="0.10000000149011612" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zqf-bg-cI2" userLabel="Lock Button">
                                         <rect key="frame" x="97" y="139" width="47" height="73"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -427,7 +455,7 @@
                                             <segue destination="lpu-dN-GRr" kind="push" identifier="LockUnlock" id="2RF-1p-64r"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" alpha="0.10000000149011612" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLZ-1v-Ycb" userLabel="Valet Button">
+                                    <button opaque="NO" alpha="0.10000000149011612" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLZ-1v-Ycb" userLabel="Valet Button">
                                         <rect key="frame" x="147" y="139" width="47" height="73"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -614,7 +642,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" alpha="0.019999999552965164" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJf-q2-VXi" userLabel="Homelink Button">
+                                    <button opaque="NO" alpha="0.019999999552965164" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJf-q2-VXi" userLabel="Homelink Button">
                                         <rect key="frame" x="222" y="148" width="56" height="36"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -647,7 +675,7 @@
                                         <color key="textColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" alpha="0.10000000149011612" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lR-um-MVo" userLabel="Wakeup Button">
+                                    <button opaque="NO" alpha="0.10000000149011612" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lR-um-MVo" userLabel="Wakeup Button">
                                         <rect key="frame" x="96.5" y="227" width="94" height="73"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -756,6 +784,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="gNV-Uy-6TE"/>
                         <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gNV-Uy-6TE" firstAttribute="trailing" secondItem="Oqg-IH-ZKz" secondAttribute="trailing" constant="20" id="0e1-yB-MZ7"/>
@@ -786,7 +815,6 @@
                             <constraint firstItem="B4F-mA-2Od" firstAttribute="top" secondItem="gNV-Uy-6TE" secondAttribute="top" constant="10" id="xOG-5N-Crj"/>
                             <constraint firstItem="gNV-Uy-6TE" firstAttribute="bottom" secondItem="Oqg-IH-ZKz" secondAttribute="bottom" constant="20" id="zMb-9A-Qu7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gNV-Uy-6TE"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Status" image="49-battery.png" id="ltk-Aa-W7F"/>
@@ -814,6 +842,8 @@
                         <outlet property="m_car_charge_message" destination="sY1-P1-ZKD" id="t3i-zt-oFg"/>
                         <outlet property="m_car_charge_mode" destination="AXn-eT-0IG" id="HRK-lt-qag"/>
                         <outlet property="m_car_charge_remaining" destination="HN8-2G-25z" id="UV9-WQ-Yq9"/>
+                        <outlet property="m_car_charge_remaining_range" destination="tTl-wX-VQK" id="zQj-zy-DnK"/>
+                        <outlet property="m_car_charge_remaining_soc" destination="jqv-KQ-M3z" id="Ewf-dR-H6p"/>
                         <outlet property="m_car_charge_state" destination="cxp-Ri-Hbt" id="AUl-Eh-ruI"/>
                         <outlet property="m_car_charge_time" destination="B8C-4W-PMg" id="1aM-O7-0N8"/>
                         <outlet property="m_car_charge_type" destination="PAB-B9-2QB" id="MFZ-dV-1hh"/>
@@ -1086,8 +1116,8 @@
                                 </connections>
                             </pickerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="c09-22-Rkk"/>
+                        <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="4So-nH-Sz0">
@@ -1165,8 +1195,8 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="nhm-VV-JP1"/>
+                        <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Vehicle PIN" id="WCT-r8-8LD">
@@ -1192,11 +1222,11 @@
             <objects>
                 <viewController id="H0G-Tq-aOT" customClass="ovmsControlViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pzv-3g-h2m">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="928"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="4BP-Xb-k7p">
-                                <rect key="frame" x="20" y="31" width="672" height="68"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="4BP-Xb-k7p">
+                                <rect key="frame" x="20" y="31" width="664" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Features">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1206,8 +1236,8 @@
                                     <segue destination="csq-LT-Krs" kind="push" id="iCi-Av-7GB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="RD7-hn-m5j">
-                                <rect key="frame" x="20" y="120" width="672" height="68"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="RD7-hn-m5j">
+                                <rect key="frame" x="20" y="120" width="664" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Parameters">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1217,8 +1247,8 @@
                                     <segue destination="X2Y-9I-T4M" kind="push" id="T88-CY-kZ2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Fh-Z5-aaW">
-                                <rect key="frame" x="20" y="582" width="672" height="68"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Fh-Z5-aaW">
+                                <rect key="frame" x="20" y="582" width="664" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Reset OVMS Module">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1227,8 +1257,8 @@
                                     <action selector="resetModuleButton:" destination="H0G-Tq-aOT" eventType="touchUpInside" id="WSu-p4-kqR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gw9-5f-UTK">
-                                <rect key="frame" x="20" y="494" width="672" height="68"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gw9-5f-UTK">
+                                <rect key="frame" x="20" y="494" width="664" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cellular Usage">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1238,8 +1268,8 @@
                                     <segue destination="Guc-Xx-TjD" kind="push" id="IyR-wi-TEP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NbC-Nt-Sqg">
-                                <rect key="frame" x="20" y="208" width="672" height="68"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NbC-Nt-Sqg">
+                                <rect key="frame" x="20" y="208" width="664" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="MMI/USSD Code">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1249,8 +1279,8 @@
                                     <segue destination="Cch-yP-qiH" kind="push" id="85I-0k-Q8m"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jFg-xR-PN1">
-                                <rect key="frame" x="20" y="297" width="672" height="68"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jFg-xR-PN1">
+                                <rect key="frame" x="20" y="297" width="664" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Connections">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1261,8 +1291,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.059200882911682129" green="0.084962248802185059" blue="0.1411946564912796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="JQL-tF-816"/>
+                        <color key="backgroundColor" red="0.059200882911682129" green="0.084962248802185059" blue="0.1411946564912796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Control" id="9aU-kG-kmp">
@@ -1283,14 +1313,14 @@
             <objects>
                 <tableViewController id="X2Y-9I-T4M" customClass="ovmsControlParametersViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="A5g-2v-lZI">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="928"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ParamCell" rowHeight="48" id="zI2-Dt-WIg">
-                                <rect key="frame" x="0.0" y="28" width="712" height="48"/>
+                                <rect key="frame" x="0.0" y="28" width="704" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zI2-Dt-WIg" id="lp4-cG-hYy">
-                                    <rect key="frame" x="0.0" y="0.0" width="712" height="48"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="704" height="48"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="SRK-or-zMA">
@@ -1301,7 +1331,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" tag="1001" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="z8g-y4-cb6">
-                                            <rect key="frame" x="362" y="6" width="330" height="31"/>
+                                            <rect key="frame" x="354" y="6" width="330" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1337,14 +1367,14 @@
             <objects>
                 <tableViewController id="csq-LT-Krs" customClass="ovmsControlFeaturesViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="bOO-1n-FgL">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="928"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeatureCell" rowHeight="48" id="GcG-a4-GT6">
-                                <rect key="frame" x="0.0" y="28" width="712" height="48"/>
+                                <rect key="frame" x="0.0" y="28" width="704" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GcG-a4-GT6" id="TS5-G1-ZKX">
-                                    <rect key="frame" x="0.0" y="0.0" width="712" height="48"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="704" height="48"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="OMT-Ia-Syr">
@@ -1355,7 +1385,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" tag="1001" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wDE-gP-hgF">
-                                            <rect key="frame" x="456" y="8" width="236" height="31"/>
+                                            <rect key="frame" x="448" y="8" width="236" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1391,11 +1421,11 @@
             <objects>
                 <viewController id="Guc-Xx-TjD" customClass="ovmsControlCellularUsageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rhv-gi-lyt" customClass="CPTGraphHostingView">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="928"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vf7-sO-v8I">
-                                <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
+                                <rect key="frame" x="0.0" y="0.0" width="704" height="928"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
@@ -1404,8 +1434,8 @@
                                 </connections>
                             </webView>
                         </subviews>
-                        <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Dl9-Tb-JjP"/>
+                        <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Cellular Usage" id="YoC-fh-SWI"/>
@@ -1423,11 +1453,11 @@
             <objects>
                 <viewController id="tBg-fU-ReV" customClass="ovmsChargerSettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xCY-ht-qny">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="928"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bbj-SG-Zma">
-                                <rect key="frame" x="216" y="200" width="280" height="216"/>
+                                <rect key="frame" x="212" y="200" width="280" height="216"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -1436,7 +1466,7 @@
                                 </connections>
                             </pickerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ImU-9k-Fk4">
-                                <rect key="frame" x="216" y="86" width="280" height="30"/>
+                                <rect key="frame" x="212" y="86" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Standard"/>
@@ -1450,22 +1480,22 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" text="Range Mode limits power.  Frequent use will reduce long-term battery life." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1mG-pi-lgb">
-                                <rect key="frame" x="216" y="116" width="280" height="81"/>
+                                <rect key="frame" x="212" y="116" width="280" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="WARNING  Incorrect charger settings may damage electric systems!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="q12-IQ-Zr2">
-                                <rect key="frame" x="216" y="9" width="280" height="64"/>
+                                <rect key="frame" x="212" y="9" width="280" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.059200882911682129" green="0.084962248802185059" blue="0.1411946564912796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="mBD-ZD-osl"/>
+                        <color key="backgroundColor" red="0.059200882911682129" green="0.084962248802185059" blue="0.1411946564912796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Charger Settings" id="OsA-AL-zxg">
@@ -1498,7 +1528,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="PBJ-yB-L0M">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1517,7 +1547,7 @@
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="76w-4N-u07">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="h2F-ed-J2N" id="vC3-KQ-e39"/>
@@ -1669,8 +1699,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="5Z7-Hx-dgM"/>
+                        <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Vehicle PIN" id="5f2-EY-xea"/>
@@ -1700,7 +1730,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="20-gear2.png" id="auo-uH-d2u"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="4JT-AB-g5R">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1716,15 +1746,15 @@
             <objects>
                 <tableViewController id="nW2-wt-pCM" customClass="ovmsGroupsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" id="3qZ-Mr-BjH">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="928"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="GroupCell" rowHeight="56" id="ect-yi-Gyy">
-                                <rect key="frame" x="0.0" y="28" width="712" height="56"/>
+                                <rect key="frame" x="0.0" y="28" width="704" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ect-yi-Gyy" id="KGm-17-yxb">
-                                    <rect key="frame" x="0.0" y="0.0" width="712" height="56"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="704" height="56"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rmK-Pu-Kzw">
@@ -1740,7 +1770,7 @@
                                             </connections>
                                         </textField>
                                         <switch opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iCD-og-JUK">
-                                            <rect key="frame" x="628" y="14" width="79" height="27"/>
+                                            <rect key="frame" x="620" y="14" width="79" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="endswitchedit:" destination="nW2-wt-pCM" eventType="valueChanged" id="oH9-Kf-7C7"/>
@@ -1775,11 +1805,11 @@
             <objects>
                 <viewController title="MMI/USSD Code" id="Cch-yP-qiH" customClass="ovmsControlUSSDEntry" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hKK-NP-b9t">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="928"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="928"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rmq-EG-iYt">
-                                <rect key="frame" x="-1" y="231" width="714" height="79"/>
+                                <rect key="frame" x="-5" y="231" width="714" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="l9C-l9-v6Z">
@@ -1793,7 +1823,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Enter the MMI/USSD Code, then tap SEND to transmit the code to your vehicle's cellular provider" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="f4v-rk-zIm">
-                                <rect key="frame" x="213" y="72" width="286" height="82"/>
+                                <rect key="frame" x="209" y="72" width="286" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1801,8 +1831,8 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="afp-n2-3ir"/>
+                        <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="MMI/USSD Code" id="dpf-Qs-9gg">
@@ -1822,6 +1852,11 @@
             <point key="canvasLocation" x="5220.3125" y="1916.6015624999998"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="iH8-LJ-yA2"/>
+        <segue reference="JjB-tE-bjq"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="20-gear2.png" width="26" height="28"/>
         <image name="49-battery.png" width="26" height="14"/>
@@ -1851,10 +1886,8 @@
         <image name="signalbars-5.png" width="256" height="256"/>
         <image name="tirepress_letterbox.png" width="534" height="610"/>
         <image name="wsymbol_113.png" width="128" height="128"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="iH8-LJ-yA2"/>
-        <segue reference="JjB-tE-bjq"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
