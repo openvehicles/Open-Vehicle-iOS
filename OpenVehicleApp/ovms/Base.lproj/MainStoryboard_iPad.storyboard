@@ -257,6 +257,18 @@
                                         <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chg Rem Rng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTl-wX-VQK" userLabel="battery_charge_remaining_time_range">
+                                        <rect key="frame" x="91" y="17" width="80" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="KzY-wu-Qqc"/>
+                                            <constraint firstAttribute="width" constant="80" id="YEl-YZ-9rt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
+                                        <color key="textColor" red="0.2215343266" green="0.7279030836" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -274,9 +286,11 @@
                                     <constraint firstItem="HN8-2G-25z" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="33" id="VzB-NG-Lzz"/>
                                     <constraint firstItem="ULr-Iw-zpV" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="85" id="Xig-YP-raN"/>
                                     <constraint firstItem="7ZY-WZ-8jd" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="YuV-E6-dB8"/>
+                                    <constraint firstItem="tTl-wX-VQK" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="Zje-ET-psn"/>
                                     <constraint firstItem="FPm-4w-IB6" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="ctM-4M-oUF"/>
                                     <constraint firstItem="B8C-4W-PMg" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="91" id="dEJ-GA-eH0"/>
                                     <constraint firstItem="7ZY-WZ-8jd" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="eNv-FJ-0o6"/>
+                                    <constraint firstItem="B8C-4W-PMg" firstAttribute="top" secondItem="tTl-wX-VQK" secondAttribute="bottom" constant="2" id="hFa-10-Mai"/>
                                     <constraint firstAttribute="height" constant="80" id="pa9-HH-Sbq"/>
                                     <constraint firstItem="vZC-ps-wlb" firstAttribute="top" secondItem="lif-YM-HUL" secondAttribute="top" constant="5" id="sgM-8m-U4Q"/>
                                     <constraint firstItem="SL7-PT-bkj" firstAttribute="leading" secondItem="lif-YM-HUL" secondAttribute="leading" constant="65" id="sj2-lz-YC4"/>
@@ -828,6 +842,7 @@
                         <outlet property="m_car_charge_message" destination="sY1-P1-ZKD" id="t3i-zt-oFg"/>
                         <outlet property="m_car_charge_mode" destination="AXn-eT-0IG" id="HRK-lt-qag"/>
                         <outlet property="m_car_charge_remaining" destination="HN8-2G-25z" id="UV9-WQ-Yq9"/>
+                        <outlet property="m_car_charge_remaining_range" destination="tTl-wX-VQK" id="zQj-zy-DnK"/>
                         <outlet property="m_car_charge_remaining_soc" destination="jqv-KQ-M3z" id="Ewf-dR-H6p"/>
                         <outlet property="m_car_charge_state" destination="cxp-Ri-Hbt" id="AUl-Eh-ruI"/>
                         <outlet property="m_car_charge_time" destination="B8C-4W-PMg" id="1aM-O7-0N8"/>
