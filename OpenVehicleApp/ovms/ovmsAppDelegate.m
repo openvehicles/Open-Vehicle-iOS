@@ -722,12 +722,12 @@
       if ([lparts count]>=23)
         {
         car_minutestofull = [[lparts objectAtIndex:19] intValue];
-        car_minutestorangelimit = [[lparts objectAtIndex:20] intValue];
         car_rangelimit = [[lparts objectAtIndex:21] intValue];
         car_soclimit = [[lparts objectAtIndex:22] intValue];
         }
       if([lparts count]>=31)
         {
+        car_minutestorangelimit = [[lparts objectAtIndex:27] intValue];
         car_minutestosoclimit = [[lparts objectAtIndex:28] intValue];
         car_chargetype = [[lparts objectAtIndex:30] intValue];
         }
