@@ -31,6 +31,8 @@
 @synthesize m_car_charge_remaining_time;
 @synthesize m_car_chargekwh;
 @synthesize m_battery_charging;
+@synthesize m_car_charge_remaining_soc;
+@synthesize m_car_charge_remaining_range;
 
 - (void)didReceiveMemoryWarning
 {
@@ -82,6 +84,8 @@
   [self setM_charger_slider:nil];
   [self setM_car_charge_message:nil];
   [self setM_battery_button:nil];
+  [self setM_car_charge_remaining_soc:nil];
+  [self setM_car_charge_remaining_range:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -225,6 +229,10 @@
   int parktime = [ovmsAppDelegate myRef].car_parktime;
   int chargetime = [ovmsAppDelegate myRef].car_chargeduration;
   int chargeremainingtime = [ovmsAppDelegate myRef].car_minutestofull;
+  int chargeremainingtimesoc = [ovmsAppDelegate myRef].car_minutestosoclimit;
+  int chargeremainingtimerange = [ovmsAppDelegate myRef].car_minutestorangelimit;
+  int chargesoclimit = [ovmsAppDelegate myRef].car_soclimit;
+  int chargerangelimit = [ovmsAppDelegate myRef].car_rangelimit;
   int chargekWh = [ovmsAppDelegate myRef].car_chargekwh;
   if ((parktime > 0)&&(lastupdated>0)) parktime += seconds;
   
@@ -289,6 +297,36 @@
                                chargeremainingtime/60,
                                chargeremainingtime%60];
     }
+    
+    if (chargeremainingtimesoc <= 0)
+      {
+      m_car_charge_remaining_soc.text = @"";
+      }
+    else if (chargeremainingtimesoc < 60)
+      {
+      m_car_charge_remaining_soc.text = [NSString stringWithFormat:@"%d%% %d mins",chargesoclimit ,chargeremainingtimesoc];
+      }
+    else
+      {
+      m_car_charge_remaining_soc.text = [NSString stringWithFormat:@"%d%% %02d:%02d",chargesoclimit ,
+                                         chargeremainingtimesoc/60,
+                                         chargeremainingtimesoc%60];
+      }
+    
+    if (chargeremainingtimerange <= 0)
+      {
+      m_car_charge_remaining_range.text = @"";
+      }
+    else if (chargeremainingtimerange < 60)
+      {
+      m_car_charge_remaining_range.text = [NSString stringWithFormat:@"%dkm %d mins",chargerangelimit ,chargeremainingtimerange];
+      }
+    else
+      {
+        m_car_charge_remaining_range.text = [NSString stringWithFormat:@"%dkm %02d:%02d",chargerangelimit ,
+                                         chargeremainingtimerange/60,
+                                         chargeremainingtimerange%60];
+      }
 
   if ( chargekWh==0 )
     {
@@ -326,6 +364,10 @@
   center = m_car_charge_remaining_time.center;
       center.x = (m_battery_front.center.x+bounds.size.width/2 + 233+17)/2;
   m_car_charge_remaining_time.center = center;
+    
+  center = m_car_charge_remaining_soc.center;
+        center.x = (m_battery_front.center.x+bounds.size.width/2 + 233+17)/2;
+  m_car_charge_remaining_soc.center = center;
       
   if ((([ovmsAppDelegate myRef].car_doors1 & 0x04)==0)||
       ([ovmsAppDelegate myRef].car_chargesubstate == 0x07))

@@ -60,6 +60,7 @@
 
 @synthesize car_minutestofull;
 @synthesize car_minutestorangelimit;
+@synthesize car_minutestosoclimit;
 @synthesize car_rangelimit;
 @synthesize car_soclimit;
 
@@ -568,6 +569,7 @@
     
   car_minutestofull = -1;
   car_minutestorangelimit = -1;
+  car_minutestosoclimit = -1;
   car_rangelimit = -1;
   car_soclimit = -1;
     
@@ -720,12 +722,13 @@
       if ([lparts count]>=23)
         {
         car_minutestofull = [[lparts objectAtIndex:19] intValue];
-        car_minutestorangelimit = [[lparts objectAtIndex:20] intValue];
         car_rangelimit = [[lparts objectAtIndex:21] intValue];
         car_soclimit = [[lparts objectAtIndex:22] intValue];
         }
       if([lparts count]>=31)
         {
+        car_minutestorangelimit = [[lparts objectAtIndex:27] intValue];
+        car_minutestosoclimit = [[lparts objectAtIndex:28] intValue];
         car_chargetype = [[lparts objectAtIndex:30] intValue];
         }
       }
