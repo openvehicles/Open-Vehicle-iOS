@@ -476,7 +476,8 @@
 - (IBAction)ChargeSliderTouch:(id)sender
   {
   if (([[ovmsAppDelegate myRef].car_chargestate isEqualToString:@"done"])||
-      ([[ovmsAppDelegate myRef].car_chargestate isEqualToString:@"stopped"]))
+      ([[ovmsAppDelegate myRef].car_chargestate isEqualToString:@"stopped"])||
+      ([[ovmsAppDelegate myRef].car_chargestate isEqualToString:@"timerwait"]))
     {
     // The slider is on the left, and should spring back there
     if (m_charger_slider.value == 1.0)
