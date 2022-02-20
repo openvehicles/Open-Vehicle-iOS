@@ -43,7 +43,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  int cl_row = [ovmsAppDelegate myRef].car_chargelimit-10;
+  int cl_row = [ovmsAppDelegate myRef].car_chargelimit-6;
   if (cl_row<0) cl_row = 0;
   [m_charger_current selectRow:cl_row inComponent:0 animated:NO];
   
@@ -118,7 +118,7 @@
   {
   int ncm = (int)m_charger_mode.selectedSegmentIndex;
   if (ncm>=2) ncm++;
-  int ncl = (int)[m_charger_current selectedRowInComponent:0] + 10;
+  int ncl = (int)[m_charger_current selectedRowInComponent:0] + 6;
 
   [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -148,14 +148,14 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-  return (70-10)+1;
+  return (70-6)+1;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component
 {
-  return [NSString stringWithFormat:@"%d Amps",10+(int)row];
+  return [NSString stringWithFormat:@"%d Amps",6+(int)row];
 } 
 
 #pragma mark -
