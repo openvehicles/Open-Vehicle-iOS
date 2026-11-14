@@ -8,6 +8,8 @@
 
 #import "ovmsLocationViewController.h"
 #import "OCMInformationController.h"
+#import <TargetConditionals.h>
+#import <math.h>
 
 #define IDENTIFIER_CLUSTER @"cluster"
 #define IDENTIFIER_PIN @"pin"
@@ -25,7 +27,66 @@
     [super viewDidLoad];
     self.isLoadAll = NO;
     self.isUseRange = YES;
+    self.vehicleTrail = [NSMutableArray array];
+    [self restoreVehicleTrail];
+    [self setupModernMapOverlay];
 }
+
+- (void)setupModernMapOverlay {
+    UIStackView *card = [[UIStackView alloc] init];
+    card.translatesAutoresizingMaskIntoConstraints = NO;
+    card.axis = UILayoutConstraintAxisVertical;
+    card.spacing = 3.0;
+    card.layoutMargins = UIEdgeInsetsMake(12, 14, 12, 14);
+    card.layoutMarginsRelativeArrangement = YES;
+    card.backgroundColor = [UIColor colorWithRed:0.047 green:0.071 blue:0.118 alpha:0.92];
+    card.layer.cornerRadius = 15.0;
+    self.modernLocationTitle = [[UILabel alloc] init];
+    self.modernLocationTitle.textColor = [UIColor whiteColor];
+    self.modernLocationTitle.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    self.modernLocationDetail = [[UILabel alloc] init];
+    self.modernLocationDetail.textColor = [UIColor colorWithWhite:0.75 alpha:1.0];
+    self.modernLocationDetail.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
+    self.modernLocationDetail.numberOfLines = 2;
+    [card addArrangedSubview:self.modernLocationTitle];
+    [card addArrangedSubview:self.modernLocationDetail];
+    [self.view addSubview:card];
+
+    UIStackView *buttons = [[UIStackView alloc] init];
+    buttons.translatesAutoresizingMaskIntoConstraints = NO;
+    buttons.axis = UILayoutConstraintAxisHorizontal;
+    buttons.spacing = 10.0;
+    UIButton *recenter = [UIButton buttonWithType:UIButtonTypeSystem];
+    [recenter setTitle:@"Recenter" forState:UIControlStateNormal];
+    [recenter addTarget:self action:@selector(recenterVehicle) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *options = [UIButton buttonWithType:UIButtonTypeSystem];
+    [options setTitle:@"Map options" forState:UIControlStateNormal];
+    [options addTarget:self action:@selector(showMapOptions) forControlEvents:UIControlEventTouchUpInside];
+    for (UIButton *button in @[recenter, options]) {
+        button.backgroundColor = [UIColor colorWithRed:0.047 green:0.071 blue:0.118 alpha:0.92];
+        button.layer.cornerRadius = 12.0;
+        button.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button.widthAnchor constraintGreaterThanOrEqualToConstant:105.0].active = YES;
+        [button.heightAnchor constraintEqualToConstant:44.0].active = YES;
+        [buttons addArrangedSubview:button];
+    }
+    [self.view addSubview:buttons];
+    [NSLayoutConstraint activateConstraints:@[
+        [card.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:12.0],
+        [card.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:14.0],
+        [card.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-14.0],
+        [buttons.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-14.0],
+        [buttons.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-14.0]
+    ]];
+}
+
+- (void)recenterVehicle {
+    self.isAutotrack = YES;
+    if (self.m_car_location) [self.myMapView setCenterCoordinate:self.m_car_location.coordinate animated:YES];
+}
+
+- (void)showMapOptions { [self locationSnapped:nil]; }
 
 - (void)dealloc {
     [self setMyMapView:nil];
@@ -33,7 +94,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"sel_connection_type_ids: %@", [ovmsAppDelegate myRef].sel_connection_type_ids);
     
     self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
 
@@ -53,6 +113,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
+    [self.historyTimeout invalidate];
+    if (self.historyLoading) { [[ovmsAppDelegate myRef] commandCancel]; self.historyLoading = NO; }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -72,6 +134,24 @@
     [[ovmsAppDelegate myRef] deregisterFromUpdate:self];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+#if DEBUG && TARGET_OS_SIMULATOR
+    if (self.screenshotScenarioHandled) return;
+    NSString *scenario = [[[NSProcessInfo processInfo] environment] objectForKey:@"OVMS_SCREENSHOT_SCENARIO"];
+    if ([scenario isEqualToString:@"map-options"]) {
+        self.screenshotScenarioHandled = YES;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ [self showMapOptions]; });
+    } else if ([scenario isEqualToString:@"map-history-loading"]) {
+        self.screenshotScenarioHandled = YES;
+        CLLocationCoordinate2D center=[ovmsAppDelegate myRef].car_location;
+        if (!CLLocationCoordinate2DIsValid(center) || (center.latitude==0 && center.longitude==0)) center=CLLocationCoordinate2DMake(51.5074,-0.1278);
+        [self.vehicleTrail removeAllObjects]; for(NSInteger i=0;i<18;i++) [self.vehicleTrail addObject:[NSValue valueWithMKCoordinate:CLLocationCoordinate2DMake(center.latitude-.012+i*.0007,center.longitude-.016+i*.0009+sin(i*.5)*.001)]];
+        [self initOverlays]; self.modernLocationTitle.text=@"Loading trip history…"; self.modernLocationDetail.text=@"Receiving GPS record 64 of 180 from the vehicle server";
+    }
+#endif
+}
+
 - (void)settingsChanged:(NSNotification *)notification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSInteger val = 11 - round([defaults floatForKey:@"ovmsMapBlocs"]);
@@ -86,17 +166,74 @@
 }
 
 - (IBAction)locationSnapped:(id)sender {
-    NSArray *options = @[
-        self.isAutotrack ? NSLocalizedString(@"Turn OFF autotrack", nil) : NSLocalizedString(@"Turn ON autotrack", nil),
-        self.isFiltredChargingStation ? NSLocalizedString(@"Filtered Stations OFF", nil) : NSLocalizedString(@"Filtered Stations ON", nil),
-        self.isUseRange ? NSLocalizedString(@"Only show Stations in range OFF", nil) : NSLocalizedString(@"Only show Stations in range ON", nil)
-    ];
-    
-    [PopoverView showPopoverAtPoint:CGPointMake(10, 0)
-                             inView:self.view
-                          withTitle:NSLocalizedString(@"Options", nil)
-                    withStringArray:options
-                            delegate:self];
+    UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"Map options" message:@"Choose what is shown around the vehicle." preferredStyle:UIAlertControllerStyleActionSheet];
+    NSString *tracking = self.isAutotrack ? @"Disable automatic tracking" : @"Enable automatic tracking";
+    [sheet addAction:[UIAlertAction actionWithTitle:tracking style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        self.isAutotrack = !self.isAutotrack;
+        if (self.isAutotrack) [self recenterVehicle];
+    }]];
+    NSString *filter = self.isFiltredChargingStation ? @"Show all connector types" : @"Filter compatible connectors";
+    [sheet addAction:[UIAlertAction actionWithTitle:filter style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if (![ovmsAppDelegate myRef].sel_connection_type_ids.length) {
+            UIAlertController *warning = [UIAlertController alertControllerWithTitle:@"Connector types needed" message:@"Configure the vehicle's connector types in Settings before enabling this filter." preferredStyle:UIAlertControllerStyleAlert];
+            [warning addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:warning animated:YES completion:nil];
+        } else {
+            self.isFiltredChargingStation = !self.isFiltredChargingStation;
+            if (self.m_car_location) [self loadData:[ovmsAppDelegate myRef].car_location];
+        }
+    }]];
+    NSString *range = self.isUseRange ? @"Show stations beyond range" : @"Only show stations in range";
+    [sheet addAction:[UIAlertAction actionWithTitle:range style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        self.isUseRange = !self.isUseRange;
+        if (self.m_car_location) [self loadData:[ovmsAppDelegate myRef].car_location];
+    }]];
+    [sheet addAction:[UIAlertAction actionWithTitle:@"Refresh trip history" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) { [self refreshVehicleHistory]; }]];
+    [sheet addAction:[UIAlertAction actionWithTitle:@"Clear recent vehicle trail" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [self.vehicleTrail removeAllObjects];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:[self vehicleTrailKey]];
+        [self initOverlays];
+    }]];
+    [sheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    if (sheet.popoverPresentationController) {
+        sheet.popoverPresentationController.sourceView = self.view;
+        sheet.popoverPresentationController.sourceRect = CGRectMake(CGRectGetMidX(self.view.bounds), CGRectGetMaxY(self.view.bounds) - 60, 1, 1);
+    }
+    [self presentViewController:sheet animated:YES completion:nil];
+}
+
+- (NSString *)vehicleTrailKey { return [NSString stringWithFormat:@"vehicleTrail.%@",[ovmsAppDelegate myRef].sel_car?:@"vehicle"]; }
+- (void)restoreVehicleTrail
+{
+    NSArray *saved=[[NSUserDefaults standardUserDefaults] arrayForKey:[self vehicleTrailKey]];
+    for(NSDictionary *point in saved){ CLLocationDegrees lat=[point[@"lat"] doubleValue],lon=[point[@"lon"] doubleValue]; CLLocationCoordinate2D coordinate=CLLocationCoordinate2DMake(lat,lon); if(CLLocationCoordinate2DIsValid(coordinate)) [self.vehicleTrail addObject:[NSValue valueWithMKCoordinate:coordinate]]; }
+}
+- (void)saveVehicleTrail
+{
+    NSMutableArray *saved=[NSMutableArray arrayWithCapacity:self.vehicleTrail.count]; for(NSValue *value in self.vehicleTrail){ CLLocationCoordinate2D point=value.MKCoordinateValue; [saved addObject:@{@"lat":@(point.latitude),@"lon":@(point.longitude)}]; } [[NSUserDefaults standardUserDefaults] setObject:saved forKey:[self vehicleTrailKey]];
+}
+- (void)refreshVehicleHistory
+{
+    ovmsAppDelegate *app=[ovmsAppDelegate myRef]; if(![app commandIsFree]){ self.modernLocationTitle.text=@"History unavailable"; self.modernLocationDetail.text=@"Another vehicle command is still pending"; return; }
+    self.pendingHistoryPoints=[NSMutableArray array]; self.historyLoading=YES; self.modernLocationTitle.text=@"Loading trip history…"; self.modernLocationDetail.text=@"Requesting GPS records from the vehicle server"; [app commandRegister:@"32,RT-GPS-Log" callback:self]; self.historyTimeout=[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(vehicleHistoryTimedOut:) userInfo:nil repeats:NO];
+}
+- (void)vehicleHistoryTimedOut:(NSTimer *)timer
+{
+    [[ovmsAppDelegate myRef] commandCancel]; self.historyLoading=NO; self.historyTimeout=nil; self.pendingHistoryPoints=nil; self.modernLocationTitle.text=@"Trip history timed out"; self.modernLocationDetail.text=@"The saved trail remains available; try again when the module is online";
+}
+- (void)commandResult:(NSArray *)result
+{
+    if(!self.historyLoading || result.count<3) return;
+    if([result[2] isEqual:@"No historical data available"]){ [self finishVehicleHistory]; return; }
+    NSInteger code=[result[1] integerValue]; if(code!=0){ [self.historyTimeout invalidate]; [[ovmsAppDelegate myRef] commandCancel]; self.historyLoading=NO; self.modernLocationTitle.text=@"History unavailable"; self.modernLocationDetail.text=result.count>2?result[2]:@"Vehicle rejected the request"; return; }
+    if(result.count>8 && [result[4] isEqualToString:@"RT-GPS-Log"]){ CLLocationCoordinate2D point=CLLocationCoordinate2DMake([result[7] doubleValue],[result[8] doubleValue]); if(CLLocationCoordinate2DIsValid(point) && (point.latitude!=0 || point.longitude!=0)) [self.pendingHistoryPoints addObject:[NSValue valueWithMKCoordinate:point]]; self.modernLocationDetail.text=[NSString stringWithFormat:@"Receiving GPS record %@ of %@ from the vehicle server",result[2],result[3]]; }
+    if(result.count>3 && [result[2] integerValue]==[result[3] integerValue]) [self finishVehicleHistory];
+}
+- (void)finishVehicleHistory
+{
+    [self.historyTimeout invalidate]; self.historyTimeout=nil; [[ovmsAppDelegate myRef] commandCancel]; self.historyLoading=NO;
+    if(self.pendingHistoryPoints.count){ self.vehicleTrail=self.pendingHistoryPoints; if(self.vehicleTrail.count>2000) [self.vehicleTrail removeObjectsInRange:NSMakeRange(0,self.vehicleTrail.count-2000)]; [self saveVehicleTrail]; [self initOverlays]; self.modernLocationTitle.text=@"Trip history loaded"; self.modernLocationDetail.text=[NSString stringWithFormat:@"%lu GPS points saved for offline viewing",(unsigned long)self.vehicleTrail.count]; } else { self.modernLocationTitle.text=@"No trip history"; self.modernLocationDetail.text=@"The server has no GPS log records for this vehicle"; }
+    self.pendingHistoryPoints=nil;
 }
 
 #pragma mark - PopoverViewDelegate Methods
@@ -211,6 +348,11 @@
         [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:[ovmsAppDelegate myRef].car_location radius:idealrange]];
         [myMapView addOverlay:[MKCircle circleWithCenterCoordinate:[ovmsAppDelegate myRef].car_location radius:estimatedrange]];
     }
+    if (self.vehicleTrail.count > 1) {
+        CLLocationCoordinate2D coordinates[self.vehicleTrail.count];
+        for (NSUInteger index = 0; index < self.vehicleTrail.count; index++) coordinates[index] = [self.vehicleTrail[index] MKCoordinateValue];
+        [myMapView addOverlay:[MKPolyline polylineWithCoordinates:coordinates count:self.vehicleTrail.count]];
+    }
 }
 
 - (NSArray *)locations {
@@ -257,6 +399,23 @@
 -(void)doupdate:(BOOL)forced {
     // The car has reported updated information, and we may need to reflect that
     CLLocationCoordinate2D location = [ovmsAppDelegate myRef].car_location;
+    ovmsAppDelegate *app = [ovmsAppDelegate myRef];
+    self.modernLocationTitle.text = app.car_gpslock > 0 ? @"Vehicle located" : @"Waiting for GPS";
+    self.modernLocationDetail.text = [NSString stringWithFormat:@"%.5f, %.5f  ·  %@  ·  estimated range %@",
+                                      location.latitude, location.longitude,
+                                      [app.car_speed_s length] ? app.car_speed_s : @"stationary",
+                                      [app.car_estimatedrange_s length] ? app.car_estimatedrange_s : @"--"];
+    if (CLLocationCoordinate2DIsValid(location) && (location.latitude != 0 || location.longitude != 0)) {
+        CLLocationCoordinate2D previous = self.vehicleTrail.count ? [[self.vehicleTrail lastObject] MKCoordinateValue] : kCLLocationCoordinate2DInvalid;
+        CLLocation *point = [[CLLocation alloc] initWithLatitude:location.latitude longitude:location.longitude];
+        CLLocation *last = CLLocationCoordinate2DIsValid(previous) ? [[CLLocation alloc] initWithLatitude:previous.latitude longitude:previous.longitude] : nil;
+        if (!last || [point distanceFromLocation:last] >= 10.0) {
+            [self.vehicleTrail addObject:[NSValue valueWithMKCoordinate:location]];
+            if (self.vehicleTrail.count > 2000) [self.vehicleTrail removeObjectAtIndex:0];
+            [self saveVehicleTrail];
+            [self initOverlays];
+        }
+    }
 //    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(22.315778,114.220304);
     
 
@@ -342,7 +501,6 @@
         if ( (gpslock < 1) || (stalegps<1) ) return; // No GPS lock or data
         if ([vehicleid isEqualToString:[ovmsAppDelegate myRef].sel_car]) return; // Not the selected car 
 
-        NSLog(@"groupUpdate for %@", vehicleid);
         VehicleAnnotation *pa = [m_groupcar_locations objectForKey:vehicleid];
         if (pa != nil) {
             // Update an existing car
@@ -363,7 +521,6 @@
             [pa setSpeed:[[ovmsAppDelegate myRef] convertSpeedUnits:speed]];
             [m_groupcar_locations setObject:pa forKey:vehicleid];
             [myMapView addAnnotation:pa];
-            NSLog(@"groupCarCreated %@ count=%lu", vehicleid,(unsigned long)[[myMapView annotations] count]);
         }
     }  
 }
@@ -464,6 +621,11 @@
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id)overlay {
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        MKPolylineRenderer *trail = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+        trail.strokeColor = [UIColor colorWithRed:0.10 green:0.58 blue:1.0 alpha:0.85]; trail.lineWidth = 5.0;
+        return trail;
+    }
     //MKCircleView *circleView = [[MKCircleView alloc] initWithOverlay:overlay];
     MKCircleRenderer *circleView = [[MKCircleRenderer alloc] initWithOverlay:overlay];
     circleView.lineWidth = 3;

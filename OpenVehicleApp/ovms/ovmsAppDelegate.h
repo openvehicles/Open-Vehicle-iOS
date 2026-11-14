@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
 #import <CFNetwork/CFSocketStream.h>
 #import "time.h"
 #import "CoreLocation/CoreLocation.h"
@@ -25,6 +26,17 @@
 @class GCDAsyncSocket;
 @class Reachability;
 
+typedef NS_ENUM(NSInteger, OVMSVehicleCapability) {
+  OVMSVehicleCapabilityLock,
+  OVMSVehicleCapabilityValet,
+  OVMSVehicleCapabilityHomelink,
+  OVMSVehicleCapabilityDriveProfiles,
+  OVMSVehicleCapabilityDDT4All,
+  OVMSVehicleCapabilityClimate,
+  OVMSVehicleCapabilityCharging,
+  OVMSVehicleCapabilityTPMS
+};
+
 @protocol ovmsUpdateDelegate
 @optional
 -(void) update;
@@ -38,11 +50,14 @@
 - (void)commandResult:(NSArray*)result;
 @end
 
-@interface ovmsAppDelegate : UIResponder <UIApplicationDelegate>
+@interface ovmsAppDelegate : UIResponder <UIApplicationDelegate, UNUserNotificationCenterDelegate>
 {
   GCDAsyncSocket *asyncSocket;
   NSTimer *tim;
   NSTimer *timreconnect;
+  NSUInteger reconnect_failures;
+  NSTimer *command_timeout;
+  NSString *pending_command;
   NSInteger networkingCount;
   
   unsigned char token[TOKEN_SIZE+1];
@@ -97,6 +112,7 @@
   int car_doors1;
   int car_doors2;
   int car_doors3;
+  int car_doors5;
   int car_stale_pemtemps;
   int car_stale_ambienttemps;
   int car_lockstate;
@@ -112,6 +128,14 @@
   int car_minutestorangelimit;
   int car_rangelimit;
   int car_soclimit;
+  double car_battery_voltage;
+  double car_battery_current;
+  float car_battery_capacity;
+  float car_soh;
+  float car_power;
+  float car_energyused;
+  float car_energyrecd;
+  int car_drivemode;
 
   float car_aux_battery_voltage;
   
@@ -123,6 +147,7 @@
   int car_speed;
   int car_parktime;
   int car_ambient_temp;
+  int car_cabin_temp;
   float car_tpms_fr_pressure;
   int car_tpms_fr_temp;
   float car_tpms_rr_pressure;
@@ -202,10 +227,19 @@
 @property (assign) int car_minutestorangelimit;
 @property (assign) int car_rangelimit;        
 @property (assign) int car_soclimit;
+@property (assign) double car_battery_voltage;
+@property (assign) double car_battery_current;
+@property (assign) float car_battery_capacity;
+@property (assign) float car_soh;
+@property (assign) float car_power;
+@property (assign) float car_energyused;
+@property (assign) float car_energyrecd;
+@property (assign) int car_drivemode;
 
 @property (assign) int car_doors1;
 @property (assign) int car_doors2;
 @property (assign) int car_doors3;
+@property (assign) int car_doors5;
 @property (assign) int car_stale_pemtemps;
 @property (assign) int car_stale_ambienttemps;
 
@@ -225,6 +259,7 @@
 @property (assign) int car_speed;
 @property (assign) int car_parktime;
 @property (assign) int car_ambient_temp;
+@property (assign) int car_cabin_temp;
 @property (assign) float car_tpms_fr_pressure;
 @property (assign) int car_tpms_fr_temp;
 @property (assign) float car_tpms_rr_pressure;
@@ -272,12 +307,16 @@
 - (void)serverClearState;
 - (void)handleCommand:(char)code command:(NSString*)cmd;
 - (void)switchCar:(NSString*)car;
+- (NSString *)credentialForVehicle:(NSString *)vehicle kind:(NSString *)kind;
+- (void)storeCredentialsForVehicle:(NSString *)vehicle networkPassword:(NSString *)networkPassword userPassword:(NSString *)userPassword;
+- (void)applyAppearancePreference;
 - (void)subscribeGroups;
 
 - (NSString*)convertDistanceUnits:(int)distance;
 - (NSString*)convertSpeedUnits:(int)speed;
 - (NSString*)convertTemperatureUnits:(int)temp;
 - (NSString*)convertPressureUnits:(float)pressure;
+- (BOOL)supportsVehicleCapability:(OVMSVehicleCapability)capability;
 
 - (void)registerForUpdate:(id)target;
 - (void)deregisterFromUpdate:(id)target;
@@ -318,5 +357,6 @@
 - (void)commandDoUSSD:(NSString*)ussd;
 - (void)commandDoRequestGPRSData;
 - (void)commandDoHomelink:(int)button;
+- (void)commandDoDriveProfile:(NSInteger)profile;
 
 @end

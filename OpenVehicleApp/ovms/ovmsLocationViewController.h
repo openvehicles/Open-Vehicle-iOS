@@ -20,7 +20,7 @@
 #import "REVClusterAnnotationView.h"
 #import "PopoverView.h"
 
-@interface ovmsLocationViewController : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, OCMSyncDelegate, PopoverViewDelegate>
+@interface ovmsLocationViewController : UIViewController <MKMapViewDelegate, ovmsUpdateDelegate, ovmsCommandDelegate, OCMSyncDelegate, PopoverViewDelegate>
 
 @property (strong, nonatomic) IBOutlet REVClusterMapView *myMapView;
 @property (strong, nonatomic) NSMutableDictionary* m_groupcar_locations;
@@ -34,11 +34,20 @@
 
 @property (strong, nonatomic) OCMSyncHelper *loader;
 @property (nonatomic, strong, readonly) NSArray *locations;
+@property (strong, nonatomic) UILabel *modernLocationTitle;
+@property (strong, nonatomic) UILabel *modernLocationDetail;
+@property (assign) BOOL screenshotScenarioHandled;
+@property (strong, nonatomic) NSMutableArray *vehicleTrail;
+@property (strong, nonatomic) NSMutableArray *pendingHistoryPoints;
+@property (strong, nonatomic) NSTimer *historyTimeout;
+@property (assign) BOOL historyLoading;
 
 - (IBAction)locationSnapped:(id)sender;
 
 -(void) update;
 -(void) doupdate:(BOOL)forced;
 -(void) groupUpdate:(NSArray*)result;
+-(void) showMapOptions;
+-(void) refreshVehicleHistory;
 
 @end

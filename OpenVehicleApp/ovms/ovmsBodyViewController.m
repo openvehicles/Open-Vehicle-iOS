@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ovmsBodyViewController.h"
 #import "ovmsControlPINEntry.h"
+#import <TargetConditionals.h>
 
 @implementation ovmsBodyViewController
 @synthesize m_car_lockunlock;
@@ -110,8 +111,51 @@
 - (void)viewDidLoad
   {
   [super viewDidLoad];
-  
+  [self setupModernControls];
   self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
+  }
+
+- (UIButton *)modernButton:(NSString *)title action:(SEL)action color:(UIColor *)color
+  {
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+  button.backgroundColor = color; button.layer.cornerRadius = 12.0;
+  button.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+  [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal]; [button setTitle:title forState:UIControlStateNormal];
+  [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside]; [button.heightAnchor constraintEqualToConstant:50].active = YES;
+  return button;
+  }
+
+- (UILabel *)modernCardLabel:(NSString *)text
+  {
+  UILabel *label = [[UILabel alloc] init]; label.text = text; label.textColor = [UIColor whiteColor]; label.numberOfLines = 0;
+  label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody]; label.backgroundColor = [UIColor colorWithRed:0.086 green:0.125 blue:0.196 alpha:1];
+  label.layer.cornerRadius = 14; label.layer.masksToBounds = YES; [label.heightAnchor constraintGreaterThanOrEqualToConstant:72].active = YES; return label;
+  }
+
+- (void)setupModernControls
+  {
+  [self.modernRootScroll removeFromSuperview];
+  for (UIView *subview in [self.view.subviews copy]) subview.hidden = YES;
+  self.modernCapabilityType = [ovmsAppDelegate myRef].car_type ?: @"";
+  self.view.backgroundColor = [UIColor colorWithRed:0.047 green:0.071 blue:0.118 alpha:1];
+  UIScrollView *scroll = [[UIScrollView alloc] init]; scroll.translatesAutoresizingMaskIntoConstraints = NO; scroll.backgroundColor = self.view.backgroundColor; [self.view addSubview:scroll];
+  self.modernRootScroll = scroll;
+  UIStackView *content = [[UIStackView alloc] init]; content.translatesAutoresizingMaskIntoConstraints = NO; content.axis = UILayoutConstraintAxisVertical; content.spacing = 12; [scroll addSubview:content];
+  [NSLayoutConstraint activateConstraints:@[[scroll.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor], [scroll.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor], [scroll.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor], [scroll.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor], [content.topAnchor constraintEqualToAnchor:scroll.contentLayoutGuide.topAnchor constant:16], [content.leadingAnchor constraintEqualToAnchor:scroll.frameLayoutGuide.leadingAnchor constant:16], [content.trailingAnchor constraintEqualToAnchor:scroll.frameLayoutGuide.trailingAnchor constant:-16], [content.bottomAnchor constraintEqualToAnchor:scroll.contentLayoutGuide.bottomAnchor constant:-20]]];
+  UIImageView *car = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[ovmsAppDelegate myRef].sel_imagepath]]; car.contentMode = UIViewContentModeScaleAspectFit; [car.heightAnchor constraintEqualToConstant:175].active = YES; [content addArrangedSubview:car];
+  self.modernSecurityState = [self modernCardLabel:@""]; self.modernVehicleState = [self modernCardLabel:@""]; self.modernTPMSState = [self modernCardLabel:@""];
+  [content addArrangedSubview:self.modernSecurityState]; [content addArrangedSubview:self.modernVehicleState]; [content addArrangedSubview:self.modernTPMSState];
+  ovmsAppDelegate *app = [ovmsAppDelegate myRef];
+  UIStackView *security = [[UIStackView alloc] init]; security.axis = UILayoutConstraintAxisHorizontal; security.distribution = UIStackViewDistributionFillEqually; security.spacing = 10;
+  UIButton *lock = [self modernButton:@"Lock / unlock" action:@selector(showLockControl) color:[UIColor colorWithRed:0.10 green:0.35 blue:0.66 alpha:1]]; lock.enabled = [app supportsVehicleCapability:OVMSVehicleCapabilityLock]; lock.alpha = lock.enabled ? 1.0 : 0.4; [security addArrangedSubview:lock];
+  if ([app supportsVehicleCapability:OVMSVehicleCapabilityValet]) [security addArrangedSubview:[self modernButton:@"Valet mode" action:@selector(showValetControl) color:[UIColor colorWithRed:0.45 green:0.30 blue:0.70 alpha:1]]];
+  [content addArrangedSubview:security];
+  UIStackView *other = [[UIStackView alloc] init]; other.axis = UILayoutConstraintAxisHorizontal; other.distribution = UIStackViewDistributionFillEqually; other.spacing = 10;
+  [other addArrangedSubview:[self modernButton:@"Wake vehicle" action:@selector(showWakeConfirmation) color:[UIColor colorWithRed:0.12 green:0.55 blue:0.32 alpha:1]]];
+  NSString *secondaryTitle = [app supportsVehicleCapability:OVMSVehicleCapabilityDriveProfiles] ? @"Drive profiles" : @"Homelink";
+  if ([app supportsVehicleCapability:OVMSVehicleCapabilityHomelink] || [app supportsVehicleCapability:OVMSVehicleCapabilityDriveProfiles]) [other addArrangedSubview:[self modernButton:secondaryTitle action:@selector(showHomelinkControl) color:[UIColor colorWithRed:0.72 green:0.38 blue:0.12 alpha:1]]];
+  [content addArrangedSubview:other];
+  if ([app supportsVehicleCapability:OVMSVehicleCapabilityDDT4All]) [content addArrangedSubview:[self modernButton:@"Scenic DDT4all actions" action:@selector(showDDT4AllControl) color:[UIColor colorWithRed:0.48 green:0.28 blue:0.62 alpha:1]]];
   }
 
 - (void)dealloc
@@ -152,6 +196,8 @@
 - (void)viewWillAppear:(BOOL)animated
   {
   [super viewWillAppear:animated];
+  NSString *currentType = [ovmsAppDelegate myRef].car_type ?: @"";
+  if (![self.modernCapabilityType isEqualToString:currentType]) [self setupModernControls];
   self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
 
   [[ovmsAppDelegate myRef] registerForUpdate:self];
@@ -163,6 +209,16 @@
 - (void)viewDidAppear:(BOOL)animated
   {
   [super viewDidAppear:animated];
+#if DEBUG && TARGET_OS_SIMULATOR
+  if (!self.screenshotScenarioHandled) {
+    NSString *scenario = [[[NSProcessInfo processInfo] environment] objectForKey:@"OVMS_SCREENSHOT_SCENARIO"];
+    self.screenshotScenarioHandled = [scenario hasPrefix:@"controls-"];
+    if ([scenario isEqualToString:@"controls-lock"]) [self showLockControl];
+    else if ([scenario isEqualToString:@"controls-valet"]) [self showValetControl];
+    else if ([scenario isEqualToString:@"controls-wake"]) [self showWakeConfirmation];
+    else if ([scenario isEqualToString:@"controls-homelink"]) [self showHomelinkControl];
+  }
+#endif
   }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -399,53 +455,108 @@
     m_car_wheel_rl_temp.textColor = [UIColor whiteColor];
     }
   
-  if ([ovmsAppDelegate myRef].car_tpms_fr_temp > 0)
-    {
+  if ([ovmsAppDelegate myRef].car_tpms_fr_pressure > 0)
     m_car_wheel_fr_pressure.text = [ovmsAppDelegate myRef].car_tpms_fr_pressure_s;
-    m_car_wheel_fr_temp.text = [ovmsAppDelegate myRef].car_tpms_fr_temp_s;
-    }
   else
-    {
     m_car_wheel_fr_pressure.text = @"";
+  if ([ovmsAppDelegate myRef].car_tpms_fr_temp > 0)
+    m_car_wheel_fr_temp.text = [ovmsAppDelegate myRef].car_tpms_fr_temp_s;
+  else
     m_car_wheel_fr_temp.text = @"";
-    }
 
-  if ([ovmsAppDelegate myRef].car_tpms_rr_temp > 0)
-    {
+  if ([ovmsAppDelegate myRef].car_tpms_rr_pressure > 0)
     m_car_wheel_rr_pressure.text = [ovmsAppDelegate myRef].car_tpms_rr_pressure_s;
-    m_car_wheel_rr_temp.text = [ovmsAppDelegate myRef].car_tpms_rr_temp_s;
-    }
   else
-    {
     m_car_wheel_rr_pressure.text = @"";
+  if ([ovmsAppDelegate myRef].car_tpms_rr_temp > 0)
+    m_car_wheel_rr_temp.text = [ovmsAppDelegate myRef].car_tpms_rr_temp_s;
+  else
     m_car_wheel_rr_temp.text = @"";
-    }
 
-  if ([ovmsAppDelegate myRef].car_tpms_fl_temp > 0)
-    {
+  if ([ovmsAppDelegate myRef].car_tpms_fl_pressure > 0)
     m_car_wheel_fl_pressure.text = [ovmsAppDelegate myRef].car_tpms_fl_pressure_s;
-    m_car_wheel_fl_temp.text = [ovmsAppDelegate myRef].car_tpms_fl_temp_s;
-    }
   else
-    {
     m_car_wheel_fl_pressure.text = @"";
-    m_car_wheel_fl_temp.text = @"";
-    }
-  
-  if ([ovmsAppDelegate myRef].car_tpms_rl_temp > 0)
-    {
-    m_car_wheel_rl_pressure.text = [ovmsAppDelegate myRef].car_tpms_rl_pressure_s;
-    m_car_wheel_rl_temp.text = [ovmsAppDelegate myRef].car_tpms_rl_temp_s;
-    }
+  if ([ovmsAppDelegate myRef].car_tpms_fl_temp > 0)
+    m_car_wheel_fl_temp.text = [ovmsAppDelegate myRef].car_tpms_fl_temp_s;
   else
-    {
+    m_car_wheel_fl_temp.text = @"";
+  
+  if ([ovmsAppDelegate myRef].car_tpms_rl_pressure > 0)
+    m_car_wheel_rl_pressure.text = [ovmsAppDelegate myRef].car_tpms_rl_pressure_s;
+  else
     m_car_wheel_rl_pressure.text = @"";
+  if ([ovmsAppDelegate myRef].car_tpms_rl_temp > 0)
+    m_car_wheel_rl_temp.text = [ovmsAppDelegate myRef].car_tpms_rl_temp_s;
+  else
     m_car_wheel_rl_temp.text = @"";
-    }
     
     m_car_aux_battery.text = [NSString stringWithFormat:@"%0.1fV",
                                 [ovmsAppDelegate myRef].car_aux_battery_voltage];
+
+  ovmsAppDelegate *app = [ovmsAppDelegate myRef];
+  BOOL locked = (app.car_doors2 & 0x08) != 0;
+  BOOL valet = (app.car_doors2 & 0x10) != 0;
+  self.modernSecurityState.text = [NSString stringWithFormat:@"  SECURITY\n  %@  ·  valet %@", locked ? @"Locked" : @"Unlocked", valet ? @"on" : @"off"];
+  NSMutableArray *openItems = [NSMutableArray array];
+  if (app.car_doors1 & 0x01) [openItems addObject:@"driver door"];
+  if (app.car_doors1 & 0x02) [openItems addObject:@"passenger door"];
+  if (app.car_doors2 & 0x40) [openItems addObject:@"bonnet"];
+  if (app.car_doors2 & 0x80) [openItems addObject:@"boot"];
+  self.modernVehicleState.text = [NSString stringWithFormat:@"  VEHICLE\n  %@  ·  12 V %.1f V", [openItems count] ? [openItems componentsJoinedByString:@", "] : @"All doors closed", app.car_aux_battery_voltage];
+  self.modernTPMSState.text = [NSString stringWithFormat:@"  TYRE PRESSURES\n  FL %@  ·  FR %@\n  RL %@  ·  RR %@", [app.car_tpms_fl_pressure_s length] ? app.car_tpms_fl_pressure_s : @"--", [app.car_tpms_fr_pressure_s length] ? app.car_tpms_fr_pressure_s : @"--", [app.car_tpms_rl_pressure_s length] ? app.car_tpms_rl_pressure_s : @"--", [app.car_tpms_rr_pressure_s length] ? app.car_tpms_rr_pressure_s : @"--"];
 }
+
+- (void)showPINControlWithTitle:(NSString *)title message:(NSString *)message actionTitle:(NSString *)actionTitle handler:(void (^)(NSString *pin))handler
+  {
+  UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+  [alert addTextFieldWithConfigurationHandler:^(UITextField *field) { field.placeholder = @"Vehicle PIN"; field.keyboardType = UIKeyboardTypeNumberPad; field.secureTextEntry = YES; }];
+  [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+  [alert addAction:[UIAlertAction actionWithTitle:actionTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    // Match the legacy PIN form: the vehicle module validates the PIN, including
+    // an empty value for modules that do not require one.
+    handler(alert.textFields.firstObject.text ?: @"");
+  }]];
+  [self presentViewController:alert animated:YES completion:nil];
+  }
+
+- (void)showLockControl
+  {
+  BOOL locked = ([ovmsAppDelegate myRef].car_doors2 & 0x08) != 0;
+  NSString *verb = locked ? @"Unlock" : @"Lock";
+  [self showPINControlWithTitle:[NSString stringWithFormat:@"%@ vehicle", verb] message:@"Enter the vehicle PIN to authorize this security command." actionTitle:verb handler:^(NSString *pin) { if (locked) [[ovmsAppDelegate myRef] commandDoUnlockCar:pin]; else [[ovmsAppDelegate myRef] commandDoLockCar:pin]; }];
+  }
+
+- (void)showValetControl
+  {
+  BOOL enabled = ([ovmsAppDelegate myRef].car_doors2 & 0x10) != 0;
+  NSString *verb = enabled ? @"Disable" : @"Enable";
+  [self showPINControlWithTitle:[NSString stringWithFormat:@"%@ valet mode", verb] message:@"Enter the vehicle PIN to change valet mode." actionTitle:verb handler:^(NSString *pin) { if (enabled) [[ovmsAppDelegate myRef] commandDoDeactivateValet:pin]; else [[ovmsAppDelegate myRef] commandDoActivateValet:pin]; }];
+  }
+
+- (void)showWakeConfirmation
+  {
+  UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Wake vehicle?" message:@"Ask the OVMS module to wake the vehicle systems." preferredStyle:UIAlertControllerStyleAlert];
+  [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+  [alert addAction:[UIAlertAction actionWithTitle:@"Wake" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) { [[ovmsAppDelegate myRef] commandDoWakeupCar]; }]]; [self presentViewController:alert animated:YES completion:nil];
+  }
+
+- (void)showHomelinkControl
+  {
+  BOOL profiles = [[ovmsAppDelegate myRef] supportsVehicleCapability:OVMSVehicleCapabilityDriveProfiles];
+  UIAlertController *sheet = [UIAlertController alertControllerWithTitle:profiles ? @"Drive profiles" : @"Homelink" message:profiles ? @"Choose the Renault Twizy drive profile." : @"Choose the configured transmitter button." preferredStyle:UIAlertControllerStyleActionSheet];
+  if (profiles) [sheet addAction:[UIAlertAction actionWithTitle:@"Default profile" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) { [[ovmsAppDelegate myRef] commandDoDriveProfile:-1]; }]];
+  for (int index = 0; index < 3; index++) { [sheet addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:profiles ? @"Profile %d" : @"Button %d", index + 1] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) { if (profiles) [[ovmsAppDelegate myRef] commandDoDriveProfile:index]; else [[ovmsAppDelegate myRef] commandDoHomelink:index]; }]]; }
+  [sheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]]; sheet.popoverPresentationController.sourceView=self.view; sheet.popoverPresentationController.sourceRect=CGRectMake(CGRectGetMidX(self.view.bounds),CGRectGetMidY(self.view.bounds),1,1); [self presentViewController:sheet animated:YES completion:nil];
+  }
+
+- (void)showDDT4AllControl
+  {
+  NSArray *titles=@[@"Automatic wipers off",@"Automatic wipers on",@"Switch to Wi-Fi",@"Switch to modem",@"Lock beep off",@"Lock beep on",@"Rear wiper off",@"Rear wiper on"];
+  UIAlertController *sheet=[UIAlertController alertControllerWithTitle:@"Scenic DDT4all actions" message:@"Choose a vehicle configuration command. The module must support the xsq DDT4all interface." preferredStyle:UIAlertControllerStyleActionSheet];
+  [titles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger index, BOOL *stop) { [sheet addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) { [[ovmsAppDelegate myRef] commandDoCommand:[NSString stringWithFormat:@"xsq ddt4all %lu",(unsigned long)index+2]]; }]]; }];
+  [sheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]]; sheet.popoverPresentationController.sourceView=self.view; sheet.popoverPresentationController.sourceRect=CGRectMake(CGRectGetMidX(self.view.bounds),CGRectGetMidY(self.view.bounds),1,1); [self presentViewController:sheet animated:YES completion:nil];
+  }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
   {

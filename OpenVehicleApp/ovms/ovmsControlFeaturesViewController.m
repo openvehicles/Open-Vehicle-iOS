@@ -35,6 +35,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Module features";
+    self.tableView.backgroundColor = [UIColor colorWithRed:.047 green:.071 blue:.118 alpha:1];
+    self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:.10];
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -66,6 +70,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [[ovmsAppDelegate myRef] commandCancel];
+    [self stopSpinner];
     [super viewWillDisappear:animated];
 }
 
@@ -223,6 +229,7 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
   }
   [cell setTag:200+indexPath.row];
+  cell.backgroundColor = [UIColor colorWithRed:.086 green:.125 blue:.196 alpha:1];
   
   // Configure the cell...
   
@@ -253,6 +260,8 @@
     }
 
   UITextField *cellText = (UITextField *)[cell viewWithTag:1001];
+  cellLabel.textColor = UIColor.whiteColor; cellLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+  cellText.textColor = UIColor.whiteColor; cellText.keyboardType = UIKeyboardTypeNumbersAndPunctuation; cellText.accessibilityLabel = cellLabel.text;
   [cellText setText:[NSString stringWithFormat:@"%d", feature[indexPath.row]]];
 
   return cell;

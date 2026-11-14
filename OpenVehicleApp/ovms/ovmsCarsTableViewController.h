@@ -16,5 +16,7 @@
 
 @property (nonatomic, retain) NSArray *cars;
 @property (nonatomic, retain) NSManagedObjectContext *context;
+@property (assign) BOOL screenshotScenarioHandled;
+- (void)showAppSettings;
 
 @end

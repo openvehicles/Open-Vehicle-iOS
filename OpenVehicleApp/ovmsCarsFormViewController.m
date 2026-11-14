@@ -186,8 +186,8 @@
           [[ovmsAppDelegate myRef] switchCar:car.vehicleid];
           }
         self.vehiclelabel.text = car.label;
-        self.vehicleNetPass.text = car.netpass;
-        self.vehicleUserPass.text = car.userpass;
+        self.vehicleNetPass.text = [[ovmsAppDelegate myRef] credentialForVehicle:car.vehicleid kind:@"network"] ?: car.netpass;
+        self.vehicleUserPass.text = [[ovmsAppDelegate myRef] credentialForVehicle:car.vehicleid kind:@"user"] ?: car.userpass;
         NSString *imagepath = car.imagepath;
 //TMP        self.connectionTypeIds = car.connection_type_ids;
         for (int k=0;k<[carImages count];k++)
@@ -225,8 +225,9 @@
                    inManagedObjectContext:_context];
       car.vehicleid = vehicleid.text;
       car.label = vehiclelabel.text;
-      car.netpass = vehicleNetPass.text;
-      car.userpass = vehicleUserPass.text;
+      [[ovmsAppDelegate myRef] storeCredentialsForVehicle:vehicleid.text networkPassword:vehicleNetPass.text userPassword:vehicleUserPass.text];
+      car.netpass = @"";
+      car.userpass = @"";
       car.imagepath = [carImages objectAtIndex:[vehicleImage selectedRowInComponent:0]];
 //TMP      car.connection_type_ids = self.connectionTypeIds;
       if (![_context save:&error])
@@ -252,8 +253,9 @@
           Cars* car = [array objectAtIndex:0];
           car.vehicleid = vehicleid.text;
           car.label = vehiclelabel.text;
-          car.netpass = vehicleNetPass.text;
-          car.userpass = vehicleUserPass.text;
+          [[ovmsAppDelegate myRef] storeCredentialsForVehicle:vehicleid.text networkPassword:vehicleNetPass.text userPassword:vehicleUserPass.text];
+          car.netpass = @"";
+          car.userpass = @"";
           car.imagepath = [carImages objectAtIndex:[vehicleImage selectedRowInComponent:0]];
 //TMP          car.connection_type_ids = self.connectionTypeIds;
           if (![_context save:&error])

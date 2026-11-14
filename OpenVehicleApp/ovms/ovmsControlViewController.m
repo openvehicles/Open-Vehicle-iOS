@@ -43,7 +43,14 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-//  self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
+  self.navigationItem.title = @"Module control";
+  self.view.backgroundColor = [UIColor colorWithRed:.047 green:.071 blue:.118 alpha:1];
+  for (UIView *view in self.view.subviews)
+    if ([view isKindOfClass:[UIButton class]])
+      {
+      UIButton *button=(UIButton *)view; button.backgroundColor=[UIColor colorWithRed:.086 green:.125 blue:.196 alpha:1]; button.layer.cornerRadius=12; button.titleLabel.font=[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]; button.titleLabel.adjustsFontForContentSizeCategory=YES; [button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+      button.accessibilityHint=[button.currentTitle isEqualToString:@"Reset OVMS Module"] ? @"Restarts the remote vehicle module after confirmation" : [NSString stringWithFormat:@"Opens %@",button.currentTitle.lowercaseString];
+      }
 }
 
 - (void)dealloc
@@ -86,7 +93,10 @@
 }
 
 - (IBAction)resetModuleButton:(id)sender {
-  [[ovmsAppDelegate myRef] commandDoReboot];
+  UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"Restart OVMS module?" message:@"The vehicle connection will be unavailable while the remote module restarts. This does not restart or operate the vehicle." preferredStyle:UIAlertControllerStyleAlert];
+  [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+  [alert addAction:[UIAlertAction actionWithTitle:@"Restart module" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){ [[ovmsAppDelegate myRef] commandDoReboot]; }]];
+  [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)handleConnections:(id)sender {

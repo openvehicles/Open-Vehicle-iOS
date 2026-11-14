@@ -167,8 +167,6 @@
 
   self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
 
-  myMapView = [myMapView initWithFrame: myMapView.frame];
-
   [self animateLayer];
 
   self.m_car_location = nil;
@@ -819,49 +817,41 @@
     m_car_wheel_rl_temp.textColor = [UIColor whiteColor];
     }
   
-  if ([ovmsAppDelegate myRef].car_tpms_fr_temp > 0)
-    {
+  if ([ovmsAppDelegate myRef].car_tpms_fr_pressure > 0)
     m_car_wheel_fr_pressure.text = [ovmsAppDelegate myRef].car_tpms_fr_pressure_s;
-    m_car_wheel_fr_temp.text = [ovmsAppDelegate myRef].car_tpms_fr_temp_s;
-    }
   else
-    {
     m_car_wheel_fr_pressure.text = @"";
+  if ([ovmsAppDelegate myRef].car_tpms_fr_temp > 0)
+    m_car_wheel_fr_temp.text = [ovmsAppDelegate myRef].car_tpms_fr_temp_s;
+  else
     m_car_wheel_fr_temp.text = @"";
-    }
   
-  if ([ovmsAppDelegate myRef].car_tpms_rr_temp > 0)
-    {
+  if ([ovmsAppDelegate myRef].car_tpms_rr_pressure > 0)
     m_car_wheel_rr_pressure.text = [ovmsAppDelegate myRef].car_tpms_rr_pressure_s;
-    m_car_wheel_rr_temp.text = [ovmsAppDelegate myRef].car_tpms_rr_temp_s;
-    }
   else
-    {
     m_car_wheel_rr_pressure.text = @"";
+  if ([ovmsAppDelegate myRef].car_tpms_rr_temp > 0)
+    m_car_wheel_rr_temp.text = [ovmsAppDelegate myRef].car_tpms_rr_temp_s;
+  else
     m_car_wheel_rr_temp.text = @"";
-    }
   
-  if ([ovmsAppDelegate myRef].car_tpms_fl_temp > 0)
-    {
+  if ([ovmsAppDelegate myRef].car_tpms_fl_pressure > 0)
     m_car_wheel_fl_pressure.text = [ovmsAppDelegate myRef].car_tpms_fl_pressure_s;
-    m_car_wheel_fl_temp.text = [ovmsAppDelegate myRef].car_tpms_fl_temp_s;
-    }
   else
-    {
     m_car_wheel_fl_pressure.text = @"";
-    m_car_wheel_fl_temp.text = @"";
-    }
-  
-  if ([ovmsAppDelegate myRef].car_tpms_rl_temp > 0)
-    {
-    m_car_wheel_rl_pressure.text = [ovmsAppDelegate myRef].car_tpms_rl_pressure_s;
-    m_car_wheel_rl_temp.text = [ovmsAppDelegate myRef].car_tpms_rl_temp_s;
-    }
+  if ([ovmsAppDelegate myRef].car_tpms_fl_temp > 0)
+    m_car_wheel_fl_temp.text = [ovmsAppDelegate myRef].car_tpms_fl_temp_s;
   else
-    {
+    m_car_wheel_fl_temp.text = @"";
+  
+  if ([ovmsAppDelegate myRef].car_tpms_rl_pressure > 0)
+    m_car_wheel_rl_pressure.text = [ovmsAppDelegate myRef].car_tpms_rl_pressure_s;
+  else
     m_car_wheel_rl_pressure.text = @"";
+  if ([ovmsAppDelegate myRef].car_tpms_rl_temp > 0)
+    m_car_wheel_rl_temp.text = [ovmsAppDelegate myRef].car_tpms_rl_temp_s;
+  else
     m_car_wheel_rl_temp.text = @"";
-    }
 
    m_car_aux_battery.text = [NSString stringWithFormat:@"%0.1fV",
                              [ovmsAppDelegate myRef].car_aux_battery_voltage];
@@ -1062,7 +1052,6 @@
     if ((gpslock < 1)||(stalegps<1)) return; // No GPS lock or data
     if ([vehicleid isEqualToString:[ovmsAppDelegate myRef].sel_car]) return; // Not the selected car 
     
-    NSLog(@"groupUpdate for %@", vehicleid);
     VehicleAnnotation *pa = [m_groupcar_locations objectForKey:vehicleid];
     if (pa != nil)
       {
@@ -1086,7 +1075,6 @@
       [pa setSpeed:[[ovmsAppDelegate myRef] convertSpeedUnits:speed]];
       [m_groupcar_locations setObject:pa forKey:vehicleid];
       [myMapView addAnnotation:pa];
-      NSLog(@"groupCarCreated %@ count=%d", vehicleid,(int)[[myMapView annotations] count]);
       }
     }  
 }
@@ -1174,6 +1162,10 @@
         [[segue destinationViewController] setDelegate:self];
       }
     }
+}
+
+- (void)omvsControlPINEntryDelegateDidCancel:(NSString*)fn
+{
 }
 
 - (void)omvsControlPINEntryDelegateDidSave:(NSString*)fn pin:(NSString*)pin

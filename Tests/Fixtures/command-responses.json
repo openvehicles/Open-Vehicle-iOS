@@ -1,0 +1,7 @@
+[
+  {"wire":"11,0","command":11,"result":0,"payload":""},
+  {"wire":"7,0,network: connected,signal: -73 dBm","command":7,"result":0,"payload":"network: connected,signal: -73 dBm"},
+  {"wire":"30,0,1,2,2026-09-08,1024,512,256,128","command":30,"result":0,"payload":"1,2,2026-09-08,1024,512,256,128"},
+  {"wire":"20,1,PIN rejected","command":20,"result":1,"payload":"PIN rejected"},
+  {"wire":"19,2","command":19,"result":2,"payload":""}
+]

@@ -1,0 +1,295 @@
+name: iOS build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build with Xcode
+    runs-on: macos-15
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v5
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          xcodebuild -showsdks
+          plutil -lint .github/ExportOptions.plist
+          xcodebuild -project "OpenVehicleApp/Open Vehicle.xcodeproj" -list | grep "Open Vehicle"
+
+      - name: Run protocol fixture tests
+        run: |
+          set -euo pipefail
+          xcrun clang -fobjc-arc -fmodules -framework Foundation \
+            -IOpenVehicleApp/ovms \
+            OpenVehicleApp/ovms/OVMSCommandResponse.m \
+            Tests/OVMSCommandResponseTests.m \
+            -o "$RUNNER_TEMP/ovms-protocol-tests"
+          "$RUNNER_TEMP/ovms-protocol-tests" Tests/Fixtures/command-responses.json
+          xcrun clang -fobjc-arc -fmodules -framework Foundation \
+            -IOpenVehicleApp/ovms \
+            OpenVehicleApp/ovms/OVMSTelemetryFrame.m \
+            Tests/OVMSTelemetryFrameTests.m \
+            -o "$RUNNER_TEMP/ovms-telemetry-tests"
+          "$RUNNER_TEMP/ovms-telemetry-tests" Tests/Fixtures/telemetry-frames.json
+
+      - name: Build for iOS Simulator
+        working-directory: OpenVehicleApp
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -project "Open Vehicle.xcodeproj" \
+            -target "Open Vehicle" \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination "generic/platform=iOS Simulator" \
+            CONFIGURATION_BUILD_DIR="$RUNNER_TEMP/Build" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            build | tee "$RUNNER_TEMP/xcodebuild.log"
+          test -f "$RUNNER_TEMP/Build/Open Vehicle.app/PrivacyInfo.xcprivacy"
+          plutil -lint "$RUNNER_TEMP/Build/Open Vehicle.app/PrivacyInfo.xcprivacy"
+          /usr/libexec/PlistBuddy -c "Print :UIBackgroundModes" "$RUNNER_TEMP/Build/Open Vehicle.app/Info.plist"
+
+      - name: Launch app and capture screenshot
+        run: |
+          set -euo pipefail
+
+          device_id="$(
+            xcrun simctl list devices available --json |
+              jq -r '[.devices[][] | select(.name | startswith("iPhone"))][0].udid'
+          )"
+
+          if [[ -z "$device_id" || "$device_id" == "null" ]]; then
+            echo "No available iPhone simulator was found" >&2
+            exit 1
+          fi
+
+          mkdir -p "$RUNNER_TEMP/Screenshots"
+          echo "Using simulator: $(xcrun simctl list devices | grep "$device_id")"
+          xcrun simctl boot "$device_id" 2>/dev/null || true
+          xcrun simctl bootstatus "$device_id" -b &
+          boot_pid=$!
+          for _ in {1..90}; do
+            boot_state="$(ps -p "$boot_pid" -o state= 2>/dev/null || true)"
+            if [[ -z "$boot_state" || "$boot_state" == Z* ]]; then
+              break
+            fi
+            sleep 2
+          done
+          boot_state="$(ps -p "$boot_pid" -o state= 2>/dev/null || true)"
+          if [[ -n "$boot_state" && "$boot_state" != Z* ]]; then
+            kill "$boot_pid" 2>/dev/null || true
+            echo "Simulator did not finish booting within three minutes" >&2
+            exit 1
+          fi
+          wait "$boot_pid"
+          xcrun simctl status_bar "$device_id" override \
+            --time 09:41 \
+            --batteryState charged \
+            --batteryLevel 100 \
+            --wifiBars 3 \
+            --cellularBars 4
+          xcrun simctl install "$device_id" "$RUNNER_TEMP/Build/Open Vehicle.app"
+          screen_names=(status car location messages settings)
+          for tab_index in "${!screen_names[@]}"; do
+            screen_name="${screen_names[$tab_index]}"
+            xcrun simctl terminate "$device_id" com.openvehicles.ovms 2>/dev/null || true
+            launch_result="$(
+              SIMCTL_CHILD_OVMS_SCREENSHOT_TAB="$tab_index" \
+                xcrun simctl launch "$device_id" com.openvehicles.ovms
+            )"
+            echo "$launch_result"
+            app_pid="${launch_result##*: }"
+            sleep 3
+
+            if ! xcrun simctl spawn "$device_id" /bin/kill -0 "$app_pid"; then
+              echo "The app stopped while capturing the $screen_name tab" >&2
+              exit 1
+            fi
+
+            xcrun simctl io "$device_id" screenshot \
+              "$RUNNER_TEMP/Screenshots/$screen_name.png"
+          done
+
+          interaction_scenarios=(charging charging-start-confirmation charging-stop-confirmation charging-settings charging-command-pending charging-command-failed climate climate-start-confirmation climate-stop-confirmation climate-schedule climate-schedule-options climate-schedule-clear-day climate-schedule-copy climate-schedule-clear energy battery-diagnostics battery-history-loading quick-actions)
+          for scenario in "${interaction_scenarios[@]}"; do
+            xcrun simctl terminate "$device_id" com.openvehicles.ovms 2>/dev/null || true
+            launch_result="$(
+              SIMCTL_CHILD_OVMS_SCREENSHOT_TAB=0 \
+              SIMCTL_CHILD_OVMS_SCREENSHOT_SCENARIO="$scenario" \
+                xcrun simctl launch "$device_id" com.openvehicles.ovms
+            )"
+            echo "$launch_result"
+            app_pid="${launch_result##*: }"
+            sleep 4
+
+            if ! xcrun simctl spawn "$device_id" /bin/kill -0 "$app_pid"; then
+              echo "The app stopped while capturing $scenario" >&2
+              exit 1
+            fi
+
+            xcrun simctl io "$device_id" screenshot \
+              "$RUNNER_TEMP/Screenshots/$scenario.png"
+          done
+
+          xcrun simctl terminate "$device_id" com.openvehicles.ovms 2>/dev/null || true
+          launch_result="$(
+            SIMCTL_CHILD_OVMS_SCREENSHOT_TAB=2 \
+            SIMCTL_CHILD_OVMS_SCREENSHOT_SCENARIO=map-options \
+              xcrun simctl launch "$device_id" com.openvehicles.ovms
+          )"
+          echo "$launch_result"
+          app_pid="${launch_result##*: }"
+          sleep 4
+          xcrun simctl spawn "$device_id" /bin/kill -0 "$app_pid"
+          xcrun simctl io "$device_id" screenshot "$RUNNER_TEMP/Screenshots/map-options.png"
+
+          xcrun simctl terminate "$device_id" com.openvehicles.ovms 2>/dev/null || true
+          launch_result="$(SIMCTL_CHILD_OVMS_SCREENSHOT_TAB=2 SIMCTL_CHILD_OVMS_SCREENSHOT_SCENARIO=map-history-loading xcrun simctl launch "$device_id" com.openvehicles.ovms)"
+          echo "$launch_result"
+          app_pid="${launch_result##*: }"
+          sleep 4
+          xcrun simctl spawn "$device_id" /bin/kill -0 "$app_pid"
+          xcrun simctl io "$device_id" screenshot "$RUNNER_TEMP/Screenshots/map-history-loading.png"
+
+          control_scenarios=(controls-lock controls-valet controls-wake controls-homelink)
+          for scenario in "${control_scenarios[@]}"; do
+            xcrun simctl terminate "$device_id" com.openvehicles.ovms 2>/dev/null || true
+            launch_result="$(
+              SIMCTL_CHILD_OVMS_SCREENSHOT_TAB=1 \
+              SIMCTL_CHILD_OVMS_SCREENSHOT_SCENARIO="$scenario" \
+                xcrun simctl launch "$device_id" com.openvehicles.ovms
+            )"
+            echo "$launch_result"
+            app_pid="${launch_result##*: }"
+            sleep 4
+            xcrun simctl spawn "$device_id" /bin/kill -0 "$app_pid"
+            xcrun simctl io "$device_id" screenshot "$RUNNER_TEMP/Screenshots/$scenario.png"
+          done
+
+
+          xcrun simctl terminate "$device_id" com.openvehicles.ovms 2>/dev/null || true
+          launch_result="$(
+            SIMCTL_CHILD_OVMS_SCREENSHOT_TAB=4 \
+            SIMCTL_CHILD_OVMS_SCREENSHOT_SCENARIO=app-settings \
+              xcrun simctl launch "$device_id" com.openvehicles.ovms
+          )"
+          echo "$launch_result"
+          app_pid="${launch_result##*: }"
+          sleep 4
+          xcrun simctl spawn "$device_id" /bin/kill -0 "$app_pid"
+          xcrun simctl io "$device_id" screenshot "$RUNNER_TEMP/Screenshots/app-settings.png"
+
+          xcrun simctl terminate "$device_id" com.openvehicles.ovms 2>/dev/null || true
+          launch_result="$(SIMCTL_CHILD_OVMS_SCREENSHOT_TAB=4 SIMCTL_CHILD_OVMS_SCREENSHOT_SCENARIO=vehicle-diagnostics xcrun simctl launch "$device_id" com.openvehicles.ovms)"
+          echo "$launch_result"
+          app_pid="${launch_result##*: }"
+          sleep 4
+          xcrun simctl spawn "$device_id" /bin/kill -0 "$app_pid"
+          xcrun simctl io "$device_id" screenshot "$RUNNER_TEMP/Screenshots/vehicle-diagnostics.png"
+
+          message_scenarios=(messages-commands messages-command-add messages-command-manage messages-clear)
+          for scenario in "${message_scenarios[@]}"; do
+            xcrun simctl terminate "$device_id" com.openvehicles.ovms 2>/dev/null || true
+            launch_result="$(
+              SIMCTL_CHILD_OVMS_SCREENSHOT_TAB=3 \
+              SIMCTL_CHILD_OVMS_SCREENSHOT_SCENARIO="$scenario" \
+                xcrun simctl launch "$device_id" com.openvehicles.ovms
+            )"
+            echo "$launch_result"
+            app_pid="${launch_result##*: }"
+            sleep 4
+            xcrun simctl spawn "$device_id" /bin/kill -0 "$app_pid"
+            xcrun simctl io "$device_id" screenshot "$RUNNER_TEMP/Screenshots/$scenario.png"
+          done
+
+          expected_screenshots=(status car location messages settings charging charging-start-confirmation charging-stop-confirmation charging-settings charging-command-pending charging-command-failed climate climate-start-confirmation climate-stop-confirmation climate-schedule climate-schedule-options climate-schedule-clear-day climate-schedule-copy climate-schedule-clear energy battery-diagnostics battery-history-loading quick-actions map-options map-history-loading controls-lock controls-valet controls-wake controls-homelink app-settings vehicle-diagnostics messages-commands messages-command-add messages-command-manage messages-clear)
+          for screenshot in "${expected_screenshots[@]}"; do
+            test -s "$RUNNER_TEMP/Screenshots/$screenshot.png" || {
+              echo "Missing or empty screenshot: $screenshot.png" >&2
+              exit 1
+            }
+          done
+
+          xcrun simctl shutdown "$device_id" 2>/dev/null || true
+          ipad_id="$(
+            xcrun simctl list devices available --json |
+              jq -r '[.devices[][] | select(.name | startswith("iPad"))][0].udid'
+          )"
+          if [[ -z "$ipad_id" || "$ipad_id" == "null" ]]; then
+            echo "No available iPad simulator was found" >&2
+            exit 1
+          fi
+          echo "Using iPad simulator: $(xcrun simctl list devices | grep "$ipad_id")"
+          xcrun simctl boot "$ipad_id" 2>/dev/null || true
+          xcrun simctl bootstatus "$ipad_id" -b &
+          ipad_boot_pid=$!
+          for _ in {1..90}; do
+            ipad_boot_state="$(ps -p "$ipad_boot_pid" -o state= 2>/dev/null || true)"
+            if [[ -z "$ipad_boot_state" || "$ipad_boot_state" == Z* ]]; then break; fi
+            sleep 2
+          done
+          ipad_boot_state="$(ps -p "$ipad_boot_pid" -o state= 2>/dev/null || true)"
+          if [[ -n "$ipad_boot_state" && "$ipad_boot_state" != Z* ]]; then
+            kill "$ipad_boot_pid" 2>/dev/null || true
+            echo "iPad simulator did not finish booting within three minutes" >&2
+            exit 1
+          fi
+          wait "$ipad_boot_pid"
+          xcrun simctl status_bar "$ipad_id" override --time 09:41 --batteryState charged --batteryLevel 100 --wifiBars 3 --cellularBars 4
+          xcrun simctl install "$ipad_id" "$RUNNER_TEMP/Build/Open Vehicle.app"
+          for tab_index in "${!screen_names[@]}"; do
+            screen_name="ipad-${screen_names[$tab_index]}"
+            xcrun simctl terminate "$ipad_id" com.openvehicles.ovms 2>/dev/null || true
+            launch_result="$(SIMCTL_CHILD_OVMS_SCREENSHOT_TAB="$tab_index" xcrun simctl launch "$ipad_id" com.openvehicles.ovms)"
+            app_pid="${launch_result##*: }"
+            sleep 3
+            xcrun simctl spawn "$ipad_id" /bin/kill -0 "$app_pid"
+            xcrun simctl io "$ipad_id" screenshot "$RUNNER_TEMP/Screenshots/$screen_name.png"
+          done
+          ipad_scenarios=(charging climate energy battery-diagnostics app-settings)
+          for scenario in "${ipad_scenarios[@]}"; do
+            tab_index=0
+            if [[ "$scenario" == "app-settings" ]]; then tab_index=4; fi
+            xcrun simctl terminate "$ipad_id" com.openvehicles.ovms 2>/dev/null || true
+            launch_result="$(SIMCTL_CHILD_OVMS_SCREENSHOT_TAB="$tab_index" SIMCTL_CHILD_OVMS_SCREENSHOT_SCENARIO="$scenario" xcrun simctl launch "$ipad_id" com.openvehicles.ovms)"
+            app_pid="${launch_result##*: }"
+            sleep 4
+            xcrun simctl spawn "$ipad_id" /bin/kill -0 "$app_pid"
+            xcrun simctl io "$ipad_id" screenshot "$RUNNER_TEMP/Screenshots/ipad-$scenario.png"
+          done
+          for screenshot in ipad-status ipad-car ipad-location ipad-messages ipad-settings ipad-charging ipad-climate ipad-energy ipad-battery-diagnostics ipad-app-settings; do
+            test -s "$RUNNER_TEMP/Screenshots/$screenshot.png" || { echo "Missing iPad screenshot: $screenshot.png" >&2; exit 1; }
+          done
+
+      - name: Upload simulator screenshot
+        uses: actions/upload-artifact@v5
+        with:
+          name: ovms-simulator-screenshots
+          path: ${{ runner.temp }}/Screenshots/*.png
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: xcodebuild-log
+          path: ${{ runner.temp }}/xcodebuild.log
+          if-no-files-found: ignore
+          retention-days: 7

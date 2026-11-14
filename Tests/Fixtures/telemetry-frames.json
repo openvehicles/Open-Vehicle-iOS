@@ -1,0 +1,7 @@
+[
+  {"wire":"MP-0 S78,K,230,16,charging,standard,142,131","code":"S","fields":8},
+  {"wire":"MP-0 L51.5074,-0.1278,180,12,1,0,24,105,0,14.2,1.8,0.3","code":"L","fields":12},
+  {"wire":"MP-0 F3.3.003,JN1AZ0CP9CT000001,20,1,NL","code":"F","fields":5},
+  {"wire":"MP-0 T0","code":"T","fields":1},
+  {"wire":"MP-0 P!,Charge completed","code":"P","fields":2}
+]

@@ -14,6 +14,11 @@
 #import "NoChat/NoChat.h"
 
 @interface ovmsMessagesViewController : NOCChatViewController <UINavigationControllerDelegate, ovmsUpdateDelegate>
+@property (assign) BOOL screenshotScenarioHandled;
+- (void)showCommandShortcuts;
+- (void)showAddSavedCommand;
+- (void)showManageSavedCommands;
+- (void)showClearMessagesConfirmation;
 
 @end
 

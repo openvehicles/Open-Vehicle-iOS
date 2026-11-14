@@ -8,10 +8,30 @@
 
 #import <TargetConditionals.h>
 #import "ovmsAppDelegate.h"
+#import "OVMSCommandResponse.h"
+#import "OVMSTelemetryFrame.h"
 #import "GCDAsyncSocket.h"
 #import "JHNotificationManager.h"
 #import "Reachability.h"
 #import "Cars.h"
+#import <Security/Security.h>
+
+static NSString * const OVMSNotificationCategoryAlert = @"OVMS_ALERT";
+static NSString * const OVMSNotificationCategoryCharge = @"OVMS_CHARGE";
+static NSString * const OVMSNotificationActionMessages = @"OVMS_OPEN_MESSAGES";
+static NSString * const OVMSNotificationActionLocation = @"OVMS_OPEN_LOCATION";
+static NSString * const OVMSNotificationActionCharging = @"OVMS_OPEN_CHARGING";
+static NSString * const OVMSNotificationActionSettings = @"OVMS_OPEN_SETTINGS";
+static NSString * const OVMSKeychainService = @"com.openvehicles.ovms.vehicle-credentials";
+
+@interface ovmsAppDelegate ()
+- (void)scheduleReconnect;
+- (void)configureSceneWindow;
+@end
+
+@interface OVMSSceneDelegate : UIResponder <UIWindowSceneDelegate>
+@property (strong, nonatomic) UIWindow *window;
+@end
 
 @implementation ovmsAppDelegate
 
@@ -62,10 +82,19 @@
 @synthesize car_minutestorangelimit;
 @synthesize car_rangelimit;
 @synthesize car_soclimit;
+@synthesize car_battery_voltage;
+@synthesize car_battery_current;
+@synthesize car_battery_capacity;
+@synthesize car_soh;
+@synthesize car_power;
+@synthesize car_energyused;
+@synthesize car_energyrecd;
+@synthesize car_drivemode;
 
 @synthesize car_doors1;
 @synthesize car_doors2;
 @synthesize car_doors3;
+@synthesize car_doors5;
 @synthesize car_stale_pemtemps;
 @synthesize car_stale_ambienttemps;
 @synthesize car_lockstate;
@@ -84,6 +113,7 @@
 @synthesize car_speed;
 @synthesize car_parktime;
 @synthesize car_ambient_temp;
+@synthesize car_cabin_temp;
 @synthesize car_tpms_fr_pressure;
 @synthesize car_tpms_fr_temp;
 @synthesize car_tpms_rr_pressure;
@@ -129,14 +159,14 @@
                                dictionaryWithObjectsAndKeys:@"tmc.openvehicles.com", @"ovmsServer",
                                                             @"6867", @"ovmsPort",
                                                             @"1", @"ovmsShareColour",
-                                                            @"1", @"ovmsOpenChargeMap",
+                                                            @NO, @"ovmsOpenChargeMap",
                                                             @"-", @"ovmsTemperatures",
                                                             @"-", @"ovmsDistances",
                                                             @"-", @"ovmsPressures",
+                                                            @"dark", @"ovmsAppearance",
+                                                            @YES, @"ovmsBackgroundRefresh",
                                                             @"DEMO", @"selCar",
                                                             @"Demonstration Car", @"selLabel",
-                                                            @"DEMO", @"selNetPass",
-                                                            @"DEMO", @"selUserPass",
                                                             @"car_roadster_lightninggreen.png", @"selImagePath",
                                                             @"", @"apnsDeviceid",
                                                             @"", @"locationGroups",
@@ -146,6 +176,15 @@
                                                             nil];
   [defaults registerDefaults:appDefaults];
   [defaults synchronize];
+
+  UIColor *navigationBackground = [UIColor colorWithRed:0.047 green:0.071 blue:0.118 alpha:1.0];
+  [[UINavigationBar appearance] setBarTintColor:navigationBackground];
+  [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.20 green:0.62 blue:1.0 alpha:1.0]];
+  [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+  [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
+  [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.10 green:0.58 blue:1.0 alpha:1.0]];
+  [self applyAppearancePreference];
+  [application setMinimumBackgroundFetchInterval:[defaults boolForKey:@"ovmsBackgroundRefresh"] ? 1800 : UIApplicationBackgroundFetchIntervalNever];
 
   apns_deviceid = [defaults stringForKey:@"apnsDeviceid"];
   apns_devicetoken = @"";
@@ -169,8 +208,12 @@
   sel_car = [defaults stringForKey:@"selCar"];
   sel_label = [defaults stringForKey:@"selLabel"];
   self.sel_connection_type_ids = [defaults stringForKey:@"selConnectionTypeIds"];
-  sel_netpass = [defaults stringForKey:@"selNetPass"];
-  sel_userpass = [defaults stringForKey:@"selUserPass"];
+  NSString *legacyNetPass = [defaults stringForKey:@"selNetPass"];
+  NSString *legacyUserPass = [defaults stringForKey:@"selUserPass"];
+  sel_netpass = [self credentialForVehicle:sel_car kind:@"network"] ?: legacyNetPass;
+  sel_userpass = [self credentialForVehicle:sel_car kind:@"user"] ?: legacyUserPass;
+  if (sel_netpass.length || sel_userpass.length) [self storeCredentialsForVehicle:sel_car networkPassword:sel_netpass userPassword:sel_userpass];
+  [defaults removeObjectForKey:@"selNetPass"]; [defaults removeObjectForKey:@"selUserPass"];
   sel_imagepath = [defaults stringForKey:@"selImagePath"];
   
   NSManagedObjectContext *context = [self managedObjectContext];
@@ -193,26 +236,35 @@
       NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
       }
     }
+  NSArray *configuredCars=[context executeFetchRequest:request error:&error];
+  for (Cars *configuredCar in configuredCars) {
+    NSString *network=[self credentialForVehicle:configuredCar.vehicleid kind:@"network"] ?: configuredCar.netpass;
+    NSString *user=[self credentialForVehicle:configuredCar.vehicleid kind:@"user"] ?: configuredCar.userpass;
+    if (network.length || user.length) [self storeCredentialsForVehicle:configuredCar.vehicleid networkPassword:network userPassword:user];
+    configuredCar.netpass=@""; configuredCar.userpass=@"";
+    if ([configuredCar.vehicleid isEqualToString:sel_car]) { sel_netpass=network; sel_userpass=user; }
+  }
+  if (context.hasChanges) [context save:&error];
   
-  // Let the device know we want to receive push notifications
+  // Let the device know we want to receive push notifications.
+  UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+  center.delegate = self;
+  UNNotificationAction *messagesAction = [UNNotificationAction actionWithIdentifier:OVMSNotificationActionMessages title:@"View messages" options:UNNotificationActionOptionForeground];
+  UNNotificationAction *locationAction = [UNNotificationAction actionWithIdentifier:OVMSNotificationActionLocation title:@"Show location" options:UNNotificationActionOptionForeground];
+  UNNotificationAction *chargingAction = [UNNotificationAction actionWithIdentifier:OVMSNotificationActionCharging title:@"View charging" options:UNNotificationActionOptionForeground];
+  UNNotificationAction *settingsAction = [UNNotificationAction actionWithIdentifier:OVMSNotificationActionSettings title:@"Notification settings" options:UNNotificationActionOptionForeground];
+  UNNotificationCategory *alertCategory = [UNNotificationCategory categoryWithIdentifier:OVMSNotificationCategoryAlert actions:@[messagesAction, locationAction, settingsAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+  UNNotificationCategory *chargeCategory = [UNNotificationCategory categoryWithIdentifier:OVMSNotificationCategoryCharge actions:@[chargingAction, messagesAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+  [center setNotificationCategories:[NSSet setWithObjects:alertCategory, chargeCategory, nil]];
 #if TARGET_IPHONE_SIMULATOR
   // Nothing to do on the simulator, as APNS not supported by Apple
-  NSLog(@"No PUSH notifications on simultor, apns_deviceid: %@", apns_deviceid);
+  NSLog(@"Push notifications are unavailable in the simulator");
 #else
-  NSLog(@"Registering for PUSH notifications apns_deviceid: %@", apns_deviceid);
-    //-- Set Notification
-   if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
-   {
-       // iOS 8 Notifications
-       [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil]];
-       [application registerForRemoteNotifications];
-   }
-   else
-   {
-       // iOS < 8 Notifications
-       [application registerForRemoteNotificationTypes:
-        (UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
-   }
+  [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge)
+                        completionHandler:^(BOOL granted, NSError *error) {
+    if (error) NSLog(@"Notification authorization failed: %@", error);
+    if (granted) dispatch_async(dispatch_get_main_queue(), ^{ [application registerForRemoteNotifications]; });
+  }];
 #endif // TARGET_IPHONE_SIMULATOR
 
   if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
@@ -221,8 +273,38 @@
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     [[UITabBar appearance] setTintColor:[UIColor blackColor]];
     }
-    
+
   return YES;
+}
+
+- (void)configureSceneWindow
+{
+  [self applyAppearancePreference];
+  if ([self.window.rootViewController isKindOfClass:[UITabBarController class]])
+    {
+    UITabBarController *tabs = (UITabBarController *)self.window.rootViewController;
+    NSArray *titles = @[@"Home", @"Controls", @"Location", @"Messages", @"Settings"];
+    for (NSUInteger index = 0; index < MIN(titles.count, tabs.viewControllers.count); index++)
+      tabs.viewControllers[index].tabBarItem.title = titles[index];
+    }
+
+#if DEBUG && TARGET_OS_SIMULATOR
+  // Visual regression builds can request a tab without adding test-only
+  // navigation to the production UI. SIMCTL_CHILD_ variables are stripped by
+  // simctl before being passed to the launched application.
+  NSString *screenshotTab = [[[NSProcessInfo processInfo] environment]
+                             objectForKey:@"OVMS_SCREENSHOT_TAB"];
+  if ([screenshotTab length] > 0 &&
+      [self.window.rootViewController isKindOfClass:[UITabBarController class]])
+    {
+    UITabBarController *tabController =
+      (UITabBarController *)self.window.rootViewController;
+    NSInteger tabIndex = [screenshotTab integerValue];
+    if (tabIndex >= 0 && tabIndex < [tabController.viewControllers count])
+      tabController.selectedIndex = tabIndex;
+    }
+#endif
+
 }
 	
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
@@ -232,7 +314,6 @@
                         ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
                         ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
                         ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
-  NSLog(@"My token is: %@", apns_devicetoken);
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
@@ -262,6 +343,41 @@
     }
   
   [JHNotificationManager notificationWithMessage:message];
+  if ([message length]) [self addMessage:message incoming:YES];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler
+{
+  [self application:application didReceiveRemoteNotification:userInfo];
+  completionHandler(UIBackgroundFetchResultNewData);
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
+{
+  NSString *message = notification.request.content.body;
+  if ([message length]) {
+    [JHNotificationManager notificationWithMessage:message];
+    [self addMessage:message incoming:YES];
+  }
+  completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler
+{
+  NSString *message = response.notification.request.content.body;
+  if ([message length]) [self addMessage:message incoming:YES];
+  NSDictionary *payload=response.notification.request.content.userInfo;
+  NSString *vehicle=payload[@"vehicleid"] ?: payload[@"vehicle"];
+  if (vehicle.length && ![vehicle isEqualToString:self.sel_car]) [self switchCar:vehicle];
+  if ([self.window.rootViewController isKindOfClass:[UITabBarController class]]) {
+    UITabBarController *tabs=(UITabBarController *)self.window.rootViewController;
+    NSString *action=response.actionIdentifier;
+    if ([action isEqualToString:OVMSNotificationActionLocation]) tabs.selectedIndex=2;
+    else if ([action isEqualToString:OVMSNotificationActionCharging]) tabs.selectedIndex=0;
+    else if ([action isEqualToString:OVMSNotificationActionSettings]) tabs.selectedIndex=4;
+    else tabs.selectedIndex=3;
+  }
+  completionHandler();
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -275,8 +391,6 @@
   [defaults setObject:sel_car forKey:@"selCar"];
   [defaults setObject:sel_label forKey:@"selLabel"];
   [defaults setObject:self.sel_connection_type_ids forKey:@"selConnectionTypeIds"];
-  [defaults setObject:sel_netpass forKey:@"selNetPass"];
-  [defaults setObject:sel_userpass forKey:@"selUserPass"];
   [defaults setObject:sel_imagepath forKey:@"selImagePath"];
   [defaults synchronize];
 }
@@ -306,6 +420,15 @@
     [self serverConnect];
 }
 
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler
+{
+  if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ovmsBackgroundRefresh"]) { completionHandler(UIBackgroundFetchResultNoData); return; }
+  time_t previousUpdate=self.car_lastupdated; [self serverConnect];
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)(12*NSEC_PER_SEC)),dispatch_get_main_queue(),^{
+    BOOL changed=self.car_lastupdated>previousUpdate; if(application.applicationState==UIApplicationStateBackground) [self serverDisconnect]; completionHandler(changed?UIBackgroundFetchResultNewData:UIBackgroundFetchResultNoData);
+  });
+}
+
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     /*
@@ -318,8 +441,6 @@
   [defaults setObject:sel_car forKey:@"selCar"];
   [defaults setObject:sel_label forKey:@"selLabel"];
   [defaults setObject:self.sel_connection_type_ids forKey:@"selConnectionTypeIds"];
-  [defaults setObject:sel_netpass forKey:@"selNetPass"];
-  [defaults setObject:sel_userpass forKey:@"selUserPass"];
   [defaults setObject:sel_imagepath forKey:@"selImagePath"];
   [defaults synchronize];
 
@@ -396,8 +517,11 @@
       sel_car = car.vehicleid;
       sel_label = car.label;
       self.sel_connection_type_ids = car.connection_type_ids;
-      sel_userpass = car.userpass;
-      sel_netpass = car.netpass;
+      sel_userpass = [self credentialForVehicle:car.vehicleid kind:@"user"] ?: car.userpass;
+      sel_netpass = [self credentialForVehicle:car.vehicleid kind:@"network"] ?: car.netpass;
+      if (sel_userpass.length || sel_netpass.length) [self storeCredentialsForVehicle:car.vehicleid networkPassword:sel_netpass userPassword:sel_userpass];
+      car.userpass=@""; car.netpass=@"";
+      if (context.hasChanges) [context save:&error];
       sel_imagepath = car.imagepath;
       if ((![oldcar isEqualToString:sel_car])||(![oldnewpass isEqualToString:sel_netpass]))
         {
@@ -407,6 +531,36 @@
         }
       }
     }
+}
+
+- (NSString *)credentialForVehicle:(NSString *)vehicle kind:(NSString *)kind
+{
+  if (!vehicle.length || !kind.length) return nil;
+  NSString *account=[NSString stringWithFormat:@"%@.%@",vehicle,kind];
+  NSDictionary *query=@{(__bridge id)kSecClass:(__bridge id)kSecClassGenericPassword,(__bridge id)kSecAttrService:OVMSKeychainService,(__bridge id)kSecAttrAccount:account,(__bridge id)kSecReturnData:@YES,(__bridge id)kSecMatchLimit:(__bridge id)kSecMatchLimitOne};
+  CFTypeRef result=NULL; OSStatus status=SecItemCopyMatching((__bridge CFDictionaryRef)query,&result); if(status!=errSecSuccess || !result) return nil;
+  NSData *data=CFBridgingRelease(result); return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
+
+- (void)storeCredential:(NSString *)value vehicle:(NSString *)vehicle kind:(NSString *)kind
+{
+  if(!vehicle.length || !kind.length) return; NSString *account=[NSString stringWithFormat:@"%@.%@",vehicle,kind]; NSDictionary *identity=@{(__bridge id)kSecClass:(__bridge id)kSecClassGenericPassword,(__bridge id)kSecAttrService:OVMSKeychainService,(__bridge id)kSecAttrAccount:account};
+  if(!value.length){ SecItemDelete((__bridge CFDictionaryRef)identity); return; }
+  NSData *data=[value dataUsingEncoding:NSUTF8StringEncoding]; NSDictionary *changes=@{(__bridge id)kSecValueData:data,(__bridge id)kSecAttrAccessible:(__bridge id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly}; OSStatus status=SecItemUpdate((__bridge CFDictionaryRef)identity,(__bridge CFDictionaryRef)changes);
+  if(status==errSecItemNotFound){ NSMutableDictionary *item=[identity mutableCopy]; [item addEntriesFromDictionary:changes]; SecItemAdd((__bridge CFDictionaryRef)item,NULL); }
+}
+
+- (void)storeCredentialsForVehicle:(NSString *)vehicle networkPassword:(NSString *)networkPassword userPassword:(NSString *)userPassword
+{
+  [self storeCredential:networkPassword vehicle:vehicle kind:@"network"]; [self storeCredential:userPassword vehicle:vehicle kind:@"user"];
+}
+
+- (void)applyAppearancePreference
+{
+  if (@available(iOS 13.0, *)) {
+    NSString *appearance=[[NSUserDefaults standardUserDefaults] stringForKey:@"ovmsAppearance"] ?: @"dark";
+    self.window.overrideUserInterfaceStyle=[appearance isEqualToString:@"light"]?UIUserInterfaceStyleLight:([appearance isEqualToString:@"system"]?UIUserInterfaceStyleUnspecified:UIUserInterfaceStyleDark);
+  }
 }
 
 - (void)subscribeGroups
@@ -497,9 +651,10 @@
     NSError *error = nil;
     if (![asyncSocket connectToHost:ovmsServer onPort:ovmsPort error:&error])
       {
-      // Croak on the error
+      NSLog(@"Unable to start OVMS connection: %@",error.localizedDescription);
+      asyncSocket=nil;
+      [self scheduleReconnect];
       return;
-      
       }
     [asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:-1 tag:0];
     
@@ -570,10 +725,19 @@
   car_minutestorangelimit = -1;
   car_rangelimit = -1;
   car_soclimit = -1;
+  car_battery_voltage = 0;
+  car_battery_current = 0;
+  car_battery_capacity = 0;
+  car_soh = 0;
+  car_power = 0;
+  car_energyused = 0;
+  car_energyrecd = 0;
+  car_drivemode = 0;
     
   car_doors1 = 0;
   car_doors2 = 0;
   car_doors3 = 0;
+  car_doors5 = 0;
   car_stale_pemtemps = -1;
   car_stale_ambienttemps = -1;
   car_lockstate = 0;
@@ -589,6 +753,7 @@
   car_tmotor = 0;
   car_tbattery = 0;
   car_ambient_temp = -127;
+  car_cabin_temp = -127;
   car_trip = 0;
   car_odometer = 0;
   car_speed = 0;
@@ -728,6 +893,14 @@
         {
         car_chargetype = [[lparts objectAtIndex:30] intValue];
         }
+      if ([lparts count] >= 33)
+        car_battery_voltage = [[lparts objectAtIndex:32] doubleValue];
+      if ([lparts count] >= 34)
+        car_soh = [[lparts objectAtIndex:33] floatValue];
+      if ([lparts count] >= 38)
+        car_battery_current = [[lparts objectAtIndex:36] doubleValue];
+      if ([lparts count] >= 41)
+        car_battery_capacity = [[lparts objectAtIndex:40] floatValue];
       }
       break;
     case 'T': // TIME
@@ -752,35 +925,14 @@
         car_gpslock = [[lparts objectAtIndex:4] intValue];
         car_stale_gps = [[lparts objectAtIndex:5] intValue];
         }
-      if (car_ambient_weather < 0)
+      if ([lparts count] >= 12)
         {
-        // We may need to launch an async request to get the weather at the car's location
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *defaultsWC = [defaults stringForKey:@"cacheWeatherCar"];
-        NSString *defaultsWP = [defaults stringForKey:@"cacheWeatherTemp"];
-        NSString *defaultsWT = [defaults stringForKey:@"cacheWeatherTimeout"];
-        time_t timeout = 0;
-        if ([defaultsWT length]>0)
-          timeout = [defaultsWT intValue];
-        if (([defaultsWC length]==0)||
-            (![defaultsWC isEqualToString:sel_car])||
-            (time(0)>timeout))
-          {
-          // There is no valid cached value, so we need to get it
-          car_ambient_weather = 0; // "0" means request pending...
-          NSString *reqString = [NSString stringWithFormat:
-                                 @"http://api.worldweatheronline.com/free/v1/weather.ashx?q=%0.3f,%0.3f&format=csv&num_of_days=2&key=vmsb5smatuw7t43kqvy77fza",
-                                 car_location.latitude, car_location.longitude];
-          NSURL *theURL =  [[NSURL alloc]initWithString:reqString];
-          NSURLRequest *theRequest=[NSURLRequest requestWithURL:theURL
-                                                    cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                timeoutInterval:60.0];
-          [NSURLConnection connectionWithRequest:theRequest delegate:self];
-          }
-        else
-          {
-          car_ambient_weather = [defaultsWP intValue];
-          }
+        car_speed = [[lparts objectAtIndex:6] intValue];
+        car_trip = [[lparts objectAtIndex:7] intValue];
+        car_drivemode = (int)strtol([[lparts objectAtIndex:8] UTF8String], NULL, 16);
+        car_power = [[lparts objectAtIndex:9] floatValue];
+        car_energyused = [[lparts objectAtIndex:10] floatValue];
+        car_energyrecd = [[lparts objectAtIndex:11] floatValue];
         }
       }
       break;
@@ -861,6 +1013,10 @@
           {
             car_aux_battery_voltage = [[lparts objectAtIndex:14] floatValue];
           }
+        if ([lparts count] >= 18)
+          car_doors5 = [[lparts objectAtIndex:17] intValue];
+        if ([lparts count] >= 21)
+          car_cabin_temp = [[lparts objectAtIndex:20] intValue];
         }
       }
       break;
@@ -1167,11 +1323,7 @@ else
       {
       [self serverDisconnect];
       NSLog(@"Whoops, server welcome message too short: %@", response);
-      timreconnect = [NSTimer scheduledTimerWithTimeInterval: 10.0
-                                             target: self
-                                           selector: @selector(onTickReconnect:)
-                                           userInfo: nil
-                                            repeats: NO];
+      [self scheduleReconnect];
       return; // Invalid server response
       }
     NSString *stoken = [rparts objectAtIndex:2];
@@ -1180,24 +1332,16 @@ else
       if ((stoken==NULL)||(etoken==NULL))
       {
       [self serverDisconnect];
-      NSLog(@"Whoops, server had wrong token: %@", response);
-      timreconnect = [NSTimer scheduledTimerWithTimeInterval: 10.0
-                                                      target: self
-                                                    selector: @selector(onTickReconnect:)
-                                                    userInfo: nil
-                                                     repeats: NO];
+      NSLog(@"Server authentication failed: token mismatch");
+      [self scheduleReconnect];
       return;
       }
     // Check for token-replay attack
     if (strcmp((char*)token,cstoken)==0)
       {
       [self serverDisconnect];
-      NSLog(@"Whoops, token replay attack: %@", response);
-      timreconnect = [NSTimer scheduledTimerWithTimeInterval: 10.0
-                                                      target: self
-                                                    selector: @selector(onTickReconnect:)
-                                                    userInfo: nil
-                                                     repeats: NO];
+      NSLog(@"Server authentication failed: repeated token");
+      [self scheduleReconnect];
       return; // Server is using our token!
       }
       
@@ -1207,16 +1351,13 @@ else
     if (strncmp([etoken UTF8String],(const char*)edigest,strlen((const char*)edigest))!=0)
       {
       [self serverDisconnect];
-      NSLog(@"Whoops, server token is invalid: %@", response);
-      timreconnect = [NSTimer scheduledTimerWithTimeInterval: 10.0
-                                                      target: self
-                                                    selector: @selector(onTickReconnect:)
-                                                    userInfo: nil
-                                                     repeats: NO];
+      NSLog(@"Server authentication failed: invalid token");
+      [self scheduleReconnect];
       return; // Invalid server digest
       }
       
     // Ok, at this point, our token is ok
+    reconnect_failures=0; [timreconnect invalidate]; timreconnect=nil;
     int keylen = (int)(strlen((const char*)token)+strlen(cstoken)+1);
     char key[keylen];
     strcpy(key,cstoken);
@@ -1267,18 +1408,17 @@ else
     char buf[[response length]*2 + 16];
     int len = base64decode((uint8_t*)[response UTF8String], (uint8_t*)buf);
     RC4_crypt(&rxCrypto, (uint8_t*)buf, (uint8_t*)buf, len);
-      if ((buf[0]=='M')&&(buf[1]=='P')&&(buf[2]=='-')&&(buf[3]=='0'))
-        {
-        NSString *cmd = [[NSString alloc] initWithCString:buf+6 encoding:NSUTF8StringEncoding];
-        [self handleCommand:buf[5] command:cmd];
-        }
+    NSData *decrypted=[NSData dataWithBytes:buf length:MAX(0,len)]; NSError *frameError=nil; OVMSTelemetryFrame *frame=[OVMSTelemetryFrame frameWithDecryptedData:decrypted error:&frameError];
+    if(frame) [self handleCommand:frame.code command:frame.payload]; else NSLog(@"Ignoring telemetry packet: %@",frameError.localizedDescription);
     [asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:-1 tag:1];
     }
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
 {
+  asyncSocket=nil;
   [[ovmsAppDelegate myRef] serverClearState];
+  if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) [self scheduleReconnect];
 }
 
 -(void)onTick:(NSTimer *)timer
@@ -1301,9 +1441,42 @@ else
   [self serverConnect];
   }
 
+- (void)scheduleReconnect
+  {
+  [timreconnect invalidate]; reconnect_failures++;
+  NSTimeInterval delay=[OVMSReconnectPolicy delayForConsecutiveFailureCount:reconnect_failures];
+  timreconnect=[NSTimer scheduledTimerWithTimeInterval:delay target:self selector:@selector(onTickReconnect:) userInfo:nil repeats:NO];
+  }
+
 - (BOOL)commandIsFree
 {
   return (command_delegate==nil);
+}
+
+- (BOOL)supportsVehicleCapability:(OVMSVehicleCapability)capability
+{
+  NSString *type = self.car_type ?: @"";
+  if (type.length == 0) return YES;
+  switch (capability)
+    {
+    case OVMSVehicleCapabilityLock:
+      return ![type isEqualToString:@"EN"] && ![type isEqualToString:@"NRJK"];
+    case OVMSVehicleCapabilityValet:
+      return ![type isEqualToString:@"SQ"];
+    case OVMSVehicleCapabilityHomelink:
+      return ![type isEqualToString:@"RT"];
+    case OVMSVehicleCapabilityDriveProfiles:
+      return [type isEqualToString:@"RT"];
+    case OVMSVehicleCapabilityDDT4All:
+      return [type isEqualToString:@"SQ"];
+    case OVMSVehicleCapabilityClimate:
+      return [@[@"NL",@"SE",@"SQ",@"VWUP",@"VWUP.T26",@"RZ",@"RZ2",@"VWEG"] containsObject:type] || [type hasPrefix:@"VA"] || [type hasPrefix:@"VB"] || [type hasPrefix:@"OAE"];
+    case OVMSVehicleCapabilityCharging:
+      return ![type isEqualToString:@"SQ"];
+    case OVMSVehicleCapabilityTPMS:
+      return ![@[@"RT",@"EN",@"NRJK"] containsObject:type];
+    }
+  return NO;
 }
 
 - (void)commandRegister:(NSString*)command callback:(id)cb
@@ -1317,6 +1490,20 @@ else
 
 - (void)commandIssue:(NSString*)command
   {
+  if (asyncSocket == nil || ![asyncSocket isConnected])
+    {
+    command_delegate = nil;
+    [JHNotificationManager notificationWithMessage:@"Command not sent: vehicle server is offline"];
+    return;
+    }
+
+  [command_timeout invalidate];
+  pending_command = command;
+  command_timeout = [NSTimer scheduledTimerWithTimeInterval:30.0
+                                                     target:self
+                                                   selector:@selector(commandTimedOut:)
+                                                   userInfo:nil
+                                                    repeats:NO];
   char buf[1024];
   char output[1024];
   NSString* cmd = [NSString stringWithFormat:@"MP-0 C%@",command];
@@ -1330,9 +1517,29 @@ else
   [self didStartNetworking];
   }
 
+- (void)commandTimedOut:(NSTimer *)timer
+  {
+  if (timer != command_timeout) return;
+  command_timeout = nil;
+  NSString *command = pending_command;
+  pending_command = nil;
+  command_delegate = nil;
+  [self didStopNetworking];
+  NSString *detail = command.length > 0 ? [NSString stringWithFormat:@" (%@)", command] : @"";
+  [JHNotificationManager notificationWithMessage:[NSString stringWithFormat:@"Vehicle did not acknowledge the command%@", detail]];
+  }
+
 - (void)commandResponse:(NSString*)response
   {
-  NSArray *result = [response componentsSeparatedByString:@","];
+  NSError *parseError=nil; OVMSCommandResponse *commandResponse=[OVMSCommandResponse responseWithWireText:response error:&parseError];
+  if (!commandResponse) { [command_timeout invalidate]; command_timeout=nil; pending_command=nil; command_delegate=nil; [self didStopNetworking]; [JHNotificationManager notificationWithMessage:parseError.localizedDescription]; return; }
+  NSArray *result = commandResponse.fields;
+  if (command_delegate == nil)
+    {
+    [command_timeout invalidate];
+    command_timeout = nil;
+    pending_command = nil;
+    }
   if ((command_delegate != nil)&&([command_delegate conformsToProtocol:@protocol(ovmsCommandDelegate)]))
     {
     [command_delegate commandResult:result];
@@ -1362,7 +1569,7 @@ else
             break;
           case 7:
             {
-            NSString* msgtext = [response substringFromIndex:4];
+            NSString* msgtext = commandResponse.payload;
             [self addMessage:msgtext incoming:YES];
             }
             break;
@@ -1442,7 +1649,7 @@ else
       default:
         [JHNotificationManager
          notificationWithMessage:
-         [NSString stringWithFormat:@"Error: %@",[result objectAtIndex:2]]];
+         [NSString stringWithFormat:@"Error: %@",commandResponse.payload.length?commandResponse.payload:@"Unknown response"]];
         [self didStopNetworking];
         break;
       }
@@ -1453,6 +1660,9 @@ else
 
 - (void)commandCancel
   {
+  [command_timeout invalidate];
+  command_timeout = nil;
+  pending_command = nil;
   command_delegate = nil;
   [self didStopNetworking];
   }
@@ -1576,6 +1786,12 @@ else
   [self commandIssue:[NSString stringWithFormat:@"24,%d",button]];
   }
 
+- (void)commandDoDriveProfile:(NSInteger)profile
+  {
+  [JHNotificationManager notificationWithMessage:profile < 0 ? @"Restoring default drive profile..." : [NSString stringWithFormat:@"Selecting drive profile %ld...",(long)profile+1]];
+  [self commandIssue:profile < 0 ? @"24" : [NSString stringWithFormat:@"24,%ld",(long)profile]];
+  }
+
 /**
  Returns the managed object context for the application.
  If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
@@ -1659,10 +1875,55 @@ else
     [mapURL appendFormat:@"?saddr=%1.6f,%1.6f", from.latitude, from.longitude];
     [mapURL appendFormat:@"&daddr=%1.6f,%1.6f", to.latitude, to.longitude];
     
-    NSLog(@"route: %@", mapURL);
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[mapURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 }
 
+
+@end
+
+
+@implementation OVMSSceneDelegate
+
+- (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions
+{
+  if (![scene isKindOfClass:[UIWindowScene class]]) return;
+  ovmsAppDelegate *appDelegate = (ovmsAppDelegate *)UIApplication.sharedApplication.delegate;
+  self.window = [[UIWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
+  appDelegate.window = self.window;
+  NSString *storyboardName = UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad ? @"MainStoryboard_iPad" : @"MainStoryboard_iPhone";
+  self.window.rootViewController = [[UIStoryboard storyboardWithName:storyboardName bundle:nil] instantiateInitialViewController];
+  [appDelegate configureSceneWindow];
+  [self.window makeKeyAndVisible];
+}
+
+- (void)sceneDidBecomeActive:(UIScene *)scene
+{
+  [(ovmsAppDelegate *)UIApplication.sharedApplication.delegate applicationDidBecomeActive:UIApplication.sharedApplication];
+}
+
+- (void)sceneWillResignActive:(UIScene *)scene
+{
+  [(ovmsAppDelegate *)UIApplication.sharedApplication.delegate applicationWillResignActive:UIApplication.sharedApplication];
+}
+
+- (void)sceneWillEnterForeground:(UIScene *)scene
+{
+  [(ovmsAppDelegate *)UIApplication.sharedApplication.delegate applicationWillEnterForeground:UIApplication.sharedApplication];
+}
+
+- (void)sceneDidEnterBackground:(UIScene *)scene
+{
+  [(ovmsAppDelegate *)UIApplication.sharedApplication.delegate applicationDidEnterBackground:UIApplication.sharedApplication];
+}
+
+- (void)sceneDidDisconnect:(UIScene *)scene
+{
+  ovmsAppDelegate *appDelegate = (ovmsAppDelegate *)UIApplication.sharedApplication.delegate;
+  [appDelegate serverDisconnect];
+  [appDelegate saveContext];
+  if (appDelegate.window == self.window) appDelegate.window = nil;
+  self.window = nil;
+}
 
 @end
