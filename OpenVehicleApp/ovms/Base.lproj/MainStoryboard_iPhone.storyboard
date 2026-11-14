@@ -1463,25 +1463,11 @@
                     <view key="view" contentMode="scaleToFill" id="680-FP-B2x" customClass="CPTGraphHostingView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="404"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IHW-5M-OrN">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="404"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <dataDetectorType key="dataDetectorTypes"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ea2-qH-NLr" id="Nmv-2j-b6l"/>
-                                </connections>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" red="0.069420576095581055" green="0.10595327615737915" blue="0.19171994924545288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="l42-o9-RYy"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Cellular Usage" id="xu4-gr-jFX"/>
-                    <connections>
-                        <outlet property="m_webview" destination="IHW-5M-OrN" id="afY-Cd-Icf"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVt-Sg-UbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

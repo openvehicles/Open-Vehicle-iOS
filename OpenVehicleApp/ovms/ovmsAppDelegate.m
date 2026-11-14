@@ -936,36 +936,6 @@ static NSString * const OVMSKeychainService = @"com.openvehicles.ovms.vehicle-cr
         car_energyused = [[lparts objectAtIndex:10] floatValue];
         car_energyrecd = [[lparts objectAtIndex:11] floatValue];
         }
-      if (car_ambient_weather < 0)
-        {
-        // We may need to launch an async request to get the weather at the car's location
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *defaultsWC = [defaults stringForKey:@"cacheWeatherCar"];
-        NSString *defaultsWP = [defaults stringForKey:@"cacheWeatherTemp"];
-        NSString *defaultsWT = [defaults stringForKey:@"cacheWeatherTimeout"];
-        time_t timeout = 0;
-        if ([defaultsWT length]>0)
-          timeout = [defaultsWT intValue];
-        if (([defaultsWC length]==0)||
-            (![defaultsWC isEqualToString:sel_car])||
-            (time(0)>timeout))
-          {
-          // There is no valid cached value, so we need to get it
-          car_ambient_weather = 0; // "0" means request pending...
-          NSString *reqString = [NSString stringWithFormat:
-                                 @"http://api.worldweatheronline.com/free/v1/weather.ashx?q=%0.3f,%0.3f&format=csv&num_of_days=2&key=vmsb5smatuw7t43kqvy77fza",
-                                 car_location.latitude, car_location.longitude];
-          NSURL *theURL =  [[NSURL alloc]initWithString:reqString];
-          NSURLRequest *theRequest=[NSURLRequest requestWithURL:theURL
-                                                    cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                timeoutInterval:60.0];
-          [NSURLConnection connectionWithRequest:theRequest delegate:self];
-          }
-        else
-          {
-          car_ambient_weather = [defaultsWP intValue];
-          }
-        }
       }
       break;
     case 'F': // CAR FIRMWARE

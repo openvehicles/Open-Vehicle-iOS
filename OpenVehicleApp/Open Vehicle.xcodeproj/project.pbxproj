@@ -2870,7 +2870,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210922;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5NP6692GUS;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2884,7 +2884,7 @@
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LIBRARY_SEARCH_PATHS = "";
-				MARKETING_VERSION = 1.8.6;
+				MARKETING_VERSION = 2.0.0;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -2894,7 +2894,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.openvehicles.ovms;
 				PRODUCT_NAME = "Open Vehicle";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Adhoc Release";
@@ -2960,7 +2959,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210922;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5NP6692GUS;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2974,7 +2973,7 @@
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LIBRARY_SEARCH_PATHS = "";
-				MARKETING_VERSION = 1.8.6;
+				MARKETING_VERSION = 2.0.0;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -2984,7 +2983,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.openvehicles.ovms;
 				PRODUCT_NAME = "Open Vehicle";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "AppStore Release";
@@ -3056,7 +3054,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Open Vehicle.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 20210922;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5NP6692GUS;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3070,7 +3068,7 @@
 				INFOPLIST_FILE = "ovms/ovms-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LIBRARY_SEARCH_PATHS = "";
-				MARKETING_VERSION = 1.8.6;
+				MARKETING_VERSION = 2.0.0;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -3081,7 +3079,6 @@
 				PRODUCT_NAME = "Open Vehicle";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

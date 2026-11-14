@@ -37,8 +37,6 @@
 @end
 
 @implementation ovmsControlCellularUsageViewController
-@synthesize m_webview;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -70,7 +68,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title=@"Cellular usage"; self.view.backgroundColor=[UIColor colorWithRed:.047 green:.071 blue:.118 alpha:1]; self.m_webview.hidden=YES;
+    self.title=@"Cellular usage"; self.view.backgroundColor=[UIColor colorWithRed:.047 green:.071 blue:.118 alpha:1];
     UIScrollView *scroll=[[UIScrollView alloc] init]; scroll.translatesAutoresizingMaskIntoConstraints=NO; [self.view addSubview:scroll];
     UIStackView *content=[[UIStackView alloc] init]; content.translatesAutoresizingMaskIntoConstraints=NO; content.axis=UILayoutConstraintAxisVertical; content.spacing=14; [scroll addSubview:content];
     [NSLayoutConstraint activateConstraints:@[[scroll.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],[scroll.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],[scroll.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],[scroll.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],[content.topAnchor constraintEqualToAnchor:scroll.contentLayoutGuide.topAnchor constant:18],[content.leadingAnchor constraintEqualToAnchor:scroll.frameLayoutGuide.leadingAnchor constant:16],[content.trailingAnchor constraintEqualToAnchor:scroll.frameLayoutGuide.trailingAnchor constant:-16],[content.bottomAnchor constraintEqualToAnchor:scroll.contentLayoutGuide.bottomAnchor constant:-18]]];
@@ -80,11 +78,6 @@
     self.usageLegend=[[UILabel alloc] init]; self.usageLegend.text=@"Blue: received  ·  Orange: transmitted"; self.usageLegend.textColor=[UIColor colorWithWhite:.72 alpha:1]; self.usageLegend.font=[UIFont preferredFontForTextStyle:UIFontTextStyleFootnote]; [content addArrangedSubview:self.usageLegend];
     self.appUsageSummary=[[UILabel alloc] init]; self.appUsageSummary.text=@"Connected apps"; self.appUsageSummary.textColor=UIColor.whiteColor; self.appUsageSummary.numberOfLines=0; self.appUsageSummary.font=[UIFont preferredFontForTextStyle:UIFontTextStyleTitle2]; [content addArrangedSubview:self.appUsageSummary];
     self.appNativeChart=[[OVMSCellularUsageChart alloc] init]; self.appNativeChart.layer.cornerRadius=14; self.appNativeChart.layer.masksToBounds=YES; self.appNativeChart.accessibilityLabel=@"Daily connected application data usage chart"; [self.appNativeChart.heightAnchor constraintEqualToConstant:180].active=YES; [content addArrangedSubview:self.appNativeChart];
-}
-
-- (void)dealloc
-{
-    [self setM_webview:nil];
 }
 
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations
@@ -97,8 +90,6 @@
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-    m_webview.hidden = YES;
-    
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          [self displayChart];
@@ -122,7 +113,6 @@
   t_days = 0;
   [[ovmsAppDelegate myRef] commandRegister:@"30" callback:self];
   [self startSpinner:@"Loading Usage"];
-  m_webview.hidden = YES;
   }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -160,69 +150,6 @@
   self.usageSummary.text=t_days>0?[NSString stringWithFormat:@"Past %d days\n%.2f MB received  ·  %.2f MB transmitted",t_days,(double)t_rxt/(1024*1024),(double)t_txt/(1024*1024)]:@"No cellular usage history reported";
   self.usageLegend.text=t_days>0?[NSString stringWithFormat:@"Blue: received  ·  Orange: transmitted\nDaily scale in KiB  ·  %@ to %@",t_day[0]?:@"oldest",t_day[t_days-1]?:@"latest"]:@"The vehicle module did not return daily samples.";
   self.appUsageSummary.text=t_days>0?[NSString stringWithFormat:@"Connected apps\n%.2f MB received  ·  %.2f MB transmitted",(double)t_app_rxt/(1024*1024),(double)t_app_txt/(1024*1024)]:@"Connected apps\nNo usage history reported";
-  return;
-  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ovmsControlCellularUsageView" ofType:@"html"];
-  NSString *page = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
-  
-  // Now, let's hack the page to put in the data...
-  NSString *r01 = [NSString stringWithFormat:@"Past %d Days", t_days];
-  page = [page stringByReplacingOccurrencesOfString:@"+++REPLACEME01+++" withString:r01];
-  
-  NSString *r02 = [NSString stringWithFormat:@"%d Day Tx:%0.2fMB Rx:%0.2fMB",
-                   t_days,
-                   (float)t_txt/(1024*1024),
-                   (float)t_rxt/(1024*1024)];
-  page = [page stringByReplacingOccurrencesOfString:@"+++REPLACEME02+++" withString:r02];
-  
-  NSString *r03 = NULL;
-  NSString *r04 = NULL;
-  NSString *r05 = NULL;
-  for (int k=0;k<t_days;k++)
-    {
-    //'T-6', 'T-5', 'T-4', 'T-3', 'T-2', 'T-1'
-    if (r03 == NULL)
-      r03 = [NSString stringWithFormat:@"'%@'",t_day[k]];
-    else
-      r03 = [NSString stringWithFormat:@"%@, '%@'",r03,t_day[k]];
-    //1.336060, 1.538156, 1.576579, 1.600652, 1.968113, 1.901067
-    if (r04 == NULL)
-      r04 = [NSString stringWithFormat:@"%0.1f",(float)t_tx[k]/1024];
-    else
-      r04 = [NSString stringWithFormat:@"%@, %0.1f",r04, (float)t_tx[k]/1024];   
-    //15.727003, 17.356071, 16.716049, 18.542843, 19.564053, 19.830493
-    if (r05 == NULL)
-      r05 = [NSString stringWithFormat:@"%0.1f",(float)t_rx[k]/1024];
-    else
-      r05 = [NSString stringWithFormat:@"%@, %0.1f",r05, (float)t_rx[k]/1024];   
-    }
-  page = [page stringByReplacingOccurrencesOfString:@"+++REPLACEME03+++" withString:r03];
-  page = [page stringByReplacingOccurrencesOfString:@"+++REPLACEME04+++" withString:r04];
-  page = [page stringByReplacingOccurrencesOfString:@"+++REPLACEME05+++" withString:r05];
-
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-    // The device is an iPad running iPhone 3.2 or later.
-    UIInterfaceOrientation orientation = self.interfaceOrientation;
-    if ((orientation == UIInterfaceOrientationPortrait)||
-        (orientation == UIInterfaceOrientationPortraitUpsideDown))
-      {
-      page = [page stringByReplacingOccurrencesOfString:@"+++REPLACEME10+++" withString:@"768"];
-      page = [page stringByReplacingOccurrencesOfString:@"+++REPLACEME11+++" withString:@"960"];
-      }
-    else
-      {
-      page = [page stringByReplacingOccurrencesOfString:@"+++REPLACEME10+++" withString:@"960"];
-      page = [page stringByReplacingOccurrencesOfString:@"+++REPLACEME11+++" withString:@"768"];
-      }
-    }
-  else
-    {
-    // The device is an iPhone or iPod touch.
-    page = [page stringByReplacingOccurrencesOfString:@"+++REPLACEME10+++" withString:@"320"];
-    page = [page stringByReplacingOccurrencesOfString:@"+++REPLACEME11+++" withString:@"416"];
-    }
-  
-  [m_webview loadHTMLString:page baseURL:nil];
   }
 
 - (void)commandResult:(NSArray*)result
@@ -292,15 +219,5 @@
     [self stopSpinner];
     }
 }
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-  return YES;
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-  {
-  m_webview.hidden = NO;
-  }
 
 @end

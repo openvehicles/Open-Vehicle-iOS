@@ -12,7 +12,7 @@
 
 #define MAX_DAYS 100
 
-@interface ovmsControlCellularUsageViewController : UIViewController <UIWebViewDelegate, ovmsCommandDelegate, MBProgressHUDDelegate>
+@interface ovmsControlCellularUsageViewController : UIViewController <ovmsCommandDelegate, MBProgressHUDDelegate>
   {
   NSString *t_day[MAX_DAYS];
   int t_rx[MAX_DAYS];
@@ -25,8 +25,6 @@
   int t_app_rxt;
   int t_app_txt;
   }
-
-@property (strong, nonatomic) IBOutlet UIWebView *m_webview;
 
 - (void)startSpinner:(NSString *)label;
 - (void)stopSpinner;
