@@ -1166,6 +1166,10 @@
     }
 }
 
+- (void)omvsControlPINEntryDelegateDidCancel:(NSString*)fn
+{
+}
+
 - (void)omvsControlPINEntryDelegateDidSave:(NSString*)fn pin:(NSString*)pin
 {
   if ([fn isEqualToString:@"Valet On"])

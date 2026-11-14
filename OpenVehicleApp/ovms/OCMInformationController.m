@@ -68,19 +68,19 @@
         for (Connection *cn in cl.conections) {
             num++;
             if (cn.level) {
-                NSString *key = isOneConnection ? NSLocalizedString(@"Level", nil) : [NSString stringWithFormat:NSLocalizedString(@"Level #%d", nil), num];
+                NSString *key = isOneConnection ? NSLocalizedString(@"Level", nil) : [NSString stringWithFormat:NSLocalizedString(@"Level #%lu", nil), (unsigned long)num];
                 [cokeys addObject:key];
                 [covalues addObject:cn.level.title];
             }
             
             if (cn.amps) {
-                NSString *key = isOneConnection ? NSLocalizedString(@"Amps", nil) : [NSString stringWithFormat:NSLocalizedString(@"Amps #%d", nil), num];
+                NSString *key = isOneConnection ? NSLocalizedString(@"Amps", nil) : [NSString stringWithFormat:NSLocalizedString(@"Amps #%lu", nil), (unsigned long)num];
                 [cokeys addObject:key];
                 [covalues addObject:[cn.amps description]];
             }
             
             if (cn.connection_type) {
-                NSString *key = isOneConnection ? NSLocalizedString(@"Connection type", nil) : [NSString stringWithFormat:NSLocalizedString(@"Connection type #%d", nil), num];
+                NSString *key = isOneConnection ? NSLocalizedString(@"Connection type", nil) : [NSString stringWithFormat:NSLocalizedString(@"Connection type #%lu", nil), (unsigned long)num];
                 [cokeys addObject:key];
                 [covalues addObject:cn.connection_type.title];
             }
