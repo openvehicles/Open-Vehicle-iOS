@@ -167,8 +167,6 @@
 
   self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
 
-  myMapView = [myMapView initWithFrame: myMapView.frame];
-
   [self animateLayer];
 
   self.m_car_location = nil;
