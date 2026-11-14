@@ -52,7 +52,6 @@
     
     NSString *surl = SWF(@"%@/poi/?output=json&verbose=false&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500&connectiontypeid=%@", BASE_URL,
                          coordinate.latitude, coordinate.longitude, distance, connectiontypeid);
-    NSLog(@"start sync: %@", surl);
     
     [self performSelectorInBackground:@selector(start:) withObject:[NSURL URLWithString:surl]];
 }
@@ -70,7 +69,6 @@
     
     NSString *surl = SWF(@"%@/poi/?output=json&verbose=false&latitude=%0.6f&longitude=%0.6f&distance=%g&distanceunit=KM&maxresults=500", BASE_URL,
                          coordinate.latitude, coordinate.longitude, distance);
-    NSLog(@"start sync: %@", surl);
     
     [self performSelectorInBackground:@selector(start:) withObject:[NSURL URLWithString:surl]];
 }
@@ -96,7 +94,6 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     NSString *surl = SWF(@"%@/poi/?output=json&verbose=false&countrycode=%@&maxresults=5000", BASE_URL, countrycode);
-    NSLog(@"start sync: %@", surl);
     
     [self performSelectorInBackground:@selector(start:) withObject:[NSURL URLWithString:surl]];
 }
@@ -155,7 +152,6 @@
 - (void)startAction:(NSNumber *)single {
     NSError* error = nil;
     NSString *surl = SWF(@"%@/referencedata", BASE_URL);
-    NSLog(@"SyncAction: %@", surl);
     NSData *receivedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:surl] options:NSDataReadingUncached error:&error];
     if (error) {
         [self performSelectorOnMainThread:@selector(stop:) withObject:error waitUntilDone:NO];

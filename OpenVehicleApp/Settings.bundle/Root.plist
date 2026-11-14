@@ -178,7 +178,7 @@
 			<key>Title</key>
 			<string>Charging Stations</string>
 			<key>FooterText</key>
-			<string>Slide to adjust how often Charging Stations are grouped together.</string>
+			<string>When enabled, the vehicle location is sent to Open Charge Map to find nearby charging stations. Slide to adjust how often stations are grouped together.</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -188,7 +188,7 @@
 			<key>Key</key>
 			<string>ovmsOpenChargeMap</string>
 			<key>DefaultValue</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Type</key>

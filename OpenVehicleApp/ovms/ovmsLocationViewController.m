@@ -94,7 +94,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"sel_connection_type_ids: %@", [ovmsAppDelegate myRef].sel_connection_type_ids);
     
     self.navigationItem.title = [ovmsAppDelegate myRef].sel_label;
 
@@ -502,7 +501,6 @@
         if ( (gpslock < 1) || (stalegps<1) ) return; // No GPS lock or data
         if ([vehicleid isEqualToString:[ovmsAppDelegate myRef].sel_car]) return; // Not the selected car 
 
-        NSLog(@"groupUpdate for %@", vehicleid);
         VehicleAnnotation *pa = [m_groupcar_locations objectForKey:vehicleid];
         if (pa != nil) {
             // Update an existing car
@@ -523,7 +521,6 @@
             [pa setSpeed:[[ovmsAppDelegate myRef] convertSpeedUnits:speed]];
             [m_groupcar_locations setObject:pa forKey:vehicleid];
             [myMapView addAnnotation:pa];
-            NSLog(@"groupCarCreated %@ count=%lu", vehicleid,(unsigned long)[[myMapView annotations] count]);
         }
     }  
 }

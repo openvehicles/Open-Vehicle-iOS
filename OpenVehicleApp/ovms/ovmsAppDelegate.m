@@ -159,7 +159,7 @@ static NSString * const OVMSKeychainService = @"com.openvehicles.ovms.vehicle-cr
                                dictionaryWithObjectsAndKeys:@"tmc.openvehicles.com", @"ovmsServer",
                                                             @"6867", @"ovmsPort",
                                                             @"1", @"ovmsShareColour",
-                                                            @"1", @"ovmsOpenChargeMap",
+                                                            @NO, @"ovmsOpenChargeMap",
                                                             @"-", @"ovmsTemperatures",
                                                             @"-", @"ovmsDistances",
                                                             @"-", @"ovmsPressures",
@@ -258,9 +258,8 @@ static NSString * const OVMSKeychainService = @"com.openvehicles.ovms.vehicle-cr
   [center setNotificationCategories:[NSSet setWithObjects:alertCategory, chargeCategory, nil]];
 #if TARGET_IPHONE_SIMULATOR
   // Nothing to do on the simulator, as APNS not supported by Apple
-  NSLog(@"No PUSH notifications on simultor, apns_deviceid: %@", apns_deviceid);
+  NSLog(@"Push notifications are unavailable in the simulator");
 #else
-  NSLog(@"Registering for PUSH notifications apns_deviceid: %@", apns_deviceid);
   [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge)
                         completionHandler:^(BOOL granted, NSError *error) {
     if (error) NSLog(@"Notification authorization failed: %@", error);
@@ -315,7 +314,6 @@ static NSString * const OVMSKeychainService = @"com.openvehicles.ovms.vehicle-cr
                         ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
                         ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
                         ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
-  NSLog(@"My token is: %@", apns_devicetoken);
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
@@ -1334,7 +1332,7 @@ else
       if ((stoken==NULL)||(etoken==NULL))
       {
       [self serverDisconnect];
-      NSLog(@"Whoops, server had wrong token: %@", response);
+      NSLog(@"Server authentication failed: token mismatch");
       [self scheduleReconnect];
       return;
       }
@@ -1342,7 +1340,7 @@ else
     if (strcmp((char*)token,cstoken)==0)
       {
       [self serverDisconnect];
-      NSLog(@"Whoops, token replay attack: %@", response);
+      NSLog(@"Server authentication failed: repeated token");
       [self scheduleReconnect];
       return; // Server is using our token!
       }
@@ -1353,7 +1351,7 @@ else
     if (strncmp([etoken UTF8String],(const char*)edigest,strlen((const char*)edigest))!=0)
       {
       [self serverDisconnect];
-      NSLog(@"Whoops, server token is invalid: %@", response);
+      NSLog(@"Server authentication failed: invalid token");
       [self scheduleReconnect];
       return; // Invalid server digest
       }
@@ -1877,7 +1875,6 @@ else
     [mapURL appendFormat:@"?saddr=%1.6f,%1.6f", from.latitude, from.longitude];
     [mapURL appendFormat:@"&daddr=%1.6f,%1.6f", to.latitude, to.longitude];
     
-    NSLog(@"route: %@", mapURL);
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[mapURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 }

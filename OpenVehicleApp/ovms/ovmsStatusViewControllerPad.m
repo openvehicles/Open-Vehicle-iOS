@@ -1054,7 +1054,6 @@
     if ((gpslock < 1)||(stalegps<1)) return; // No GPS lock or data
     if ([vehicleid isEqualToString:[ovmsAppDelegate myRef].sel_car]) return; // Not the selected car 
     
-    NSLog(@"groupUpdate for %@", vehicleid);
     VehicleAnnotation *pa = [m_groupcar_locations objectForKey:vehicleid];
     if (pa != nil)
       {
@@ -1078,7 +1077,6 @@
       [pa setSpeed:[[ovmsAppDelegate myRef] convertSpeedUnits:speed]];
       [m_groupcar_locations setObject:pa forKey:vehicleid];
       [myMapView addAnnotation:pa];
-      NSLog(@"groupCarCreated %@ count=%d", vehicleid,(int)[[myMapView annotations] count]);
       }
     }  
 }
